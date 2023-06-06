@@ -1,0 +1,18 @@
+@import './scss/variable';
+
+.app {
+  background-color: $black;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  gap: $panel-gap;
+  padding: .8rem;
+}
+
+.main {
+  flex: 1;
+  border-radius: $panel-gap;
+  overflow: hidden;
+  overflow-y: auto;
+}

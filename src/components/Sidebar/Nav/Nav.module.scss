@@ -1,0 +1,39 @@
+@import '../../../scss/variable';
+@import '../../../scss/animations';
+
+
+.nav {
+  background-color: $bg-base;
+  font-size: 1.6rem;
+  border-radius: $panel-border-radius;
+  padding: 8px 22px;
+
+  &-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    color: $text-neutral;
+    @include text-transition;
+
+    &:hover {
+      color: $white;
+    }
+
+
+  }
+
+  &-icon {
+    font-size: 24px;
+  }
+
+  &-name {
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+}
+
+.active {
+  color: $white;
+}

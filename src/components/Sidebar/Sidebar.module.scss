@@ -1,0 +1,8 @@
+@import '../../scss/variable';
+
+.sidebar {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: $panel-gap;
+}

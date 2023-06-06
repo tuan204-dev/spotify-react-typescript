@@ -1,0 +1,63 @@
+@import '../../scss/mixin';
+@import '../../scss/variable';
+
+.song-item-tag {
+  background-color: rgba($color: #000000, $alpha: .3);
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  // min-width: 270px;
+
+  &:hover .body .play-btn {
+    // display: flex;
+    visibility: visible;
+  }
+}
+
+.thumbnail {
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.body {
+  padding-inline: 16px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  &-name {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 500;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-family: CircularSp;
+    font-weight: 700;
+  }
+
+
+
+  .play-btn {
+    @include button-icon(50px, $primary, $primary);
+    // display: none;
+    visibility: hidden;
+    font-size: 20px;
+    transition-duration: .07s;
+
+    &:hover {
+      scale: 1.1;
+    }
+  }
+
+}

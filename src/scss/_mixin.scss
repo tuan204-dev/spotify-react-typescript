@@ -1,0 +1,41 @@
+@mixin backgroundImg($url) {
+  background-image: url($url);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@mixin item-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin button-base {
+  border: none;
+  cursor: pointer;
+  transition: all ease-in-out .2s;
+}
+
+@mixin button-icon($size, $bg, $bg-highlight) {
+  width: $size;
+  height: $size;
+  border-radius: calc($size / 2);
+  background-color: $bg;
+  @include button-base();
+  @include item-center();
+
+  &:hover {
+    background-color: $bg-highlight;
+  }
+}
+
+
+@mixin button-text($padding, $bg, $bg-highlight) {
+  padding: $padding;
+  background-color: $bg;
+  @include button-base();
+  &:hover {
+    background-color: $bg-highlight;
+  }
+}

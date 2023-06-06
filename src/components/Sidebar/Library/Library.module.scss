@@ -1,0 +1,68 @@
+@import '../../../scss/variable';
+@import '../../../scss/animations';
+@import '../../../scss/mixin';
+
+
+.lib {
+  background-color: $bg-base;
+  display: flex;
+  flex-direction: column;
+  border-radius: $panel-border-radius;
+  height: 100%;
+}
+
+.playlist {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 22px;
+  font-size: 16px;
+  color: $text-subdued;
+
+  &-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    @include text-transition;
+
+    &:hover {
+      color: $white;
+    }
+
+    &-icon {
+      font-size: 24px;
+      transform: translateY(4px);
+    }
+
+    &-text {
+      font-weight: 600;
+    }
+  }
+
+  &-button {
+    display: flex;
+    gap: $panel-gap;
+
+    button {
+      @include button-icon(32px, transparent, $bg-highlight);
+      color: $text-subdued;
+
+      &:hover {
+        color: $white;
+      } 
+    }
+  }
+}
+
+.selection {
+  display: flex;
+  padding: 8px 16px;
+  font-size: 14px;
+  gap: $panel-gap;
+
+  button {
+    @include button-text(6px 12px, $bg-button, $bg-button-highlight);
+    color: $white;
+    border-radius: 14px;
+  }
+}
