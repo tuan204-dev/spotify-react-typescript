@@ -1,0 +1,19 @@
+.home {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+
+}
+
+.body {
+  height: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+
+

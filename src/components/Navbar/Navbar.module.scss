@@ -1,0 +1,48 @@
+@import '../../scss/variable';
+@import '../../scss/mixin';
+
+
+.nav {
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+  z-index: 9999;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  
+  &-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -999;
+    background-image: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6));
+    transition: all 1s ease;
+  }
+
+  &-button {
+    display: flex;
+    gap: $panel-gap;
+    
+
+    button {
+      @include button-icon(32px, rgba(0,0,0,.1), rgba(0,0,0,.25));
+      font-size: 20px;
+      color: $white;
+    }
+
+  }
+
+  .user {
+    button {
+      @include button-icon(32px, $black, $black);
+      color: $white;
+      border: 3px $white solid;
+    }
+  }
+}

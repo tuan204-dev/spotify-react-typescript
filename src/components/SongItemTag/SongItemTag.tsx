@@ -20,7 +20,11 @@ const SongItemTag: React.FC<SongItemTagProps> = (props) => {
   }
 
   return (
-    <div onMouseEnter={handleHover} className={cx('song-item-tag')}>
+    <div
+      onMouseEnter={handleHover}
+      onMouseLeave={() => setBgColor('#1ed760')}
+      className={cx('song-item-tag')}
+    >
       <div
         className={cx('thumbnail')}
         style={{ backgroundImage: `url(${thumbnailUrl})` }}

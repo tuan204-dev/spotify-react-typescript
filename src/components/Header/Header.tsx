@@ -4,6 +4,8 @@ import { FaUser } from 'react-icons/fa'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import SongItemTag from '../SongItemTag/SongItemTag'
 import styles from './Header.module.scss'
+import Greeting from '../Greeting/Greeting'
+import Navbar from '../Navbar/Navbar'
 
 interface HeaderProps {
   children?: React.ReactNode
@@ -22,33 +24,6 @@ const Header: React.FC<HeaderProps> = (props) => {
 
   const [initSongs, setInitSongs] = useState<[]>([])
 
-  useEffect(() => {
-    (async () => {
-      const response = await fetch('data/initSongs.json')
-      const data = await response.json()
-
-      console.log(data)
-
-      setInitSongs(data.tracks.items)
-    })()
-  }, [])
-
-  // const handlePrevNavigate = (): void => {
-
-  // }
-
-  // const handleNextNavigate = (): void => {
-
-  // }
-
-  // console.log(location)
-
-  const greeting = (): string => {
-    const currentHour = new Date().getHours()
-    if (5 <= currentHour && currentHour <= 11) return 'Good morning'
-    if (12 <= currentHour && currentHour <= 17) return 'Good afternoon'
-    return 'Good evening'
-  }
 
   return (
     <div
@@ -57,7 +32,7 @@ const Header: React.FC<HeaderProps> = (props) => {
       }}
       className={cx('header')}
     >
-      <div className={cx('nav')}>
+      {/* <div className={cx('nav')}>
         <div className={cx('nav-button')}>
           <button
             disabled={Boolean(location.prev)}
@@ -67,8 +42,6 @@ const Header: React.FC<HeaderProps> = (props) => {
           </button>
           <button
             disabled={Boolean(location.next)}
-
-            // onClick={() => {}}
           >
             <IoIosArrowForward />
           </button>
@@ -78,23 +51,10 @@ const Header: React.FC<HeaderProps> = (props) => {
             <FaUser />
           </button>
         </div>
-      </div>
-      <div className={cx('body')}>
-        <div className={cx('greet')}>
-          <p>{greeting()}</p>
-        </div>
+      </div> */}
+      <Navbar/>
 
-        <div className={cx('songs-section')}>
-          {initSongs.map((item: any, index) => (
-            <SongItemTag
-              key={index}
-              thumbnailUrl={item.data.albumOfTrack.coverArt.sources[0].url}
-              name={item.data.name}
-              setBgColor={setBgColor}
-            />
-          ))}
-        </div>
-      </div>
+      <Greeting setBgColor={setBgColor}/>
     </div>
   )
 }

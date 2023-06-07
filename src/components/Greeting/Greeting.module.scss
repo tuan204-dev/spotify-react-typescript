@@ -1,0 +1,38 @@
+@import '../../scss/variable';
+@import '../../scss/breakpoint';
+
+.body {
+  padding-top: 64px;
+  padding-inline: 24px;
+  position: relative;
+  font-family: CircularSp;
+  font-weight: 700;
+  transition: all 1s ease;
+  background-image: linear-gradient(rgba(0,0,0,.6) 0,$bg-base 100%),$bg-noise !important;
+
+  .greet {
+    font-size: 3.2rem;
+    font-weight: 700;
+
+    p {
+      margin: 0;
+      padding: 8px 0;
+    }
+  }
+
+  .songs-section {
+    display: grid;
+    grid-gap: $row-gap $col-gap;
+    grid-template: auto / repeat(3, 1fr);
+    padding: 15px 0;
+    font-weight: 700;
+
+    @include responsive(lg) {
+      grid-template: auto / repeat(2, 1fr);
+    }
+
+    @include responsive(md) {
+      grid-template: repeat(2, 1fr) / repeat(1, 1fr);
+    }
+  }
+}
