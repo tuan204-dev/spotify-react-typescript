@@ -22,7 +22,7 @@
     bottom: 0;
     z-index: -999;
     background-image: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6));
-    transition: all 1s ease;
+    transition: background-color 1s ease;
   }
 
   &-button {

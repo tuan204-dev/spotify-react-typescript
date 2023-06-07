@@ -1,0 +1,1162 @@
+{
+  "query": "money",
+  "albums": {
+    "totalCount": 450,
+    "items": [
+      {
+        "data": {
+          "uri": "spotify:album:2drqVzCt52KiDxKgl0Rq0P",
+          "name": "Money",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:4kYSro6naA4h99UJvo89HB",
+                "profile": {
+                  "name": "Cardi B"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e028d5816c9f31f1187eb30913f",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d000048518d5816c9f31f1187eb30913f",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b2738d5816c9f31f1187eb30913f",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2018
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:1pDKUOkHVHGKKzH69YVnOG",
+          "name": "Hard To Love",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:3tJoFztHeIJkJWMrx0td2f",
+                "profile": {
+                  "name": "Moneybagg Yo"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e0280d4dbabc0b1e635692839eb",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000485180d4dbabc0b1e635692839eb",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b27380d4dbabc0b1e635692839eb",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2023
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:2Jj4mjzEDaXp9X3AHpo5Gu",
+          "name": "Money",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:1gW6pz5n1aK249L0GvfQCC",
+                "profile": {
+                  "name": "Grupo Marca Registrada"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e02fea3fb9a7ce7d1ce21ac6322",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00004851fea3fb9a7ce7d1ce21ac6322",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b273fea3fb9a7ce7d1ce21ac6322",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2021
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:12QMwxaBwtZWp7BKBwzaol",
+          "name": "Hard To Love",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:3tJoFztHeIJkJWMrx0td2f",
+                "profile": {
+                  "name": "Moneybagg Yo"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e021a7fadc93eaa5c5749df4bc4",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d000048511a7fadc93eaa5c5749df4bc4",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b2731a7fadc93eaa5c5749df4bc4",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2023
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:1nlaLDMPSzXL8G5LPBDhwd",
+          "name": "MONEY ON THE DASH",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:67MNhiAICFY6Pwc2YxCO0K",
+                "profile": {
+                  "name": "Elley Duhé"
+                }
+              },
+              {
+                "uri": "spotify:artist:0vqJkZ0RpLZixt3lTmD8vP",
+                "profile": {
+                  "name": "Whethan"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e02a33af2e78a60e270aa668f43",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00004851a33af2e78a60e270aa668f43",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b273a33af2e78a60e270aa668f43",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2023
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:5PtCXycY9LrvdDeXWioM9o",
+          "name": "Moneysign Suede",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:5w61NhDHxboaPUjFZ9r2vh",
+                "profile": {
+                  "name": "MoneySign Suede"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e029ba085929b4f1e70b0652900",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d000048519ba085929b4f1e70b0652900",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b2739ba085929b4f1e70b0652900",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2022
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:5ffogo3K3fYibGWa93IzUe",
+          "name": "A Gangsta’s Pain",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:3tJoFztHeIJkJWMrx0td2f",
+                "profile": {
+                  "name": "Moneybagg Yo"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e02b9ba23c2a9edf6f4b7e48bed",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00004851b9ba23c2a9edf6f4b7e48bed",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b273b9ba23c2a9edf6f4b7e48bed",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2021
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:7jt2ZSsqgR2VG6s1XkWw7E",
+          "name": "Money",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:2o5jDhtHVPhrJdv3cEQ99Z",
+                "profile": {
+                  "name": "Tiësto"
+                }
+              },
+              {
+                "uri": "spotify:artist:5iQ5zOYomcR6F3gYon6GNW",
+                "profile": {
+                  "name": "Killfake"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e0268a8451f72e70040392160bc",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000485168a8451f72e70040392160bc",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b27368a8451f72e70040392160bc",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2021
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:0WPnWF4ZnJFn6Li3DXcObK",
+          "name": "Money",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:3eUpxakSdjFZ5ROQKgfL2W",
+                "profile": {
+                  "name": "Tentendo"
+                }
+              },
+              {
+                "uri": "spotify:artist:6cUanG4fLNSAhNEcu6n34w",
+                "profile": {
+                  "name": "honey"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e021a3b80f33e9c04bc1b92d9ea",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d000048511a3b80f33e9c04bc1b92d9ea",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b2731a3b80f33e9c04bc1b92d9ea",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2023
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:6tQbwu7HWigKSOVuQOa0os",
+          "name": "MONEY ON THE DASH - Diplo Remix",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:67MNhiAICFY6Pwc2YxCO0K",
+                "profile": {
+                  "name": "Elley Duhé"
+                }
+              },
+              {
+                "uri": "spotify:artist:0vqJkZ0RpLZixt3lTmD8vP",
+                "profile": {
+                  "name": "Whethan"
+                }
+              },
+              {
+                "uri": "spotify:artist:5fMUXHkw8R8eOP2RNVYEZX",
+                "profile": {
+                  "name": "Diplo"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e02d67a266807ee42d1fd9ce0a0",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00004851d67a266807ee42d1fd9ce0a0",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b273d67a266807ee42d1fd9ce0a0",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2023
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:2pe0owZ6XB7MnLTzi6Qf8M",
+          "name": "Money",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:67FB4n52MgexGQIG8s0yUH",
+                "profile": {
+                  "name": "Lola Young"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e029fd99a4e0ee3cb7a55471cf0",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d000048519fd99a4e0ee3cb7a55471cf0",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b2739fd99a4e0ee3cb7a55471cf0",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2023
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:1VbBXmKIEcjABfAOOAxdiE",
+          "name": "Ocean Spray",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:3tJoFztHeIJkJWMrx0td2f",
+                "profile": {
+                  "name": "Moneybagg Yo"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e021fd55012ede32e7ea08c928c",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d000048511fd55012ede32e7ea08c928c",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b2731fd55012ede32e7ea08c928c",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2023
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:5qmEF78Uq9CjwIgvKQe7WG",
+          "name": "Money",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:0bzfPKdbXL5ezYW2z3UGQj",
+                "profile": {
+                  "name": "Michael Kiwanuka"
+                }
+              },
+              {
+                "uri": "spotify:artist:1uiEZYehlNivdK3iQyAbye",
+                "profile": {
+                  "name": "Tom Misch"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e0213df1883a40a27f8f0d41d0a",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000485113df1883a40a27f8f0d41d0a",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b27313df1883a40a27f8f0d41d0a",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2019
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:0z3SFl34YWiKMXwsTNPdVp",
+          "name": "Money Rain (Phonk Remix)",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:1iuGd0kNu2eqLwP9DFGCNY",
+                "profile": {
+                  "name": "VTORNIK"
+                }
+              },
+              {
+                "uri": "spotify:artist:3kXvE7gEBfGkwDaknMngF7",
+                "profile": {
+                  "name": "Phonk"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e020cffcb3e6efe7b82200366cd",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d000048510cffcb3e6efe7b82200366cd",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b2730cffcb3e6efe7b82200366cd",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2021
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:7wbZNsw7lzryElP81VzFVk",
+          "name": "Money",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:0CGIvnmyQM231duHwTYp1c",
+                "profile": {
+                  "name": "Ketafijikana"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e023c75b4518b9abece4869e66c",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d000048513c75b4518b9abece4869e66c",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b2733c75b4518b9abece4869e66c",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2021
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:30XjUCo4sqJqNuYuJdYAFu",
+          "name": "Keep It Low (feat. Future)",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:3tJoFztHeIJkJWMrx0td2f",
+                "profile": {
+                  "name": "Moneybagg Yo"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e02c75b4a7e2fbda0cd442b267f",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00004851c75b4a7e2fbda0cd442b267f",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b273c75b4a7e2fbda0cd442b267f",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2023
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:7AxCwJSOFFXOGPNoQsotVT",
+          "name": "MONEY",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:0J5NDaSRSz2QolH5yZNrnW",
+                "profile": {
+                  "name": "Kartier papi"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e02cf9f475f5d7c910fb8d4191d",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00004851cf9f475f5d7c910fb8d4191d",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b273cf9f475f5d7c910fb8d4191d",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2023
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:2SvNV2pLgPlGBwYH9VoStl",
+          "name": "Money",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:3MK71khOrqZwGpyfYzwKXR",
+                "profile": {
+                  "name": "Jones Meadow"
+                }
+              },
+              {
+                "uri": "spotify:artist:776UugG4CdQlYfsEUVCRqb",
+                "profile": {
+                  "name": "Nina Carr"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e0215737e379261c0290805b3aa",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000485115737e379261c0290805b3aa",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b27315737e379261c0290805b3aa",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2022
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:71gZFvUAe6KfEsji7oqXVv",
+          "name": "Ocean Spray",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:3tJoFztHeIJkJWMrx0td2f",
+                "profile": {
+                  "name": "Moneybagg Yo"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e02e99fff95f83d53a791fcbbbb",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00004851e99fff95f83d53a791fcbbbb",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b273e99fff95f83d53a791fcbbbb",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2023
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:1Iil75bwEdOFvpodfUtjHl",
+          "name": "Money",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:3I4LABb5aL1DfRBaggbbFl",
+                "profile": {
+                  "name": "Scotty Austin"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e02f45be13f270ba9a57499278b",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00004851f45be13f270ba9a57499278b",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b273f45be13f270ba9a57499278b",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2022
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:1fkGVz3LWxjax7F0Mrj3f5",
+          "name": "Money, Power & Respect",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:0A7g2YbCA9FlyZvAG6VmKP",
+                "profile": {
+                  "name": "The LOX"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e02a76a236552d8b904868933a3",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00004851a76a236552d8b904868933a3",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b273a76a236552d8b904868933a3",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 1998
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:5ShVyR5WFkMR62ylYbRYhF",
+          "name": "Money",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:1NP2R1VpIfFe7amzJxCDVh",
+                "profile": {
+                  "name": "V1V1D"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e02b495ab467bf92d096fc07ab6",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00004851b495ab467bf92d096fc07ab6",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b273b495ab467bf92d096fc07ab6",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2022
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:1TwrnBDlShNlNIn20c5h31",
+          "name": "Motion God",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:3tJoFztHeIJkJWMrx0td2f",
+                "profile": {
+                  "name": "Moneybagg Yo"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e0297ed08ee74da2b210ab08078",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000485197ed08ee74da2b210ab08078",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b27397ed08ee74da2b210ab08078",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2023
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:5QRGz0LiB8LoO5v5j0NvZ4",
+          "name": "Money",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:5iTeuqbNnieioTxkY6aH4F",
+                "profile": {
+                  "name": "Chris-n-Teeb"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e022b114dd67c9e3704f7aba3de",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d000048512b114dd67c9e3704f7aba3de",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b2732b114dd67c9e3704f7aba3de",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2019
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:0GJ7jQJRIQNDjz54cPo2XI",
+          "name": "Money Sucks, Friends Rule",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:5R3Hr2cnCCjt220Jmt2xLf",
+                "profile": {
+                  "name": "Dillon Francis"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e02483536d7340f3b68c19b637c",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00004851483536d7340f3b68c19b637c",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b273483536d7340f3b68c19b637c",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2014
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:2VXqjyaaqRellg8cw99QVy",
+          "name": "Money",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:2v0x2qsSuy06OiFIo8zX6s",
+                "profile": {
+                  "name": "Money"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e024597c6365dc96a6929ddc963",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d000048514597c6365dc96a6929ddc963",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b2734597c6365dc96a6929ddc963",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2022
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:6MyJhSzVSOravLjL5hpFMk",
+          "name": "Money Shot",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:2pAajGWerK3ghwToNWFENS",
+                "profile": {
+                  "name": "Puscifer"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e02fb4f3561a4cd7f7aaef9ca7f",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00004851fb4f3561a4cd7f7aaef9ca7f",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b273fb4f3561a4cd7f7aaef9ca7f",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2015
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:2iOo4RatJizCchSxzo4GyY",
+          "name": "Money",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:4kYSro6naA4h99UJvo89HB",
+                "profile": {
+                  "name": "Cardi B"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e02db5a5f403e65bba175005c71",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00004851db5a5f403e65bba175005c71",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b273db5a5f403e65bba175005c71",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2018
+          }
+        }
+      },
+      {
+        "data": {
+          "uri": "spotify:album:3raeLaYMyhfb67HgnnNrsg",
+          "name": "Epidemic (Deluxe)",
+          "artists": {
+            "items": [
+              {
+                "uri": "spotify:artist:3Rx4PJ7SP6unkOk5elPUK7",
+                "profile": {
+                  "name": "Money Man"
+                }
+              }
+            ]
+          },
+          "coverArt": {
+            "sources": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e02d9cbe9b9bec4732330a17c7e",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00004851d9cbe9b9bec4732330a17c7e",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b273d9cbe9b9bec4732330a17c7e",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          },
+          "date": {
+            "year": 2020
+          }
+        }
+      }
+    ],
+    "pagingInfo": {
+      "nextOffset": 29,
+      "limit": 29
+    }
+  }
+}

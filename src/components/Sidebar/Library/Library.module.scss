@@ -9,6 +9,7 @@
   flex-direction: column;
   border-radius: $panel-border-radius;
   height: 100%;
+  overflow: hidden;
 }
 
 .playlist {
@@ -65,4 +66,16 @@
     color: $white;
     border-radius: 14px;
   }
+}
+
+.playlist-section {
+  padding-inline: 8px;
+  padding-top: 8px;
+  overflow: hidden;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
 }

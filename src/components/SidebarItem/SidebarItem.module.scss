@@ -1,0 +1,50 @@
+@import '../../scss/variable';
+
+.sidebar-item {
+  height: 64px;
+  display: flex;
+  padding: 8px;
+  align-items: inherit;
+  background-color: transparent;
+  gap: $panel-gap;
+  border-radius: 6px;
+  transition: all .1s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $bg-highlight;
+  }
+
+  .thumbnail {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 4px;
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4px 0;
+    overflow: hidden;
+
+    .heading {
+      font-size: 1.6rem;
+      margin: 0;
+      color: $white;
+      font-weight: 400;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .type {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: $text-subdued;
+    }
+  }
+}

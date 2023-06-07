@@ -22,7 +22,7 @@ const SongItemTag: React.FC<SongItemTagProps> = (props) => {
   return (
     <div
       onMouseEnter={handleHover}
-      onMouseLeave={() => setBgColor('#1ed760')}
+      onMouseLeave={() => setBgColor('#c0b8c1')}
       className={cx('song-item-tag')}
     >
       <div
