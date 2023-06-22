@@ -18,6 +18,7 @@
 }
 
 @mixin button-icon($size, $bg, $bg-highlight) {
+  position: relative;
   width: $size;
   height: $size;
   border-radius: calc($size / 2);
@@ -35,6 +36,7 @@
   padding: $padding;
   background-color: $bg;
   @include button-base();
+
   &:hover {
     background-color: $bg-highlight;
   }

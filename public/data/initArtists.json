@@ -1,858 +1,2269 @@
 {
-  "query": "a",
   "artists": {
-    "totalCount": 71,
+    "totalCount": 81,
     "items": [
       {
-        "data": {
-          "uri": "spotify:artist:66CXWjxzNUsdJxJ2JdwvnR",
-          "profile": {
-            "name": "Ariana Grande"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5ebcdce7620dc940db079bf4952",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f178cdce7620dc940db079bf4952",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab67616100005174cdce7620dc940db079bf4952",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:1BaQKcXBkeFVnyo6W2tWY2",
+              "id": "1BaQKcXBkeFVnyo6W2tWY2",
+              "name": "DHURATA",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:6t7U7sYlVCtlMWzbecJcHd",
+                    "profile": {
+                      "name": "Dhurata Dora"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e0265a83e777210f3e44ce5f3e1",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000485165a83e777210f3e44ce5f3e1",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b27365a83e777210f3e44ce5f3e1",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "7SXcz2GCSxqJFM7g_Pet9g",
+                "shareUrl": "https://open.spotify.com/album/1BaQKcXBkeFVnyo6W2tWY2?si=7SXcz2GCSxqJFM7g_Pet9g"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:4dpARuHxo51G3z768sgnrY",
-          "profile": {
-            "name": "Adele"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5eb68f6e5892075d7f22615bd17",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f17868f6e5892075d7f22615bd17",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000517468f6e5892075d7f22615bd17",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:2qQf72CQ3j5D9AEwvmGvdX",
+              "id": "2qQf72CQ3j5D9AEwvmGvdX",
+              "name": "Sunrise",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:20gsENnposVs2I4rQ5kvrf",
+                    "profile": {
+                      "name": "Sam Feldt"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e0201288d5dc8b701031d97a0d7",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000485101288d5dc8b701031d97a0d7",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b27301288d5dc8b701031d97a0d7",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "GZ_dmkRtRu-XbNejmcs7bg",
+                "shareUrl": "https://open.spotify.com/album/2qQf72CQ3j5D9AEwvmGvdX?si=GZ_dmkRtRu-XbNejmcs7bg"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:31W5EY0aAly4Qieq6OFu6I",
-          "profile": {
-            "name": "A Boogie Wit da Hoodie"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5eb7f69a00b3dacd4d959859dce",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f1787f69a00b3dacd4d959859dce",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab676161000051747f69a00b3dacd4d959859dce",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:209j2TtzIAQHRxoBgeoqUM",
+              "id": "209j2TtzIAQHRxoBgeoqUM",
+              "name": "Reloaded",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:14dmbYen0AciYxu5n4Fkpd",
+                    "profile": {
+                      "name": "DJ BoBo"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e025e31e1be55fa05cc9651ce07",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d000048515e31e1be55fa05cc9651ce07",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b2735e31e1be55fa05cc9651ce07",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "-ddZK6_CRdu3IjZJzvTvhA",
+                "shareUrl": "https://open.spotify.com/album/209j2TtzIAQHRxoBgeoqUM?si=-ddZK6_CRdu3IjZJzvTvhA"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:0nmQIMXWTXfhgOBdNzhGOs",
-          "profile": {
-            "name": "Avenged Sevenfold"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5ebe8ff09aeb4a345c03ff560b6",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f178e8ff09aeb4a345c03ff560b6",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab67616100005174e8ff09aeb4a345c03ff560b6",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:17nkMuRLEPUTt9xt3gQOgy",
+              "id": "17nkMuRLEPUTt9xt3gQOgy",
+              "name": "Antiexemplu",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:1n5LD9Ar3D6RK2X2ewGvXb",
+                    "profile": {
+                      "name": "Carla's Dreams"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e028cb919b4f26d3a0d663fd6a0",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d000048518cb919b4f26d3a0d663fd6a0",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b2738cb919b4f26d3a0d663fd6a0",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "OUS7_ORoTFmumSBuSkYozA",
+                "shareUrl": "https://open.spotify.com/album/17nkMuRLEPUTt9xt3gQOgy?si=OUS7_ORoTFmumSBuSkYozA"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:13ubrt8QOOCPljQ2FL1Kca",
-          "profile": {
-            "name": "A$AP Rocky"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5ebee452efcf24aa4124fb28d94",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f178ee452efcf24aa4124fb28d94",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab67616100005174ee452efcf24aa4124fb28d94",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:2knRps90HKMGWoVRxgpvXJ",
+              "id": "2knRps90HKMGWoVRxgpvXJ",
+              "name": "My Gorgeous Drama Queens",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:05qpk4JDcLSFNJSsPIZ8Ye",
+                    "profile": {
+                      "name": "The Motans"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e028daa55c7c0d8bcd3fc627357",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d000048518daa55c7c0d8bcd3fc627357",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b2738daa55c7c0d8bcd3fc627357",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "Rf0aoDkGTn-8Tq75IQyI3Q",
+                "shareUrl": "https://open.spotify.com/album/2knRps90HKMGWoVRxgpvXJ?si=Rf0aoDkGTn-8Tq75IQyI3Q"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:2R21vXR83lH98kGeO99Y66",
-          "profile": {
-            "name": "Anuel AA"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5ebfea27ddf11b9df5322a13c84",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f178fea27ddf11b9df5322a13c84",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab67616100005174fea27ddf11b9df5322a13c84",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:4SIpuXhPR2PhE2H1tU75QM",
+              "id": "4SIpuXhPR2PhE2H1tU75QM",
+              "name": "Supervara 2009",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e02a395a93d8a438e46e914caeb",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00004851a395a93d8a438e46e914caeb",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b273a395a93d8a438e46e914caeb",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "3nv_E18bT56YIr1v-sBFmA",
+                "shareUrl": "https://open.spotify.com/album/4SIpuXhPR2PhE2H1tU75QM?si=3nv_E18bT56YIr1v-sBFmA"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:7Ln80lUS6He07XvHI8qqHH",
-          "profile": {
-            "name": "Arctic Monkeys"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5eb7da39dea0a72f581535fb11f",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f1787da39dea0a72f581535fb11f",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab676161000051747da39dea0a72f581535fb11f",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:4QyylR4pPcWRpp3U2gkPcd",
+              "id": "4QyylR4pPcWRpp3U2gkPcd",
+              "name": "Sunrise To Sunset",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:20gsENnposVs2I4rQ5kvrf",
+                    "profile": {
+                      "name": "Sam Feldt"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e0209345bdc4fa847fb5e5898cc",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000485109345bdc4fa847fb5e5898cc",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b27309345bdc4fa847fb5e5898cc",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "Xy036bdEQSidwx352XfOnQ",
+                "shareUrl": "https://open.spotify.com/album/4QyylR4pPcWRpp3U2gkPcd?si=Xy036bdEQSidwx352XfOnQ"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:0LcJLqbBmaGUft1e9Mm8HV",
-          "profile": {
-            "name": "ABBA"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5eb6c6380e782ed89db8754cf2a",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f1786c6380e782ed89db8754cf2a",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab676161000051746c6380e782ed89db8754cf2a",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:3rgrMDKCWu1hLnMVv9BJiE",
+              "id": "3rgrMDKCWu1hLnMVv9BJiE",
+              "name": "All The Hits 2017",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e027b4758a52ca5e4c84c01ef56",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d000048517b4758a52ca5e4c84c01ef56",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b2737b4758a52ca5e4c84c01ef56",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "L1dHCTbJQDiFAC21ndFXqw",
+                "shareUrl": "https://open.spotify.com/album/3rgrMDKCWu1hLnMVv9BJiE?si=L1dHCTbJQDiFAC21ndFXqw"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:711MCceyCBcFnzjGY4Q7Un",
-          "profile": {
-            "name": "AC/DC"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5ebc4c77549095c86acb4e77b37",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f178c4c77549095c86acb4e77b37",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab67616100005174c4c77549095c86acb4e77b37",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:66cSCYHzE9eWbgtICJ7ceI",
+              "id": "66cSCYHzE9eWbgtICJ7ceI",
+              "name": "Annual 2021",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0NGAZxHanS9e0iNHpR8f2W",
+                    "profile": {
+                      "name": "Alok"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e02b495cce6a4628c518b67adc4",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00004851b495cce6a4628c518b67adc4",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b273b495cce6a4628c518b67adc4",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "eXDHc8DLRTqRL0VKGlwy-g",
+                "shareUrl": "https://open.spotify.com/album/66cSCYHzE9eWbgtICJ7ceI?si=eXDHc8DLRTqRL0VKGlwy-g"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:3jK9MiCrA42lLAdMGUZpwa",
-          "profile": {
-            "name": "Anderson .Paak"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5eb96287bd47570ff13f0c01496",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f17896287bd47570ff13f0c01496",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000517496287bd47570ff13f0c01496",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:3z7A1LFhxzmOGwTZtSWQ1D",
+              "id": "3z7A1LFhxzmOGwTZtSWQ1D",
+              "name": "Ngoc",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:1n5LD9Ar3D6RK2X2ewGvXb",
+                    "profile": {
+                      "name": "Carla's Dreams"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e02213d9424796690df42271d6b",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00004851213d9424796690df42271d6b",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b273213d9424796690df42271d6b",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "3ldPFfwuSqW5uMx4-bYC5g",
+                "shareUrl": "https://open.spotify.com/album/3z7A1LFhxzmOGwTZtSWQ1D?si=3ldPFfwuSqW5uMx4-bYC5g"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:0EmeFodog0BfCgMzAIvKQp",
-          "profile": {
-            "name": "Shakira"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5eb284894d68fe2f80cad555110",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f178284894d68fe2f80cad555110",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab67616100005174284894d68fe2f80cad555110",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 2,
+          "items": [
+            {
+              "uri": "spotify:album:17B9ZB9opgRGcvN4Svc2si",
+              "id": "17B9ZB9opgRGcvN4Svc2si",
+              "name": "Never Dies",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:47z7ZrgFoBvVpCnElCE3Zh",
+                    "profile": {
+                      "name": "Yellow Claw"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e022a4f7e877e5755965064961b",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d000048512a4f7e877e5755965064961b",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b2732a4f7e877e5755965064961b",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "av5EUNeVQ6a8B9JB_AI47Q",
+                "shareUrl": "https://open.spotify.com/album/17B9ZB9opgRGcvN4Svc2si?si=av5EUNeVQ6a8B9JB_AI47Q"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:0z4gvV4rjIZ9wHck67ucSV",
-          "profile": {
-            "name": "Akon"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5eb5896fe53512db2af1bc9fd30",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f1785896fe53512db2af1bc9fd30",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab676161000051745896fe53512db2af1bc9fd30",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:2utQ29E4RCASpiC8wKAqGK",
+              "id": "2utQ29E4RCASpiC8wKAqGK",
+              "name": "Tiny Sparks",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:2oRTLExi1ct74cVtfAwfhV",
+                    "profile": {
+                      "name": "Gromee"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e022716cec7fb5cbb0d115bef62",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d000048512716cec7fb5cbb0d115bef62",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b2732716cec7fb5cbb0d115bef62",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "bkSGb0rKSkmkIeb96jbT-w",
+                "shareUrl": "https://open.spotify.com/album/2utQ29E4RCASpiC8wKAqGK?si=bkSGb0rKSkmkIeb96jbT-w"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:4SsVbpTthjScTS7U2hmr1X",
-          "profile": {
-            "name": "Arcángel"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5ebe963e7ad5259c34a7ca54319",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f178e963e7ad5259c34a7ca54319",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab67616100005174e963e7ad5259c34a7ca54319",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:2n4R0ceMjfqPBgwhdQ0MYJ",
+              "id": "2n4R0ceMjfqPBgwhdQ0MYJ",
+              "name": "Music Non Stop Hits",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e02f0e68990d144c09eeb7b697e",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00004851f0e68990d144c09eeb7b697e",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b273f0e68990d144c09eeb7b697e",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "IyQ1KkCYRFyV5BnsJM34nw",
+                "shareUrl": "https://open.spotify.com/album/2n4R0ceMjfqPBgwhdQ0MYJ?si=IyQ1KkCYRFyV5BnsJM34nw"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:6s22t5Y3prQHyaHWUN1R1C",
-          "profile": {
-            "name": "AJR"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5ebd0f8fb5691ea660889d10eb1",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f178d0f8fb5691ea660889d10eb1",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab67616100005174d0f8fb5691ea660889d10eb1",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:6dCJAD121RDSJ4xrTGewlA",
+              "id": "6dCJAD121RDSJ4xrTGewlA",
+              "name": "Supervara 2009",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e02c036c933aa73e5aaa7e88272",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00004851c036c933aa73e5aaa7e88272",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b273c036c933aa73e5aaa7e88272",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "GChj068uQRuJ1BVkeDTvMQ",
+                "shareUrl": "https://open.spotify.com/album/6dCJAD121RDSJ4xrTGewlA?si=GChj068uQRuJ1BVkeDTvMQ"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:3Nrfpe0tUJi4K4DXYWgMUX",
-          "profile": {
-            "name": "BTS"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5eb5704a64f34fe29ff73ab56bb",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f1785704a64f34fe29ff73ab56bb",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab676161000051745704a64f34fe29ff73ab56bb",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:2gVrx1QPgxt4UnV5FErP18",
+              "id": "2gVrx1QPgxt4UnV5FErP18",
+              "name": "Romanian Best Hits Vol. 1",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e02360a459802c47bf4f87f63e1",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00004851360a459802c47bf4f87f63e1",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b273360a459802c47bf4f87f63e1",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "0Ab4YW_BQnq9_iF-I_5B3Q",
+                "shareUrl": "https://open.spotify.com/album/2gVrx1QPgxt4UnV5FErP18?si=0Ab4YW_BQnq9_iF-I_5B3Q"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:3DiDSECUqqY1AuBP8qtaIa",
-          "profile": {
-            "name": "Alicia Keys"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5ebe2be4a270f9ec57fef30a8ad",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f178e2be4a270f9ec57fef30a8ad",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab67616100005174e2be4a270f9ec57fef30a8ad",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:3I6ImWi3vp6t7alQRj4Yji",
+              "id": "3I6ImWi3vp6t7alQRj4Yji",
+              "name": "51 самый лучший румынский хит, Ч. 2",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e0251077166056f4481aa948e85",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000485151077166056f4481aa948e85",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b27351077166056f4481aa948e85",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "mIci4ukKRiynVFT2OGRnZQ",
+                "shareUrl": "https://open.spotify.com/album/3I6ImWi3vp6t7alQRj4Yji?si=mIci4ukKRiynVFT2OGRnZQ"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:3PyJHH2wyfQK3WZrk9rpmP",
-          "profile": {
-            "name": "Ashnikko"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5eb200914459687748118b36954",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f178200914459687748118b36954",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab67616100005174200914459687748118b36954",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:3X2yHumpEN6qHCOHgjr6x8",
+              "id": "3X2yHumpEN6qHCOHgjr6x8",
+              "name": "Mai stai",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0niQ4Q9nI1Qh0BHpT3b4NC",
+                    "profile": {
+                      "name": "3 Sud Est"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e0247f1c72cfe9a3bddfbbc1453",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000485147f1c72cfe9a3bddfbbc1453",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b27347f1c72cfe9a3bddfbbc1453",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "VlKQhKv3RFSGJAGFwp4ogw",
+                "shareUrl": "https://open.spotify.com/album/3X2yHumpEN6qHCOHgjr6x8?si=VlKQhKv3RFSGJAGFwp4ogw"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:6YVMFz59CuY7ngCxTxjpxE",
-          "profile": {
-            "name": "aespa"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5ebb29c20ae1a1435066fe26f35",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f178b29c20ae1a1435066fe26f35",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab67616100005174b29c20ae1a1435066fe26f35",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:7efYDdAzXSqv1mD8iWDVta",
+              "id": "7efYDdAzXSqv1mD8iWDVta",
+              "name": "Ultra Weekend 6",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e0233da01ad94cb041202a936a3",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000485133da01ad94cb041202a936a3",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b27333da01ad94cb041202a936a3",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "NHx3scIQSWGyblUpBWxQ0g",
+                "shareUrl": "https://open.spotify.com/album/7efYDdAzXSqv1mD8iWDVta?si=NHx3scIQSWGyblUpBWxQ0g"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:4mxWe1mtYIYfP040G38yvS",
-          "profile": {
-            "name": "Alan Jackson"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6772690000dd221dce50b93ca0b1e2f459d9e6",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab67726900008f741dce50b93ca0b1e2f459d9e6",
-                  "width": 64,
-                  "height": 64
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6772690000bac31dce50b93ca0b1e2f459d9e6",
-                  "width": 200,
-                  "height": 200
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6772690000c46c1dce50b93ca0b1e2f459d9e6",
-                  "width": 1000,
-                  "height": 1000
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:3YxMlVTToT0qu0ReWUQKWn",
+              "id": "3YxMlVTToT0qu0ReWUQKWn",
+              "name": "Amazing Hits",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:1omKDrKCcMD79tfK8Vb2Hr",
+                    "profile": {
+                      "name": "Connect-R"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e02a903b1cdab9f00c4c5c26603",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00004851a903b1cdab9f00c4c5c26603",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b273a903b1cdab9f00c4c5c26603",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "dff66rUbT0e1dxNnXID3Vg",
+                "shareUrl": "https://open.spotify.com/album/3YxMlVTToT0qu0ReWUQKWn?si=dff66rUbT0e1dxNnXID3Vg"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:1G9G7WwrXka3Z1r7aIDjI7",
-          "profile": {
-            "name": "Outkast"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5eb0cb3f95b9f8f7337e135a925",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f1780cb3f95b9f8f7337e135a925",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab676161000051740cb3f95b9f8f7337e135a925",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:3pcIJIuMpyw7L2fxGETbzk",
+              "id": "3pcIJIuMpyw7L2fxGETbzk",
+              "name": "Baila Conmigo",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:47z7ZrgFoBvVpCnElCE3Zh",
+                    "profile": {
+                      "name": "Yellow Claw"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e0224806be3b400cc478731bfbe",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000485124806be3b400cc478731bfbe",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b27324806be3b400cc478731bfbe",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "c5bsTryiQsWw3eIm-8Hh2A",
+                "shareUrl": "https://open.spotify.com/album/3pcIJIuMpyw7L2fxGETbzk?si=c5bsTryiQsWw3eIm-8Hh2A"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:1mcTU81TzQhprhouKaTkpq",
-          "profile": {
-            "name": "Rauw Alejandro"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5eb923e85a0eefbab49fd8d4920",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f178923e85a0eefbab49fd8d4920",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab67616100005174923e85a0eefbab49fd8d4920",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:0XgKWgSVOG0BLFvROk3AVg",
+              "id": "0XgKWgSVOG0BLFvROk3AVg",
+              "name": "DJ Central Groove Vol, 3",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e02da120b23e980081c9354e3fb",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00004851da120b23e980081c9354e3fb",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b273da120b23e980081c9354e3fb",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "YxLCdlFvQ221ld-dvENN1w",
+                "shareUrl": "https://open.spotify.com/album/0XgKWgSVOG0BLFvROk3AVg?si=YxLCdlFvQ221ld-dvENN1w"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:2xzyIzdjfeXX6FIQtlAAyw",
-          "profile": {
-            "name": "ARIZONATEARS"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5eb54f60615e528d62665ef1d14",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f17854f60615e528d62665ef1d14",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000517454f60615e528d62665ef1d14",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:4KDupOYFdmHY0buIQ3w7o7",
+              "id": "4KDupOYFdmHY0buIQ3w7o7",
+              "name": "Home Workout Hits",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e0215b0e3079b43f2aeccd54d2c",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000485115b0e3079b43f2aeccd54d2c",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b27315b0e3079b43f2aeccd54d2c",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "9ZyrdCx9Qq2CuREf3MWhmQ",
+                "shareUrl": "https://open.spotify.com/album/4KDupOYFdmHY0buIQ3w7o7?si=9ZyrdCx9Qq2CuREf3MWhmQ"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:1QAJqy2dA3ihHBFIHRphZj",
-          "profile": {
-            "name": "Cigarettes After Sex"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5ebfe9c808643258ecd6770aa7d",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f178fe9c808643258ecd6770aa7d",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab67616100005174fe9c808643258ecd6770aa7d",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:6m5P0s0ku0wmYjIouBSl1b",
+              "id": "6m5P0s0ku0wmYjIouBSl1b",
+              "name": "Romania Loves the Minimal Beat",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e027035255a16f136cbfbf2ac4f",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d000048517035255a16f136cbfbf2ac4f",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b2737035255a16f136cbfbf2ac4f",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "Jv50mTTCQsCLMbTttzv5qA",
+                "shareUrl": "https://open.spotify.com/album/6m5P0s0ku0wmYjIouBSl1b?si=Jv50mTTCQsCLMbTttzv5qA"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:3Gm5F95VdRxW3mqCn8RPBJ",
-          "profile": {
-            "name": "Aminé"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5eb1f98760ed5b47b21eaf56e8f",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f1781f98760ed5b47b21eaf56e8f",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab676161000051741f98760ed5b47b21eaf56e8f",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:5xBI4SxnDOTYFWkL7SRm9d",
+              "id": "5xBI4SxnDOTYFWkL7SRm9d",
+              "name": "Romania Loves the Minimal Beat",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e0295101318706970f4fe3e12c9",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000485195101318706970f4fe3e12c9",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b27395101318706970f4fe3e12c9",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "NBaVnZDJToCUzgA8x-N1Sg",
+                "shareUrl": "https://open.spotify.com/album/5xBI4SxnDOTYFWkL7SRm9d?si=NBaVnZDJToCUzgA8x-N1Sg"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:1vCWHaC5f2uS3yhpwWbIA6",
-          "profile": {
-            "name": "Avicii"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5ebae07171f989fb39736674113",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f178ae07171f989fb39736674113",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab67616100005174ae07171f989fb39736674113",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:0mieUHsgXataLzOx3TqbVh",
+              "id": "0mieUHsgXataLzOx3TqbVh",
+              "name": "Just Dance 3",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e02f33a43ee55f928012368d66c",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00004851f33a43ee55f928012368d66c",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b273f33a43ee55f928012368d66c",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "0uI6oQXhS--FpjInEMFjQQ",
+                "shareUrl": "https://open.spotify.com/album/0mieUHsgXataLzOx3TqbVh?si=0uI6oQXhS--FpjInEMFjQQ"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:2yEwvVSSSUkcLeSTNyHKh8",
-          "profile": {
-            "name": "TOOL"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5eb13f5472b709101616c87cba3",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f17813f5472b709101616c87cba3",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000517413f5472b709101616c87cba3",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 2,
+          "items": [
+            {
+              "uri": "spotify:album:2F7tejLHzTqFq2XLol9ZGy",
+              "id": "2F7tejLHzTqFq2XLol9ZGy",
+              "name": "Global Warming: Meltdown (Deluxe Version)",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0TnOYISbd1XYRBk9myaseg",
+                    "profile": {
+                      "name": "Pitbull"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e02f2486b438645e97b523e4f90",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00004851f2486b438645e97b523e4f90",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b273f2486b438645e97b523e4f90",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "xSBqvCQrQCuNrUXkSxnbPA",
+                "shareUrl": "https://open.spotify.com/album/2F7tejLHzTqFq2XLol9ZGy?si=xSBqvCQrQCuNrUXkSxnbPA"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:1qto4hHid1P71emI6Fd8xi",
-          "profile": {
-            "name": "Aventura"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5eb4cd0464ef7d8eb8521f72dd8",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f1784cd0464ef7d8eb8521f72dd8",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab676161000051744cd0464ef7d8eb8521f72dd8",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:628ZjvbKY81unpsn9yGoVX",
+              "id": "628ZjvbKY81unpsn9yGoVX",
+              "name": "Declaratie De Dragoste Vol. 6 (I Love You)",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e02e3376729d46194218cd81a77",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00004851e3376729d46194218cd81a77",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b273e3376729d46194218cd81a77",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "h1aOEnOjSYOBoqFEoMDUXg",
+                "shareUrl": "https://open.spotify.com/album/628ZjvbKY81unpsn9yGoVX?si=h1aOEnOjSYOBoqFEoMDUXg"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:2wY79sveU1sp5g7SokKOiI",
-          "profile": {
-            "name": "Sam Smith"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5eba8eef8322e55fc49ab436eea",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f178a8eef8322e55fc49ab436eea",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab67616100005174a8eef8322e55fc49ab436eea",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:2tbufAIPiFlgg3bKp6zzRw",
+              "id": "2tbufAIPiFlgg3bKp6zzRw",
+              "name": "Music Non Stop Hits",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e028717741457cdfca25a136cb4",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d000048518717741457cdfca25a136cb4",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b2738717741457cdfca25a136cb4",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "dbxS8hjITUSZzJcqnbbZTQ",
+                "shareUrl": "https://open.spotify.com/album/2tbufAIPiFlgg3bKp6zzRw?si=dbxS8hjITUSZzJcqnbbZTQ"
+              }
             }
-          }
+          ]
         }
       },
       {
-        "data": {
-          "uri": "spotify:artist:7Ey4PD4MYsKc5I2dolUwbH",
-          "profile": {
-            "name": "Aerosmith"
-          },
-          "visuals": {
-            "avatarImage": {
-              "sources": [
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000e5ebc5733401b4689b2064458e7d",
-                  "width": 640,
-                  "height": 640
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab6761610000f178c5733401b4689b2064458e7d",
-                  "width": 160,
-                  "height": 160
-                },
-                {
-                  "url": "https://i.scdn.co/image/ab67616100005174c5733401b4689b2064458e7d",
-                  "width": 320,
-                  "height": 320
-                }
-              ]
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:7sromNz04iHfai9RjccYfp",
+              "id": "7sromNz04iHfai9RjccYfp",
+              "name": "51 самый лучший румынский хит, Ч. 3",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e020c6563ca48e0bdbf959ceaff",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d000048510c6563ca48e0bdbf959ceaff",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b2730c6563ca48e0bdbf959ceaff",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "Mey8BlLJRs2nL64hyNLTXQ",
+                "shareUrl": "https://open.spotify.com/album/7sromNz04iHfai9RjccYfp?si=Mey8BlLJRs2nL64hyNLTXQ"
+              }
             }
-          }
+          ]
+        }
+      },
+      {
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:5ZQ8lelTkJfwcubKRZrNhX",
+              "id": "5ZQ8lelTkJfwcubKRZrNhX",
+              "name": "Never Dies (The Remixes)",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:47z7ZrgFoBvVpCnElCE3Zh",
+                    "profile": {
+                      "name": "Yellow Claw"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e02330218e7107742b2072d00ff",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00004851330218e7107742b2072d00ff",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b273330218e7107742b2072d00ff",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "5jFrnMtqTtCJ92FdDSes-A",
+                "shareUrl": "https://open.spotify.com/album/5ZQ8lelTkJfwcubKRZrNhX?si=5jFrnMtqTtCJ92FdDSes-A"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:4pFSLuMPTMIG08VcDyVYLW",
+              "id": "4pFSLuMPTMIG08VcDyVYLW",
+              "name": "Amazing Hits",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e02d041b39ca21c1ef3b0a815af",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00004851d041b39ca21c1ef3b0a815af",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b273d041b39ca21c1ef3b0a815af",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "yXXznyhiSE-HcywWkGRpLQ",
+                "shareUrl": "https://open.spotify.com/album/4pFSLuMPTMIG08VcDyVYLW?si=yXXznyhiSE-HcywWkGRpLQ"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:6chaCSLxQffdYqkqX2xjUc",
+              "id": "6chaCSLxQffdYqkqX2xjUc",
+              "name": "Ultra 2012",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e02b77ceec0ad96f7249ef5ef4c",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00004851b77ceec0ad96f7249ef5ef4c",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b273b77ceec0ad96f7249ef5ef4c",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "A9Q5pmQzQT6_WxmLXyBBew",
+                "shareUrl": "https://open.spotify.com/album/6chaCSLxQffdYqkqX2xjUc?si=A9Q5pmQzQT6_WxmLXyBBew"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:6jKRCPb9ID6eehPu06Y900",
+              "id": "6jKRCPb9ID6eehPu06Y900",
+              "name": "Daydream Festival México",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e02b978b731ae7ae39f1c7c56da",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00004851b978b731ae7ae39f1c7c56da",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b273b978b731ae7ae39f1c7c56da",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "6XjPe1K9Rbqn0sTW162JlA",
+                "shareUrl": "https://open.spotify.com/album/6jKRCPb9ID6eehPu06Y900?si=6XjPe1K9Rbqn0sTW162JlA"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:6JQZ6mBMYRGR9RQVCRTWNS",
+              "id": "6JQZ6mBMYRGR9RQVCRTWNS",
+              "name": "Declaratie De Dragoste Vol. 6 (I Love You)",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e02c9a0689fa468e49cb3e02bbe",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00004851c9a0689fa468e49cb3e02bbe",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b273c9a0689fa468e49cb3e02bbe",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "zxXJNEabT527yjDu-E5T6A",
+                "shareUrl": "https://open.spotify.com/album/6JQZ6mBMYRGR9RQVCRTWNS?si=zxXJNEabT527yjDu-E5T6A"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:79Vd5JQ98vP3gPKw6vpLoW",
+              "id": "79Vd5JQ98vP3gPKw6vpLoW",
+              "name": "Papa (Vadim Adamov & Hardphol Remix)",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e02b3d2dcba4da2c27fcb4e14db",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00004851b3d2dcba4da2c27fcb4e14db",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b273b3d2dcba4da2c27fcb4e14db",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "VV2AR-UjSzSu8_2M_Tw-yQ",
+                "shareUrl": "https://open.spotify.com/album/79Vd5JQ98vP3gPKw6vpLoW?si=VV2AR-UjSzSu8_2M_Tw-yQ"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:1Hl89drDt3XdEpKHUDgCfe",
+              "id": "1Hl89drDt3XdEpKHUDgCfe",
+              "name": "Alesta",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0BmLNz4nSLfoWYW1cYsElL",
+                    "profile": {
+                      "name": "Alexandra Stan"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e02ccbd6aa942121a5e79dbd071",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00004851ccbd6aa942121a5e79dbd071",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b273ccbd6aa942121a5e79dbd071",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "BEiDL5JZT0mAv2JGomD4LQ",
+                "shareUrl": "https://open.spotify.com/album/1Hl89drDt3XdEpKHUDgCfe?si=BEiDL5JZT0mAv2JGomD4LQ"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:1Fzq2n9s3YHDajNdQOCOQS",
+              "id": "1Fzq2n9s3YHDajNdQOCOQS",
+              "name": "Can't Get You Out Of My Head Vol. 001",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0NGAZxHanS9e0iNHpR8f2W",
+                    "profile": {
+                      "name": "Alok"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e02b0600d2d2af8b00605e022cb",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00004851b0600d2d2af8b00605e022cb",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b273b0600d2d2af8b00605e022cb",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "iG3Z5pQaQxK04gsJNP2noA",
+                "shareUrl": "https://open.spotify.com/album/1Fzq2n9s3YHDajNdQOCOQS?si=iG3Z5pQaQxK04gsJNP2noA"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:5lhpCkp46sHTWx7FN3zkwz",
+              "id": "5lhpCkp46sHTWx7FN3zkwz",
+              "name": "Pretty Thoughts (Jean Juan Remix)",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e02a93255b12dfa8ada534a1d28",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00004851a93255b12dfa8ada534a1d28",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b273a93255b12dfa8ada534a1d28",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "kUdXNUQiSaWLipKaSeFBwA",
+                "shareUrl": "https://open.spotify.com/album/5lhpCkp46sHTWx7FN3zkwz?si=kUdXNUQiSaWLipKaSeFBwA"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:6wNTvvIU7hL2Dxoi7KPHVK",
+              "id": "6wNTvvIU7hL2Dxoi7KPHVK",
+              "name": "Nota De Plata (Pascal Junior Remix)",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:05qpk4JDcLSFNJSsPIZ8Ye",
+                    "profile": {
+                      "name": "The Motans"
+                    }
+                  },
+                  {
+                    "uri": "spotify:artist:4T8dF8zYAxgtlPPICuFQ5w",
+                    "profile": {
+                      "name": "Pascal Junior"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e022a0dec8a658cfbaab475d755",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d000048512a0dec8a658cfbaab475d755",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b2732a0dec8a658cfbaab475d755",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "bozXJmQBSFiiUt_ZuGycIQ",
+                "shareUrl": "https://open.spotify.com/album/6wNTvvIU7hL2Dxoi7KPHVK?si=bozXJmQBSFiiUt_ZuGycIQ"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:4vgADw1TGcTMiavCACcyXQ",
+              "id": "4vgADw1TGcTMiavCACcyXQ",
+              "name": "Papa (Adrian Funk x OLiX Remix)",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e028e55fa62150af9cb3c502859",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d000048518e55fa62150af9cb3c502859",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b2738e55fa62150af9cb3c502859",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "lZiZDaixRJ-iA04PKD9IBA",
+                "shareUrl": "https://open.spotify.com/album/4vgADw1TGcTMiavCACcyXQ?si=lZiZDaixRJ-iA04PKD9IBA"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:2fKUuHJGZ2MpdNXGKAGs3p",
+              "id": "2fKUuHJGZ2MpdNXGKAGs3p",
+              "name": "Музыка для тренировок и фитнеса",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e028138ea28e4bcd40a90ea9958",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d000048518138ea28e4bcd40a90ea9958",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b2738138ea28e4bcd40a90ea9958",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "A0yS8vg-Qrae1T9YlYDqLg",
+                "shareUrl": "https://open.spotify.com/album/2fKUuHJGZ2MpdNXGKAGs3p?si=A0yS8vg-Qrae1T9YlYDqLg"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "releases": {
+          "totalCount": 2,
+          "items": [
+            {
+              "uri": "spotify:album:0An79FlONI8O44UNmEMoo9",
+              "id": "0An79FlONI8O44UNmEMoo9",
+              "name": "Show me the way (Radio Edit)",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:32Nz3bGbVrLkL7Fo8WTyQ0",
+                    "profile": {
+                      "name": "Marco & Seba"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e02cfdb977a1f6f033ef8e09a3a",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00004851cfdb977a1f6f033ef8e09a3a",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b273cfdb977a1f6f033ef8e09a3a",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "yRplvftnQCGPqzPPgNBj0w",
+                "shareUrl": "https://open.spotify.com/album/0An79FlONI8O44UNmEMoo9?si=yRplvftnQCGPqzPPgNBj0w"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:0URMeyN2XosmGKgsibzLuj",
+              "id": "0URMeyN2XosmGKgsibzLuj",
+              "name": "Party Anthems",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e02463de6a4786993f106f42a55",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00004851463de6a4786993f106f42a55",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b273463de6a4786993f106f42a55",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "bqV5uRliQyi4pmsogYi6WA",
+                "shareUrl": "https://open.spotify.com/album/0URMeyN2XosmGKgsibzLuj?si=bqV5uRliQyi4pmsogYi6WA"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:3CAkYqQ6t34USbOfao1t73",
+              "id": "3CAkYqQ6t34USbOfao1t73",
+              "name": "Nota De Plata",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:05qpk4JDcLSFNJSsPIZ8Ye",
+                    "profile": {
+                      "name": "The Motans"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e024400fc221edf0a319a02a80e",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d000048514400fc221edf0a319a02a80e",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b2734400fc221edf0a319a02a80e",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "Lhz4J9keTwmPR_z3Yj-CJg",
+                "shareUrl": "https://open.spotify.com/album/3CAkYqQ6t34USbOfao1t73?si=Lhz4J9keTwmPR_z3Yj-CJg"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:5droCbtu6i8RlbSyY2zPij",
+              "id": "5droCbtu6i8RlbSyY2zPij",
+              "name": "Fie Ce-o Fi",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e020a63c6055ed1e4e076797273",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d000048510a63c6055ed1e4e076797273",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b2730a63c6055ed1e4e076797273",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "KVN0Wew5Snatz7_Mtr0mHQ",
+                "shareUrl": "https://open.spotify.com/album/5droCbtu6i8RlbSyY2zPij?si=KVN0Wew5Snatz7_Mtr0mHQ"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:4VCmuQ3aAPQZhOpwun5edv",
+              "id": "4VCmuQ3aAPQZhOpwun5edv",
+              "name": "Buna dimineata la Mos Ajun",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e024be11c88bca55664e5c261af",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d000048514be11c88bca55664e5c261af",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b2734be11c88bca55664e5c261af",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "BXai1s_BSWqO8ux_L9InTQ",
+                "shareUrl": "https://open.spotify.com/album/4VCmuQ3aAPQZhOpwun5edv?si=BXai1s_BSWqO8ux_L9InTQ"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:69BI1AuHZzfnSK3pyrprc3",
+              "id": "69BI1AuHZzfnSK3pyrprc3",
+              "name": "Nota De Plata (Dirty Nano Remix)",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:05qpk4JDcLSFNJSsPIZ8Ye",
+                    "profile": {
+                      "name": "The Motans"
+                    }
+                  },
+                  {
+                    "uri": "spotify:artist:0YeBK2Xpnx9UuwvOHpcxoJ",
+                    "profile": {
+                      "name": "Dirty Nano"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e028a10546590485ead73ccf227",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d000048518a10546590485ead73ccf227",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b2738a10546590485ead73ccf227",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "UVd7_SLETGi_hptlPyHc3w",
+                "shareUrl": "https://open.spotify.com/album/69BI1AuHZzfnSK3pyrprc3?si=UVd7_SLETGi_hptlPyHc3w"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:5i5UFKIFm1DNPRQeGZj43P",
+              "id": "5i5UFKIFm1DNPRQeGZj43P",
+              "name": "Ultra Weekend 8",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e02602fcd81d59ff3a2bfcff115",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00004851602fcd81d59ff3a2bfcff115",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b273602fcd81d59ff3a2bfcff115",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "SQd6LwH2Rj2WOa1voRhnuA",
+                "shareUrl": "https://open.spotify.com/album/5i5UFKIFm1DNPRQeGZj43P?si=SQd6LwH2Rj2WOa1voRhnuA"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "releases": {
+          "totalCount": 1,
+          "items": [
+            {
+              "uri": "spotify:album:4ZzOy4MGRkIYACL9RKNv9o",
+              "id": "4ZzOy4MGRkIYACL9RKNv9o",
+              "name": "Non Stop Hits",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of",
+                    "profile": {
+                      "name": "Various Artists"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e0233a71b0538aee9c92dddfceb",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000485133a71b0538aee9c92dddfceb",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b27333a71b0538aee9c92dddfceb",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "nL1aLxsRSZu05-GD-4HIRw",
+                "shareUrl": "https://open.spotify.com/album/4ZzOy4MGRkIYACL9RKNv9o?si=nL1aLxsRSZu05-GD-4HIRw"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "releases": {
+          "totalCount": 2,
+          "items": [
+            {
+              "uri": "spotify:album:1BLdgA7RV3psnshSAwlpax",
+              "id": "1BLdgA7RV3psnshSAwlpax",
+              "name": "Tu Si Eu",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:1n5LD9Ar3D6RK2X2ewGvXb",
+                    "profile": {
+                      "name": "Carla's Dreams"
+                    }
+                  }
+                ]
+              },
+              "coverArt": {
+                "sources": [
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00001e02f20518349ca2aeb77cac9901",
+                    "width": 300,
+                    "height": 300
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d00004851f20518349ca2aeb77cac9901",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://i.scdn.co/image/ab67616d0000b273f20518349ca2aeb77cac9901",
+                    "width": 640,
+                    "height": 640
+                  }
+                ]
+              },
+              "sharingInfo": {
+                "shareId": "2g_uZ_I1QYmdknLXi6igjw",
+                "shareUrl": "https://open.spotify.com/album/1BLdgA7RV3psnshSAwlpax?si=2g_uZ_I1QYmdknLXi6igjw"
+              }
+            }
+          ]
         }
       }
-    ],
-    "pagingInfo": {
-      "nextOffset": 29,
-      "limit": 29
-    }
+    ]
   }
 }

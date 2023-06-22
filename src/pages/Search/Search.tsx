@@ -1,17 +1,23 @@
-import { useLocation, useNavigate, useSearchParams } from "react-router-dom"
+import React, { FC, useState } from 'react'
+import styles from './Search.module.scss'
+import classNames from 'classnames/bind'
+import Navbar from '@/components/Navbar/Navbar'
+
+const cx = classNames.bind(styles)
+
 
 interface SearchProps {
   children?: React.ReactNode
 }
 
-const Search: React.FC<SearchProps> = (props) => {
-  const {children} = props
-
-  
-
+const Search: FC<SearchProps> = (props) => {
+  const { children } = props
+  const [query, setQuery] = useState<string>('')
 
   return (
-    <div>Search</div>
+    <div className={cx('search')}>
+      <Navbar isSearch {...{query, setQuery}} />
+    </div>
   )
 }
 

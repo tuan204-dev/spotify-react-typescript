@@ -13,7 +13,7 @@
   top: 0;
   left: 0;
   right: 0;
-  
+
   &-bg {
     position: absolute;
     top: 0;
@@ -21,21 +21,78 @@
     left: 0;
     bottom: 0;
     z-index: -999;
-    background-image: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6));
+    // background-image: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6));
     transition: background-color 1s ease;
+    background-color: $bg-base;
   }
 
-  &-button {
+  &-control {
     display: flex;
-    gap: $panel-gap;
+    align-items: center;
+    gap: 8px;
     
+    &-button {
+      display: flex;
+      gap: $panel-gap;
 
-    button {
-      @include button-icon(32px, rgba(0,0,0,.1), rgba(0,0,0,.25));
-      font-size: 20px;
-      color: $white;
+      button {
+        @include button-icon(32px, rgba(0, 0, 0, .1), rgba(0, 0, 0, .25));
+        font-size: 20px;
+        color: $white;
+      }
     }
 
+    &-search {
+      width: 364px;
+      display: flex;
+      position: relative;
+
+      &:has(input:is(:focus, :hover)) .icon {
+        opacity: 1;
+      }
+
+      form {
+        flex: 1;
+
+        input {
+          padding: 6px 36px;
+          background-color: $bg-elevated-base;
+          width: 100%;
+          height: 48px;
+          font-size: 14px;
+          border: none;
+          border-radius: 500px;
+          color: #fff !important;
+
+          &:hover {
+            background-color: $bg-elevated-highlight;
+            box-shadow: 0 0 0 1px hsla(0, 0%, 100%, .2);
+          }
+
+        }
+      }
+
+      .icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-42%);
+        font-size: 18px;
+        color: #fff;
+        opacity: .7;
+      }
+
+      .search-icon {
+        left: 12px;
+      }
+
+      .clear-btn {
+        right: 12px;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+      }
+
+    }
   }
 
   .user {

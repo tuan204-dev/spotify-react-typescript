@@ -6,8 +6,8 @@ import classNames from 'classnames/bind'
 const cx = classNames.bind(styles)
 
 interface GreetingProps {
-  bgColor: string | null
-  setBgColor: React.Dispatch<React.SetStateAction<string | null>>
+  bgColor?: string | null
+  setBgColor: React.Dispatch<React.SetStateAction<string>>
 }
 
 const Greeting: FC<GreetingProps> = (props) => {

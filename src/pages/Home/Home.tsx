@@ -1,22 +1,19 @@
-import styles from './Home.module.scss'
-import classNames from 'classnames/bind'
-import Navbar from '@/components/Navbar/Navbar'
 import Greeting from '@/components/Greeting/Greeting'
-import { useEffect, useRef, useState } from 'react'
+import Navbar from '@/components/Navbar/Navbar'
+import classNames from 'classnames/bind'
+import { useState } from 'react'
+import styles from './Home.module.scss'
 
 const cx = classNames.bind(styles)
 
-interface HomeProps {
-  children?: React.ReactNode
-}
 
-const Home: React.FC<HomeProps> = (props) => {
-  const { children } = props
-  const [bgColor, setBgColor] = useState<string | null>('#c0b8c1')
+const Home = () => {
+  const [bgColor, setBgColor] = useState<string>('#c0b8c1')
   const [navOpacity, setNavOpacity] = useState<number>(0)
 
-  const handleScroll = (e: any): void => {
+  const handleScroll = (e: React.UIEvent<HTMLDivElement, UIEvent>): void => {
     const yAxis = e.currentTarget.scrollTop
+    // console.log(yAxis)
     if (yAxis > 64) {
       setNavOpacity(1)
       return

@@ -11,6 +11,10 @@ type LibSelection = Array<{ name: string }>
 
 const Library = () => {
   const [category, setCategory] = useState<string>('Playlists')
+  const [data, setData] = useState<[]>([])
+  const [renderData, setRenderData] = useState<[]>([])
+  const [bottomShadow, setBottomShadow] = useState<boolean>(false)
+
   const libSelection: LibSelection = [
     {
       name: 'Playlists',
@@ -27,8 +31,18 @@ const Library = () => {
     setCategory(type)
   }
 
-  const [data, setData] = useState<[]>([])
-  const [renderData, setRenderData] = useState<[]>([])
+  const handleScroll = (
+    e: React.UIEvent<HTMLDivElement, UIEvent>
+  ): void => {
+    const yAxis = e.currentTarget.scrollTop
+
+    // console.log(yAxis)
+    if (yAxis > 0) {
+      setBottomShadow(true)
+    } else {
+      setBottomShadow(false)
+    }
+  }
 
   useEffect(() => {
     (async () => {
@@ -53,9 +67,13 @@ const Library = () => {
               return (
                 <SidebarItem
                   key={index}
-                  type="playlist"
-                  name={item.data.profile.name}
-                  thumbnail={item.data.visuals.avatarImage.sources[0].url}
+                  type="artist"
+                  name={
+                    item.releases.items[0].artists.items[0].profile.name
+                  }
+                  thumbnail={
+                    item.releases.items[0].coverArt.sources[0].url
+                  }
                 />
               )
             }
@@ -64,7 +82,7 @@ const Library = () => {
               return (
                 <SidebarItem
                   key={index}
-                  type="playlist"
+                  type="album"
                   name={item.data.name}
                   thumbnail={item.data.coverArt.sources[0].url}
                 />
@@ -95,14 +113,21 @@ const Library = () => {
         </div>
       </div>
 
-      <div className={cx('selection')}>
+      <div
+        className={cx({ selection: true, 'bottom-shadow': bottomShadow })}
+      >
         {libSelection.map((item, index) => (
           <button onClick={() => handleClick(item.name)} key={index}>
             {item.name}
           </button>
         ))}
       </div>
-      <div className={cx('playlist-section')}>{renderData}</div>
+      <div
+        onScroll={(e) => handleScroll(e)}
+        className={cx('playlist-section')}
+      >
+        {renderData}
+      </div>
     </div>
   )
 }
