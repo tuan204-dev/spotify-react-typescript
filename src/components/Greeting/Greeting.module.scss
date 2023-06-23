@@ -8,7 +8,7 @@
   font-family: CircularSp;
   font-weight: 700;
   transition: all 1s ease;
-  background-image: linear-gradient(rgba(0,0,0,.6) 0,$bg-base 100%),$bg-noise !important;
+  background-image: linear-gradient(rgba(0, 0, 0, .6) 0, $bg-base 100%), $bg-noise !important;
 
   .greet {
     font-size: 3.2rem;
@@ -27,9 +27,13 @@
     padding: 15px 0;
     font-weight: 700;
 
-    @include responsive(lg) {
-      grid-template: auto / repeat(2, 1fr);
-    }
+    // @include responsive(lg) {
+    //   grid-template: auto / repeat(2, 1fr);
+    // }
 
+  }
+
+  .songs-section-responsive {
+    grid-template: auto / repeat(2, 1fr);
   }
 }

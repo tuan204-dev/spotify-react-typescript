@@ -11,12 +11,16 @@ interface SearchProps {
 }
 
 const Search: FC<SearchProps> = (props) => {
+
   const { children } = props
   const [query, setQuery] = useState<string>('')
 
   return (
     <div className={cx('search')}>
       <Navbar isSearch {...{query, setQuery}} />
+      <div style={{minHeight: '2000px', background: '#121212'}}>
+
+      </div>
     </div>
   )
 }

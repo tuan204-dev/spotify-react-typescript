@@ -25,7 +25,7 @@ const Navbar: FC<NavbarProps> = (props) => {
     setQuery,
   } = props
 
-  console.log(query)
+  // console.log(query)
 
   return (
     <div className={cx('nav')}>

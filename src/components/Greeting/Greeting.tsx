@@ -8,10 +8,11 @@ const cx = classNames.bind(styles)
 interface GreetingProps {
   bgColor?: string | null
   setBgColor: React.Dispatch<React.SetStateAction<string>>
+  widthParent: number
 }
 
 const Greeting: FC<GreetingProps> = (props) => {
-  const {bgColor, setBgColor} = props
+  const { bgColor, setBgColor, widthParent } = props
 
   const [initSongs, setInitSongs] = useState<[]>([])
 
@@ -37,7 +38,13 @@ const Greeting: FC<GreetingProps> = (props) => {
         <p>{greeting()}</p>
       </div>
 
-      <div className={cx('songs-section')}>
+      <div
+        className={cx({
+          'songs-section': true,
+          'songs-section-responsive':
+            widthParent !== -1 && widthParent <= 900,
+        })}
+      >
         {initSongs.slice(0, 6).map((item: any, index) => (
           <SongItemTag
             key={index}

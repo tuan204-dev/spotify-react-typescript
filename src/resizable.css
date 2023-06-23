@@ -1,0 +1,17 @@
+.split {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+}
+
+.gutter {
+  background-color: inherit;
+  cursor: col-resize;
+}
+
+.gutter.gutter-horizontal {
+  height: 100%;
+  width: 8px;
+  cursor: col-resize;
+}

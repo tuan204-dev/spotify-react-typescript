@@ -3,7 +3,7 @@
 .app {
   background-color: $black;
   height: 100vh;
-  width: 100vw;
+  width: max(100vw, 900px);
   overflow: hidden;
   display: flex;
   gap: $panel-gap;
@@ -16,3 +16,23 @@
   overflow: hidden;
   overflow-y: auto;
 }
+
+
+.split {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+}
+
+// .gutter {
+//   background-color: #fff;
+//   cursor: col-resize;
+// }
+
+// .gutter.gutter-horizontal {
+//   /* background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg=='); */
+//   height: 100%;
+//   background-color: #fff;
+//   cursor: col-resize;
+// }
