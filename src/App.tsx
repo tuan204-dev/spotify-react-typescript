@@ -10,36 +10,32 @@ import {
 } from 'react-router-dom'
 import styles from './App.module.scss'
 import Split from 'react-split'
-import './resizable.css'
-
-
+import './resizable.scss'
+import { MainLayoutProvider } from './contexts/MainLayoutContext'
 
 function App() {
-
-  const gutterStyle = {
-    backgroundColor: 'red',
-    width: '8px',
-    cursor: 'col-resize'
-  };
-
   return (
     <div className={styles.app}>
       <Split
-        sizes={[20, 80]}
         cursor="col-resize"
         minSize={280}
-        maxSize={[600,]}
-        gutterSize={8}
+        maxSize={[600]}
+        sizes={[20, 80]}
+        // gutterAlign={'start'}
+        // sizes={[20]}
+        // gutterSize={8}
         className={styles.split}
       >
         <Sidebar />
-        <div className={styles.main}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/search" element={<Search />} />
-            <Route path="/artist" element={<Artist />} />
-          </Routes>
-        </div>
+        <MainLayoutProvider>
+          <div className={styles.main}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/artist" element={<Artist />} />
+            </Routes>
+          </div>
+        </MainLayoutProvider>
       </Split>
     </div>
   )

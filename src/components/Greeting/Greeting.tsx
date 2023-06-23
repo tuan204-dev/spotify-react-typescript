@@ -1,20 +1,23 @@
-import React, { FC, useEffect, useState } from 'react'
+import { MainLayoutContext } from '@/contexts/MainLayoutContext'
+import classNames from 'classnames/bind'
+import React, { FC, useContext, useEffect, useState } from 'react'
 import SongItemTag from '../SongItemTag/SongItemTag'
 import styles from './Greeting.module.scss'
-import classNames from 'classnames/bind'
 
 const cx = classNames.bind(styles)
 
 interface GreetingProps {
   bgColor?: string | null
   setBgColor: React.Dispatch<React.SetStateAction<string>>
-  widthParent: number
 }
 
 const Greeting: FC<GreetingProps> = (props) => {
-  const { bgColor, setBgColor, widthParent } = props
+  const { bgColor, setBgColor } = props
 
   const [initSongs, setInitSongs] = useState<[]>([])
+
+  const {width} = useContext(MainLayoutContext)
+
 
   useEffect(() => {
     (async () => {
@@ -42,7 +45,7 @@ const Greeting: FC<GreetingProps> = (props) => {
         className={cx({
           'songs-section': true,
           'songs-section-responsive':
-            widthParent !== -1 && widthParent <= 900,
+            width !== -1 && width <= 900,
         })}
       >
         {initSongs.slice(0, 6).map((item: any, index) => (
