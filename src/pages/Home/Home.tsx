@@ -1,9 +1,10 @@
 import Greeting from '@/components/Greeting/Greeting'
 import Navbar from '@/components/Navbar/Navbar'
 import classNames from 'classnames/bind'
-import { useState, useRef } from 'react'
+import { useState, useRef, useContext } from 'react'
 import styles from './Home.module.scss'
 import useComponentSize from '@/hooks/useComponentSize'
+import { MainSizeContext } from '@/contexts/MainSizeContext'
 
 const cx = classNames.bind(styles)
 
@@ -12,9 +13,13 @@ const Home = () => {
   const [bgColor, setBgColor] = useState<string>('#c0b8c1')
   const [navOpacity, setNavOpacity] = useState<number>(0)
 
-  const homeRef = useRef<HTMLDivElement>(null);
+  const {width} = useContext(MainSizeContext)
 
-  const {width} = useComponentSize(homeRef)
+  console.log(width)
+
+  // const homeRef = useRef<HTMLDivElement>(null);
+
+  // const {width} = useComponentSize(homeRef)
 
   
 

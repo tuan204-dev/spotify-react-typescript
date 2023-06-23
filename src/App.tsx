@@ -11,16 +11,13 @@ import {
 import styles from './App.module.scss'
 import Split from 'react-split'
 import './resizable.css'
-
+import { useRef } from 'react'
+import useComponentSize from './hooks/useComponentSize'
+import { MainSizeProvider } from './contexts/MainSizeContext'
 
 
 function App() {
 
-  const gutterStyle = {
-    backgroundColor: 'red',
-    width: '8px',
-    cursor: 'col-resize'
-  };
 
   return (
     <div className={styles.app}>
@@ -28,18 +25,20 @@ function App() {
         sizes={[20, 80]}
         cursor="col-resize"
         minSize={280}
-        maxSize={[600,]}
+        // maxSize={[600,]}
         gutterSize={8}
         className={styles.split}
       >
         <Sidebar />
-        <div className={styles.main}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/search" element={<Search />} />
-            <Route path="/artist" element={<Artist />} />
-          </Routes>
-        </div>
+        <MainSizeProvider>
+          <div className={styles.main}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/artist" element={<Artist />} />
+            </Routes>
+          </div>
+        </MainSizeProvider>
       </Split>
     </div>
   )

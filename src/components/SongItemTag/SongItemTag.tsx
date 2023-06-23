@@ -1,6 +1,6 @@
 import useDominantColor from '@/hooks/useDominantColor'
 import classNames from 'classnames/bind'
-import React from 'react'
+import React, {useRef} from 'react'
 import { TbPlayerPlayFilled } from 'react-icons/tb'
 import styles from './SongItemTag.module.scss'
 
@@ -15,6 +15,9 @@ interface SongItemTagProps {
 const SongItemTag: React.FC<SongItemTagProps> = (props) => {
   const { thumbnailUrl, name, setBgColor } = props
   const color = useDominantColor(thumbnailUrl)
+
+  const songTagRef = useRef()
+
   const handleHover = (): void => {
     setBgColor(color)
   }
