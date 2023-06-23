@@ -1,4 +1,3 @@
-import React from 'react'
 
 interface SectionProps {
   label: string;
@@ -6,7 +5,7 @@ interface SectionProps {
 }
 
 
-const Section = () => {
+const Section: React.FC<SectionProps> = () => {
   return (
     <div>Section</div>
   )

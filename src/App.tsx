@@ -1,17 +1,15 @@
+import {
+  Route,
+  Routes
+} from 'react-router-dom'
+import Split from 'react-split'
+import styles from './App.module.scss'
+import Sidebar from './components/Sidebar/Sidebar'
+import { MainLayoutProvider } from './contexts/MainLayoutContext'
+import Artist from './pages/Artist/Artist'
 import Home from './pages/Home/Home'
 import Search from './pages/Search/Search'
-import Artist from './pages/Artist/Artist'
-import Sidebar from './components/Sidebar/Sidebar'
-import {
-  Routes,
-  Route,
-  useLocation,
-  useSearchParams,
-} from 'react-router-dom'
-import styles from './App.module.scss'
-import Split from 'react-split'
 import './resizable.scss'
-import { MainLayoutProvider } from './contexts/MainLayoutContext'
 
 function App() {
   return (

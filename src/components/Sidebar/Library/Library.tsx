@@ -11,7 +11,7 @@ type LibSelection = Array<{ name: string }>
 
 const Library = () => {
   const [category, setCategory] = useState<string>('Playlists')
-  const [data, setData] = useState<[]>([])
+  // const [data, setData] = useState<[]>([])
   const [renderData, setRenderData] = useState<[]>([])
   const [bottomShadow, setBottomShadow] = useState<boolean>(false)
 

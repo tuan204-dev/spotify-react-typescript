@@ -38,7 +38,7 @@ const useDominantColor = (imageUrl: string | undefined): string => {
     loadImage()
   }, [imageUrl])
 
-  const getDominantColor = (imageData: Uint8ClampedArray): string => {
+  const getDominantColor = (imageData: Uint8ClampedArray | undefined): string => {
     // Your dominant color calculation logic goes here
     // You can use any color analysis algorithm of your choice
     // Here's a simple example that calculates the average RGB values
@@ -48,10 +48,10 @@ const useDominantColor = (imageUrl: string | undefined): string => {
     let blueSum = 0
     let pixelCount = 0
 
-    for (let i = 0; i < imageData.length; i += 4) {
-      const red = imageData[i]
-      const green = imageData[i + 1]
-      const blue = imageData[i + 2]
+    for (let i = 0; i < imageData!.length; i += 4) {
+      const red = imageData![i]
+      const green = imageData![i + 1]
+      const blue = imageData![i + 2]
 
       redSum += red
       greenSum += green
