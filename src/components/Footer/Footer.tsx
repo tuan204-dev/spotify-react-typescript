@@ -28,8 +28,8 @@ const Footer: React.FC = () => {
       </nav>
       <nav className={cx('footer__bottom')}>
         <div className={cx('footer__bottom-links')}>
-          {siteInfo.map((item) => (
-            <a className={cx('footer__bottom-links-item')} href={item.url}>
+          {siteInfo.map((item, index) => (
+            <a key={index} className={cx('footer__bottom-links-item')} href={item.url}>
               {item.title}
             </a>
           ))}

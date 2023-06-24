@@ -97,9 +97,10 @@
 
   .user {
     button {
-      @include button-icon(32px, $black, $black);
+      @include button-icon(32px, #dfdfdf, #dfdfdf);
       color: $white;
-      border: 3px $white solid;
+      font-size: 16px;
+      border: 3px #292929 solid;
     }
   }
 }

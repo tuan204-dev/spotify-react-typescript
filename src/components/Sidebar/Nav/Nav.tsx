@@ -1,13 +1,8 @@
-import { useMemo } from 'react'
-import styles from './Nav.module.scss'
+import { HomeActiveIcon, HomeIcon, SearchActiveIcon, SearchIcon } from '@/assets/icons'
 import classNames from 'classnames/bind'
+import { useMemo } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import {
-  RiHome5Fill,
-  RiHome5Line,
-  RiSearch2Line,
-  RiSearchEyeLine,
-} from 'react-icons/ri'
+import styles from './Nav.module.scss'
 
 const cx = classNames.bind(styles)
 
@@ -20,13 +15,13 @@ const Nav = () => {
         name: 'Home',
         path: '/',
         active: pathname === '/',
-        icons: [RiHome5Fill, RiHome5Line],
+        icons: [HomeActiveIcon, HomeIcon],
       },
       {
         name: 'Search',
         path: '/search',
         active: pathname === '/search',
-        icons: [RiSearchEyeLine, RiSearch2Line],
+        icons: [SearchActiveIcon, SearchIcon],
       },
     ],
     [pathname]

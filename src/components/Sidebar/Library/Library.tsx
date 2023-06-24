@@ -1,9 +1,9 @@
 import classNames from 'classnames/bind'
 import { HiArrowRight, HiOutlinePlus } from 'react-icons/hi'
-import { TbPlaylist } from 'react-icons/tb'
 import styles from './Library.module.scss'
 import SidebarItem from '@/components/SidebarItem/SidebarItem'
 import { useEffect, useState } from 'react'
+import { LibraryIcon } from '@/assets/icons'
 
 const cx = classNames.bind(styles)
 
@@ -99,7 +99,7 @@ const Library = () => {
       <div className={cx('playlist')}>
         <div className={cx('playlist-header')}>
           <div className={cx('playlist-header-icon')}>
-            <TbPlaylist />
+            <LibraryIcon />
           </div>
           <p className={cx('playlist-header-text')}>Your Library</p>
         </div>

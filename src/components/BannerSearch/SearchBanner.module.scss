@@ -1,0 +1,19 @@
+.wrapper {
+  margin-top: 16px;
+  padding-inline: 24px;
+
+  .heading {
+    font-size: 24px;
+    margin-top: 28px;
+    margin-bottom: 16px;
+  }
+
+  .body {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+
+

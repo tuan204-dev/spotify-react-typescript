@@ -25,13 +25,14 @@ const useComponentSize = (ref: RefObject<HTMLElement>): ComponentSize => {
     if (ref.current) {
       observer.observe(ref.current)
     }
+    // console.log('im here')
 
     return () => {
       if (ref.current) {
         observer.unobserve(ref.current)
       }
     }
-  }, [ref])
+  }, [ref.current?.clientHeight, ref.current?.clientHeight])
 
   return componentSize
 }

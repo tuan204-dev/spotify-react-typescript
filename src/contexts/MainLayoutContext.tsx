@@ -16,6 +16,7 @@ export const MainLayoutProvider: FC<MainLayoutProps> = ({ children }) => {
   const mainRef = useRef<HTMLDivElement>(null)
 
   const size = useComponentSize(mainRef)
+  // console.log('im here 2')
 
   return (
     <div ref={mainRef}>

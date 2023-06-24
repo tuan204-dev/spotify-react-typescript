@@ -11,13 +11,13 @@ import './resizable.scss'
 import NotFound from './components/NotFound/NotFound'
 
 function App() {
-  const { pathname, } = useLocation()
+  const { pathname } = useLocation()
   const [showSidebar, setShowSidebar] = useState<boolean>(true)
 
   useEffect(() => {
     setShowSidebar(['/', '/search', 'artist'].includes(pathname))
   }, [pathname])
-  console.log(showSidebar, pathname)
+  // console.log(showSidebar, pathname)
 
   return (
     <div className={styles.app}>
