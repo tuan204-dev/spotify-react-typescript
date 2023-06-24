@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar/Navbar'
 import classNames from 'classnames/bind'
 import React, { FC, useState } from 'react'
 import styles from './Search.module.scss'
+import Footer from '@/components/Footer/Footer'
 
 const cx = classNames.bind(styles)
 
@@ -16,7 +17,10 @@ const Search: FC<SearchProps> = () => {
   return (
     <div className={cx('search')}>
       <Navbar isSearch {...{ query, setQuery }} />
-      <div style={{ minHeight: '2000px', background: '#121212' }}></div>
+      <div className={cx('body')}>
+        <div style={{ minHeight: '2000px', background: '#121212' }}></div>
+        <Footer />
+      </div>
     </div>
   )
 }

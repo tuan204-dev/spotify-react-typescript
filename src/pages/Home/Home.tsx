@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar/Navbar'
 import classNames from 'classnames/bind'
 import { useState } from 'react'
 import styles from './Home.module.scss'
+import Footer from '@/components/Footer/Footer'
 
 const cx = classNames.bind(styles)
 
@@ -28,6 +29,7 @@ const Home = () => {
       <div onScroll={(e) => handleScroll(e)} className={cx('body')}>
         <Greeting bgColor={bgColor} setBgColor={setBgColor} />
         <div style={{ height: '3000px', background: '#121212' }}></div>
+        <Footer/>
       </div>
     </div>
   )

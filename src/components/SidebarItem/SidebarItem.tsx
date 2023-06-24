@@ -6,8 +6,8 @@ const cx = classNames.bind(styles)
 
 interface SidebarItemProps {
   type: 'playlist' | 'artist' | 'album'
-  thumbnail: string | null
-  name: string | null
+  thumbnail: string | undefined
+  name: string | undefined
 
 }
 
@@ -22,7 +22,7 @@ const SidebarItem: FC<SidebarItemProps> = (props) => {
 
   return (
     <div className={cx('sidebar-item')}>
-      <div style={{backgroundImage: `url(${thumbnail})`}} className={cx('thumbnail')}></div>
+      <img loading='lazy' src={thumbnail} className={cx('thumbnail')}/>
       <div className={cx('body')}>
         <h4 className={cx('heading')}>{name}</h4>
         <span className={cx('type')}>

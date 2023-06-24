@@ -1,0 +1,33 @@
+@import '../../../scss/variable';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0 24px 32px 0;
+  min-width: 170px;
+
+  .title {
+    font-size: 16px;
+    font-weight: 700;
+    color: $white;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    color: $text-subdued;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      font-size: 16px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+
+      &:hover {
+        color: $white;
+        text-decoration: underline;
+      }
+    }
+  }
+}

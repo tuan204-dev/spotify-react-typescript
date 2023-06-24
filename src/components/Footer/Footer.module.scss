@@ -1,0 +1,64 @@
+@import '../../scss/mixin';
+@import '../../scss/variable';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 32px 40px;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+
+    &-links {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &-social-links {
+      display: flex;
+      column-gap: 16px;
+
+      a {
+        @include button-icon(40px, rgb(41, 41, 41), rgb(114, 114, 114));
+
+        .icon {
+          color: $white;
+          font-size: 18px;
+        }
+      }
+    }
+
+  }
+
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 26px;
+    border-top: 1px solid rgba($color: #fff, $alpha: .1);
+
+
+    &-links {
+      display: flex;
+      column-gap: 16px;
+
+      &-item {
+        font-size: 14px;
+        color: $text-subdued;
+        text-decoration: none;
+
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+
+
+    &-copyright {
+      color: $text-subdued;
+      font-size: 14px;
+    }
+  }
+}

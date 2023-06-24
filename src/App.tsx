@@ -11,7 +11,7 @@ import './resizable.scss'
 import NotFound from './components/NotFound/NotFound'
 
 function App() {
-  const { pathname } = useLocation()
+  const { pathname, } = useLocation()
   const [showSidebar, setShowSidebar] = useState<boolean>(true)
 
   useEffect(() => {
