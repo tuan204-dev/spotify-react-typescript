@@ -1,0 +1,77 @@
+@import '../../scss/variable';
+
+.wrapper {
+  background-color: $bg-base;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+}
+
+.logo {
+  height: 60px;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+
+  &__heading {
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: -.7px;
+    margin: 4px 0 16px;
+  }
+
+  &__sub-heading {
+    font-size: 16px;
+    color: $text-subdued;
+    margin: 0 0 40px;
+  }
+
+
+  &__home-btn {
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    background: #fff;
+    border: 1px solid #878787;
+    border-radius: 48px;
+    color: #000;
+    display: inline-block;
+    line-height: 24px;
+    margin-bottom: 36px;
+    padding: 12px 32px;
+    text-align: center;
+    white-space: nowrap;
+    margin: 0 0 36px;
+
+    &:hover {
+      transform: scale(1.04);
+    }
+  }
+
+  &__help {
+    font-size: 16px;
+    color: #fff;
+    display: block;
+    font-weight: 700;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
