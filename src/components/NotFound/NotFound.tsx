@@ -2,7 +2,6 @@ import React from 'react'
 import styles from './NotFound.module.scss'
 import classNames from 'classnames/bind'
 import logoImage from '@/assets/image/logo/logo.svg'
-import { Link } from 'react-router-dom'
 
 const cx = classNames.bind(styles)
 
