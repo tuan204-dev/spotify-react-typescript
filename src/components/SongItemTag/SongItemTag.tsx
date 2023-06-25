@@ -4,17 +4,19 @@ import React, { useRef } from 'react'
 import { TbPlayerPlayFilled } from 'react-icons/tb'
 import styles from './SongItemTag.module.scss'
 import useComponentSize from '@/hooks/useComponentSize'
+import Skeleton from 'react-loading-skeleton'
 
 const cx = classNames.bind(styles)
 
 interface SongItemTagProps {
   thumbnailUrl?: string
-  name: string
+  name?: string
+  isLoading?: boolean
   setBgColor: React.Dispatch<React.SetStateAction<string>>
 }
 
 const SongItemTag: React.FC<SongItemTagProps> = (props) => {
-  const { thumbnailUrl, name, setBgColor } = props
+  const { thumbnailUrl, name, setBgColor, isLoading } = props
   const color = useDominantColor(thumbnailUrl)
   const handleHover = (): void => {
     setBgColor(color)
@@ -30,23 +32,45 @@ const SongItemTag: React.FC<SongItemTagProps> = (props) => {
     <div
       ref={songTagRef}
       onMouseEnter={handleHover}
-      onMouseLeave={() => setBgColor('#c0b8c1')}
+      onMouseLeave={() => setBgColor('#e0e0e0')}
       className={cx('song-item-tag')}
     >
       <div
         className={cx('thumbnail')}
-        style={{ backgroundImage: `url(${thumbnailUrl})` }}
-      ></div>
+        // style={{ backgroundImage: `url(${thumbnailUrl})` }}
+      >
+        {!isLoading ? (
+          <img src={thumbnailUrl} alt={name} />
+        ) : (
+          <Skeleton height={'100%'} />
+        )}
+      </div>
       <div className={cx('body')}>
-        <p className={cx('body-name')}>{name}</p>
-        <button
-          className={cx({
-            'play-btn': true,
-            'play-btn-hidden': width !== -1 && width <= 270,
-          })}
-        >
-          <TbPlayerPlayFilled className={cx('play-btn-child')} />
-        </button>
+        {!isLoading ? (
+          <>
+            <p className={cx('body-name')}>{name}</p>
+            <button
+              className={cx({
+                'play-btn': true,
+                'play-btn-hidden': width !== -1 && width <= 270,
+              })}
+            >
+              <TbPlayerPlayFilled className={cx('play-btn-child')} />
+            </button>
+          </>
+        ) : (
+          <Skeleton
+            height={26}
+            borderRadius={50}
+            style={{
+              position: 'absolute',
+              left: '0',
+              right: '0',
+              paddingInline: '16px',
+              marginTop: '-7px',
+            }}
+          />
+        )}
       </div>
     </div>
   )

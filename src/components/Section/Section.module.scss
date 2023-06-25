@@ -12,6 +12,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-height: 67px;
 
   .heading {
     font-size: 24px;
@@ -32,5 +33,6 @@
 .body {
   display: grid;
   // grid-template-columns: repeat(4, 1fr);
+  grid-column: 1;
   grid-gap: 24px;
 }

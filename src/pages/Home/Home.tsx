@@ -17,6 +17,9 @@ const Home = () => {
   const [topMixesData, setTopMixesData] = useState<SectionProps | null>(
     null
   )
+  const [albumsData, setAlbumsData] = useState<SectionProps | null>(
+    null
+  )
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,6 +36,16 @@ const Home = () => {
       const topMixesRes = await fetch('/data/topMixes.json')
       const topMixesData = await topMixesRes.json()
       setTopMixesData(topMixesData)
+    }
+
+    fetchData()
+  }, [])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const albumsRes = await fetch('/data/initAlbums.json')
+      const albumsData = await albumsRes.json()
+      setAlbumsData(albumsData)
     }
 
     fetchData()
@@ -59,6 +72,7 @@ const Home = () => {
         <Greeting bgColor={bgColor} setBgColor={setBgColor} />
         <Section {...trendingData}/>
         <Section {...topMixesData}/>
+        <Section {...albumsData}/>
         <Footer />
       </div>
     </div>

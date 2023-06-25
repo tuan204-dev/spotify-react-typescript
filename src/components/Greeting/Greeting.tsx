@@ -1,8 +1,9 @@
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
 import classNames from 'classnames/bind'
-import React, { FC, useContext, useEffect, useState } from 'react'
+import React, { FC, useContext, useEffect, useState, memo } from 'react'
 import SongItemTag from '../SongItemTag/SongItemTag'
 import styles from './Greeting.module.scss'
+import Skeleton from 'react-loading-skeleton'
 
 const cx = classNames.bind(styles)
 
@@ -14,10 +15,17 @@ interface GreetingProps {
 const Greeting: FC<GreetingProps> = (props) => {
   const { bgColor, setBgColor } = props
 
+  const [isLoading, setLoading] = useState<boolean>(true)
   const [initSongs, setInitSongs] = useState<[]>([])
 
-  const {width} = useContext(MainLayoutContext)
+  const { width } = useContext(MainLayoutContext)
 
+  useEffect(() => {
+    setBgColor('#535353')
+    setTimeout(() => {
+      setLoading(Boolean(!initSongs))
+    }, 500)
+  }, [initSongs])
 
   useEffect(() => {
     (async () => {
@@ -35,24 +43,36 @@ const Greeting: FC<GreetingProps> = (props) => {
     return 'Good evening'
   }
 
+  console.log('im here')
+
   return (
     <div style={{ backgroundColor: `${bgColor}` }} className={cx('body')}>
       <div className={cx('greet')}>
-        <p>{greeting()}</p>
+        {!isLoading ? (
+          <p>{greeting()}</p>
+        ) : (
+          <Skeleton width={'35%'} height={50} borderRadius={50} />
+        )}
       </div>
 
       <div
         className={cx({
           'songs-section': true,
-          'songs-section-responsive':
-            width !== -1 && width <= 900,
+          'songs-section-responsive': width !== -1 && width <= 900,
         })}
       >
-        {initSongs.slice(0, 6).map((item: any, index) => (
+        {!isLoading ? initSongs.slice(0, 6).map((item: any, index) => (
           <SongItemTag
+            isLoading={isLoading}
             key={index}
             thumbnailUrl={item.data.albumOfTrack.coverArt.sources[0].url}
             name={item.data.name}
+            setBgColor={setBgColor}
+          />
+        )) : Array(6).fill(0).map((item ,index) => (
+          <SongItemTag
+            key={index + item}
+            isLoading={isLoading}
             setBgColor={setBgColor}
           />
         ))}
@@ -61,4 +81,4 @@ const Greeting: FC<GreetingProps> = (props) => {
   )
 }
 
-export default Greeting
+export default memo(Greeting)

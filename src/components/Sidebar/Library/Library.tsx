@@ -56,7 +56,7 @@ const Library = () => {
         // }
         () => {
           if (category === 'Playlists') {
-            return data.map((item: PlayListItem, index: number) => (
+            return data.data.map((item: PlayListItem, index: number) => (
               <SidebarItem
                 key={index}
                 author={item.author}
@@ -68,7 +68,7 @@ const Library = () => {
           }
 
           if (category === 'Artists') {
-            return data.map((item: ArtistItem, index: number) => (
+            return data.data.map((item: ArtistItem, index: number) => (
               <SidebarItem
                 key={index}
                 type="artist"
@@ -78,7 +78,7 @@ const Library = () => {
             ))
           }
           if (category === 'Albums') {
-            return data.map((item: AlbumItem, index: number) => (
+            return data.data.map((item: AlbumItem, index: number) => (
               <SidebarItem
                 author={item.author}
                 key={index}

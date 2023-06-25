@@ -1,152 +1,155 @@
-[
-  {
-    "name": "The Weeknd",
-    "imageUrl": "https://i.scdn.co/image/ab6761610000517401b9b4ec2a05d0805428acfa",
-    "id": "1Xyo4u8uXC1ZmMpatF05PJ"
-  },
-  {
-    "name": "Thắng",
-    "imageUrl": "https://i.scdn.co/image/ab67616100005174c196ed35d9425d0abe9d2f63",
-    "id": "1oD9fKbb7qQ2nhn9JJC24F"
-  },
-  {
-    "name": "Táo",
-    "imageUrl": "https://i.scdn.co/image/ab676161000051743edad601de71d029b73c620c",
-    "id": "23xCr75lKvnFvKi8ImHE7S"
-  },
-  {
-    "name": "tlinh",
-    "imageUrl": "https://i.scdn.co/image/ab67616100005174bde8a1370ee2b335a8f967a5",
-    "id": "3diftVOq7aEIebXKkC34oR"
-  },
-  {
-    "name": "Sơn Tùng M-TP",
-    "imageUrl": "https://i.scdn.co/image/ab6761610000517451b32111f5bc456525313d89",
-    "id": "5dfZ5uSmzR7VQK0udbAVpf"
-  },
-  {
-    "name": "Noo Phước Thịnh",
-    "imageUrl": "https://i.scdn.co/image/ab67616100005174da93c541daefd806b8992302",
-    "id": "3mibIJiduF0MVLLAvHZAxw"
-  },
-  {
-    "name": "Thịnh Suy",
-    "imageUrl": "https://i.scdn.co/image/ab67616100005174b20e2fe7ba45e11a36604b01",
-    "id": "2xK6qcvfXuFFbU0NL95aeo"
-  },
-  {
-    "name": "Taylor Swift",
-    "imageUrl": "https://i.scdn.co/image/ab676161000051745a00969a4698c3132a15fbb0",
-    "id": "06HL4z0CvFAxyc27GXpf02"
-  },
-  {
-    "name": "Hoang Ton",
-    "imageUrl": "https://i.scdn.co/image/ab67616100005174c42e5249f4dd16bc3da3b63f",
-    "id": "6xRZoWlE9twEkMC5NW4Z9f"
-  },
-  {
-    "name": "Kay Trần",
-    "imageUrl": "https://i.scdn.co/image/ab67616100005174989049ccfee17365f57a22b3",
-    "id": "3EPkqJFzEGSJWtGsu1Xwqt"
-  },
-  {
-    "name": "Trung Quân",
-    "imageUrl": "https://i.scdn.co/image/ab6761610000517499e937ca54656d4d09474420",
-    "id": "5Cf9nBDNc99UFkq9Yqap7Q"
-  },
-  {
-    "name": "Bùi Anh Tuấn",
-    "imageUrl": "https://i.scdn.co/image/ab67616100005174f2db4875c81f4d103aefc81a",
-    "id": "2Gvp79Cmni6PX13CAlSGex"
-  },
-  {
-    "name": "Tóc Tiên",
-    "imageUrl": "https://i.scdn.co/image/ab67616100005174e51f475c32e7e8f34faf95c5",
-    "id": "4YkqEuVf1Jf2x2XDqJ2CvC"
-  },
-  {
-    "name": "Hoàng Thùy Linh",
-    "imageUrl": "https://i.scdn.co/image/ab67616100005174be8b6591753659ca595c73c6",
-    "id": "0r63ReVRjxrS4ATbLrdcrL"
-  },
-  {
-    "name": "Vu Cat Tuong",
-    "imageUrl": "https://i.scdn.co/image/ab67616100005174af03006dd2e13de3921626e9",
-    "id": "7yquVKfxBuNFJbG9cy2R8A"
-  },
-  {
-    "name": "T.R.I",
-    "imageUrl": "https://i.scdn.co/image/ab676161000051740fc0d818da3c3939993a24c1",
-    "id": "2rVYwIYNEsMxtt8j5yemHb"
-  },
-  {
-    "name": "TaynguyenSound",
-    "imageUrl": "https://i.scdn.co/image/ab67616100005174422664c8cf0c99b3219ffd7b",
-    "id": "5ayWRfrcpObgDDlzheJ2Gr"
-  },
-  {
-    "name": "TIA",
-    "imageUrl": "https://i.scdn.co/image/ab67616100005174fbe3a3b4ddbb0a5700608ec8",
-    "id": "6LrBtADUmDoLlcTrg448Qt"
-  },
-  {
-    "name": "Trúc Nhân",
-    "imageUrl": "https://i.scdn.co/image/ab67616100005174a7f28bd3ad5ef4a868151ee7",
-    "id": "1dmaHHd1Xbd85cT1egYb4w"
-  },
-  {
-    "name": "TWICE",
-    "imageUrl": "https://i.scdn.co/image/ab676161000051748944c8aec8db82f35980b191",
-    "id": "7n2Ycct7Beij7Dj7meI4X0"
-  },
-  {
-    "name": "Touliver",
-    "imageUrl": "https://i.scdn.co/image/ab67616100005174d1791a8797ebb54224bbe240",
-    "id": "5UNWQJdUbO8Gbg9Qn3r52M"
-  },
-  {
-    "name": "Trung Trần",
-    "imageUrl": "https://i.scdn.co/image/ab67616100005174c8b23f5433a8672e30acf43e",
-    "id": "2v14NO80QYditUms7sbEIZ"
-  },
-  {
-    "name": "Tăng Duy Tân",
-    "imageUrl": "https://i.scdn.co/image/ab676161000051748140e8167b94b2ed2c36ca7c",
-    "id": "1n9JKdEdLxrbgJiqz1WZFJ"
-  },
-  {
-    "name": "TAEYANG",
-    "imageUrl": "https://i.scdn.co/image/ab67616100005174496189630cd3cb0c7b593fee",
-    "id": "6udveWUgX4vu75FF0DTrXV"
-  },
-  {
-    "name": "Travis Scott",
-    "imageUrl": "https://i.scdn.co/image/ab67616100005174e707b87e3f65997f6c09bfff",
-    "id": "0Y5tJX1MQlPlqiwlOH1tJY"
-  },
-  {
-    "name": "TheFatRat",
-    "imageUrl": "https://i.scdn.co/image/ab67616100005174c64c5f001dc3957cf5651460",
-    "id": "3OKg7YbOIatODzkRIbLJR4"
-  },
-  {
-    "name": "TRANG",
-    "imageUrl": "https://i.scdn.co/image/ab67616100005174e28057e8f67ce8071d58bb35",
-    "id": "2knyDFP4xw9wZEWA98JX6b"
-  },
-  {
-    "name": "TOMORROW X TOGETHER",
-    "imageUrl": "https://i.scdn.co/image/ab6761610000517463329d77582c519154674fd7",
-    "id": "0ghlgldX5Dd6720Q3qFyQB"
-  },
-  {
-    "name": "TAEYEON",
-    "imageUrl": "https://i.scdn.co/image/ab67616100005174b29975f8b42bcba1eae62577",
-    "id": "3qNVuliS40BLgXGxhdBdqu"
-  },
-  {
-    "name": "TEMPEST",
-    "imageUrl": "https://i.scdn.co/image/ab67616100005174a03a6aede6daa8b1584dc96a",
-    "id": "1iyFL3CRuKW7PXgPH4VxSP"
-  }
-]
+{
+  "title": "Artists",
+  "data": [
+    {
+      "name": "The Weeknd",
+      "imageUrl": "https://i.scdn.co/image/ab6761610000517401b9b4ec2a05d0805428acfa",
+      "id": "1Xyo4u8uXC1ZmMpatF05PJ"
+    },
+    {
+      "name": "Thắng",
+      "imageUrl": "https://i.scdn.co/image/ab67616100005174c196ed35d9425d0abe9d2f63",
+      "id": "1oD9fKbb7qQ2nhn9JJC24F"
+    },
+    {
+      "name": "Táo",
+      "imageUrl": "https://i.scdn.co/image/ab676161000051743edad601de71d029b73c620c",
+      "id": "23xCr75lKvnFvKi8ImHE7S"
+    },
+    {
+      "name": "tlinh",
+      "imageUrl": "https://i.scdn.co/image/ab67616100005174bde8a1370ee2b335a8f967a5",
+      "id": "3diftVOq7aEIebXKkC34oR"
+    },
+    {
+      "name": "Sơn Tùng M-TP",
+      "imageUrl": "https://i.scdn.co/image/ab6761610000517451b32111f5bc456525313d89",
+      "id": "5dfZ5uSmzR7VQK0udbAVpf"
+    },
+    {
+      "name": "Noo Phước Thịnh",
+      "imageUrl": "https://i.scdn.co/image/ab67616100005174da93c541daefd806b8992302",
+      "id": "3mibIJiduF0MVLLAvHZAxw"
+    },
+    {
+      "name": "Thịnh Suy",
+      "imageUrl": "https://i.scdn.co/image/ab67616100005174b20e2fe7ba45e11a36604b01",
+      "id": "2xK6qcvfXuFFbU0NL95aeo"
+    },
+    {
+      "name": "Taylor Swift",
+      "imageUrl": "https://i.scdn.co/image/ab676161000051745a00969a4698c3132a15fbb0",
+      "id": "06HL4z0CvFAxyc27GXpf02"
+    },
+    {
+      "name": "Hoang Ton",
+      "imageUrl": "https://i.scdn.co/image/ab67616100005174c42e5249f4dd16bc3da3b63f",
+      "id": "6xRZoWlE9twEkMC5NW4Z9f"
+    },
+    {
+      "name": "Kay Trần",
+      "imageUrl": "https://i.scdn.co/image/ab67616100005174989049ccfee17365f57a22b3",
+      "id": "3EPkqJFzEGSJWtGsu1Xwqt"
+    },
+    {
+      "name": "Trung Quân",
+      "imageUrl": "https://i.scdn.co/image/ab6761610000517499e937ca54656d4d09474420",
+      "id": "5Cf9nBDNc99UFkq9Yqap7Q"
+    },
+    {
+      "name": "Bùi Anh Tuấn",
+      "imageUrl": "https://i.scdn.co/image/ab67616100005174f2db4875c81f4d103aefc81a",
+      "id": "2Gvp79Cmni6PX13CAlSGex"
+    },
+    {
+      "name": "Tóc Tiên",
+      "imageUrl": "https://i.scdn.co/image/ab67616100005174e51f475c32e7e8f34faf95c5",
+      "id": "4YkqEuVf1Jf2x2XDqJ2CvC"
+    },
+    {
+      "name": "Hoàng Thùy Linh",
+      "imageUrl": "https://i.scdn.co/image/ab67616100005174be8b6591753659ca595c73c6",
+      "id": "0r63ReVRjxrS4ATbLrdcrL"
+    },
+    {
+      "name": "Vu Cat Tuong",
+      "imageUrl": "https://i.scdn.co/image/ab67616100005174af03006dd2e13de3921626e9",
+      "id": "7yquVKfxBuNFJbG9cy2R8A"
+    },
+    {
+      "name": "T.R.I",
+      "imageUrl": "https://i.scdn.co/image/ab676161000051740fc0d818da3c3939993a24c1",
+      "id": "2rVYwIYNEsMxtt8j5yemHb"
+    },
+    {
+      "name": "TaynguyenSound",
+      "imageUrl": "https://i.scdn.co/image/ab67616100005174422664c8cf0c99b3219ffd7b",
+      "id": "5ayWRfrcpObgDDlzheJ2Gr"
+    },
+    {
+      "name": "TIA",
+      "imageUrl": "https://i.scdn.co/image/ab67616100005174fbe3a3b4ddbb0a5700608ec8",
+      "id": "6LrBtADUmDoLlcTrg448Qt"
+    },
+    {
+      "name": "Trúc Nhân",
+      "imageUrl": "https://i.scdn.co/image/ab67616100005174a7f28bd3ad5ef4a868151ee7",
+      "id": "1dmaHHd1Xbd85cT1egYb4w"
+    },
+    {
+      "name": "TWICE",
+      "imageUrl": "https://i.scdn.co/image/ab676161000051748944c8aec8db82f35980b191",
+      "id": "7n2Ycct7Beij7Dj7meI4X0"
+    },
+    {
+      "name": "Touliver",
+      "imageUrl": "https://i.scdn.co/image/ab67616100005174d1791a8797ebb54224bbe240",
+      "id": "5UNWQJdUbO8Gbg9Qn3r52M"
+    },
+    {
+      "name": "Trung Trần",
+      "imageUrl": "https://i.scdn.co/image/ab67616100005174c8b23f5433a8672e30acf43e",
+      "id": "2v14NO80QYditUms7sbEIZ"
+    },
+    {
+      "name": "Tăng Duy Tân",
+      "imageUrl": "https://i.scdn.co/image/ab676161000051748140e8167b94b2ed2c36ca7c",
+      "id": "1n9JKdEdLxrbgJiqz1WZFJ"
+    },
+    {
+      "name": "TAEYANG",
+      "imageUrl": "https://i.scdn.co/image/ab67616100005174496189630cd3cb0c7b593fee",
+      "id": "6udveWUgX4vu75FF0DTrXV"
+    },
+    {
+      "name": "Travis Scott",
+      "imageUrl": "https://i.scdn.co/image/ab67616100005174e707b87e3f65997f6c09bfff",
+      "id": "0Y5tJX1MQlPlqiwlOH1tJY"
+    },
+    {
+      "name": "TheFatRat",
+      "imageUrl": "https://i.scdn.co/image/ab67616100005174c64c5f001dc3957cf5651460",
+      "id": "3OKg7YbOIatODzkRIbLJR4"
+    },
+    {
+      "name": "TRANG",
+      "imageUrl": "https://i.scdn.co/image/ab67616100005174e28057e8f67ce8071d58bb35",
+      "id": "2knyDFP4xw9wZEWA98JX6b"
+    },
+    {
+      "name": "TOMORROW X TOGETHER",
+      "imageUrl": "https://i.scdn.co/image/ab6761610000517463329d77582c519154674fd7",
+      "id": "0ghlgldX5Dd6720Q3qFyQB"
+    },
+    {
+      "name": "TAEYEON",
+      "imageUrl": "https://i.scdn.co/image/ab67616100005174b29975f8b42bcba1eae62577",
+      "id": "3qNVuliS40BLgXGxhdBdqu"
+    },
+    {
+      "name": "TEMPEST",
+      "imageUrl": "https://i.scdn.co/image/ab67616100005174a03a6aede6daa8b1584dc96a",
+      "id": "1iyFL3CRuKW7PXgPH4VxSP"
+    }
+  ]
+}
