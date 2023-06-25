@@ -1,10 +1,11 @@
-import React, { memo } from 'react'
+import React, { memo, useRef } from 'react'
 import styles from './SectionItem.module.scss'
 import classNames from 'classnames/bind'
 import { SectionItemI } from '../../../types'
 import { TbPlayerPlayFilled } from 'react-icons/tb'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { useOnLoadImages } from '@/hooks/useOnLoadImages'
 
 const cx = classNames.bind(styles)
 
@@ -14,12 +15,16 @@ const SectionItem: React.FC<SectionItemI> = ({
   imageUrl,
   isLoading,
 }) => {
+  const imgRef = useRef<any>(null)
+
+  const isImageLoaded = useOnLoadImages(imgRef)
+  console.log(isImageLoaded)
   // console.log(title, name, imageUrl)
 
   return (
     <div className={cx('wrapper')}>
-      <div className={cx('img')}>
-        {!isLoading ? (
+      <div ref={imgRef} className={cx('img')}>
+        {!isLoading && isImageLoaded ? (
           <>
             <img loading="lazy" src={imageUrl} alt={title || name} />
             <button

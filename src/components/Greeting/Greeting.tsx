@@ -43,7 +43,7 @@ const Greeting: FC<GreetingProps> = (props) => {
     return 'Good evening'
   }
 
-  console.log('im here')
+  // console.log('im here')
 
   return (
     <div style={{ backgroundColor: `${bgColor}` }} className={cx('body')}>

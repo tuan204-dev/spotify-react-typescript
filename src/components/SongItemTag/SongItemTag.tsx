@@ -5,6 +5,7 @@ import { TbPlayerPlayFilled } from 'react-icons/tb'
 import styles from './SongItemTag.module.scss'
 import useComponentSize from '@/hooks/useComponentSize'
 import Skeleton from 'react-loading-skeleton'
+import { useOnLoadImages } from '@/hooks/useOnLoadImages'
 
 const cx = classNames.bind(styles)
 
@@ -18,9 +19,13 @@ interface SongItemTagProps {
 const SongItemTag: React.FC<SongItemTagProps> = (props) => {
   const { thumbnailUrl, name, setBgColor, isLoading } = props
   const color = useDominantColor(thumbnailUrl)
+  const imgRef = useRef<HTMLDivElement>(null)
   const handleHover = (): void => {
     setBgColor(color)
   }
+
+  const isImageLoaded = useOnLoadImages(imgRef)
+  // console.log(isImageLoaded)
 
   const songTagRef = useRef<HTMLDivElement>(null)
 
@@ -37,9 +42,10 @@ const SongItemTag: React.FC<SongItemTagProps> = (props) => {
     >
       <div
         className={cx('thumbnail')}
+        ref={imgRef}
         // style={{ backgroundImage: `url(${thumbnailUrl})` }}
       >
-        {!isLoading ? (
+        {!isLoading && isImageLoaded ? (
           <img src={thumbnailUrl} alt={name} />
         ) : (
           <Skeleton height={'100%'} />
