@@ -22,9 +22,7 @@ const Greeting: FC<GreetingProps> = (props) => {
 
   useEffect(() => {
     setBgColor('#535353')
-    setTimeout(() => {
-      setLoading(Boolean(!initSongs))
-    }, 500)
+    setLoading(Boolean(!initSongs))
   }, [initSongs])
 
   useEffect(() => {
@@ -50,6 +48,7 @@ const Greeting: FC<GreetingProps> = (props) => {
       <div className={cx('greet')}>
         {!isLoading ? (
           <p>{greeting()}</p>
+          // <p>Good evening</p>
         ) : (
           <Skeleton width={'35%'} height={50} borderRadius={50} />
         )}
