@@ -1,28 +1,58 @@
 @import '../../scss/variable';
+@import '../../scss/mixin';
 
 .wrapper {
   background-color: $bg-card;
   padding: 16px;
   border-radius: 8px;
   width: 100%;
-  // -webkit-box-flex: 1;
+  transition: background-color .3s ease;
+  cursor: pointer;
 
   &:hover {
     background-color: $bg-card-highlight;
   }
+
+  
 
   .img {
     width: 100%;
     margin-bottom: 16px;
     // box-shadow: 0 8px 24px rgba(0,0,0,.5);
     border-radius: 6px;
-
+    position: relative;
     overflow: hidden;
 
     img {
       width: 100%;
       object-fit: cover;
     }
+
+    .play-btn {
+      @include button-icon(50px, $primary, $primary);
+      font-size: 24px;
+      box-shadow: 0 8px 8px rgba(0, 0, 0, .3);
+      position: absolute;
+      z-index: 999;
+      bottom: 0;
+      right: 8px;
+      opacity: 0;
+      transition: transform .3s ease scale .05s ease;
+      // transform-origin: -25px -25px;
+
+      // &:hover {
+      //   // transform: scale(1.1);
+      //   width: 55px;
+      //   height: 55px;
+      // }
+
+      &:hover {
+        scale: 1.04;
+      }
+      
+    }
+
+    
   }
 
   .body {
@@ -57,6 +87,11 @@
       font-weight: 700;
     }
 
+  }
+
+  &:hover .play-btn {
+    opacity: 1;
+    transform: translateY(-8px);
   }
 
 }
