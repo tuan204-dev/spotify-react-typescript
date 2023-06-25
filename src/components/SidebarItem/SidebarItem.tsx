@@ -5,6 +5,7 @@ import styles from './SidebarItem.module.scss'
 const cx = classNames.bind(styles)
 
 interface SidebarItemProps {
+  author?: string
   type: 'playlist' | 'artist' | 'album'
   thumbnail: string | undefined
   name: string | undefined
@@ -12,12 +13,12 @@ interface SidebarItemProps {
 }
 
 const SidebarItem: FC<SidebarItemProps> = (props) => {
-  const {type, thumbnail, name} = props
+  const {type, thumbnail, name, author} = props
 
   const newType = (() => {
-    if(type === 'playlist') return 'Playlist'
+    if(type === 'playlist') return author
     if(type === 'artist') return 'Artist'
-    if(type === 'album') return 'Album'
+    if(type === 'album') return author
   })()
 
   return (

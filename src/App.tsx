@@ -23,8 +23,8 @@ function App() {
     <div className={styles.app}>
       <Split
         cursor="col-resize"
-        minSize={280}
-        maxSize={[600]}
+        minSize={[280]}
+        // maxSize={[600, 99999]}
         sizes={[20, 80]}
         className={styles.split}
       >

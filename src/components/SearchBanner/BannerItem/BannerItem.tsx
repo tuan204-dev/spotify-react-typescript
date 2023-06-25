@@ -20,7 +20,7 @@ const BannerItem: React.FC<SearchBannerItem> = ({
         
           <h4 className={cx('title')}>{title}</h4>
           <div className={cx('img')}>
-            <img src={imageUrl} alt={title} />
+            <img loading='lazy' src={imageUrl} alt={title} />
           </div>
         
       </div>

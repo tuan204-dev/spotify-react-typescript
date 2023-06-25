@@ -1,0 +1,36 @@
+@import '../../scss/variable';
+
+.wrapper {
+  padding-inline: 24px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.header {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .heading {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  a {
+    font-size: 14px;
+    font-weight: 700;
+    color: $text-neutral;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.body {
+  display: grid;
+  // grid-template-columns: repeat(4, 1fr);
+  grid-gap: 24px;
+}

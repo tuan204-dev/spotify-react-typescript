@@ -1,28 +1,16 @@
-import React, { useEffect, useState, useContext, useMemo } from 'react'
-import styles from './SearchBanner.module.scss'
+import { MainLayoutContext } from '@/contexts/MainLayoutContext'
 import classNames from 'classnames/bind'
+import React, { useContext, useEffect, useState } from 'react'
 import { SearchBannerItem } from './../../../types'
 import BannerItem from './BannerItem/BannerItem'
-import { MainLayoutContext } from '@/contexts/MainLayoutContext'
+import styles from './SearchBanner.module.scss'
 
 const cx = classNames.bind(styles)
 
 const SearchBanner: React.FC = () => {
   const [data, setData] = useState<SearchBannerItem[]>([])
-  const [quantityCol, setQuantityCol] = useState<number>(9)
 
-  const { width } = useContext(MainLayoutContext)
-
-  useEffect(() => {
-    if (width < 1850) setQuantityCol(8)
-    if (width < 1650) setQuantityCol(7)
-    if (width < 1450) setQuantityCol(6)
-    if (width < 1250) setQuantityCol(5)
-    if (width < 1000) setQuantityCol(4)
-    if (width < 700) setQuantityCol(3)
-    if (width < 500) setQuantityCol(2)
-  }, [width])
-
+  const { quantityCol } = useContext(MainLayoutContext)
 
   useEffect(() => {
     const fetchData = async () => {

@@ -1,15 +1,44 @@
 import Greeting from '@/components/Greeting/Greeting'
 import Navbar from '@/components/Navbar/Navbar'
 import classNames from 'classnames/bind'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './Home.module.scss'
 import Footer from '@/components/Footer/Footer'
+import Section, { SectionProps } from '@/components/Section/Section'
 
 const cx = classNames.bind(styles)
 
 const Home = () => {
   const [bgColor, setBgColor] = useState<string>('#c0b8c1')
   const [navOpacity, setNavOpacity] = useState<number>(0)
+  const [trendingData, setTrendingData] = useState<SectionProps | null>(
+    null
+  )
+  const [topMixesData, setTopMixesData] = useState<SectionProps | null>(
+    null
+  )
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const trendingRes = await fetch('/data/trending.json')
+      const trendingData = await trendingRes.json()
+      setTrendingData(trendingData)
+    }
+
+    fetchData()
+  }, [])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const topMixesRes = await fetch('/data/topMixes.json')
+      const topMixesData = await topMixesRes.json()
+      setTopMixesData(topMixesData)
+    }
+
+    fetchData()
+  }, [])
+
+  // console.log(trendingData, topMixesData)
 
   const handleScroll = (
     e: React.UIEvent<HTMLDivElement, UIEvent>
@@ -28,8 +57,9 @@ const Home = () => {
       <Navbar navOpacity={navOpacity} bgColor={bgColor} />
       <div onScroll={(e) => handleScroll(e)} className={cx('body')}>
         <Greeting bgColor={bgColor} setBgColor={setBgColor} />
-        <div style={{ height: '3000px', background: '#121212' }}></div>
-        <Footer/>
+        <Section {...trendingData}/>
+        <Section {...topMixesData}/>
+        <Footer />
       </div>
     </div>
   )

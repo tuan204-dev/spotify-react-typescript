@@ -3,7 +3,7 @@ import classNames from 'classnames/bind'
 import React, { FC, useState } from 'react'
 import styles from './Search.module.scss'
 import Footer from '@/components/Footer/Footer'
-import SearchBanner from '@/components/BannerSearch/SearchBanner'
+import SearchBanner from '@/components/SearchBanner/SearchBanner'
 
 const cx = classNames.bind(styles)
 

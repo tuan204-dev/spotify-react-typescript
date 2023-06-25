@@ -1,7 +1,8 @@
 @import '../../scss/variable';
 
 .sidebar {
-  width: max(20%, 280px);
+  // width: max(20%, 280px);
+  // max-width: 600px;
   display: flex;
   flex-direction: column;
   gap: $panel-gap;

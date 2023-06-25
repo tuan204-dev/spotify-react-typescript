@@ -1,0 +1,62 @@
+@import '../../scss/variable';
+
+.wrapper {
+  background-color: $bg-card;
+  padding: 16px;
+  border-radius: 8px;
+  width: 100%;
+  // -webkit-box-flex: 1;
+
+  &:hover {
+    background-color: $bg-card-highlight;
+  }
+
+  .img {
+    width: 100%;
+    margin-bottom: 16px;
+    // box-shadow: 0 8px 24px rgba(0,0,0,.5);
+    border-radius: 6px;
+
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    // position: relative;
+    max-width: 100%;
+
+    .heading {
+      width: 100%;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 16px;
+      font-weight: 700;
+      color: $white;
+      margin: 0;
+      padding-bottom: 4px;
+    }
+
+
+    .desc {
+      font-size: 14px;
+      color: $text-subdued;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      font-family: CircularSp;
+      font-weight: 700;
+    }
+
+  }
+
+}

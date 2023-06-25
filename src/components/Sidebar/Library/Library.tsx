@@ -4,6 +4,7 @@ import styles from './Library.module.scss'
 import SidebarItem from '@/components/SidebarItem/SidebarItem'
 import { useEffect, useState } from 'react'
 import { LibraryIcon } from '@/assets/icons'
+import { AlbumItem, ArtistItem, PlayListItem } from '../../../../types'
 
 const cx = classNames.bind(styles)
 
@@ -50,46 +51,86 @@ const Library = () => {
       const data = await response.json()
       // setData(data.playlists.items)
       setRenderData(
-        data[`${category.toLowerCase()}`].items.map(
-          (item: any, index: number) => {
-            if (category === 'Playlists') {
-              return (
-                <SidebarItem
-                  key={index}
-                  type="playlist"
-                  name={item.data.name}
-                  thumbnail={item.data.images.items[0].sources[0].url}
-                />
-              )
-            }
-
-            if (category === 'Artists') {
-              return (
-                <SidebarItem
-                  key={index}
-                  type="artist"
-                  name={
-                    item.releases.items[0].artists.items[0].profile.name
-                  }
-                  thumbnail={
-                    item.releases.items[0].coverArt.sources[0].url
-                  }
-                />
-              )
-            }
-
-            if (category === 'Albums') {
-              return (
-                <SidebarItem
-                  key={index}
-                  type="album"
-                  name={item.data.name}
-                  thumbnail={item.data.coverArt.sources[0].url}
-                />
-              )
-            }
+        // if(category === 'Playlists') {
+        //   data.map((item, index) => ())
+        // }
+        () => {
+          if (category === 'Playlists') {
+            return data.map((item: PlayListItem, index: number) => (
+              <SidebarItem
+                key={index}
+                author={item.author}
+                type="playlist"
+                name={item.title}
+                thumbnail={item.imageUrl}
+              />
+            ))
           }
-        )
+
+          if (category === 'Artists') {
+            return data.map((item: ArtistItem, index: number) => (
+              <SidebarItem
+                key={index}
+                type="artist"
+                name={item.name}
+                thumbnail={item.imageUrl}
+              />
+            ))
+          }
+          if (category === 'Albums') {
+            return data.map((item: AlbumItem, index: number) => (
+              <SidebarItem
+                author={item.author}
+                key={index}
+                type="album"
+                name={item.title}
+                thumbnail={item.imageUrl}
+              />
+            ))
+          }
+        }
+        // data.map(
+        //   (item: any, index: number) => {
+        //     if (category === 'Playlists') {
+        //       return (
+        //         <SidebarItem
+        //           key={index}
+        //           author={item.author}
+        //           type="playlist"
+        //           name={item.title}
+        //           thumbnail={item.imageUrl}
+        //         />
+        //       )
+        //     }
+
+        //     if (category === 'Artists') {
+        //       return (
+        //         <SidebarItem
+        //           key={index}
+        //           type="artist"
+        //           name={
+        //             item.name
+        //           }
+        //           thumbnail={
+        //             item.imageUrl
+        //           }
+        //         />
+        //       )
+        //     }
+
+        //     if (category === 'Albums') {
+        //       return (
+        //         <SidebarItem
+        //           author={item.author}
+        //           key={index}
+        //           type="album"
+        //           name={item.title}
+        //           thumbnail={item.imageUrl}
+        //         />
+        //       )
+        //     }
+        //   }
+        // )
       )
     })()
   }, [category])
