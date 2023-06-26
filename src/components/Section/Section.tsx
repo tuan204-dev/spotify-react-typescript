@@ -46,9 +46,7 @@ const Section: React.FC<SectionProps> = ({
           <>
             <h2 className={cx('heading')}>{title}</h2>
             {(data?.length || 0) > quantityCol && !isFull && (
-              <Link to={`/section?${id}`}>
-                <a href="#">Show all</a>
-              </Link>
+              <Link to={`/section?${id}`}>Show all</Link>
             )}
           </>
         ) : (
@@ -66,12 +64,12 @@ const Section: React.FC<SectionProps> = ({
         {!isLoading
           ? isFull
             ? data?.map((item, index) => (
-                <SectionItem isLoading={isLoading} key={index} {...item} />
+                <SectionItem kind={title?.toLocaleLowerCase()} isLoading={isLoading} key={index} {...item} />
               ))
             : data
                 ?.slice(0, Math.min(quantityCol, data.length))
                 .map((item, index) => (
-                  <SectionItem
+                  <SectionItem kind={title?.toLocaleLowerCase()}
                     isLoading={isLoading}
                     key={index}
                     {...item}
@@ -80,7 +78,7 @@ const Section: React.FC<SectionProps> = ({
           : Array(quantityCol)
               .fill(0)
               .map((item, index) => (
-                <SectionItem isLoading={isLoading} key={index} {...item} />
+                <SectionItem kind={title?.toLocaleLowerCase()} isLoading={isLoading} key={index} {...item} />
               ))}
       </div>
     </section>

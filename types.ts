@@ -29,6 +29,7 @@ export interface SectionItemI extends PlayListItem, ArtistItem, AlbumItem {
   isArtist?: boolean
   isLoading?: boolean
   columnWidth: number
+  kind?: string
 }
 
 

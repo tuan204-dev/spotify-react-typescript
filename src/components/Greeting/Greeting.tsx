@@ -21,7 +21,7 @@ const Greeting: FC<GreetingProps> = (props) => {
   const { width } = useContext(MainLayoutContext)
 
   useEffect(() => {
-    setBgColor('#535353')
+    setBgColor('#e0e0e0')
     setLoading(Boolean(!initSongs))
   }, [initSongs])
 
@@ -48,8 +48,8 @@ const Greeting: FC<GreetingProps> = (props) => {
       <div className={cx('greet')}>
         {!isLoading ? (
           <p>{greeting()}</p>
-          // <p>Good evening</p>
         ) : (
+          // <p>Good evening</p>
           <Skeleton width={'35%'} height={50} borderRadius={50} />
         )}
       </div>
@@ -60,21 +60,27 @@ const Greeting: FC<GreetingProps> = (props) => {
           'songs-section-responsive': width !== -1 && width <= 900,
         })}
       >
-        {!isLoading ? initSongs.slice(0, 6).map((item: any, index) => (
-          <SongItemTag
-            isLoading={isLoading}
-            key={index}
-            thumbnailUrl={item.imageUrl}
-            name={item.title}
-            setBgColor={setBgColor}
-          />
-        )) : Array(6).fill(0).map((item ,index) => (
-          <SongItemTag
-            key={index + item}
-            isLoading={isLoading}
-            setBgColor={setBgColor}
-          />
-        ))}
+        {!isLoading
+          ? initSongs
+              .slice(0, 6)
+              .map((item: any, index) => (
+                <SongItemTag
+                  isLoading={isLoading}
+                  key={index}
+                  thumbnailUrl={item.imageUrl}
+                  name={item.title}
+                  setBgColor={setBgColor}
+                />
+              ))
+          : Array(6)
+              .fill(0)
+              .map((item, index) => (
+                <SongItemTag
+                  key={index + item}
+                  isLoading={isLoading}
+                  setBgColor={setBgColor}
+                />
+              ))}
       </div>
     </div>
   )

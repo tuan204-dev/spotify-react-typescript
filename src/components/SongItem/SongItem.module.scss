@@ -1,0 +1,70 @@
+@import '../../scss/variable';
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 16px 6fr 4fr 3fr 50px;
+  grid-gap: 16px;
+  height: 56px;
+  padding-inline: 16px;
+  align-items: center;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: hsla(0,0%,100%,.1);
+  }
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  // padding: 8px 0;
+
+  .thumb {
+    height: 40px;
+    aspect-ratio: 1 / 1;
+
+    img {
+      width: 100%;
+
+    }
+  }
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    gap: 5px;
+    // padding: 8px 0;
+
+    .name {
+      color: $white;
+      font-size: 16px;
+      padding: 0;
+      margin: 0;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      display: -webkit-box;
+      white-space: unset;
+      word-break: break-all;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .artist {
+      color: $text-neutral;
+      font-size: 14px;
+    }
+  }
+}
+
+.order {
+  font-size: 16px;
+  color: $text-neutral;
+}
+
+.album, .date-add, .duration {
+  font-size: 14px;
+  color: $text-neutral;
+}

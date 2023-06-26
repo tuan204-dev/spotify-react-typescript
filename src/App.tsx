@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import Split from 'react-split'
-import { SkeletonTheme } from 'react-loading-skeleton';
+import { SkeletonTheme } from 'react-loading-skeleton'
 import styles from './App.module.scss'
 import Sidebar from './components/Sidebar/Sidebar'
 import { MainLayoutProvider } from './contexts/MainLayoutContext'
@@ -10,7 +10,8 @@ import Home from './pages/Home/Home'
 import Search from './pages/Search/Search'
 import './resizable.scss'
 import NotFound from './components/NotFound/NotFound'
-import Section from './pages/Section/Section';
+import Section from './pages/Section/Section'
+import Playlist from './pages/Playlist/Playlist'
 
 function App() {
   const { pathname } = useLocation()
@@ -20,14 +21,18 @@ function App() {
   console.log(pathname)
 
   useEffect(() => {
-    setShowSidebar(['/', '/search', '/artist', '/section'].includes(pathname))
+    setShowSidebar(
+      ['/', '/search', '/artist', '/section', '/playlist'].includes(
+        pathname
+      )
+    )
   }, [pathname])
   // console.log(showSidebar, pathname)
   console.log(pathname)
 
   return (
     <div className={styles.app}>
-      <SkeletonTheme baseColor='#333' highlightColor='hsla(0,0%,100%,.1)'>
+      <SkeletonTheme baseColor="#333" highlightColor="hsla(0,0%,100%,.1)">
         <Split
           cursor="col-resize"
           minSize={[280, 500]}
@@ -42,8 +47,9 @@ function App() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/search" element={<Search />} />
-                  <Route path="/section" element={<Section />}/>
+                  <Route path="/section" element={<Section />} />
                   <Route path="/artist" element={<Artist />} />
+                  <Route path="/playlist" element={<Playlist />} />
                 </Routes>
               </div>
             ) : (

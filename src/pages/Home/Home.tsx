@@ -20,12 +20,15 @@ const Home = () => {
   const [albumsData, setAlbumsData] = useState<SectionProps | null>(
     null
   )
+  const [playlistData, setPlaylistData] = useState<SectionProps | null>(
+    null
+  )
 
   useEffect(() => {
     const fetchData = async () => {
       const trendingRes = await fetch('/data/00001.json')
       const trendingData = await trendingRes.json()
-      console.log(trendingData)
+      // console.log(trendingData)
       setTrendingData(trendingData)
     }
 
@@ -52,6 +55,16 @@ const Home = () => {
     fetchData()
   }, [])
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const playlistRes = await fetch('/data/00003.json')
+      const playlistData = await playlistRes.json()
+      setPlaylistData(playlistData)
+    }
+
+    fetchData()
+  }, [])
+
   // console.log(trendingData, topMixesData)
 
   const handleScroll = (
@@ -68,10 +81,11 @@ const Home = () => {
 
   return (
     <div className={cx('home')}>
-      <Navbar navOpacity={navOpacity} bgColor={bgColor} />
+      <Navbar isHome navOpacity={navOpacity} bgColor={bgColor} />
       <div onScroll={(e) => handleScroll(e)} className={cx('body')}>
         <Greeting bgColor={bgColor} setBgColor={setBgColor} />
         <Section {...trendingData}/>
+        <Section {...playlistData}/>
         <Section {...topMixesData}/>
         <Section {...albumsData}/>
         <Footer />

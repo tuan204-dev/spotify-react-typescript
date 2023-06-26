@@ -1,0 +1,359 @@
+{
+  "track_details": {
+    "0": {
+      "link": "https://open.spotify.com/track/1HR2CTi0ytRJIcik1QKdOa",
+      "song_name": "Beautiful",
+      "artist": "Eminem",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273506c4cc93e5a6234164125e1",
+      "duration": "6m 6s"
+    },
+    "1": {
+      "link": "https://open.spotify.com/track/3yn01PcU95PTbiZ3xvop2j",
+      "song_name": "Call Your Mom",
+      "artist": "Noah Kahan",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b27365a472d8326d4571bf725422",
+      "duration": "4m 30s"
+    },
+    "2": {
+      "link": "https://open.spotify.com/track/5Q6fh8OEhBYepJaORz9lxe",
+      "song_name": "Daddy Issues (Remix) feat. Syd",
+      "artist": "The Neighbourhood",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b2738b6204ac018967b6388c703d",
+      "duration": "3m 46s"
+    },
+    "3": {
+      "link": "https://open.spotify.com/track/3GVkPk8mqxz0itaAriG1L7",
+      "song_name": "Everybody Dies In Their Nightmares",
+      "artist": "XXXTENTACION",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273203c89bd4391468eea4cc3f5",
+      "duration": "1m 6s"
+    },
+    "4": {
+      "link": "https://open.spotify.com/track/45bE4HXI0AwGZXfZtMp8JR",
+      "song_name": "you broke me first",
+      "artist": "Tate McRae",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b2730c2c97099fd6a637ed0aa4a4",
+      "duration": "2m 5s"
+    },
+    "5": {
+      "link": "https://open.spotify.com/track/2gMXnyrvIjhVBUZwvLZDMP",
+      "song_name": "Before You Go",
+      "artist": "Lewis Capaldi",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b2737b9639babbe96e25071ec1d4",
+      "duration": "3m 6s"
+    },
+    "6": {
+      "link": "https://open.spotify.com/track/4ZLzoOkj0MPWrTLvooIuaa",
+      "song_name": "Get You The Moon (feat. Snøw)",
+      "artist": "Kina",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b2730a64e2680bbc44107022e326",
+      "duration": "2m 40s"
+    },
+    "7": {
+      "link": "https://open.spotify.com/track/43zdsphuZLzwA9k4DJhU0I",
+      "song_name": "when the party's over",
+      "artist": "Billie Eilish",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b27350a3147b4edd7701a876c6ce",
+      "duration": "3m 57s"
+    },
+    "8": {
+      "link": "https://open.spotify.com/track/4xqrdfXkTW4T0RauPLv3WA",
+      "song_name": "Heather",
+      "artist": "Conan Gray",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b27388e3cda6d29b2552d4d6bc43",
+      "duration": "3m 40s"
+    },
+    "9": {
+      "link": "https://open.spotify.com/track/55Am8neGJkdj2ADaM3aw5H",
+      "song_name": "Train Wreck",
+      "artist": "James Arthur",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b27320beb61f61fcbeb33b10a9ab",
+      "duration": "3m 26s"
+    },
+    "10": {
+      "link": "https://open.spotify.com/track/4UKCKdYiLN6IMA5ZESUTL7",
+      "song_name": "the remedy for a broken heart (why am I so in love)",
+      "artist": "XXXTENTACION",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273806c160566580d6335d1f16c",
+      "duration": "2m 44s"
+    },
+    "11": {
+      "link": "https://open.spotify.com/track/1ugQtcwmKOXvKAYzhjncmv",
+      "song_name": "Half A Man",
+      "artist": "Dean Lewis",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273a787f718fb485b66d6219247",
+      "duration": "2m 20s"
+    },
+    "12": {
+      "link": "https://open.spotify.com/track/7vRriwrloYVaoAe3a9wJHe",
+      "song_name": "i hate u, i love u (feat. olivia o'brien)",
+      "artist": "gnash",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b27308862f843ea27f44f8e8cbd8",
+      "duration": "4m 53s"
+    },
+    "13": {
+      "link": "https://open.spotify.com/track/5CZ40GBx1sQ9agT82CLQCT",
+      "song_name": "traitor",
+      "artist": "Olivia Rodrigo",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273a91c10fe9472d9bd89802e5a",
+      "duration": "3m 26s"
+    },
+    "14": {
+      "link": "https://open.spotify.com/track/3i5qVV8azKqGFK4Gzdt5YS",
+      "song_name": "If You Want Love",
+      "artist": "NF",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273cd733919ee57d0cc466e152f",
+      "duration": "3m 6s"
+    },
+    "15": {
+      "link": "https://open.spotify.com/track/1ei3hzQmrgealgRKFxIcWn",
+      "song_name": "In The Stars",
+      "artist": "Benson Boone",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273786e4e2c43c2897fafabbfb6",
+      "duration": "3m 50s"
+    },
+    "16": {
+      "link": "https://open.spotify.com/track/77MdvMx9L4ZQuLhhn3o21h",
+      "song_name": "If the World Was Ending (feat. Julia Michaels)",
+      "artist": "JP Saxe",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273e19d9c548f323ab0f0299d36",
+      "duration": "3m 33s"
+    },
+    "17": {
+      "link": "https://open.spotify.com/track/2yZax79pOrYuyIFVW2cZY2",
+      "song_name": "Carry On",
+      "artist": "XXXTENTACION",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273203c89bd4391468eea4cc3f5",
+      "duration": "2m 0s"
+    },
+    "18": {
+      "link": "https://open.spotify.com/track/2TfoabXa0CbEwcqpxOn9z3",
+      "song_name": "Sad Nibba Hours",
+      "artist": "Papithbk",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273779567f1d9f78432ec374289",
+      "duration": "2m 42s"
+    },
+    "19": {
+      "link": "https://open.spotify.com/track/2tGvwE8GcFKwNdAXMnlbfl",
+      "song_name": "happier",
+      "artist": "Olivia Rodrigo",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273a91c10fe9472d9bd89802e5a",
+      "duration": "2m 13s"
+    },
+    "20": {
+      "link": "https://open.spotify.com/track/4Of7rzpRpV1mWRbhp5rAqG",
+      "song_name": "Bruises",
+      "artist": "Lewis Capaldi",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273fc2101e6889d6ce9025f85f2",
+      "duration": "3m 52s"
+    },
+    "21": {
+      "link": "https://open.spotify.com/track/0akyEssGRVHstqCSWXusJL",
+      "song_name": "Fuentes de Ortiz",
+      "artist": "Ed Maverick",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b2736c4c83779f5d3cd6ad3e1aec",
+      "duration": "3m 40s"
+    },
+    "22": {
+      "link": "https://open.spotify.com/track/0u2P5u6lvoDfwTYjAADbn4",
+      "song_name": "lovely (with Khalid)",
+      "artist": "Billie Eilish",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b2738a3f0a3ca7929dea23cd274c",
+      "duration": "3m 25s"
+    },
+    "23": {
+      "link": "https://open.spotify.com/track/5de9Ho64dovuQI8Uhn5gPD",
+      "song_name": "I Don't Wanna Do This Anymore",
+      "artist": "XXXTENTACION",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b2735485ea186d6971e18fabcc2f",
+      "duration": "1m 20s"
+    },
+    "24": {
+      "link": "https://open.spotify.com/track/2NYPx7YjNrHteC2RxzTzTZ",
+      "song_name": "Losing Interest",
+      "artist": "Papithbk",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273ab68cb9a905107fb91256411",
+      "duration": "1m 0s"
+    },
+    "25": {
+      "link": "https://open.spotify.com/track/46T7puWlH8ptC6lx7bQ3TY",
+      "song_name": "Let Me Die",
+      "artist": "Lil Happy Lil Sad",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273de0983e18ffd7f1839b2a950",
+      "duration": "3m 15s"
+    },
+    "26": {
+      "link": "https://open.spotify.com/track/6Ox1rvlwEpB49drasQm6RF",
+      "song_name": "Star Shopping",
+      "artist": "Lil Peep",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b2736404fdef267b14d7a548f182",
+      "duration": "2m 40s"
+    },
+    "27": {
+      "link": "https://open.spotify.com/track/4HcARAxzsbIB3MqiEkejM6",
+      "song_name": "Locksmith",
+      "artist": "Sadie Jean",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273d5fe44d87b5a478ae78841ed",
+      "duration": "2m 41s"
+    },
+    "28": {
+      "link": "https://open.spotify.com/track/5JCoSi02qi3jJeHdZXMmR8",
+      "song_name": "favorite crime",
+      "artist": "Olivia Rodrigo",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273a91c10fe9472d9bd89802e5a",
+      "duration": "2m 26s"
+    },
+    "29": {
+      "link": "https://open.spotify.com/track/3S8jK1mGzQi24ilFb45DAZ",
+      "song_name": "Lonely (with benny blanco)",
+      "artist": "Justin Bieber",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273e6f407c7f3a0ec98845e4431",
+      "duration": "2m 29s"
+    },
+    "30": {
+      "link": "https://open.spotify.com/track/1B62o4CbdL9ckGvwsz2cgn",
+      "song_name": "Where's My Love",
+      "artist": "SYML",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b2732f0dd56b1f1c9d51d5fc2782",
+      "duration": "3m 40s"
+    },
+    "31": {
+      "link": "https://open.spotify.com/track/0NlGoUyOJSuSHmngoibVAs",
+      "song_name": "All I Want",
+      "artist": "Kodaline",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b2733e42854096da9a3b1ca901c9",
+      "duration": "5m 46s"
+    },
+    "32": {
+      "link": "https://open.spotify.com/track/01TnVDiet1DFTsyWKUKovl",
+      "song_name": "NUMB",
+      "artist": "XXXTENTACION",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273806c160566580d6335d1f16c",
+      "duration": "3m 27s"
+    },
+    "33": {
+      "link": "https://open.spotify.com/track/33LizV83s7z1gwtmLiKlmv",
+      "song_name": "Dead and Cold",
+      "artist": "SadBoyProlific",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273a840d5ef4608635304846deb",
+      "duration": "1m 44s"
+    },
+    "34": {
+      "link": "https://open.spotify.com/track/4ewazQLXFTDC8XvCbhvtXs",
+      "song_name": "Glimpse of Us",
+      "artist": "Joji",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273eaac2a7955f5b8967991cacb",
+      "duration": "3m 56s"
+    },
+    "35": {
+      "link": "https://open.spotify.com/track/3hRV0jL3vUpRrcy398teAU",
+      "song_name": "The Night We Met",
+      "artist": "Lord Huron",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b2731fa318e90c9d4ddc6b480853",
+      "duration": "3m 11s"
+    },
+    "36": {
+      "link": "https://open.spotify.com/track/7qEHsqek33rTcFNT9PFqLf",
+      "song_name": "Someone You Loved",
+      "artist": "Lewis Capaldi",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273fc2101e6889d6ce9025f85f2",
+      "duration": "3m 0s"
+    },
+    "37": {
+      "link": "https://open.spotify.com/track/6CcJMwBtXByIz4zQLzFkKc",
+      "song_name": "i love you",
+      "artist": "Billie Eilish",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b27350a3147b4edd7701a876c6ce",
+      "duration": "4m 16s"
+    },
+    "38": {
+      "link": "https://open.spotify.com/track/5sF7hdYvhrcgNq8NZjfK8L",
+      "song_name": "Not About Angels",
+      "artist": "Birdy",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273a7a7f6236a9219ffc8e9054c",
+      "duration": "3m 55s"
+    },
+    "39": {
+      "link": "https://open.spotify.com/track/4l0Mvzj72xxOpRrp6h8nHi",
+      "song_name": "Lose You To Love Me",
+      "artist": "Selena Gomez",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b2732abcc266597eb46f897a8666",
+      "duration": "3m 58s"
+    },
+    "40": {
+      "link": "https://open.spotify.com/track/2qxmye6gAegTMjLKEBoR3d",
+      "song_name": "Let Me Down Slowly",
+      "artist": "Alec Benjamin",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273459d675aa0b6f3b211357370",
+      "duration": "2m 33s"
+    },
+    "41": {
+      "link": "https://open.spotify.com/track/6ATgDc6e4sPn84hvJsAmPt",
+      "song_name": "hate u love u",
+      "artist": "Olivia O'Brien",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273f9a776c0d4ec78052c92882b",
+      "duration": "2m 26s"
+    },
+    "42": {
+      "link": "https://open.spotify.com/track/2UwbhMie1EAYuTZ0QXeMwl",
+      "song_name": "Save Me",
+      "artist": "XXXTENTACION",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273203c89bd4391468eea4cc3f5",
+      "duration": "2m 1s"
+    },
+    "43": {
+      "link": "https://open.spotify.com/track/1J14CdDAvBTE1AJYUOwl6C",
+      "song_name": "Arcade",
+      "artist": "Duncan Laurence",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b27359ce61a220822995a3ccd27f",
+      "duration": "3m 46s"
+    },
+    "44": {
+      "link": "https://open.spotify.com/track/60iSKGrGazRzICtMjADNSM",
+      "song_name": "Hold Me While You Wait",
+      "artist": "Lewis Capaldi",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273fc2101e6889d6ce9025f85f2",
+      "duration": "3m 6s"
+    },
+    "45": {
+      "link": "https://open.spotify.com/track/4RVwu0g32PAqgUiJoXsdF8",
+      "song_name": "Happier Than Ever",
+      "artist": "Billie Eilish",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b2732a038d3bf875d23e4aeaa84e",
+      "duration": "4m 39s"
+    },
+    "46": {
+      "link": "https://open.spotify.com/track/07FkzikE6FuHIa8Ma7zJGc",
+      "song_name": "Lie",
+      "artist": "NF",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273cd733919ee57d0cc466e152f",
+      "duration": "3m 53s"
+    },
+    "47": {
+      "link": "https://open.spotify.com/track/6Z165JvPnS8PYvGW8oLGLc",
+      "song_name": "Flowers",
+      "artist": "Lauren Spencer Smith",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273295d21d0987dcc3d88b4e993",
+      "duration": "2m 53s"
+    },
+    "48": {
+      "link": "https://open.spotify.com/track/7l97ElWmIdVHWUaOeeU5ZC",
+      "song_name": "that way",
+      "artist": "Tate McRae",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273cdfe41cd475f8ad3a29b3537",
+      "duration": "2m 6s"
+    },
+    "49": {
+      "link": "https://open.spotify.com/track/5TXDeTFVRVY7Cvt0Dw4vWW",
+      "song_name": "Revenge",
+      "artist": "XXXTENTACION",
+      "thumb": "https://i.scdn.co/image/ab67616d0000b273203c89bd4391468eea4cc3f5",
+      "duration": "2m 26s"
+    },
+    "pdesc": "<a href=spotify:playlist:37i9dQZF1EIZMGq5iNDWIK>Eminem</a>, <a href=spotify:playlist:37i9dQZF1EIXDGo0vWYROm>Noah Kahan</a>, <a href=spotify:playlist:37i9dQZF1EIVNX3XbvPimn>The Neighbourhood</a> and more",
+    "count": 50,
+    "pimg": "https://seed-mix-image.spotifycdn.com/v6/img/moody/7dGJo4pcD2V6oG8kP0tJRR/en/large",
+    "likes": 0,
+    "pname": "Moody Mix"
+  }
+}

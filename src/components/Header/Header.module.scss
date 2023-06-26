@@ -1,12 +1,100 @@
 @import '../../scss/variable';
 @import '../../scss/mixin';
-@import '../../scss/breakpoint';
 
-.header {
+
+.wrapper {
   position: relative;
-  font-family: CircularSp;
-  font-weight: 700;
+  height: 30vh;
+  min-height: 340px;
+  max-height: 400px;
+  color: $white;
+  margin-top: -64px;
+  padding: 0 24px 24px;
+  display: flex;
+  align-items: flex-end;
   transition: all 1s ease;
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)) !important;
-  filter: brightness(.8);
+  // filter: brightness(150%);
+  // background-image: linear-gradient(rgba(60, 60, 60, 0.6) 0, $bg-base 100%), $bg-noise !important;
+  background: linear-gradient(transparent 0, rgba(0, 0, 0, .5) 100%), $bg-noise;
+  // background-color: #fff;
+}
+
+.body {
+  flex: 1;
+  display: flex;
+  gap: 24px;
+  align-items: flex-end;
+
+  .img {
+    height: 232px;
+    min-width: 232px;
+    width: 232px;
+    box-shadow: 0 4px 60px rgba(0, 0, 0, .5);
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex: 1;
+
+    .skeleton {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+
+    .type {
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .title {
+      font-size: 96px;
+      margin: 8px 0 12px;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .quantity {
+      font-size: 14px;
+      margin-top: 8px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      min-height: 24px;
+
+      .logo {
+        height: 20px;
+        aspect-ratio: 1 / 1;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-right: 10px;
+      }
+
+      .dot {
+        height: 4px;
+        aspect-ratio: 1 / 1;
+        background-color: #fff;
+        border-radius: 50%;
+        margin-inline: 5px;
+      }
+
+
+      .text {
+        width: max-content;
+      }
+    }
+  }
+
 }

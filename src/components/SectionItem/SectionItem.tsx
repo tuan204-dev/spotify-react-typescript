@@ -15,6 +15,8 @@ const SectionItem: React.FC<SectionItemI> = ({
   name,
   imageUrl,
   isLoading,
+  id,
+  kind,
 }) => {
   const imgRef = useRef<any>(null)
 
@@ -23,7 +25,7 @@ const SectionItem: React.FC<SectionItemI> = ({
   // console.log(title, name, imageUrl)
 
   return (
-    <Link to='/'>
+    <Link to={`/${kind?.slice(0, -1)}?${id}`}>
       <div className={cx('wrapper')}>
         <div ref={imgRef} className={cx('img')}>
           {!isLoading && isImageLoaded ? (
@@ -49,7 +51,9 @@ const SectionItem: React.FC<SectionItemI> = ({
           )}
           <div className={cx('desc')}>
             {!isLoading ? (
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              </p>
             ) : (
               <Skeleton width={'60%'} height={22.5} borderRadius={50} />
             )}

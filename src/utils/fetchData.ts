@@ -16,8 +16,8 @@ export const options = {
   search: 'search',
   artists: 'artists',
   tracks: 'tracks',
+  playlist: 'playlist',
 }
-
 
 export const fetchData = async (
   option: string,
@@ -42,4 +42,23 @@ export const fetchData = async (
   }
   const response = await axios.request(options)
   return response
+}
+
+export const fetchPlaylist = async (id: string) => {
+  const options = {
+    method: 'GET',
+    url: 'https://spotify117.p.rapidapi.com/spotify_playlist/',
+    params: {
+      url: `https://open.spotify.com/playlist/${id}`,
+    },
+    headers: {
+      'X-RapidAPI-Key':
+        'a0dbb83576mshf14f95d278ccb62p160b08jsn3a23196bcf06',
+      'X-RapidAPI-Host': 'spotify117.p.rapidapi.com',
+    },
+  }
+
+  const response = await axios.request(options)
+  // console.log(response.data);
+  return response.data
 }
