@@ -23,8 +23,9 @@ const Home = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const trendingRes = await fetch('/data/trending.json')
+      const trendingRes = await fetch('/data/00001.json')
       const trendingData = await trendingRes.json()
+      console.log(trendingData)
       setTrendingData(trendingData)
     }
 
@@ -33,7 +34,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const topMixesRes = await fetch('/data/topMixes.json')
+      const topMixesRes = await fetch('/data/00002.json')
       const topMixesData = await topMixesRes.json()
       setTopMixesData(topMixesData)
     }
@@ -43,7 +44,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const albumsRes = await fetch('/data/initAlbums.json')
+      const albumsRes = await fetch('/data/00005.json')
       const albumsData = await albumsRes.json()
       setAlbumsData(albumsData)
     }

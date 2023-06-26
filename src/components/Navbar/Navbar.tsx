@@ -11,7 +11,9 @@ const cx = classNames.bind(styles)
 interface NavbarProps {
   bgColor?: string | null
   navOpacity?: number
+  isHome?: boolean
   isSearch?: boolean
+  isSection?: boolean
   query?: string
   setQuery?: React.Dispatch<React.SetStateAction<string>>
 }
@@ -20,7 +22,9 @@ const Navbar: FC<NavbarProps> = (props) => {
   const {
     bgColor,
     navOpacity = 1,
+    isHome = false,
     isSearch = false,
+    isSection = false,
     query,
     setQuery,
   } = props
@@ -31,10 +35,10 @@ const Navbar: FC<NavbarProps> = (props) => {
     <div className={cx('nav')}>
       <div
         style={{
-          backgroundColor: `${bgColor}`,
+          backgroundColor: `${!isSection ? bgColor : '#121212'}`,
           opacity: `${navOpacity}`,
           backgroundImage: `${
-            isSearch ||
+            isHome &&
             'linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6))'
           }`,
         }}

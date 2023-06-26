@@ -5,14 +5,22 @@ import { SectionItemI } from '../../../types'
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
 import SectionItem from '../SectionItem/SectionItem'
 import Skeleton from 'react-loading-skeleton'
+import { Link } from 'react-router-dom'
 export interface SectionProps {
   title?: string
+  id?: string
   data?: SectionItemI[]
+  isFull?: boolean
 }
 
 const cx = classNames.bind(styles)
 
-const Section: React.FC<SectionProps> = ({ title, data }) => {
+const Section: React.FC<SectionProps> = ({
+  title,
+  id,
+  data,
+  isFull = false,
+}) => {
   const [isLoading, setLoading] = useState<boolean>(true)
   const { quantityCol, width } = useContext(MainLayoutContext)
 
@@ -37,7 +45,11 @@ const Section: React.FC<SectionProps> = ({ title, data }) => {
         {!isLoading ? (
           <>
             <h2 className={cx('heading')}>{title}</h2>
-            <a href="#">Show all</a>
+            {(data?.length || 0) > quantityCol && !isFull && (
+              <Link to={`/section?${id}`}>
+                <a href="#">Show all</a>
+              </Link>
+            )}
           </>
         ) : (
           <Skeleton width={225} height={20} borderRadius={50} />
@@ -45,22 +57,31 @@ const Section: React.FC<SectionProps> = ({ title, data }) => {
       </div>
       <div
         style={{
-          gridTemplateColumns: `repeat(${Math.min(
-            quantityCol,
-            data?.length || 999
-          )}, minmax(0,1fr))`,
+          gridTemplateColumns: `repeat(${quantityCol}, minmax(0,1fr))`,
           columnWidth: columnWidth,
           columnCount: Math.min(quantityCol, data?.length || 999),
         }}
         className={cx('body')}
       >
-        {!isLoading ? data
-          ?.slice(0, Math.min(quantityCol, data.length))
-          .map((item, index) => (
-            <SectionItem isLoading={isLoading} key={index} {...item} />
-          )) : Array(quantityCol).fill(0).map((item, index) => (
-            <SectionItem isLoading={isLoading} key={index} {...item} />
-          ))}
+        {!isLoading
+          ? isFull
+            ? data?.map((item, index) => (
+                <SectionItem isLoading={isLoading} key={index} {...item} />
+              ))
+            : data
+                ?.slice(0, Math.min(quantityCol, data.length))
+                .map((item, index) => (
+                  <SectionItem
+                    isLoading={isLoading}
+                    key={index}
+                    {...item}
+                  />
+                ))
+          : Array(quantityCol)
+              .fill(0)
+              .map((item, index) => (
+                <SectionItem isLoading={isLoading} key={index} {...item} />
+              ))}
       </div>
     </section>
   )

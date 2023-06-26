@@ -10,22 +10,27 @@ import Home from './pages/Home/Home'
 import Search from './pages/Search/Search'
 import './resizable.scss'
 import NotFound from './components/NotFound/NotFound'
+import Section from './pages/Section/Section';
 
 function App() {
   const { pathname } = useLocation()
+  console.log(useLocation())
   const [showSidebar, setShowSidebar] = useState<boolean>(true)
 
+  console.log(pathname)
+
   useEffect(() => {
-    setShowSidebar(['/', '/search', 'artist'].includes(pathname))
+    setShowSidebar(['/', '/search', '/artist', '/section'].includes(pathname))
   }, [pathname])
   // console.log(showSidebar, pathname)
+  console.log(pathname)
 
   return (
     <div className={styles.app}>
       <SkeletonTheme baseColor='#333' highlightColor='hsla(0,0%,100%,.1)'>
         <Split
           cursor="col-resize"
-          minSize={[280]}
+          minSize={[280, 500]}
           // maxSize={[600, 99999]}
           sizes={[20, 80]}
           className={styles.split}
@@ -37,6 +42,7 @@ function App() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/search" element={<Search />} />
+                  <Route path="/section" element={<Section />}/>
                   <Route path="/artist" element={<Artist />} />
                 </Routes>
               </div>

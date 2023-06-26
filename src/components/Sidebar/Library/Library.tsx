@@ -8,10 +8,13 @@ import { AlbumItem, ArtistItem, PlayListItem } from '../../../../types'
 
 const cx = classNames.bind(styles)
 
-type LibSelection = Array<{ name: string }>
+type LibSelection = Array<{ name: string; id: string }>
 
 const Library = () => {
-  const [category, setCategory] = useState<string>('Playlists')
+  const [category, setCategory] = useState<{ name: string; id: string }>({
+    name: 'Playlists',
+    id: '00003',
+  })
   // const [data, setData] = useState<[]>([])
   const [renderData, setRenderData] = useState<[]>([])
   const [bottomShadow, setBottomShadow] = useState<boolean>(false)
@@ -19,17 +22,22 @@ const Library = () => {
   const libSelection: LibSelection = [
     {
       name: 'Playlists',
+      id: '00003',
     },
     {
       name: 'Artists',
+      id: '00004',
     },
     {
       name: 'Albums',
+      id: '00005',
     },
   ]
 
-  const handleClick = (type: string): void => {
-    setCategory(type)
+  const handleClick = (selection: { name: string; id: string }): void => {
+    setCategory((prev) => {
+      return { ...prev, ...selection }
+    })
   }
 
   const handleScroll = (
@@ -47,7 +55,7 @@ const Library = () => {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch(`data/init${category}.json`)
+      const response = await fetch(`data/${category.id}.json`)
       const data = await response.json()
       // setData(data.playlists.items)
       setRenderData(
@@ -55,7 +63,7 @@ const Library = () => {
         //   data.map((item, index) => ())
         // }
         () => {
-          if (category === 'Playlists') {
+          if (category.name === 'Playlists') {
             return data.data.map((item: PlayListItem, index: number) => (
               <SidebarItem
                 key={index}
@@ -67,7 +75,7 @@ const Library = () => {
             ))
           }
 
-          if (category === 'Artists') {
+          if (category.name === 'Artists') {
             return data.data.map((item: ArtistItem, index: number) => (
               <SidebarItem
                 key={index}
@@ -77,7 +85,7 @@ const Library = () => {
               />
             ))
           }
-          if (category === 'Albums') {
+          if (category.name === 'Albums') {
             return data.data.map((item: AlbumItem, index: number) => (
               <SidebarItem
                 author={item.author}
@@ -158,7 +166,7 @@ const Library = () => {
         className={cx({ selection: true, 'bottom-shadow': bottomShadow })}
       >
         {libSelection.map((item, index) => (
-          <button onClick={() => handleClick(item.name)} key={index}>
+          <button onClick={() => handleClick(item)} key={index}>
             {item.name}
           </button>
         ))}

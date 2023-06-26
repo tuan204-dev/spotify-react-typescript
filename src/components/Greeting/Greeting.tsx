@@ -30,7 +30,7 @@ const Greeting: FC<GreetingProps> = (props) => {
       const response = await fetch('data/initSongs.json')
       const data = await response.json()
 
-      setInitSongs(data.tracks.items)
+      setInitSongs(data.data)
     })()
   }, [])
 
@@ -64,8 +64,8 @@ const Greeting: FC<GreetingProps> = (props) => {
           <SongItemTag
             isLoading={isLoading}
             key={index}
-            thumbnailUrl={item.data.albumOfTrack.coverArt.sources[0].url}
-            name={item.data.name}
+            thumbnailUrl={item.imageUrl}
+            name={item.title}
             setBgColor={setBgColor}
           />
         )) : Array(6).fill(0).map((item ,index) => (
