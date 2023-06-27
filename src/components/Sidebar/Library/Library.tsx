@@ -57,16 +57,14 @@ const Library = () => {
     (async () => {
       const response = await fetch(`data/${category.id}.json`)
       const data = await response.json()
-      // setData(data.playlists.items)
+      console.log(data)
       setRenderData(
-        // if(category === 'Playlists') {
-        //   data.map((item, index) => ())
-        // }
         () => {
           if (category.name === 'Playlists') {
             return data.data.map((item: PlayListItem, index: number) => (
               <SidebarItem
                 key={index}
+                id={item.id}
                 author={item.author}
                 type="playlist"
                 name={item.title}
@@ -97,48 +95,6 @@ const Library = () => {
             ))
           }
         }
-        // data.map(
-        //   (item: any, index: number) => {
-        //     if (category === 'Playlists') {
-        //       return (
-        //         <SidebarItem
-        //           key={index}
-        //           author={item.author}
-        //           type="playlist"
-        //           name={item.title}
-        //           thumbnail={item.imageUrl}
-        //         />
-        //       )
-        //     }
-
-        //     if (category === 'Artists') {
-        //       return (
-        //         <SidebarItem
-        //           key={index}
-        //           type="artist"
-        //           name={
-        //             item.name
-        //           }
-        //           thumbnail={
-        //             item.imageUrl
-        //           }
-        //         />
-        //       )
-        //     }
-
-        //     if (category === 'Albums') {
-        //       return (
-        //         <SidebarItem
-        //           author={item.author}
-        //           key={index}
-        //           type="album"
-        //           name={item.title}
-        //           thumbnail={item.imageUrl}
-        //         />
-        //       )
-        //     }
-        //   }
-        // )
       )
     })()
   }, [category])

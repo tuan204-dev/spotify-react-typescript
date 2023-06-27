@@ -5,10 +5,13 @@ import SongItem from '@/components/SongItem/SongItem'
 import useDominantColor from '@/hooks/useDominantColor'
 import { fetchPlaylist } from '@/utils/fetchData'
 import classNames from 'classnames/bind'
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { TbPlayerPlayFilled } from 'react-icons/tb'
 import { useLocation } from 'react-router-dom'
 import styles from './Playlist.module.scss'
+import { useInView } from 'react-intersection-observer'
+import Footer from '@/components/Footer/Footer'
+import { MainLayoutContext } from '@/contexts/MainLayoutContext'
 
 const cx = classNames.bind(styles)
 
@@ -17,18 +20,25 @@ const Playlist: React.FC = () => {
   const [data, setData] = useState<any>()
   const [isLoading, setLoading] = useState<boolean>(true)
   const { search } = useLocation()
+  console.log(search)
   const bgColor = useDominantColor(data?.track_details.pimg)
 
-  const divRef = useRef<any>(null)
+  const { width } = useContext(MainLayoutContext)
+  console.log(width)
 
+  const { ref, inView } = useInView({
+    threshold: 0,
+  })
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchPlaylist(search.substring(1))
       setData(data)
     }
-    fetchData()
-  }, [])
+    if (search !== '?undefined') {
+      fetchData()
+    }
+  }, [search])
 
   useEffect(() => {
     setLoading(Boolean(!data))
@@ -45,8 +55,6 @@ const Playlist: React.FC = () => {
     }
     setNavOpacity(yAxis / 64)
   }
-
-  
 
   return (
     <main className={cx('wrapper')}>
@@ -78,11 +86,25 @@ const Playlist: React.FC = () => {
               </button>
             </div>
             <div className={cx('list')}>
-              <div ref={divRef} id="freeze-top-row" className={cx('freeze-top-row')}>
+              <div
+                ref={ref}
+                style={{
+                  position: 'absolute',
+                  top: '-64px',
+                  zIndex: '-9',
+                }}
+              ></div>
+              <div
+                className={cx({
+                  'freeze-top-row': true,
+                  stuck: !inView,
+                  'grid-md': width <= 780,
+                })}
+              >
                 <div>#</div>
                 <div>Title</div>
                 <div>Album</div>
-                <div>Date added</div>
+                {width > 780 && <div>Date added</div>}
                 <div className={cx('clock-icon')}>
                   <ClockIcon />
                 </div>
@@ -119,6 +141,7 @@ const Playlist: React.FC = () => {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     </main>
   )

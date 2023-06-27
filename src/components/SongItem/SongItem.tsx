@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './SongItem.module.scss'
 import classNames from 'classnames/bind'
 import Skeleton from 'react-loading-skeleton'
+import { MainLayoutContext } from '@/contexts/MainLayoutContext'
 
 const cx = classNames.bind(styles)
 
@@ -22,6 +23,8 @@ const SongItem: React.FC<SongItemProps> = ({
   order,
   isLoading = false,
 }) => {
+  const { width } = useContext(MainLayoutContext)
+
   function convertDurationString(durationString: string): string {
     const [minutes, seconds] = durationString
       .split('m ')
@@ -34,12 +37,12 @@ const SongItem: React.FC<SongItemProps> = ({
   const dura = convertDurationString(duration)
 
   return (
-    <div className={cx('wrapper')}>
+    <div className={cx({ wrapper: true, 'grid-md': width <= 780 })}>
       <div className={cx('order')}>{!isLoading && order}</div>
       <div className={cx('main')}>
         <div className={cx('thumb')}>
           {!isLoading ? (
-            <img loading='lazy' src={thumb} alt={songName} />
+            <img loading="lazy" src={thumb} alt={songName} />
           ) : (
             <Skeleton height={'100%'} />
           )}
@@ -63,7 +66,7 @@ const SongItem: React.FC<SongItemProps> = ({
         </div>
       </div>
       <div className={cx('album')}>{!isLoading && 'Album'}</div>
-      <div className={cx('date-add')}></div>
+      {width > 780 && <div className={cx('date-add')}></div>}
       <div className={cx('duration')}>{!isLoading && dura}</div>
     </div>
   )

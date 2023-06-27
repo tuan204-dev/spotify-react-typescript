@@ -68,6 +68,7 @@
     }
 
     .list {
+      position: relative;
 
       .freeze-top-row {
         display: grid;
@@ -99,6 +100,16 @@
         flex-direction: column;
         padding-top: 16px;
       }
+
+      .stuck {
+        background-color: $bg-highlight;
+        box-shadow: 0 -1px 0 0 #181818;
+        -webkit-box-shadow: 0 -1px 0 0 #181818;
+      }
     }
   }
+}
+
+.grid-md {
+  grid-template-columns: 16px  4fr  2fr 50px !important;
 }

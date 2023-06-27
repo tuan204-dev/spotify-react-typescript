@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react'
+import { SkeletonTheme } from 'react-loading-skeleton'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import Split from 'react-split'
-import { SkeletonTheme } from 'react-loading-skeleton'
 import styles from './App.module.scss'
+import NotFound from './components/NotFound/NotFound'
 import Sidebar from './components/Sidebar/Sidebar'
 import { MainLayoutProvider } from './contexts/MainLayoutContext'
 import Artist from './pages/Artist/Artist'
 import Home from './pages/Home/Home'
-import Search from './pages/Search/Search'
-import './resizable.scss'
-import NotFound from './components/NotFound/NotFound'
-import Section from './pages/Section/Section'
 import Playlist from './pages/Playlist/Playlist'
+import Search from './pages/Search/Search'
+import Section from './pages/Section/Section'
+import './resizable.scss'
 
 function App() {
   const { pathname } = useLocation()
@@ -35,7 +35,7 @@ function App() {
       <SkeletonTheme baseColor="#333" highlightColor="hsla(0,0%,100%,.1)">
         <Split
           cursor="col-resize"
-          minSize={[280, 500]}
+          minSize={[280, 600]}
           // maxSize={[600, 99999]}
           sizes={[20, 80]}
           className={styles.split}
