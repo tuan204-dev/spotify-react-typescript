@@ -12,6 +12,7 @@ import Playlist from './pages/Playlist/Playlist'
 import Search from './pages/Search/Search'
 import Section from './pages/Section/Section'
 import './resizable.scss'
+import Album from './pages/Album/Album'
 
 function App() {
   const { pathname } = useLocation()
@@ -22,9 +23,14 @@ function App() {
 
   useEffect(() => {
     setShowSidebar(
-      ['/', '/search', '/artist', '/section', '/playlist'].includes(
-        pathname
-      )
+      [
+        '/',
+        '/search',
+        '/artist',
+        '/section',
+        '/playlist',
+        '/album',
+      ].includes(pathname)
     )
   }, [pathname])
   // console.log(showSidebar, pathname)
@@ -50,6 +56,7 @@ function App() {
                   <Route path="/section" element={<Section />} />
                   <Route path="/artist" element={<Artist />} />
                   <Route path="/playlist" element={<Playlist />} />
+                  <Route path="/album" element={<Album />} />
                 </Routes>
               </div>
             ) : (

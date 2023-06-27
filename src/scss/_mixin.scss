@@ -41,3 +41,11 @@
     background-color: $bg-highlight;
   }
 }
+
+
+@mixin text-line-clamp($line-number) {
+  display: -webkit-box;
+  -webkit-line-clamp: $line-number;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

@@ -13,7 +13,7 @@
   display: flex;
   align-items: flex-end;
   transition: all 1s ease;
-  // filter: brightness(150%);
+  filter: brightness(110%);
   // background-image: linear-gradient(rgba(60, 60, 60, 0.6) 0, $bg-base 100%), $bg-noise !important;
   background: linear-gradient(transparent 0, rgba(0, 0, 0, .5) 100%), $bg-noise;
   // background-color: #fff;
@@ -54,15 +54,21 @@
     .type {
       font-size: 14px;
       margin: 0;
+      font-weight: 700;
     }
 
     .title {
       font-size: 96px;
-      margin: 8px 0 12px;
-      display: -webkit-box;
-      -webkit-line-clamp: 1;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      padding: 8px 0 8px;
+      @include text-line-clamp(1);
+      margin: 0 0 4px;
+    }
+
+    .desc {
+      font-size: 14px;
+      color: hsla(0, 0%, 100%, .7);
+      margin-bottom: 8px;
+      @include text-line-clamp(2);
     }
 
     .quantity {
@@ -72,6 +78,16 @@
       display: flex;
       align-items: center;
       min-height: 24px;
+
+      .artist {
+        font-size: 14px;
+        color: $white;
+        font-weight: 700;
+      }
+
+      .release-date {
+
+      }
 
       .logo {
         height: 20px;

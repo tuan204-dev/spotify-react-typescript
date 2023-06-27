@@ -10,9 +10,13 @@
   border-radius: 4px;
 
   &:hover {
-    background-color: hsla(0,0%,100%,.1);
+    background-color: hsla(0, 0%, 100%, .1);
     cursor: pointer;
   }
+}
+
+.is-album-track {
+  grid-template-columns: 16px 4fr 50px !important;
 }
 
 .main {
@@ -57,7 +61,28 @@
       color: $text-neutral;
       font-size: 14px;
     }
+
+    .explicit {
+      font-size: 9px;
+      padding: 3px 6px;
+      text-transform: uppercase;
+      background-color: hsla(0, 0%, 100%, .6);
+      color: $bg-base ;
+      border-radius: 2px;
+      margin-right: 8px;
+    }
   }
+
+}
+
+.album {
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  white-space: unset;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .order {
@@ -65,11 +90,13 @@
   color: $text-neutral;
 }
 
-.album, .date-add, .duration {
+.album,
+.date-add,
+.duration {
   font-size: 14px;
   color: $text-neutral;
 }
 
 .grid-md {
-  grid-template-columns: 16px  4fr  2fr 50px !important;
+  grid-template-columns: 16px 4fr 2fr 50px !important;
 }

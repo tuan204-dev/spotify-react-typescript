@@ -10,9 +10,12 @@ interface HeaderProps {
   title?: string
   thumbnail?: string
   quantity?: number
-  type?: 'playlist' | 'album'
+  type?: 'Playlist' | 'Album'
   bgColor?: string
+  desc?: string
   isLoading?: boolean
+  artist?: string
+  releaseDate?: string
 }
 
 const Header: React.FC<HeaderProps> = ({
@@ -20,9 +23,13 @@ const Header: React.FC<HeaderProps> = ({
   thumbnail,
   quantity,
   bgColor,
+  desc,
   isLoading,
+  type,
+  artist,
+  releaseDate,
 }) => {
-  console.log(title)
+  console.log(desc)
 
   return (
     <main
@@ -41,13 +48,21 @@ const Header: React.FC<HeaderProps> = ({
           {!isLoading ? (
             <>
               {' '}
-              <p className={cx('type')}>Playlist</p>
+              <p className={cx('type')}>{type}</p>
               <h2 className={cx('title')}>{title}</h2>
+              <span className={cx('desc')}>{desc}</span>
               <div className={cx('quantity')}>
                 <div
                   style={{ backgroundImage: `url(${logoImage})` }}
                   className={cx('logo')}
                 ></div>
+                {type === 'Album' && (
+                  <>
+                    <div className={cx('artist')}>{artist}</div>{' '}
+                    <div className={cx('dot')}></div>{' '}
+                    <div className={cx('release-date')}>{releaseDate?.slice(0,4)}</div>
+                  </>
+                )}
                 <div className={cx('dot')}></div>
                 <div className={'text'}>{`${quantity || 0} songs`}</div>
               </div>{' '}

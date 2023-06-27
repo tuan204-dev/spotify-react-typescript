@@ -3,7 +3,6 @@ import Library from './Library/Library'
 import Nav from './Nav/Nav'
 import styles from './Sidebar.module.scss'
 
-
 interface SidebarProps {
   children?: ReactNode
 }

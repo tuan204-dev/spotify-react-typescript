@@ -86,6 +86,7 @@ const Library = () => {
           if (category.name === 'Albums') {
             return data.data.map((item: AlbumItem, index: number) => (
               <SidebarItem
+                id={item.id}
                 author={item.author}
                 key={index}
                 type="album"

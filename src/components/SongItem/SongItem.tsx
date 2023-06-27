@@ -10,48 +10,54 @@ interface SongItemProps {
   songName?: string
   artist?: string
   thumb?: string
-  duration?: string
+  duration?: number
   order?: number
   isLoading?: boolean
+  album?: string
+  isAlbumTrack?: boolean
+  isExplicit?: boolean
 }
 
 const SongItem: React.FC<SongItemProps> = ({
   songName,
   artist,
   thumb,
-  duration = '0m 0s',
+  duration = 0,
   order,
   isLoading = false,
+  album,
+  isAlbumTrack = false,
+  isExplicit = false
 }) => {
   const { width } = useContext(MainLayoutContext)
 
-  function convertDurationString(durationString: string): string {
-    const [minutes, seconds] = durationString
-      .split('m ')
-      .map((part) => parseInt(part))
-    const formattedMinutes = minutes.toString().padStart(2, '0')
-    const formattedSeconds = seconds.toString().padStart(2, '0')
-    return `${formattedMinutes}:${formattedSeconds}`
-  }
-
-  const dura = convertDurationString(duration)
-
   return (
-    <div className={cx({ wrapper: true, 'grid-md': width <= 780 })}>
+    <div
+      className={cx({
+        wrapper: true,
+        'grid-md': width <= 780 && !isAlbumTrack,
+        'is-album-track': isAlbumTrack,
+      })}
+    >
       <div className={cx('order')}>{!isLoading && order}</div>
       <div className={cx('main')}>
-        <div className={cx('thumb')}>
-          {!isLoading ? (
-            <img loading="lazy" src={thumb} alt={songName} />
-          ) : (
-            <Skeleton height={'100%'} />
-          )}
-        </div>
+        {!isAlbumTrack && (
+          <div className={cx('thumb')}>
+            {!isLoading ? (
+              <img loading="lazy" src={thumb} alt={songName} />
+            ) : (
+              <Skeleton height={'100%'} />
+            )}
+          </div>
+        )}
         <div className={cx('title')}>
           {!isLoading ? (
             <>
               <p className={cx('name')}>{songName}</p>
-              <span className={cx('artist')}>{artist}</span>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                {isAlbumTrack && isExplicit && <span className={cx('explicit')}>E</span>}
+                <span className={cx('artist')}>{artist}</span>
+              </div>
             </>
           ) : (
             <>
@@ -65,9 +71,22 @@ const SongItem: React.FC<SongItemProps> = ({
           )}
         </div>
       </div>
-      <div className={cx('album')}>{!isLoading && 'Album'}</div>
-      {width > 780 && <div className={cx('date-add')}></div>}
-      <div className={cx('duration')}>{!isLoading && dura}</div>
+      {!isAlbumTrack && (
+        <>
+          <div className={cx('album')}>{!isLoading && album}</div>
+          {width > 780 && <div className={cx('date-add')}></div>}
+        </>
+      )}
+      <div className={cx('duration')}>
+        {!isLoading &&
+          `${String(Math.floor(duration / 60000)).padStart(
+            2,
+            '0'
+          )}:${String(Math.floor((duration % 60000) / 1000)).padStart(
+            2,
+            '0'
+          )}`}
+      </div>
     </div>
   )
 }

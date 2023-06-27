@@ -1,41 +1,33 @@
-import { ClockIcon, HeartIcon } from '@/assets/icons'
-import Header from '@/components/Header/Header'
-import Navbar from '@/components/Navbar/Navbar'
-import SongItem from '@/components/SongItem/SongItem'
-import useDominantColor from '@/hooks/useDominantColor'
-import { fetchPlaylist } from '@/utils/fetchData'
+import React, { useState, useEffect } from 'react'
+import styles from './Album.module.scss'
 import classNames from 'classnames/bind'
-import React, { useEffect, useState, useContext } from 'react'
+import Navbar from '@/components/Navbar/Navbar'
+import useDominantColor from '@/hooks/useDominantColor'
+import Header from '@/components/Header/Header'
 import { TbPlayerPlayFilled } from 'react-icons/tb'
-import { useLocation } from 'react-router-dom'
-import styles from './Playlist.module.scss'
-import { useInView } from 'react-intersection-observer'
+import { ClockIcon, HeartIcon } from '@/assets/icons'
+import SongItem from '@/components/SongItem/SongItem'
 import Footer from '@/components/Footer/Footer'
-import { MainLayoutContext } from '@/contexts/MainLayoutContext'
+import { convertDateFormat } from '@/utils/convertDateFormat'
+import { useInView } from 'react-intersection-observer'
+import { useLocation } from 'react-router-dom'
+import { fetchAlbum } from '@/utils/fetchData'
 
 const cx = classNames.bind(styles)
 
-const Playlist: React.FC = () => {
-  const [navOpacity, setNavOpacity] = useState<number>(0)
+const Album: React.FC = () => {
   const [data, setData] = useState<any>()
+  const [navOpacity, setNavOpacity] = useState<number>(0)
   const [isLoading, setLoading] = useState<boolean>(true)
-  const { search } = useLocation()
-  console.log(search)
+
   const bgColor = useDominantColor(data?.images[0].url)
 
-  const { width } = useContext(MainLayoutContext)
-  console.log(width)
-
-  const { ref, inView } = useInView({
-    threshold: 0,
-  })
-  
-  // console.log(data)
+  const {search} = useLocation()
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchPlaylist(search.substring(1))
-      setData(data)
+      const data = await fetchAlbum(search.substring(1))
+      setData(data?.albums[0])
     }
     if (search !== '?undefined') {
       fetchData()
@@ -45,6 +37,10 @@ const Playlist: React.FC = () => {
   useEffect(() => {
     setLoading(Boolean(!data))
   }, [data])
+
+  const { ref, inView } = useInView({
+    threshold: 0,
+  })
 
   const handleScroll = (
     e: React.UIEvent<HTMLDivElement, UIEvent>
@@ -63,7 +59,9 @@ const Playlist: React.FC = () => {
       <Navbar navOpacity={navOpacity} bgColor={bgColor} />
       <div onScroll={(e) => handleScroll(e)} className={cx('body')}>
         <Header
-          type="Playlist"
+          type="Album"
+          artist={data?.artists[0].name}
+          releaseDate={data?.release_date}
           desc={data?.description}
           isLoading={isLoading}
           bgColor={bgColor}
@@ -89,6 +87,7 @@ const Playlist: React.FC = () => {
                 <HeartIcon />
               </button>
             </div>
+
             <div className={cx('list')}>
               <div
                 ref={ref}
@@ -99,42 +98,35 @@ const Playlist: React.FC = () => {
                 }}
               ></div>
               <div
-                className={cx({
-                  'freeze-top-row': true,
-                  stuck: !inView,
-                  'grid-md': width <= 780,
-                })}
+                className={cx({ 'freeze-top-row': true, stuck: !inView })}
               >
                 <div>#</div>
                 <div>Title</div>
-                <div>Album</div>
-                {width > 780 && <div>Date added</div>}
                 <div className={cx('clock-icon')}>
                   <ClockIcon />
                 </div>
               </div>
               <div className={cx('songs')}>
+                {/* <SongItem isExplicit={true} isAlbumTrack songName='Song names'artist='MCK' duration={0} order={1} /> */}
                 {(() => {
                   // console.log(data?.tracks.items, isLoading)
                   let order = 1
                   if (!isLoading) {
-                    console.log('im here')
+                    // console.log('im here')
                     return data?.tracks.items.map(
                       (item: any, index: number) => {
-                        if (item.track) {
-                          return (
-                            <SongItem
-                              key={index}
-                              isLoading={isLoading}
-                              songName={item?.track?.name}
-                              artist={item?.track?.artists[0]?.name}
-                              thumb={item?.track?.album?.images[0]?.url}
-                              order={order++}
-                              duration={item?.track?.duration_ms}
-                              album={item?.track?.album?.name}
-                            />
-                          )
-                        }
+                        return (
+                          <SongItem
+                            key={index}
+                            isExplicit={item?.explicit}
+                            isAlbumTrack
+                            isLoading={isLoading}
+                            songName={item?.name}
+                            artist={item?.artists[0].name}
+                            order={order++}
+                            duration={item?.duration_ms}
+                          />
+                        )
                       }
                     )
                   } else {
@@ -152,10 +144,24 @@ const Playlist: React.FC = () => {
             </div>
           </div>
         </div>
+
+        <div className={cx('copy-rights')}>
+          <p className={cx('date')}>
+            {convertDateFormat(data?.release_date)}
+          </p>
+          {data?.copyrights.map((item: any, index: number) => (
+            <p key={index}>
+              {item.text.replace(/\(C\)|\(P\)/g, (match: any) => {
+                return match === '(C)' ? '©' : '℗'
+              })}
+            </p>
+          ))}
+        </div>
+
         <Footer />
       </div>
     </main>
   )
 }
 
-export default Playlist
+export default Album
