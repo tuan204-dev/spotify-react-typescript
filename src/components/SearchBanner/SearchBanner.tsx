@@ -9,7 +9,6 @@ const cx = classNames.bind(styles)
 
 const SearchBanner: React.FC = () => {
   const [data, setData] = useState<SearchBannerItem[]>([])
-
   const { quantityCol } = useContext(MainLayoutContext)
 
   useEffect(() => {
@@ -42,4 +41,4 @@ const SearchBanner: React.FC = () => {
   )
 }
 
-export default SearchBanner
+export default React.memo(SearchBanner)

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import styles from './Footer.module.scss'
 import classNames from 'classnames/bind'
 import { footerLinks, socialNetworkLinks, siteInfo } from '@/constants'
@@ -29,7 +29,11 @@ const Footer: React.FC = () => {
       <nav className={cx('footer__bottom')}>
         <div className={cx('footer__bottom-links')}>
           {siteInfo.map((item, index) => (
-            <a key={index} className={cx('footer__bottom-links-item')} href={item.url}>
+            <a
+              key={index}
+              className={cx('footer__bottom-links-item')}
+              href={item.url}
+            >
               {item.title}
             </a>
           ))}
@@ -42,4 +46,4 @@ const Footer: React.FC = () => {
   )
 }
 
-export default Footer
+export default memo(Footer)

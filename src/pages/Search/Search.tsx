@@ -1,9 +1,7 @@
-import Navbar from '@/components/Navbar/Navbar'
 import classNames from 'classnames/bind'
 import React, { FC, useState } from 'react'
 import styles from './Search.module.scss'
-import Footer from '@/components/Footer/Footer'
-import SearchBanner from '@/components/SearchBanner/SearchBanner'
+import { Footer, Navbar, SearchBanner } from '@/components'
 
 const cx = classNames.bind(styles)
 
@@ -12,7 +10,6 @@ interface SearchProps {
 }
 
 const Search: FC<SearchProps> = () => {
-  // const { children } = props
   const [query, setQuery] = useState<string>('')
 
   return (

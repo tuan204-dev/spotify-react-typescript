@@ -1,11 +1,11 @@
-import React, { memo, useRef } from 'react'
-import styles from './SectionItem.module.scss'
 import classNames from 'classnames/bind'
-import { SectionItemI } from '../../../types'
+import React, { memo } from 'react'
 import { TbPlayerPlayFilled } from 'react-icons/tb'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { Link } from 'react-router-dom'
+import { SectionItemI } from '../../../types'
+import styles from './SectionItem.module.scss'
 
 const cx = classNames.bind(styles)
 

@@ -39,7 +39,7 @@ const Section: React.FC<SectionProps> = ({
     setLoading(Boolean(!data))
   }, [data])
 
-  console.log(data)
+  // console.log(data)
 
   return (
     <section className={cx('wrapper')}>

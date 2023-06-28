@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import styles from './Album.module.scss'
 import classNames from 'classnames/bind'
-import Navbar from '@/components/Navbar/Navbar'
 import useDominantColor from '@/hooks/useDominantColor'
-import Header from '@/components/Header/Header'
 import { TbPlayerPlayFilled } from 'react-icons/tb'
 import { ClockIcon, HeartIcon } from '@/assets/icons'
-import SongItem from '@/components/SongItem/SongItem'
-import Footer from '@/components/Footer/Footer'
 import { convertDateFormat } from '@/utils/convertDateFormat'
 import { useInView } from 'react-intersection-observer'
 import { useLocation } from 'react-router-dom'
 import { fetchAlbum } from '@/utils/fetchData'
 import { useRaiseColorTone } from '@/hooks'
+import { Footer, Header, Navbar, SongItem } from '@/components'
 
 const cx = classNames.bind(styles)
 

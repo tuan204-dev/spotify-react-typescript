@@ -1,10 +1,10 @@
 import classNames from 'classnames/bind'
 import { HiArrowRight, HiOutlinePlus } from 'react-icons/hi'
 import styles from './Library.module.scss'
-import SidebarItem from '@/components/SidebarItem/SidebarItem'
 import { useEffect, useState } from 'react'
 import { LibraryIcon } from '@/assets/icons'
 import { AlbumItem, ArtistItem, PlayListItem } from '../../../../types'
+import { SidebarItem } from '@/components'
 
 const cx = classNames.bind(styles)
 
@@ -15,9 +15,9 @@ const Library = () => {
     name: 'Playlists',
     id: '00003',
   })
-  // const [data, setData] = useState<[]>([])
   const [renderData, setRenderData] = useState<[]>([])
   const [bottomShadow, setBottomShadow] = useState<boolean>(false)
+
 
   const libSelection: LibSelection = [
     {

@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react'
+import { FC, ReactNode, memo } from 'react'
 import Library from './Library/Library'
 import Nav from './Nav/Nav'
 import styles from './Sidebar.module.scss'
@@ -16,4 +16,4 @@ const Sidebar: FC<SidebarProps> = () => {
   )
 }
 
-export default Sidebar
+export default memo(Sidebar)

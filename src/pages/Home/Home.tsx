@@ -1,14 +1,12 @@
-import Greeting from '@/components/Greeting/Greeting'
-import Navbar from '@/components/Navbar/Navbar'
 import classNames from 'classnames/bind'
 import { useState, useEffect } from 'react'
 import styles from './Home.module.scss'
-import Footer from '@/components/Footer/Footer'
-import Section, { SectionProps } from '@/components/Section/Section'
+import { Footer, Greeting, Navbar, Section } from '@/components'
+import { SectionProps } from '@/components/Section/Section'
 
 const cx = classNames.bind(styles)
 
-const Home = () => {
+const Home: React.FC = () => {
   const [bgColor, setBgColor] = useState<string>('#c0b8c1')
   const [navOpacity, setNavOpacity] = useState<number>(0)
   const [trendingData, setTrendingData] = useState<SectionProps | null>(
