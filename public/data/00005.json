@@ -1,6 +1,7 @@
 {
   "title": "Albums",
   "id": "00005",
+  "dataType": "album",
   "data": [
     {
       "title": "99%",

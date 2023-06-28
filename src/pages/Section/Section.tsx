@@ -12,6 +12,7 @@ const cx = classNames.bind(styles)
 interface SectionData {
   title?: string
   id?: string
+  dataType?: string
   data?: SectionItemI[]
 }
 
@@ -19,7 +20,7 @@ const Section: React.FC = () => {
   const [data, setData] = useState<SectionData>({})
 
   const { search } = useLocation()
-  console.log(search)
+  // console.log(search)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,7 +36,12 @@ const Section: React.FC = () => {
     <div className={cx('wrapper')}>
       <Navbar isSection />
       <div className={cx('body')}>
-        <SectionContent isFull title={data.title} data={data.data} />
+        <SectionContent
+          isFull
+          dataType={data.dataType}
+          title={data.title}
+          data={data.data}
+        />
         <Footer />
       </div>
     </div>

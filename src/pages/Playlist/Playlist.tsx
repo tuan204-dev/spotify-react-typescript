@@ -5,13 +5,14 @@ import SongItem from '@/components/SongItem/SongItem'
 import useDominantColor from '@/hooks/useDominantColor'
 import { fetchPlaylist } from '@/utils/fetchData'
 import classNames from 'classnames/bind'
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext, memo } from 'react'
 import { TbPlayerPlayFilled } from 'react-icons/tb'
 import { useLocation } from 'react-router-dom'
 import styles from './Playlist.module.scss'
 import { useInView } from 'react-intersection-observer'
 import Footer from '@/components/Footer/Footer'
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
+import { useRaiseColorTone } from '@/hooks'
 
 const cx = classNames.bind(styles)
 
@@ -20,22 +21,24 @@ const Playlist: React.FC = () => {
   const [data, setData] = useState<any>()
   const [isLoading, setLoading] = useState<boolean>(true)
   const { search } = useLocation()
-  console.log(search)
-  const bgColor = useDominantColor(data?.images[0].url)
+  // console.log(search)
+  const bgColor = useRaiseColorTone(
+    useDominantColor(data?.images[0].url) || '#121212'
+  )
 
   const { width } = useContext(MainLayoutContext)
-  console.log(width)
+  // console.log(width)
 
   const { ref, inView } = useInView({
     threshold: 0,
   })
-  
+
   // console.log(data)
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchPlaylist(search.substring(1))
-      setData(data)
+      setData({ ...data })
     }
     if (search !== '?undefined') {
       fetchData()
@@ -118,7 +121,7 @@ const Playlist: React.FC = () => {
                   // console.log(data?.tracks.items, isLoading)
                   let order = 1
                   if (!isLoading) {
-                    console.log('im here')
+                    // console.log('im here')
                     return data?.tracks.items.map(
                       (item: any, index: number) => {
                         if (item.track) {
@@ -126,12 +129,12 @@ const Playlist: React.FC = () => {
                             <SongItem
                               key={index}
                               isLoading={isLoading}
-                              songName={item?.track?.name}
-                              artist={item?.track?.artists[0]?.name}
-                              thumb={item?.track?.album?.images[0]?.url}
+                              songName={item?.track.name}
+                              artist={item?.track.artists[0].name}
+                              thumb={item?.track.album.images[0].url}
                               order={order++}
-                              duration={item?.track?.duration_ms}
-                              album={item?.track?.album?.name}
+                              duration={item?.track.duration_ms}
+                              album={item?.track.album.name}
                             />
                           )
                         }
@@ -158,4 +161,4 @@ const Playlist: React.FC = () => {
   )
 }
 
-export default Playlist
+export default memo(Playlist)

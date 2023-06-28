@@ -12,6 +12,7 @@ import { convertDateFormat } from '@/utils/convertDateFormat'
 import { useInView } from 'react-intersection-observer'
 import { useLocation } from 'react-router-dom'
 import { fetchAlbum } from '@/utils/fetchData'
+import { useRaiseColorTone } from '@/hooks'
 
 const cx = classNames.bind(styles)
 
@@ -20,9 +21,9 @@ const Album: React.FC = () => {
   const [navOpacity, setNavOpacity] = useState<number>(0)
   const [isLoading, setLoading] = useState<boolean>(true)
 
-  const bgColor = useDominantColor(data?.images[0].url)
+  const bgColor = useRaiseColorTone(useDominantColor(data?.images[0].url))
 
-  const {search} = useLocation()
+  const { search } = useLocation()
 
   useEffect(() => {
     const fetchData = async () => {

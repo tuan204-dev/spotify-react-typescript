@@ -1,6 +1,7 @@
 {
   "title": "Artists",
   "id": "00004",
+  "dataType": "artist",
   "data": [
     {
       "name": "The Weeknd",

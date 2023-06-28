@@ -77,7 +77,7 @@ export const fetchPlaylist = async (id: string) => {
   )
   const data = await response.json()
 
-  console.log(data)
+  // console.log(data)
 
   return data
 }

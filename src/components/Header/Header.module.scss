@@ -60,7 +60,7 @@
     .title {
       font-size: 96px;
       padding: 8px 0 8px;
-      @include text-line-clamp(1);
+      @include text-in-one-line;
       margin: 0 0 4px;
     }
 

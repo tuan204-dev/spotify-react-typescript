@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { memo, useContext } from 'react'
 import styles from './SongItem.module.scss'
 import classNames from 'classnames/bind'
 import Skeleton from 'react-loading-skeleton'
@@ -30,6 +30,8 @@ const SongItem: React.FC<SongItemProps> = ({
   isExplicit = false
 }) => {
   const { width } = useContext(MainLayoutContext)
+
+  // console.log('im here')
 
   return (
     <div
@@ -91,4 +93,4 @@ const SongItem: React.FC<SongItemProps> = ({
   )
 }
 
-export default SongItem
+export default memo(SongItem)

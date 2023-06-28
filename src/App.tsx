@@ -16,10 +16,10 @@ import Album from './pages/Album/Album'
 
 function App() {
   const { pathname } = useLocation()
-  console.log(useLocation())
+  // console.log(useLocation())
   const [showSidebar, setShowSidebar] = useState<boolean>(true)
 
-  console.log(pathname)
+  // console.log(pathname)
 
   useEffect(() => {
     setShowSidebar(
@@ -34,7 +34,7 @@ function App() {
     )
   }, [pathname])
   // console.log(showSidebar, pathname)
-  console.log(pathname)
+  // console.log(pathname)
 
   return (
     <div className={styles.app}>

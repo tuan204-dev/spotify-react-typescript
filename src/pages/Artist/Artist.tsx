@@ -1,16 +1,18 @@
-interface ArtistProps {
-  children?: React.ReactNode
-}
+import React from 'react'
+import styles from './Artist.module.scss'
+import classNames from 'classnames/bind'
+// import {useRaiseColorTone} from '@/hooks'
 
-const Artist: React.FC<ArtistProps> = () => {
+const cx = classNames.bind(styles)
 
-  // const {children} = props
+const Artist: React.FC = () => {
+
 
   return (
-    <div>Artist</div>
+    <div>
+
+    </div>
   )
 }
 
 export default Artist
-
-

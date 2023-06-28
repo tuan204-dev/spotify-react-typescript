@@ -57,7 +57,7 @@ const Library = () => {
     (async () => {
       const response = await fetch(`data/${category.id}.json`)
       const data = await response.json()
-      console.log(data)
+      // console.log(data)
       setRenderData(
         () => {
           if (category.name === 'Playlists') {
@@ -77,6 +77,7 @@ const Library = () => {
             return data.data.map((item: ArtistItem, index: number) => (
               <SidebarItem
                 key={index}
+                id={item.id}
                 type="artist"
                 name={item.name}
                 thumbnail={item.imageUrl}

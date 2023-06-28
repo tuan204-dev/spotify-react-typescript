@@ -5,7 +5,6 @@ import { SectionItemI } from '../../../types'
 import { TbPlayerPlayFilled } from 'react-icons/tb'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import { useOnLoadImages } from '@/hooks/useOnLoadImages'
 import { Link } from 'react-router-dom'
 
 const cx = classNames.bind(styles)
@@ -16,19 +15,16 @@ const SectionItem: React.FC<SectionItemI> = ({
   imageUrl,
   isLoading,
   id,
-  kind,
+  dataType,
+  author
 }) => {
-  const imgRef = useRef<any>(null)
 
-  const isImageLoaded = useOnLoadImages(imgRef)
-  // console.log(isImageLoaded)
-  // console.log(title, name, imageUrl)
 
   return (
-    <Link to={`/${kind?.slice(0, -1)}?${id}`}>
+    <Link to={`/${dataType}?${id}`}>
       <div className={cx('wrapper')}>
-        <div ref={imgRef} className={cx('img')}>
-          {!isLoading && isImageLoaded ? (
+        <div className={cx('img')}>
+          {!isLoading ? (
             <>
               <img loading="lazy" src={imageUrl} alt={title || name} />
               <button
@@ -52,7 +48,7 @@ const SectionItem: React.FC<SectionItemI> = ({
           <div className={cx('desc')}>
             {!isLoading ? (
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                {author ? `By ${author}` : 'Lorem ipsum dolor sit amet consectetur adipisicing elit.'}
               </p>
             ) : (
               <Skeleton width={'60%'} height={22.5} borderRadius={50} />

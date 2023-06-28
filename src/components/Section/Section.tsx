@@ -11,6 +11,7 @@ export interface SectionProps {
   id?: string
   data?: SectionItemI[]
   isFull?: boolean
+  dataType?: string
 }
 
 const cx = classNames.bind(styles)
@@ -20,6 +21,7 @@ const Section: React.FC<SectionProps> = ({
   id,
   data,
   isFull = false,
+  dataType
 }) => {
   const [isLoading, setLoading] = useState<boolean>(true)
   const { quantityCol, width } = useContext(MainLayoutContext)
@@ -37,7 +39,7 @@ const Section: React.FC<SectionProps> = ({
     setLoading(Boolean(!data))
   }, [data])
 
-  // console.log(isLoading)
+  console.log(data)
 
   return (
     <section className={cx('wrapper')}>
@@ -67,7 +69,7 @@ const Section: React.FC<SectionProps> = ({
           ? isFull
             ? data?.map((item, index) => (
                 <SectionItem
-                  kind={title?.toLocaleLowerCase()}
+                  dataType={dataType}
                   isLoading={isLoading}
                   key={index}
                   {...item}
@@ -77,7 +79,7 @@ const Section: React.FC<SectionProps> = ({
                 ?.slice(0, Math.min(quantityCol, data.length))
                 .map((item, index) => (
                   <SectionItem
-                    kind={title?.toLocaleLowerCase()}
+                    dataType={dataType}
                     isLoading={isLoading}
                     key={index}
                     {...item}
@@ -87,7 +89,7 @@ const Section: React.FC<SectionProps> = ({
               .fill(0)
               .map((item, index) => (
                 <SectionItem
-                  kind={title?.toLocaleLowerCase()}
+                  dataType={dataType}
                   isLoading={isLoading}
                   key={index}
                   {...item}

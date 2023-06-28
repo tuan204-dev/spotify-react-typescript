@@ -39,13 +39,6 @@
       right: 8px;
       opacity: 0;
       transition: transform .3s ease scale .05s ease;
-      // transform-origin: -25px -25px;
-
-      // &:hover {
-      //   // transform: scale(1.1);
-      //   width: 55px;
-      //   height: 55px;
-      // }
 
       &:hover {
         scale: 1.04;
@@ -66,9 +59,7 @@
     .heading {
       width: 100%;
       display: block;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      @include text-in-one-line;
       font-size: 16px;
       font-weight: 700;
       color: $white;
@@ -80,11 +71,7 @@
     .desc {
       font-size: 14px;
       color: $text-subdued;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      font-family: CircularSp;
+      @include text-line-clamp(2);
       font-weight: 700;
       margin: 14px 0;
       p {

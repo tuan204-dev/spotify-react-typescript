@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {memo} from 'react'
 import styles from './Header.module.scss'
 import classNames from 'classnames/bind'
 import logoImage from '@/assets/image/logo/logo.svg'
 import Skeleton from 'react-loading-skeleton'
+import htmlCleaner from '@/utils/htmlCleaner'
 
 const cx = classNames.bind(styles)
 
@@ -29,7 +30,7 @@ const Header: React.FC<HeaderProps> = ({
   artist,
   releaseDate,
 }) => {
-  console.log(desc)
+  // console.log(desc)
 
   return (
     <main
@@ -50,7 +51,7 @@ const Header: React.FC<HeaderProps> = ({
               {' '}
               <p className={cx('type')}>{type}</p>
               <h2 className={cx('title')}>{title}</h2>
-              <span className={cx('desc')}>{desc}</span>
+              <span className={cx('desc')}>{htmlCleaner(desc) || ''}</span>
               <div className={cx('quantity')}>
                 <div
                   style={{ backgroundImage: `url(${logoImage})` }}
@@ -83,4 +84,4 @@ const Header: React.FC<HeaderProps> = ({
   )
 }
 
-export default Header
+export default memo(Header)

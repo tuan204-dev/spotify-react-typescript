@@ -49,3 +49,9 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+@mixin text-in-one-line {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
