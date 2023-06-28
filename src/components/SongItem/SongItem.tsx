@@ -4,6 +4,7 @@ import classNames from 'classnames/bind'
 import Skeleton from 'react-loading-skeleton'
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
 import { Link } from 'react-router-dom'
+import { convertDateFormat } from '@/utils/convertDateFormat'
 
 const cx = classNames.bind(styles)
 
@@ -15,6 +16,7 @@ interface SongItemProps {
   order?: number
   isLoading?: boolean
   album?: string
+  dateAdd?: string
   isAlbumTrack?: boolean
   isExplicit?: boolean
 }
@@ -42,8 +44,13 @@ const Artist = (artists?: any[]) => {
       }
 
       renderData.push(
-        <Link key={artists.length - 1} to={`/artist?${artists[artists.length - 1].id}`}>
-          <span className={cx('artist-item')}>{artists[artists.length - 1].name}</span>
+        <Link
+          key={artists.length - 1}
+          to={`/artist?${artists[artists.length - 1].id}`}
+        >
+          <span className={cx('artist-item')}>
+            {artists[artists.length - 1].name}
+          </span>
         </Link>
       )
     }
@@ -59,13 +66,12 @@ const SongItem: React.FC<SongItemProps> = ({
   duration = 0,
   order,
   isLoading = false,
+  dateAdd,
   album,
   isAlbumTrack = false,
   isExplicit = false,
 }) => {
   const { width } = useContext(MainLayoutContext)
-
-  // console.log('im here')
 
   return (
     <div
@@ -91,9 +97,7 @@ const SongItem: React.FC<SongItemProps> = ({
             <>
               <p className={cx('name')}>{songName}</p>
               <div style={{ display: 'flex', alignItems: 'center' }}>
-                {isAlbumTrack && isExplicit && (
-                  <span className={cx('explicit')}>E</span>
-                )}
+                {isExplicit && <span className={cx('explicit')}>E</span>}
                 <div className={cx('artists')}>{Artist(artists)}</div>
               </div>
             </>
@@ -112,7 +116,11 @@ const SongItem: React.FC<SongItemProps> = ({
       {!isAlbumTrack && (
         <>
           <div className={cx('album')}>{!isLoading && album}</div>
-          {width > 780 && <div className={cx('date-add')}></div>}
+          {width > 780 && (
+            <div className={cx('date-add')}>
+              {dateAdd && convertDateFormat(dateAdd)}
+            </div>
+          )}
         </>
       )}
       <div className={cx('duration')}>

@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext, memo } from 'react'
 import { Footer, Header, Navbar, SongItem } from '@/components'
 import { ClockIcon, HeartIcon } from '@/assets/icons'
 import useDominantColor from '@/hooks/useDominantColor'
-import { fetchPlaylist } from '@/utils/fetchData'
 import classNames from 'classnames/bind'
 import { TbPlayerPlayFilled } from 'react-icons/tb'
 import { useLocation } from 'react-router-dom'
@@ -10,6 +9,7 @@ import styles from './Playlist.module.scss'
 import { useInView } from 'react-intersection-observer'
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
 import { useRaiseColorTone } from '@/hooks'
+import { fetchSpotifyData, getAccessToken } from '@/utils/fetchData'
 
 const cx = classNames.bind(styles)
 
@@ -30,11 +30,16 @@ const Playlist: React.FC = () => {
     threshold: 0,
   })
 
-  // console.log(data)
+  console.log(data)
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchPlaylist(search.substring(1))
+      const token = await getAccessToken()
+      const data = await fetchSpotifyData({
+        type: 'playlists',
+        accessToken: token,
+        id: search.substring(1),
+      })
       setData({ ...data })
     }
     if (search !== '?undefined') {
@@ -125,13 +130,15 @@ const Playlist: React.FC = () => {
                           return (
                             <SongItem
                               key={index}
-                              isLoading={isLoading}
+                              order={order++}
+                              thumb={item?.track.album.images[0].url}
                               songName={item?.track.name}
                               artists={item?.track.artists}
-                              thumb={item?.track.album.images[0].url}
-                              order={order++}
-                              duration={item?.track.duration_ms}
                               album={item?.track.album.name}
+                              dateAdd={item?.added_at}
+                              duration={item?.track.duration_ms}
+                              isExplicit={item?.track.explicit}
+                              isLoading={isLoading}
                             />
                           )
                         }

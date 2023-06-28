@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react'
-import styles from './Album.module.scss'
-import classNames from 'classnames/bind'
-import useDominantColor from '@/hooks/useDominantColor'
-import { TbPlayerPlayFilled } from 'react-icons/tb'
 import { ClockIcon, HeartIcon } from '@/assets/icons'
+import { Footer, Header, Navbar, SongItem } from '@/components'
+import { useRaiseColorTone } from '@/hooks'
+import useDominantColor from '@/hooks/useDominantColor'
 import { convertDateFormat } from '@/utils/convertDateFormat'
+import { fetchSpotifyData, getAccessToken } from '@/utils/fetchData'
+import classNames from 'classnames/bind'
+import React, { useEffect, useState } from 'react'
+import { TbPlayerPlayFilled } from 'react-icons/tb'
 import { useInView } from 'react-intersection-observer'
 import { useLocation } from 'react-router-dom'
-import { fetchAlbum } from '@/utils/fetchData'
-import { useRaiseColorTone } from '@/hooks'
-import { Footer, Header, Navbar, SongItem } from '@/components'
+import styles from './Album.module.scss'
 
 const cx = classNames.bind(styles)
 
@@ -22,10 +22,16 @@ const Album: React.FC = () => {
 
   const { search } = useLocation()
 
+
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchAlbum(search.substring(1))
-      setData(data?.albums[0])
+      const token = await getAccessToken()
+      const data = await fetchSpotifyData({
+        accessToken: token,
+        type: 'albums',
+        id: search.substring(1),
+      })
+      setData(data)
     }
     if (search !== '?undefined') {
       fetchData()
@@ -51,6 +57,8 @@ const Album: React.FC = () => {
     }
     setNavOpacity(yAxis / 64)
   }
+
+  console.log(data)
 
   return (
     <main className={cx('wrapper')}>
@@ -120,7 +128,7 @@ const Album: React.FC = () => {
                             isAlbumTrack
                             isLoading={isLoading}
                             songName={item?.name}
-                            artists={item?.artists[0].name}
+                            artists={item?.artists}
                             order={order++}
                             duration={item?.duration_ms}
                           />

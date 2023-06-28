@@ -19,30 +19,30 @@ export const options = {
   playlist: 'playlist',
 }
 
-export const fetchData = async (
-  option: string,
-  param: string,
-  type = 'multi',
-  limit = 10
-) => {
-  const options = {
-    method: 'GET',
-    url: `https://spotify-web2.p.rapidapi.com/${option}/`,
-    params: {
-      q: param,
-      type: type,
-      offset: '0',
-      limit: `${limit}`,
-      numberOfTopResults: '5',
-    },
-    headers: {
-      'X-RapidAPI-Key': process.env.RAPID_SPOTIFY_API,
-      'X-RapidAPI-Host': 'spotify-web2.p.rapidapi.com',
-    },
-  }
-  const response = await axios.request(options)
-  return response
-}
+// export const fetchData = async (
+//   option: string,
+//   param: string,
+//   type = 'multi',
+//   limit = 10
+// ) => {
+//   const options = {
+//     method: 'GET',
+//     url: `https://spotify-web2.p.rapidapi.com/${option}/`,
+//     params: {
+//       q: param,
+//       type: type,
+//       offset: '0',
+//       limit: `${limit}`,
+//       numberOfTopResults: '5',
+//     },
+//     headers: {
+//       'X-RapidAPI-Key': process.env.RAPID_SPOTIFY_API,
+//       'X-RapidAPI-Host': 'spotify-web2.p.rapidapi.com',
+//     },
+//   }
+//   const response = await axios.request(options)
+//   return response
+// }
 
 // export const fetchPlaylist = async (id: string) => {
 //   const options = {
@@ -99,4 +99,48 @@ export const fetchAlbum = async (id: string) => {
   const response = await axios.request(options)
   // console.log(response.data);
   return response.data
+}
+
+export const getAccessToken = async () => {
+  const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID
+  const clientSecret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET
+
+
+  const response = await fetch('https://accounts.spotify.com/api/token', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: `grant_type=client_credentials&client_id=${clientId}&client_secret=${clientSecret}`,
+  })
+
+  const data = await response.json()
+  return data.access_token
+}
+
+interface RequestArg {
+  type: 'playlists' | 'albums'
+  accessToken: string
+  id: string
+}
+
+export const fetchSpotifyData = async (args: Partial<RequestArg>) => {
+  const {
+    type,
+    accessToken,
+    id,
+  } = args
+
+  const response = await fetch(
+    `https://api.spotify.com/v1/${type}/${id}`,
+    {
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer ' + accessToken,
+      },
+    }
+  )
+
+  const data = await response.json();
+  return data
 }
