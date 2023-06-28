@@ -1,0 +1,15 @@
+@import '../../scss/variable';
+
+.wrapper {
+  display: flex;
+  gap: 3px;
+
+  .playlist {
+    font-size: 14px;
+    color: $white;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

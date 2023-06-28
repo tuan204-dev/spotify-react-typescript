@@ -68,7 +68,7 @@ myHeaders.append('Content-Type', 'application/json')
 
 export const fetchPlaylist = async (id: string) => {
   const response = await fetch(
-    `https://v1.nocodeapi.com/tuan204_dev/spotify/ExjCMLdAjTGUkUNr/playlists?id=${id}`,
+    `https://v1.nocodeapi.com/sdgdfgsedhsdf/spotify/eRnvuFwFdrktvMMc/playlists?id=${id}`,
     {
       method: 'get',
       headers: myHeaders,

@@ -127,7 +127,7 @@ const Playlist: React.FC = () => {
                               key={index}
                               isLoading={isLoading}
                               songName={item?.track.name}
-                              artist={item?.track.artists[0].name}
+                              artists={item?.track.artists}
                               thumb={item?.track.album.images[0].url}
                               order={order++}
                               duration={item?.track.duration_ms}

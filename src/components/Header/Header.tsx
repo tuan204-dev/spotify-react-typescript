@@ -1,9 +1,10 @@
-import React, {memo} from 'react'
-import styles from './Header.module.scss'
-import classNames from 'classnames/bind'
 import logoImage from '@/assets/image/logo/logo.svg'
-import Skeleton from 'react-loading-skeleton'
 import htmlCleaner from '@/utils/htmlCleaner'
+import classNames from 'classnames/bind'
+import React, { memo } from 'react'
+import Skeleton from 'react-loading-skeleton'
+import { ArtistList } from '..'
+import styles from './Header.module.scss'
 
 const cx = classNames.bind(styles)
 
@@ -51,7 +52,29 @@ const Header: React.FC<HeaderProps> = ({
               {' '}
               <p className={cx('type')}>{type}</p>
               <h2 className={cx('title')}>{title}</h2>
-              <span className={cx('desc')}>{htmlCleaner(desc) || ''}</span>
+              <div className={cx('desc')}>
+                {/* {htmlCleaner(desc).map((item, index) => (
+                  <>
+                    <Link key={index} to={`artist?${item.id}`}>
+                      <span className={cx('artist')}>{item.name}</span>
+                    </Link>
+                    {', '}
+                  </>
+                ))} */}
+                {/* {
+                  (() => {
+                    const data = htmlCleaner(desc)
+                    if(data.length === 1) {
+                      return (
+                        <Link to={`artist?${data[0].id}`}>{data[0].name}</Link>
+                      )
+                    }
+
+                    return []
+                  })()
+                } */}
+                <ArtistList data={htmlCleaner(desc)}/>
+              </div>
               <div className={cx('quantity')}>
                 <div
                   style={{ backgroundImage: `url(${logoImage})` }}
@@ -61,7 +84,9 @@ const Header: React.FC<HeaderProps> = ({
                   <>
                     <div className={cx('artist')}>{artist}</div>{' '}
                     <div className={cx('dot')}></div>{' '}
-                    <div className={cx('release-date')}>{releaseDate?.slice(0,4)}</div>
+                    <div className={cx('release-date')}>
+                      {releaseDate?.slice(0, 4)}
+                    </div>
                   </>
                 )}
                 <div className={cx('dot')}></div>

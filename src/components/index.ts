@@ -10,6 +10,8 @@ import Sidebar from './Sidebar/Sidebar'
 import SidebarItem from './SidebarItem/SidebarItem'
 import SongItem from './SongItem/SongItem'
 import SongItemTag from './SongItemTag/SongItemTag'
+import ArtistList from './ArtistList/ArtistList'
+
 
 export {
   Section,
@@ -24,4 +26,5 @@ export {
   SidebarItem,
   SongItem,
   SongItemTag,
+  ArtistList
 }

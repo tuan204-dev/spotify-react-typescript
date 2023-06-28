@@ -20,10 +20,10 @@
 }
 
 .body {
-  flex: 1;
   display: flex;
   gap: 24px;
-  align-items: flex-end;
+  width: 100%;
+  // overflow: hidden;
 
   .img {
     height: 232px;
@@ -39,6 +39,8 @@
   }
 
   .content {
+    //fix content overflow
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -69,6 +71,12 @@
       color: hsla(0, 0%, 100%, .7);
       margin-bottom: 8px;
       @include text-line-clamp(2);
+      display: flex;
+
+      .artist {
+        color: $white;
+        font-size: 14px;
+      }
     }
 
     .quantity {
@@ -85,9 +93,7 @@
         font-weight: 700;
       }
 
-      .release-date {
-
-      }
+      .release-date {}
 
       .logo {
         height: 20px;

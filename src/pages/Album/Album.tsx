@@ -120,7 +120,7 @@ const Album: React.FC = () => {
                             isAlbumTrack
                             isLoading={isLoading}
                             songName={item?.name}
-                            artist={item?.artists[0].name}
+                            artists={item?.artists[0].name}
                             order={order++}
                             duration={item?.duration_ms}
                           />

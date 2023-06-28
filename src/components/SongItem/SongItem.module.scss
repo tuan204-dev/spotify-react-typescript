@@ -1,8 +1,9 @@
 @import '../../scss/variable';
+@import '../../scss/mixin';
 
 .wrapper {
   display: grid;
-  grid-template-columns: 16px 6fr 4fr 3fr 50px;
+  grid-template-columns: 16px minmax(300px, 6fr) 4fr 3fr 50px;
   grid-gap: 16px;
   height: 56px;
   padding-inline: 16px;
@@ -16,7 +17,7 @@
 }
 
 .is-album-track {
-  grid-template-columns: 16px 4fr 50px !important;
+  grid-template-columns: 16px minmax(300px, 4fr) 50px !important;
 }
 
 .main {
@@ -42,6 +43,7 @@
     height: 100%;
     gap: 5px;
     // padding: 8px 0;
+    overflow: hidden;
 
     .name {
       color: $white;
@@ -57,9 +59,23 @@
       text-overflow: ellipsis;
     }
 
-    .artist {
-      color: $text-neutral;
+    .artists {
       font-size: 14px;
+      color: $text-neutral;
+      display: flex;
+      gap: 3px;
+      overflow: hidden;
+      @include text-in-one-line;
+
+      .artist-item {
+        color: $text-neutral;
+
+
+        &:hover {
+          text-decoration: underline;
+          color: $white;
+        }
+      }
     }
 
     .explicit {
@@ -98,5 +114,5 @@
 }
 
 .grid-md {
-  grid-template-columns: 16px 4fr 2fr 50px !important;
+  grid-template-columns: 16px minmax(300px, 4fr) 2fr 50px !important;
 }

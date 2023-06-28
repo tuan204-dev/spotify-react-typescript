@@ -31,3 +31,8 @@ export interface SectionItemI extends PlayListItem, ArtistItem, AlbumItem {
   columnWidth: number
   dataType?: string
 }
+
+export interface ArtistDataProps {
+  name: string
+  id: string
+}

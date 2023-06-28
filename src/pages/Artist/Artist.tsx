@@ -10,7 +10,7 @@ const Artist: React.FC = () => {
 
   return (
     <div>
-
+      Artist
     </div>
   )
 }
