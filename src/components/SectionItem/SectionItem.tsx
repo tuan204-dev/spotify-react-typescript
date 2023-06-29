@@ -5,9 +5,8 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { Link } from 'react-router-dom'
 import { SectionItemI } from '../../../types'
-import styles from './SectionItem.module.scss'
-import { ArtistList } from '..'
 import { Artists } from '../UIs'
+import styles from './SectionItem.module.scss'
 
 
 const cx = classNames.bind(styles)

@@ -8,10 +8,9 @@ const cx = classNames.bind(styles)
 
 interface ArtistListProps {
   data: ArtistDataProps[] | null
-  isPlaylist?: boolean
 }
 
-const ArtistList: React.FC<ArtistListProps> = ({ data, isPlaylist }) => {
+const ArtistList: React.FC<ArtistListProps> = ({ data }) => {
   // console.log(data)
   const renderData: any = []
   if (data) {
