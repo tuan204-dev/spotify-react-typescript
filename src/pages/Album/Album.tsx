@@ -65,7 +65,7 @@ const Album: React.FC = () => {
       <Navbar navOpacity={navOpacity} bgColor={bgColor} />
       <div onScroll={(e) => handleScroll(e)} className={cx('body')}>
         <Header
-          type="Album"
+          type={data?.album_type}
           artist={data?.artists[0].name}
           releaseDate={data?.release_date}
           desc={data?.description}

@@ -1,16 +1,18 @@
 import classNames from 'classnames/bind'
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import { ArtistDataProps } from '../../../types'
+import { ArtistDataProps } from '../../../../types'
 import styles from './ArtistList.module.scss'
 
 const cx = classNames.bind(styles)
 
 interface ArtistListProps {
   data: ArtistDataProps[] | null
+  isPlaylist?: boolean
 }
 
-const ArtistList: React.FC<ArtistListProps> = ({ data }) => {
+const ArtistList: React.FC<ArtistListProps> = ({ data, isPlaylist }) => {
+  // console.log(data)
   const renderData: any = []
   if (data) {
     if (data.length === 1) {
@@ -53,7 +55,10 @@ const ArtistList: React.FC<ArtistListProps> = ({ data }) => {
         </Fragment>
       )
       renderData.push(
-        <Link key={data.length - 1} to={`/playlist?${data[data.length - 1].id}`}>
+        <Link
+          key={data.length - 1}
+          to={`/playlist?${data[data.length - 1].id}`}
+        >
           <span className={cx('playlist')}>
             {data[data.length - 1].name}
           </span>

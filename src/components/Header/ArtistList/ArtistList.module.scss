@@ -1,8 +1,12 @@
-@import '../../scss/variable';
+@import '../../../scss/variable';
 
 .wrapper {
   display: flex;
   gap: 3px;
+
+  .name {
+    color: $text-neutral;
+  }
 
   .playlist {
     font-size: 14px;

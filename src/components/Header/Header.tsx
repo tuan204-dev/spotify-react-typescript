@@ -12,7 +12,7 @@ interface HeaderProps {
   title?: string
   thumbnail?: string
   quantity?: number
-  type?: 'Playlist' | 'Album'
+  type?: 'Playlist' | 'album' | 'single' | 'compilation'
   bgColor?: string
   desc?: string
   isLoading?: boolean
@@ -50,37 +50,20 @@ const Header: React.FC<HeaderProps> = ({
           {!isLoading ? (
             <>
               {' '}
-              <p className={cx('type')}>{type}</p>
+              <p className={cx('type')}>
+                {(type === 'album' && 'Album') ||
+                  (type === 'single' && 'Single') || (type === 'compilation' && 'Compilation')}
+              </p>
               <h2 className={cx('title')}>{title}</h2>
               <div className={cx('desc')}>
-                {/* {htmlCleaner(desc).map((item, index) => (
-                  <>
-                    <Link key={index} to={`artist?${item.id}`}>
-                      <span className={cx('artist')}>{item.name}</span>
-                    </Link>
-                    {', '}
-                  </>
-                ))} */}
-                {/* {
-                  (() => {
-                    const data = htmlCleaner(desc)
-                    if(data.length === 1) {
-                      return (
-                        <Link to={`artist?${data[0].id}`}>{data[0].name}</Link>
-                      )
-                    }
-
-                    return []
-                  })()
-                } */}
-                <ArtistList data={htmlCleaner(desc)}/>
+                <ArtistList data={htmlCleaner(desc)} />
               </div>
               <div className={cx('quantity')}>
                 <div
                   style={{ backgroundImage: `url(${logoImage})` }}
                   className={cx('logo')}
                 ></div>
-                {type === 'Album' && (
+                {type === 'album' && (
                   <>
                     <div className={cx('artist')}>{artist}</div>{' '}
                     <div className={cx('dot')}></div>{' '}

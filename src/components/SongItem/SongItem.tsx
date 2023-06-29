@@ -62,7 +62,7 @@ const SongItem: React.FC<SongItemProps> = ({
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 {isExplicit && <span className={cx('explicit')}>E</span>}
                 {/* <div className={cx('artists')}>{Artist(artists)}</div> */}
-                <Artists artists={artists}/>
+                <Artists data={artists}/>
               </div>
             </>
           ) : (

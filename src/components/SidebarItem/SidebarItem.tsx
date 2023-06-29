@@ -21,7 +21,7 @@ const SidebarItem: FC<SidebarItemProps> = (props) => {
   const newType = (() => {
     if(type === 'playlist') return author
     if(type === 'artist') return 'Artist'
-    if(type === 'album' && artists) return <Artists artists={artists}/>
+    if(type === 'album' && artists) return <Artists data={artists}/>
   })()
 
   return (

@@ -6,6 +6,9 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { Link } from 'react-router-dom'
 import { SectionItemI } from '../../../types'
 import styles from './SectionItem.module.scss'
+import { ArtistList } from '..'
+import { Artists } from '../UIs'
+
 
 const cx = classNames.bind(styles)
 
@@ -13,31 +16,34 @@ const SectionItem: React.FC<SectionItemI> = ({
   title,
   name,
   imageUrl,
-  isLoading,
   id,
   dataType,
-  author
+  author,
+  artists,
+  isLoading,
 }) => {
-
-
   return (
     <Link to={`/${dataType}?${id}`}>
       <div className={cx('wrapper')}>
-        <div className={cx('img')}>
+        <div
+          className={cx({ img: true, isArtist: dataType === 'artist' })}
+        >
           {!isLoading ? (
             <>
               <img loading="lazy" src={imageUrl} alt={title || name} />
-              <button
-                className={cx({
-                  'play-btn': true,
-                })}
-              >
-                <TbPlayerPlayFilled className={cx('play-btn-child')} />
-              </button>
             </>
           ) : (
             <Skeleton height={'100%'} />
           )}
+        </div>
+        <div className={cx('btn-pivot')}>
+          <button
+            className={cx({
+              'play-btn': true,
+            })}
+          >
+            <TbPlayerPlayFilled className={cx('play-btn-child')} />
+          </button>
         </div>
         <div className={cx('body')}>
           {!isLoading ? (
@@ -47,8 +53,16 @@ const SectionItem: React.FC<SectionItemI> = ({
           )}
           <div className={cx('desc')}>
             {!isLoading ? (
+              // <p>
+              //   {author
+              //     ? `By ${author}`
+              //     : 'Lorem ipsum dolor sit amet consectetur adipisicing elit.'}
+              // </p>
               <p>
-                {author ? `By ${author}` : 'Lorem ipsum dolor sit amet consectetur adipisicing elit.'}
+                {(author && `By ${author}`) ||
+                  (dataType === 'artist' && 'Artist') ||
+                  (artists && <Artists data={artists} />) ||
+                  'Lorem ipsum dolor sit amet consectetur adipisicing elit.'}
               </p>
             ) : (
               <Skeleton width={'60%'} height={22.5} borderRadius={50} />

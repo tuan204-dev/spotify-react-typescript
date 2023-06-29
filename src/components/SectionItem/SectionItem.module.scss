@@ -7,27 +7,40 @@
   border-radius: 8px;
   width: 100%;
   transition: background-color .3s ease;
+  position: relative;
   cursor: pointer;
+
+
 
   &:hover {
     background-color: $bg-card-highlight;
   }
 
-  
+
 
   .img {
     width: 100%;
     aspect-ratio: 1 / 1;
     margin-bottom: 16px;
     border-radius: 6px;
-    position: relative;
     overflow: hidden;
     // box-shadow: 0 8px 24px rgba(0,0,0,.5);
+
 
     img {
       width: 100%;
       object-fit: cover;
     }
+
+
+
+
+  }
+
+  .btn-pivot {
+    width: 100%;
+    height: 0;
+    position: relative;
 
     .play-btn {
       @include button-icon(50px, $primary, $primary);
@@ -35,7 +48,7 @@
       box-shadow: 0 8px 8px rgba(0, 0, 0, .3);
       position: absolute;
       z-index: 999;
-      bottom: 0;
+      top: -66px;
       right: 8px;
       opacity: 0;
       transition: transform .3s ease scale .05s ease;
@@ -43,17 +56,15 @@
       &:hover {
         scale: 1.04;
       }
-      
-    }
 
-    
+    }
   }
 
   .body {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    // position: relative;
+    position: relative;
     max-width: 100%;
 
     .heading {
@@ -74,8 +85,10 @@
       @include text-line-clamp(2);
       font-weight: 700;
       margin: 14px 0;
+
       p {
         margin: 0;
+        color: $text-subdued;
       }
     }
 
@@ -86,4 +99,8 @@
     transform: translateY(-8px);
   }
 
+}
+
+.isArtist {
+  border-radius: 50% !important;
 }

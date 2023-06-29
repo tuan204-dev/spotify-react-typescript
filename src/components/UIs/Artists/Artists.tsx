@@ -6,25 +6,25 @@ import classNames from 'classnames/bind'
 const cx = classNames.bind(styles)
 
 interface ArtistsProps {
-  artists: any
+  data: any
 }
 
-const Artists: FC<ArtistsProps> = ({artists}) => {
+const Artists: FC<ArtistsProps> = ({data}) => {
   const renderData: any[] = []
-  console.log(artists)
-  if (artists) {
-    if (artists.length === 1) {
+  console.log(data)
+  if (data) {
+    if (data.length === 1) {
       renderData.push(
-        <Link key={0} to={`/artist?${artists[0].id}`}>
-          <span className={cx('artist-item')}>{artists[0].name}</span>
+        <Link key={0} to={`/artist?${data[0].id}`}>
+          <span className={cx('artist-item')}>{data[0].name}</span>
         </Link>
       )
     } else {
-      for (let i = 0; i < artists.length - 1; i++) {
+      for (let i = 0; i < data.length - 1; i++) {
         renderData.push(
           <Fragment key={i}>
-            <Link to={`/artist?${artists[i].id}`}>
-              <span className={cx('artist-item')}>{artists[i].name}</span>
+            <Link to={`/artist?${data[i].id}`}>
+              <span className={cx('artist-item')}>{data[i].name}</span>
             </Link>
             {', '}
           </Fragment>
@@ -33,11 +33,11 @@ const Artists: FC<ArtistsProps> = ({artists}) => {
 
       renderData.push(
         <Link
-          key={artists.length - 1}
-          to={`/artist?${artists[artists.length - 1].id}`}
+          key={data.length - 1}
+          to={`/artist?${data[data.length - 1].id}`}
         >
           <span className={cx('artist-item')}>
-            {artists[artists.length - 1].name}
+            {data[data.length - 1].name}
           </span>
         </Link>
       )

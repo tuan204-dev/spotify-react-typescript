@@ -10,16 +10,17 @@ const cx = classNames.bind(styles)
 const Home: React.FC = () => {
   const [bgColor, setBgColor] = useState<string>('#c0b8c1')
   const [navOpacity, setNavOpacity] = useState<number>(0)
+  const [albumsData, setAlbumsData] = useState<SectionProps | null>(null)
+  const [playlistData, setPlaylistData] = useState<SectionProps | null>(
+    null
+  )
+  const [artistsData, setArtistsData] = useState<any>()
   // const [trendingData, setTrendingData] = useState<SectionProps | null>(
   //   null
   // )
   // const [topMixesData, setTopMixesData] = useState<SectionProps | null>(
   //   null
   // )
-  const [albumsData, setAlbumsData] = useState<SectionProps | null>(null)
-  const [playlistData, setPlaylistData] = useState<SectionProps | null>(
-    null
-  )
 
   const [newReleasesData, setNewReleaseData] = useState<any>()
 
@@ -70,7 +71,15 @@ const Home: React.FC = () => {
       const albumsData = await albumsRes.json()
       setAlbumsData(albumsData)
     }
+    fetchData()
+  }, [])
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const artistsRes = await fetch('/data/00004.json')
+      const artistsData = await artistsRes.json()
+      setArtistsData(artistsData)
+    }
     fetchData()
   }, [])
 
@@ -124,6 +133,12 @@ const Home: React.FC = () => {
           href={albumsData?.href}
           data={albumsData?.data}
           dataType={albumsData?.dataType}
+        />
+        <Section
+          title={artistsData?.title}
+          href={artistsData?.href}
+          data={artistsData?.data}
+          dataType={artistsData?.dataType}
         />
         <Footer />
       </div>

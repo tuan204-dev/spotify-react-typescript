@@ -10,7 +10,7 @@ import Sidebar from './Sidebar/Sidebar'
 import SidebarItem from './SidebarItem/SidebarItem'
 import SongItem from './SongItem/SongItem'
 import SongItemTag from './SongItemTag/SongItemTag'
-import ArtistList from './ArtistList/ArtistList'
+import ArtistList from './Header/ArtistList/ArtistList'
 
 
 export {

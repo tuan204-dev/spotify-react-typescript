@@ -29,15 +29,11 @@ const Section: React.FC<SectionProps> = ({
     (width - 2 * 24 - (quantityCol - 1) * 24) / quantityCol
 
   // console.log(width, quantityCol)
-  // console.log(data)
+  console.log(data)
 
   useEffect(() => {
-    // setTimeout(() => {
-    //   setLoading(Boolean(!data))
-    // }, 500)
     setLoading(Boolean(!data))
   }, [data])
-
 
   return (
     <section className={cx('wrapper')}>
@@ -67,16 +63,17 @@ const Section: React.FC<SectionProps> = ({
           ? isFull
             ? data?.map((item, index) => (
                 <SectionItem
-                dataType={dataType}
-                isLoading={isLoading}
-                key={index}
-                id={item.id}
-                title={item.name}
-                imageUrl={item?.images[0]?.url}
-                author={
-                  (item?.artists && item?.artists.name) ||
-                  (item?.owner && item?.owner.display_name)
-                }
+                  dataType={dataType}
+                  isLoading={isLoading}
+                  key={index}
+                  id={item.id}
+                  title={item.name}
+                  imageUrl={item?.images[0]?.url}
+                  artists={item?.artists}
+                  author={
+                    (item?.artists && item?.artists.name) ||
+                    (item?.owner && item?.owner.display_name)
+                  }
                 />
               ))
             : data
@@ -88,6 +85,7 @@ const Section: React.FC<SectionProps> = ({
                     key={index}
                     id={item.id}
                     title={item.name}
+                    artists={item?.artists}
                     imageUrl={item?.images[0]?.url}
                     author={
                       (item?.artists && item?.artists.name) ||
