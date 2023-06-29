@@ -49,6 +49,7 @@
   -webkit-line-clamp: $line-number;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  white-space: normal;
 }
 
 @mixin text-in-one-line {

@@ -8,7 +8,6 @@ import { SectionItemI } from '../../../types'
 import { Artists } from '../UIs'
 import styles from './SectionItem.module.scss'
 
-
 const cx = classNames.bind(styles)
 
 const SectionItem: React.FC<SectionItemI> = ({
@@ -19,6 +18,7 @@ const SectionItem: React.FC<SectionItemI> = ({
   dataType,
   author,
   artists,
+  desc,
   isLoading,
 }) => {
   return (
@@ -58,9 +58,10 @@ const SectionItem: React.FC<SectionItemI> = ({
               //     : 'Lorem ipsum dolor sit amet consectetur adipisicing elit.'}
               // </p>
               <p>
-                {(author && `By ${author}`) ||
+                {desc || (author && `By ${author}`) ||
                   (dataType === 'artist' && 'Artist') ||
                   (artists && <Artists data={artists} />) ||
+                  
                   'Lorem ipsum dolor sit amet consectetur adipisicing elit.'}
               </p>
             ) : (

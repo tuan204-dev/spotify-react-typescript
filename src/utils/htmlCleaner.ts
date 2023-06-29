@@ -2,7 +2,8 @@ import { ArtistDataProps } from '../../types'
 
 export default function htmlCleaner(
   htmlString: string | undefined
-): ArtistDataProps[] | null {
+): ArtistDataProps[] | null | string {
+  
   if (!htmlString) return null
   const parser = new DOMParser()
   const doc = parser.parseFromString(htmlString, 'text/html')
@@ -10,7 +11,7 @@ export default function htmlCleaner(
 
   const links = doc.querySelectorAll('a')
   if (links.length === 0) {
-    return null
+    return htmlString
   }
 
   links.forEach((link) => {
@@ -21,10 +22,6 @@ export default function htmlCleaner(
       playlists.push({ name, id })
     }
   })
-
-  if (playlists.length === 0) {
-    return null
-  }
 
   return playlists
 }

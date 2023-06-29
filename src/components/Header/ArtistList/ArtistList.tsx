@@ -7,11 +7,15 @@ import styles from './ArtistList.module.scss'
 const cx = classNames.bind(styles)
 
 interface ArtistListProps {
-  data: ArtistDataProps[] | null
+  data: ArtistDataProps[] | null | string
 }
 
-const ArtistList: React.FC<ArtistListProps> = ({ data }) => {
-  // console.log(data)
+const ArtistList: React.FC<ArtistListProps> = (props) => {
+  const { data } = props
+  console.log(data)
+  if (typeof data === 'string') {
+    return <div>{data}</div>
+  }
   const renderData: any = []
   if (data) {
     if (data.length === 1) {
@@ -66,9 +70,11 @@ const ArtistList: React.FC<ArtistListProps> = ({ data }) => {
     }
   }
 
+  console.log(renderData)
+
   return (
     <div className={cx('wrapper')}>
-      {renderData}
+      {(renderData.length && renderData) || data}
       <div></div>
     </div>
   )

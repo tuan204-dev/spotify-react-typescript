@@ -12,17 +12,15 @@ const BannerItem: React.FC<SearchBannerItem> = ({
   bgColor,
 }) => {
   return (
-    <Link className={cx('main')} to='/'>
+    <Link className={cx('main')} to="/">
       <div
         style={{ backgroundColor: `${bgColor}` }}
         className={cx('wrapper')}
       >
-        
-          <h4 className={cx('title')}>{title}</h4>
-          <div className={cx('img')}>
-            <img loading='lazy' src={imageUrl} alt={title} />
-          </div>
-        
+        <h4 className={cx('title')}>{title}</h4>
+        <div className={cx('img')}>
+          <img loading="lazy" src={imageUrl} alt={title} />
+        </div>
       </div>
     </Link>
   )

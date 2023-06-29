@@ -16,7 +16,6 @@ import './resizable.scss'
 
 function App() {
   const { pathname } = useLocation()
-  // console.log(useLocation())
   const [showSidebar, setShowSidebar] = useState<boolean>(true)
 
   // console.log(pathname)
@@ -37,7 +36,7 @@ function App() {
   // console.log(pathname)
 
   return (
-    <div className={styles.app}>
+    <main className={styles.app}>
         <SkeletonTheme baseColor="#333" highlightColor="hsla(0,0%,100%,.1)">
           <Split
             cursor="col-resize"
@@ -65,7 +64,7 @@ function App() {
             </MainLayoutProvider>
           </Split>
         </SkeletonTheme>
-    </div>
+    </main>
   )
 }
 

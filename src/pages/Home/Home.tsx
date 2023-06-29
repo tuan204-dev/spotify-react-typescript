@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import styles from './Home.module.scss'
 import { Footer, Greeting, Navbar, Section } from '@/components'
 import { SectionProps } from '@/components/Section/Section'
-import { getAccessToken, getNewReleases } from './../../utils/fetchData'
+import { getAccessToken, getFeaturedPlaylists, getNewReleases } from './../../utils/fetchData'
 
 const cx = classNames.bind(styles)
 
@@ -15,6 +15,8 @@ const Home: React.FC = () => {
     null
   )
   const [artistsData, setArtistsData] = useState<any>()
+  const [featurePlaylistData, setFeaturePlaylist] = useState<any>()
+  const [newReleasesData, setNewReleaseData] = useState<any>()
   // const [trendingData, setTrendingData] = useState<SectionProps | null>(
   //   null
   // )
@@ -22,7 +24,6 @@ const Home: React.FC = () => {
   //   null
   // )
 
-  const [newReleasesData, setNewReleaseData] = useState<any>()
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -58,6 +59,26 @@ const Home: React.FC = () => {
         title: 'New Releases',
         href: '/section?newReleases',
         dataType: 'album',
+        data: responseData
+      })
+    }
+
+    fetchData()
+  }, [])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const token = await getAccessToken()
+      const responseData = await getFeaturedPlaylists({
+        accessToken: token,
+        limit: 10,
+        country: 'VN',
+      })
+
+      setFeaturePlaylist({
+        title: 'Feature Playlist',
+        href: '/section?featurePlaylist',
+        dataType: 'playlist',
         data: responseData
       })
     }
@@ -121,6 +142,12 @@ const Home: React.FC = () => {
           href={newReleasesData?.href}
           data={newReleasesData?.data}
           dataType={newReleasesData?.dataType}
+        />
+        <Section
+          title={featurePlaylistData?.title}
+          href={featurePlaylistData?.href}
+          data={featurePlaylistData?.data}
+          dataType={featurePlaylistData?.dataType}
         />
         <Section
           title={playlistData?.title}

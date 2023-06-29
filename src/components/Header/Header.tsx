@@ -5,6 +5,7 @@ import React, { memo } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import { ArtistList } from '..'
 import styles from './Header.module.scss'
+import { Artists } from '../UIs'
 
 const cx = classNames.bind(styles)
 
@@ -16,8 +17,9 @@ interface HeaderProps {
   bgColor?: string
   desc?: string
   isLoading?: boolean
-  artist?: string
+  artists?: string
   releaseDate?: string
+  isWhiteColor?: boolean
 }
 
 const Header: React.FC<HeaderProps> = ({
@@ -28,10 +30,11 @@ const Header: React.FC<HeaderProps> = ({
   desc,
   isLoading,
   type,
-  artist,
+  artists,
   releaseDate,
+  isWhiteColor = false,
 }) => {
-  // console.log(desc)
+  console.log(desc)
 
   return (
     <main
@@ -52,7 +55,9 @@ const Header: React.FC<HeaderProps> = ({
               {' '}
               <p className={cx('type')}>
                 {(type === 'album' && 'Album') ||
-                  (type === 'single' && 'Single') || (type === 'compilation' && 'Compilation')}
+                  (type === 'single' && 'Single') ||
+                  (type === 'compilation' && 'Compilation') ||
+                  type}
               </p>
               <h2 className={cx('title')}>{title}</h2>
               <div className={cx('desc')}>
@@ -65,7 +70,9 @@ const Header: React.FC<HeaderProps> = ({
                 ></div>
                 {type === 'album' && (
                   <>
-                    <div className={cx('artist')}>{artist}</div>{' '}
+                    <div className={cx('artist')}>
+                      {<Artists isWhiteColor={isWhiteColor} data={artists} />}
+                    </div>{' '}
                     <div className={cx('dot')}></div>{' '}
                     <div className={cx('release-date')}>
                       {releaseDate?.slice(0, 4)}

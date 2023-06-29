@@ -66,14 +66,15 @@ const Album: React.FC = () => {
       <div onScroll={(e) => handleScroll(e)} className={cx('body')}>
         <Header
           type={data?.album_type}
-          artist={data?.artists[0].name}
+          artists={data?.artists}
           releaseDate={data?.release_date}
           desc={data?.description}
-          isLoading={isLoading}
           bgColor={bgColor}
           title={data?.name}
           thumbnail={data?.images[0].url}
           quantity={data?.tracks.total}
+          isLoading={isLoading}
+          isWhiteColor
         />
         <div className={cx('song-list')}>
           <div

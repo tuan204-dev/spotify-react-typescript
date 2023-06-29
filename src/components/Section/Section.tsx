@@ -29,7 +29,6 @@ const Section: React.FC<SectionProps> = ({
     (width - 2 * 24 - (quantityCol - 1) * 24) / quantityCol
 
   // console.log(width, quantityCol)
-  console.log(data)
 
   useEffect(() => {
     setLoading(Boolean(!data))
@@ -70,6 +69,7 @@ const Section: React.FC<SectionProps> = ({
                   title={item.name}
                   imageUrl={item?.images[0]?.url}
                   artists={item?.artists}
+                  desc={item?.description}
                   author={
                     (item?.artists && item?.artists.name) ||
                     (item?.owner && item?.owner.display_name)
@@ -86,6 +86,7 @@ const Section: React.FC<SectionProps> = ({
                     id={item.id}
                     title={item.name}
                     artists={item?.artists}
+                    desc={item?.description}
                     imageUrl={item?.images[0]?.url}
                     author={
                       (item?.artists && item?.artists.name) ||

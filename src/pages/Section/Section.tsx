@@ -6,7 +6,11 @@ import { SectionItemI } from '../../../types'
 import Navbar from '@/components/Navbar/Navbar'
 import Footer from '@/components/Footer/Footer'
 import { Section as SectionContent } from '@/components'
-import { getAccessToken, getNewReleases } from '@/utils/fetchData'
+import {
+  getAccessToken,
+  getFeaturedPlaylists,
+  getNewReleases,
+} from '@/utils/fetchData'
 
 const cx = classNames.bind(styles)
 
@@ -21,7 +25,6 @@ const Section: React.FC = () => {
   const [data, setData] = useState<SectionData>({})
 
   const { search } = useLocation()
-  // console.log(search)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,6 +40,20 @@ const Section: React.FC = () => {
           title: 'New Releases',
           href: '/section?newReleases',
           dataType: 'album',
+          data: responseData,
+        })
+      } else if (search === '?featurePlaylist') {
+        const token = await getAccessToken()
+        const responseData = await getFeaturedPlaylists({
+          accessToken: token,
+          limit: 25,
+          country: 'VN',
+        })
+
+        setData({
+          title: 'Feature Playlist',
+          href: '/section?featurePlaylist',
+          dataType: 'playlist',
           data: responseData,
         })
       } else {

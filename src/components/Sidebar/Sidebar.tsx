@@ -9,10 +9,10 @@ interface SidebarProps {
 
 const Sidebar: FC<SidebarProps> = () => {
   return (
-    <div className={styles.sidebar}>
+    <aside className={styles.sidebar}>
       <Nav />
       <Library />
-    </div>
+    </aside>
   )
 }
 

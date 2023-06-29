@@ -60,7 +60,7 @@ const Playlist: React.FC = () => {
     setNavOpacity(yAxis / 64)
   }
 
-  console.log(data)
+  // console.log(data)
 
   return (
     <main className={cx('wrapper')}>
