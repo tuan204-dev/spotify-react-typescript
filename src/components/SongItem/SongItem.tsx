@@ -1,10 +1,10 @@
-import React, { Fragment, memo, useContext } from 'react'
-import styles from './SongItem.module.scss'
-import classNames from 'classnames/bind'
-import Skeleton from 'react-loading-skeleton'
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
-import { Link } from 'react-router-dom'
 import { convertDateFormat } from '@/utils/convertDateFormat'
+import classNames from 'classnames/bind'
+import React, { memo, useContext } from 'react'
+import Skeleton from 'react-loading-skeleton'
+import { Artists } from '../UIs'
+import styles from './SongItem.module.scss'
 
 const cx = classNames.bind(styles)
 
@@ -21,43 +21,6 @@ interface SongItemProps {
   isExplicit?: boolean
 }
 
-const Artist = (artists?: any[]) => {
-  const renderData: any[] = []
-  // console.log(artists)
-  if (artists) {
-    if (artists.length === 1) {
-      renderData.push(
-        <Link key={0} to={`/artist?${artists[0].id}`}>
-          <span className={cx('artist-item')}>{artists[0].name}</span>
-        </Link>
-      )
-    } else {
-      for (let i = 0; i < artists.length - 1; i++) {
-        renderData.push(
-          <Fragment key={i}>
-            <Link to={`/artist?${artists[i].id}`}>
-              <span className={cx('artist-item')}>{artists[i].name}</span>
-            </Link>
-            {', '}
-          </Fragment>
-        )
-      }
-
-      renderData.push(
-        <Link
-          key={artists.length - 1}
-          to={`/artist?${artists[artists.length - 1].id}`}
-        >
-          <span className={cx('artist-item')}>
-            {artists[artists.length - 1].name}
-          </span>
-        </Link>
-      )
-    }
-  }
-
-  return renderData
-}
 
 const SongItem: React.FC<SongItemProps> = ({
   songName,
@@ -98,7 +61,8 @@ const SongItem: React.FC<SongItemProps> = ({
               <p className={cx('name')}>{songName}</p>
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 {isExplicit && <span className={cx('explicit')}>E</span>}
-                <div className={cx('artists')}>{Artist(artists)}</div>
+                {/* <div className={cx('artists')}>{Artist(artists)}</div> */}
+                <Artists artists={artists}/>
               </div>
             </>
           ) : (
@@ -118,7 +82,9 @@ const SongItem: React.FC<SongItemProps> = ({
           <div className={cx('album')}>{!isLoading && album}</div>
           {width > 780 && (
             <div className={cx('date-add')}>
-              {dateAdd && convertDateFormat(dateAdd)}
+              {dateAdd !== '1970-01-01T00:00:00Z' && dateAdd
+                ? convertDateFormat(dateAdd)
+                : ''}
             </div>
           )}
         </>

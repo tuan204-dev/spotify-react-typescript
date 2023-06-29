@@ -6,12 +6,13 @@ import { SectionItemI } from '../../../types'
 import Navbar from '@/components/Navbar/Navbar'
 import Footer from '@/components/Footer/Footer'
 import { Section as SectionContent } from '@/components'
+import { getAccessToken, getNewReleases } from '@/utils/fetchData'
 
 const cx = classNames.bind(styles)
 
 interface SectionData {
   title?: string
-  id?: string
+  href?: string
   dataType?: string
   data?: SectionItemI[]
 }
@@ -24,10 +25,25 @@ const Section: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`/data/${search.substring(1)}.json`)
-      const data = await response.json()
-      console.log(data)
-      setData(data)
+      if (search === '?newReleases') {
+        const token = await getAccessToken()
+        const responseData = await getNewReleases({
+          accessToken: token,
+          limit: 25,
+          country: 'VN',
+        })
+
+        setData({
+          title: 'New Releases',
+          href: '/section?newReleases',
+          dataType: 'album',
+          data: responseData,
+        })
+      } else {
+        const response = await fetch(`/data/${search.substring(1)}.json`)
+        const data = await response.json()
+        setData(data)
+      }
     }
     fetchData()
   }, [])

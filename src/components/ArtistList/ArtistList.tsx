@@ -11,7 +11,6 @@ interface ArtistListProps {
 }
 
 const ArtistList: React.FC<ArtistListProps> = ({ data }) => {
-  console.log(data)
   const renderData: any = []
   if (data) {
     if (data.length === 1) {
@@ -62,7 +61,6 @@ const ArtistList: React.FC<ArtistListProps> = ({ data }) => {
       )
     }
   }
-  console.log(renderData)
 
   return (
     <div className={cx('wrapper')}>

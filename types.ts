@@ -28,7 +28,7 @@ export interface AlbumItem {
 export interface SectionItemI extends PlayListItem, ArtistItem, AlbumItem {
   isArtist?: boolean
   isLoading?: boolean
-  columnWidth: number
+  columnWidth?: number
   dataType?: string
 }
 

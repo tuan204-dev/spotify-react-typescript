@@ -18,19 +18,16 @@ const Playlist: React.FC = () => {
   const [data, setData] = useState<any>()
   const [isLoading, setLoading] = useState<boolean>(true)
   const { search } = useLocation()
-  // console.log(search)
   const bgColor = useRaiseColorTone(
     useDominantColor(data?.images[0].url) || '#121212'
   )
 
   const { width } = useContext(MainLayoutContext)
-  // console.log(width)
 
   const { ref, inView } = useInView({
     threshold: 0,
   })
 
-  console.log(data)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,6 +59,8 @@ const Playlist: React.FC = () => {
     }
     setNavOpacity(yAxis / 64)
   }
+
+  console.log(data)
 
   return (
     <main className={cx('wrapper')}>

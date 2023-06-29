@@ -3,7 +3,7 @@ import { HiArrowRight, HiOutlinePlus } from 'react-icons/hi'
 import styles from './Library.module.scss'
 import { useEffect, useState } from 'react'
 import { LibraryIcon } from '@/assets/icons'
-import { AlbumItem, ArtistItem, PlayListItem } from '../../../../types'
+// import { AlbumItem, ArtistItem, PlayListItem } from '../../../../types'
 import { SidebarItem } from '@/components'
 
 const cx = classNames.bind(styles)
@@ -61,38 +61,38 @@ const Library = () => {
       setRenderData(
         () => {
           if (category.name === 'Playlists') {
-            return data.data.map((item: PlayListItem, index: number) => (
+            return data.data.map((item: any, index: number) => (
               <SidebarItem
                 key={index}
                 id={item.id}
-                author={item.author}
+                author={item.owner.display_name}
                 type="playlist"
-                name={item.title}
-                thumbnail={item.imageUrl}
+                name={item.name}
+                thumbnail={item.images[0].url}
               />
             ))
           }
 
           if (category.name === 'Artists') {
-            return data.data.map((item: ArtistItem, index: number) => (
+            return data.data.map((item: any, index: number) => (
               <SidebarItem
                 key={index}
                 id={item.id}
                 type="artist"
                 name={item.name}
-                thumbnail={item.imageUrl}
+                thumbnail={item.images[0].url}
               />
             ))
           }
           if (category.name === 'Albums') {
-            return data.data.map((item: AlbumItem, index: number) => (
+            return data.data.map((item: any, index: number) => (
               <SidebarItem
-                id={item.id}
-                author={item.author}
                 key={index}
+                id={item.id}
+                artists={item.artists}
                 type="album"
-                name={item.title}
-                thumbnail={item.imageUrl}
+                name={item.name}
+                thumbnail={item.images[0].url}
               />
             ))
           }

@@ -1,15 +1,14 @@
-import React, { useContext, useState, useEffect, memo } from 'react'
-import styles from './Section.module.scss'
-import classNames from 'classnames/bind'
-import { SectionItemI } from '../../../types'
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
-import SectionItem from '../SectionItem/SectionItem'
+import classNames from 'classnames/bind'
+import React, { memo, useContext, useEffect, useState } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import { Link } from 'react-router-dom'
+import SectionItem from '../SectionItem/SectionItem'
+import styles from './Section.module.scss'
 export interface SectionProps {
   title?: string
-  id?: string
-  data?: SectionItemI[]
+  href?: string
+  data?: any[]
   isFull?: boolean
   dataType?: string
 }
@@ -18,10 +17,10 @@ const cx = classNames.bind(styles)
 
 const Section: React.FC<SectionProps> = ({
   title,
-  id,
+  href,
   data,
   isFull = false,
-  dataType
+  dataType,
 }) => {
   const [isLoading, setLoading] = useState<boolean>(true)
   const { quantityCol, width } = useContext(MainLayoutContext)
@@ -39,18 +38,17 @@ const Section: React.FC<SectionProps> = ({
     setLoading(Boolean(!data))
   }, [data])
 
-  // console.log(data)
 
   return (
     <section className={cx('wrapper')}>
       <div className={cx('header')}>
         {!isLoading ? (
           <>
-            <Link to={`/section?${id}`}>
+            <Link to={`${href}`}>
               <h2 className={cx('heading')}>{title}</h2>
             </Link>
             {(data?.length || 0) > quantityCol && !isFull && (
-              <Link to={`/section?${id}`}>Show all</Link>
+              <Link to={`${href}`}>Show all</Link>
             )}
           </>
         ) : (
@@ -69,10 +67,16 @@ const Section: React.FC<SectionProps> = ({
           ? isFull
             ? data?.map((item, index) => (
                 <SectionItem
-                  dataType={dataType}
-                  isLoading={isLoading}
-                  key={index}
-                  {...item}
+                dataType={dataType}
+                isLoading={isLoading}
+                key={index}
+                id={item.id}
+                title={item.name}
+                imageUrl={item?.images[0]?.url}
+                author={
+                  (item?.artists && item?.artists.name) ||
+                  (item?.owner && item?.owner.display_name)
+                }
                 />
               ))
             : data
@@ -82,7 +86,13 @@ const Section: React.FC<SectionProps> = ({
                     dataType={dataType}
                     isLoading={isLoading}
                     key={index}
-                    {...item}
+                    id={item.id}
+                    title={item.name}
+                    imageUrl={item?.images[0]?.url}
+                    author={
+                      (item?.artists && item?.artists.name) ||
+                      (item?.owner && item?.owner.display_name)
+                    }
                   />
                 ))
           : Array(quantityCol)

@@ -60,24 +60,7 @@
       text-overflow: ellipsis;
     }
 
-    .artists {
-      font-size: 14px;
-      color: $text-neutral;
-      display: flex;
-      gap: 3px;
-      overflow: hidden;
-      @include text-in-one-line;
 
-      .artist-item {
-        color: $text-neutral;
-
-
-        &:hover {
-          text-decoration: underline;
-          color: $white;
-        }
-      }
-    }
 
     .explicit {
       font-size: 9px;

@@ -12,6 +12,7 @@
 }
 
 @mixin button-base {
+  color: $black;
   border: none;
   cursor: pointer;
   transition: all ease-in-out .2s;
@@ -33,9 +34,9 @@
 
 
 @mixin button-text($padding, $bg, $bg-highlight) {
+  @include button-base();
   padding: $padding;
   background-color: $bg;
-  @include button-base();
 
   &:hover {
     background-color: $bg-highlight;
