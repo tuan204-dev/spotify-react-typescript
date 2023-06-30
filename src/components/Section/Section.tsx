@@ -23,6 +23,7 @@ const Section: React.FC<SectionProps> = ({
   const columnWidth =
     (width - 2 * 24 - (quantityCol - 1) * 24) / quantityCol
 
+  // console.log(columnWidth)
   // console.log(width, quantityCol)
   // console.log(data)
 

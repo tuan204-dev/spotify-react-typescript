@@ -34,7 +34,6 @@
     z-index: 0;
   }
 
-
   .main {
     position: relative;
     padding-inline: 24px;
@@ -72,7 +71,8 @@
 
       .freeze-top-row {
         display: grid;
-        grid-template-columns: 16px 6fr 4fr 3fr 50px;
+        // grid-template-columns: 16px 6fr 4fr 3fr 50px;
+        grid-template-columns: 16px minmax(300px, 6fr) 4fr 3fr 50px;
         grid-gap: 16px;
         padding-inline: 40px;
         margin-inline: -24px;
@@ -111,5 +111,5 @@
 }
 
 .grid-md {
-  grid-template-columns: 16px  4fr  2fr 50px !important;
+  grid-template-columns: 16px 4fr 2fr 50px !important;
 }

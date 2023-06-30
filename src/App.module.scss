@@ -1,5 +1,9 @@
 @import './scss/variable';
 
+// .wrapper {
+//   width: 100vw;
+// }
+
 .app {
   background-color: $black;
   height: 100vh;
@@ -8,6 +12,7 @@
   display: flex;
   gap: $panel-gap;
   padding: .8rem;
+  max-width: 3000px;
 }
 
 .main {
@@ -15,7 +20,9 @@
   height: 100%; 
   background-color: $bg-base;
   border-radius: $panel-gap;
+  -webkit-border-radius: $panel-gap;
   overflow: hidden;
+  -webkit-overflow: hidden;
   overflow-y: auto;
   position: relative;
 }

@@ -5,6 +5,7 @@ import React, { memo, useContext } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import { Artists } from '../UIs'
 import styles from './SongItem.module.scss'
+import { PlayIcon } from '@/assets/icons'
 
 const cx = classNames.bind(styles)
 
@@ -20,7 +21,6 @@ interface SongItemProps {
   isAlbumTrack?: boolean
   isExplicit?: boolean
 }
-
 
 const SongItem: React.FC<SongItemProps> = ({
   songName,
@@ -44,7 +44,16 @@ const SongItem: React.FC<SongItemProps> = ({
         'is-album-track': isAlbumTrack,
       })}
     >
-      <div className={cx('order')}>{!isLoading && order}</div>
+      <div className={cx('order')}>
+        {!isLoading && (
+          <>
+            <span className={cx('order-number')}>{order}</span>{' '}
+            <button className={cx('order-icon')}>
+              <PlayIcon />
+            </button>
+          </>
+        )}
+      </div>
       <div className={cx('main')}>
         {!isAlbumTrack && (
           <div className={cx('thumb')}>
@@ -59,19 +68,15 @@ const SongItem: React.FC<SongItemProps> = ({
           {!isLoading ? (
             <>
               <p className={cx('name')}>{songName}</p>
-              <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div className={cx('sub-title')}>
                 {isExplicit && <span className={cx('explicit')}>E</span>}
                 {/* <div className={cx('artists')}>{Artist(artists)}</div> */}
-                <Artists data={artists}/>
+                <Artists data={artists} />
               </div>
             </>
           ) : (
             <>
-              <Skeleton
-                borderRadius={50}
-                height={'15px'}
-                width={'200px'}
-              />
+              <Skeleton borderRadius={50} height={'15px'} width={'200px'} />
               <Skeleton borderRadius={50} height={'10px'} width={'60px'} />
             </>
           )}
@@ -91,13 +96,9 @@ const SongItem: React.FC<SongItemProps> = ({
       )}
       <div className={cx('duration')}>
         {!isLoading &&
-          `${String(Math.floor(duration / 60000)).padStart(
-            2,
-            '0'
-          )}:${String(Math.floor((duration % 60000) / 1000)).padStart(
-            2,
-            '0'
-          )}`}
+          `${String(Math.floor(duration / 60000)).padStart(2, '0')}:${String(
+            Math.floor((duration % 60000) / 1000)
+          ).padStart(2, '0')}`}
       </div>
     </div>
   )

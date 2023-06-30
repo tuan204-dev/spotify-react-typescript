@@ -1,4 +1,5 @@
 @import '../../scss/variable';
+@import '../../scss/mixin';
 
 .sidebar-item {
   height: 64px;
@@ -43,6 +44,7 @@
       font-size: 1.2rem;
       font-weight: 400;
       color: $text-subdued;
+      @include text-in-one-line;
     }
   }
 }

@@ -5,7 +5,7 @@ import { FiSearch } from 'react-icons/fi'
 import { MdOutlineClear } from 'react-icons/md'
 import styles from './Navbar.module.scss'
 import classNames from 'classnames/bind'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 const cx = classNames.bind(styles)
 
@@ -30,8 +30,8 @@ const Navbar: FC<NavbarProps> = (props) => {
     setQuery,
   } = props
 
+  const {key} = useLocation()
   const navigate = useNavigate()
-  // console.log(query)
 
   return (
     <div className={cx('nav')}>
@@ -49,7 +49,7 @@ const Navbar: FC<NavbarProps> = (props) => {
       <div className={cx('nav-control')}>
         <div className={cx('nav-control-button')}>
           <button
-            // disabled={Boolean(location.prev)}
+            disabled={key === 'default'}
             onClick={() => navigate(-1)}
           >
             <IoIosArrowBack />

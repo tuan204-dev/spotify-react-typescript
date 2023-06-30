@@ -115,7 +115,7 @@ const Home: React.FC = () => {
         <Section
           title={playlistData?.title}
           href={playlistData?.href}
-          data={playlistData?.data}
+          data={playlistData?.data?.slice(0, 10)}
           dataType={playlistData?.dataType}
         />
         <Section

@@ -18,53 +18,46 @@ function App() {
   const { pathname } = useLocation()
   const [showSidebar, setShowSidebar] = useState<boolean>(true)
 
-  // console.log(pathname)
-
   useEffect(() => {
     setShowSidebar(
-      [
-        '/',
-        '/search',
-        '/artist',
-        '/section',
-        '/playlist',
-        '/album',
-      ].includes(pathname)
+      ['/', '/search', '/artist', '/section', '/playlist', '/album'].includes(pathname)
     )
   }, [pathname])
   // console.log(showSidebar, pathname)
   // console.log(pathname)
 
   return (
+    // <div className={styles.wrapper}>
     <main className={styles.app}>
-        <SkeletonTheme baseColor="#333" highlightColor="hsla(0,0%,100%,.1)">
-          <Split
-            cursor="col-resize"
-            minSize={[280, 600]}
-            // maxSize={[600, 99999]}
-            sizes={[20, 80]}
-            className={styles.split}
-          >
-            {showSidebar && <Sidebar />}
-            <MainLayoutProvider>
-              {showSidebar ? (
-                <div className={styles.main}>
-                  <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/search" element={<Search />} />
-                    <Route path="/section" element={<Section />} />
-                    <Route path="/artist" element={<Artist />} />
-                    <Route path="/playlist" element={<Playlist />} />
-                    <Route path="/album" element={<Album />} />
-                  </Routes>
-                </div>
-              ) : (
-                <NotFound />
-              )}
-            </MainLayoutProvider>
-          </Split>
-        </SkeletonTheme>
+      <SkeletonTheme baseColor="#333" highlightColor="hsla(0,0%,100%,.1)">
+        <Split
+          cursor="col-resize"
+          minSize={[280, 600]}
+          // maxSize={[600, 99999]}
+          sizes={[20, 80]}
+          className={styles.split}
+        >
+          {showSidebar && <Sidebar />}
+          <MainLayoutProvider>
+            {showSidebar ? (
+              <div className={styles.main}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/search" element={<Search />} />
+                  <Route path="/section" element={<Section />} />
+                  <Route path="/artist" element={<Artist />} />
+                  <Route path="/playlist" element={<Playlist />} />
+                  <Route path="/album" element={<Album />} />
+                </Routes>
+              </div>
+            ) : (
+              <NotFound />
+            )}
+          </MainLayoutProvider>
+        </Split>
+      </SkeletonTheme>
     </main>
+    // </div>
   )
 }
 

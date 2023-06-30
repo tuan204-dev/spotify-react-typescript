@@ -4,7 +4,7 @@
 .wrapper {
   background-color: $bg-card;
   padding: 16px;
-  border-radius: 8px;
+  border-radius: $panel-border-radius;
   width: 100%;
   transition: background-color .3s ease;
   position: relative;

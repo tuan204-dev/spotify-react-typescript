@@ -1,4 +1,4 @@
-import { footerLinks, siteInfo, socialNetworkLinks } from '@/constants'
+import { footerLinks, siteInfo, socialNetworkLinks, bottomLinks, topLinkGroups } from '@/constants'
 import classNames from 'classnames/bind'
 import { FC, memo } from 'react'
 import styles from './Footer.module.scss'
@@ -11,7 +11,7 @@ const Footer: FC = () => {
     <footer className={cx('footer')}>
       <nav className={cx('footer__top')}>
         <div className={cx('footer__top-links')}>
-          {footerLinks.map((links) => (
+          {topLinkGroups.map((links) => (
             <LinkGroup key={links.title} groupLink={links} />
           ))}
         </div>
@@ -28,8 +28,8 @@ const Footer: FC = () => {
       </nav>
       <nav className={cx('footer__bottom')}>
         <div className={cx('footer__bottom-links')}>
-          {siteInfo.map((item, index) => (
-            <a key={index} className={cx('footer__bottom-links-item')} href={item.url}>
+          {bottomLinks.map((item, index) => (
+            <a key={index} target='_blank' className={cx('footer__bottom-links-item')} href={item.href}>
               {item.title}
             </a>
           ))}

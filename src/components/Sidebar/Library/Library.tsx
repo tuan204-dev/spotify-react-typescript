@@ -103,7 +103,7 @@ const Library: FC = () => {
             artists={item?.artists && item?.artists}
             type={libSelection?.type}
             name={item.name}
-            thumbnail={item.images[0].url}
+            thumbnail={item.images[item.images.length - 1].url}
           />
         ))}
       </div>

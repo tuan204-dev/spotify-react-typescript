@@ -57,3 +57,143 @@ export const siteInfo = [
   { title: 'Accessibility', url: '/' },
 ]
 
+export const bottomLinks = [
+  {
+    title: 'Legal',
+    href: 'https://www.spotify.com/vn-en/legal/',
+  },
+  {
+    title: 'Privacy Center',
+    href: 'https://www.spotify.com/vn-en/privacy/',
+  },
+  {
+    title: 'Privacy Policy',
+    href: 'https://www.spotify.com/vn-en/legal/privacy-policy/',
+  },
+  {
+    title: 'Cookies',
+    href: 'https://www.spotify.com/vn-en/legal/cookies-policy/',
+  },
+  {
+    title: 'About Ads',
+    href: 'https://www.spotify.com/vn-en/legal/privacy-policy/#s3',
+  },
+  {
+    title: 'Accessibility',
+    href: 'https://www.spotify.com/vn-en/accessibility/',
+  },
+]
+
+export const topLinkGroups = [
+  {
+    title: 'Company',
+    links: [
+      {
+        title: 'About',
+        href: 'https://www.spotify.com/vn-en/about-us/contact/',
+        dataAttributes: {
+          'data-ga-category': 'menu',
+          'data-ga-action': 'about',
+        },
+      },
+      {
+        title: 'Jobs',
+        href: 'https://www.lifeatspotify.com/',
+        dataAttributes: {
+          'data-ga-category': 'menu',
+          'data-ga-action': 'jobs',
+        },
+      },
+      {
+        title: 'For the Record',
+        href: 'https://newsroom.spotify.com/',
+        dataAttributes: {
+          'data-ga-category': 'menu',
+          'data-ga-action': 'press',
+        },
+      },
+    ],
+  },
+  {
+    title: 'Communities',
+    links: [
+      {
+        title: 'For Artists',
+        href: 'https://artists.spotify.com/',
+        dataAttributes: {
+          'data-ga-category': 'menu',
+          'data-ga-action': 'artists',
+        },
+      },
+      {
+        title: 'Developers',
+        href: 'https://developer.spotify.com/',
+        dataAttributes: {
+          'data-ga-category': 'menu',
+          'data-ga-action': 'developers',
+        },
+      },
+      {
+        title: 'Advertising',
+        href: 'https://ads.spotify.com/',
+        dataAttributes: {
+          'data-ga-category': 'menu',
+          'data-ga-action': 'advertising',
+        },
+      },
+      {
+        title: 'Investors',
+        href: 'https://investors.spotify.com/',
+        dataAttributes: {
+          'data-ga-category': 'menu',
+          'data-ga-action': 'investors',
+        },
+      },
+      {
+        title: 'Vendors',
+        href: 'https://spotifyforvendors.com/',
+        dataAttributes: {
+          'data-ga-category': 'menu',
+          'data-ga-action': 'vendors',
+        },
+      },
+      {
+        title: 'Spotify for Work',
+        href: 'https://www.spotify.com/spotifyforwork/',
+        dataAttributes: {
+          'data-ga-category': 'menu',
+          'data-ga-action': 'spotify_for_work',
+        },
+      },
+    ],
+  },
+  {
+    title: 'Useful links',
+    links: [
+      {
+        title: 'Support',
+        href: 'https://support.spotify.com/',
+        dataAttributes: {
+          'data-ga-category': 'menu',
+          'data-ga-action': 'help',
+        },
+      },
+      {
+        title: 'Web Player',
+        href: 'https://open.spotify.com/',
+        dataAttributes: {
+          'data-ga-category': 'menu',
+          'data-ga-action': 'play',
+        },
+      },
+      {
+        title: 'Free Mobile App',
+        href: 'https://www.spotify.com/vn-en/download/',
+        dataAttributes: {
+          'data-ga-category': 'menu',
+          'data-ga-action': 'free',
+        },
+      },
+    ],
+  },
+]

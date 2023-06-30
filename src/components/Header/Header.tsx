@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({
   releaseDate,
   isWhiteColor = false,
 }) => {
-  console.log(desc)
+  console.log(desc, artists)
 
   return (
     <main style={{ backgroundColor: `${bgColor}` }} className={cx('wrapper')}>
@@ -55,7 +55,7 @@ const Header: React.FC<HeaderProps> = ({
                   style={{ backgroundImage: `url(${logoImage})` }}
                   className={cx('logo')}
                 ></div>
-                {type === 'album' && (
+                {(type === 'album' || type === 'single' || type === 'compilation') && (
                   <>
                     <div className={cx('artist')}>
                       {<Artists isWhiteColor={isWhiteColor} data={artists} />}

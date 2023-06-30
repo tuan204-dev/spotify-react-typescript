@@ -1,7 +1,10 @@
-@import './variable'; 
+@import './variable';
 
-*, *::after, *::before {
+*,
+*::after,
+*::before {
   box-sizing: border-box;
+  -webkit-box-sizing: border-box;
 }
 
 html {
@@ -16,4 +19,3 @@ body {
 a {
   text-decoration: none;
 }
-

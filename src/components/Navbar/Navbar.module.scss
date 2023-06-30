@@ -30,15 +30,20 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    
+
     &-button {
       display: flex;
       gap: $panel-gap;
 
       button {
-        @include button-icon(32px, rgba(0, 0, 0, .1), rgba(0, 0, 0, .25));
+        @include button-icon(32px, rgba(0, 0, 0, .3), rgba(0, 0, 0, .4));
         font-size: 20px;
         color: $white;
+      }
+
+      button:disabled {
+        background-color: rgba(0, 0, 0, .3);
+        cursor: not-allowed;
       }
     }
 
