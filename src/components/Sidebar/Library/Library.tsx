@@ -1,48 +1,53 @@
 import classNames from 'classnames/bind'
 import { HiArrowRight, HiOutlinePlus } from 'react-icons/hi'
 import styles from './Library.module.scss'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo, FC } from 'react'
 import { LibraryIcon } from '@/assets/icons'
-// import { AlbumItem, ArtistItem, PlayListItem } from '../../../../types'
 import { SidebarItem } from '@/components'
+import { LibSelection, ResponseLibItem } from '../../../../types'
 
 const cx = classNames.bind(styles)
 
-type LibSelection = Array<{ name: string; id: string }>
-
-const Library = () => {
-  const [category, setCategory] = useState<{ name: string; id: string }>({
-    name: 'Playlists',
-    id: '00003',
-  })
-  const [renderData, setRenderData] = useState<[]>([])
+const Library: FC = () => {
+  const [category, setCategory] = useState<'playlist' | 'album' | 'artist'>('playlist')
+  const [data, setData] = useState<ResponseLibItem[]>()
   const [bottomShadow, setBottomShadow] = useState<boolean>(false)
 
+  const libSelections: LibSelection[] = useMemo(
+    () => [
+      {
+        type: 'playlist',
+        title: 'Playlists',
+        id: '00003',
+        active: category === 'playlist',
+      },
+      {
+        type: 'artist',
+        title: 'Artists',
+        id: '00004',
+        active: category === 'artist',
+      },
+      {
+        type: 'album',
+        title: 'Albums',
+        id: '00005',
+        active: category === 'album',
+      },
+    ],
+    [category]
+  )
+  // console.log(data)
 
-  const libSelection: LibSelection = [
-    {
-      name: 'Playlists',
-      id: '00003',
-    },
-    {
-      name: 'Artists',
-      id: '00004',
-    },
-    {
-      name: 'Albums',
-      id: '00005',
-    },
-  ]
+  const libSelection = useMemo(
+    () => libSelections.find((libSelection) => libSelection.active),
+    [category]
+  )
 
-  const handleClick = (selection: { name: string; id: string }): void => {
-    setCategory((prev) => {
-      return { ...prev, ...selection }
-    })
+  const handleClick = (type: 'playlist' | 'album' | 'artist'): void => {
+    setCategory(type)
   }
 
-  const handleScroll = (
-    e: React.UIEvent<HTMLDivElement, UIEvent>
-  ): void => {
+  const handleScroll = (e: React.UIEvent<HTMLDivElement, UIEvent>): void => {
     const yAxis = e.currentTarget.scrollTop
 
     // console.log(yAxis)
@@ -54,51 +59,13 @@ const Library = () => {
   }
 
   useEffect(() => {
-    (async () => {
-      const response = await fetch(`data/${category.id}.json`)
+    const fetchData = async () => {
+      const response = await fetch(`data/${libSelection!.id}.json`)
       const data = await response.json()
-      // console.log(data)
-      setRenderData(
-        () => {
-          if (category.name === 'Playlists') {
-            return data.data.map((item: any, index: number) => (
-              <SidebarItem
-                key={index}
-                id={item.id}
-                author={item.owner.display_name}
-                type="playlist"
-                name={item.name}
-                thumbnail={item.images[0].url}
-              />
-            ))
-          }
+      setData(data.data)
+    }
 
-          if (category.name === 'Artists') {
-            return data.data.map((item: any, index: number) => (
-              <SidebarItem
-                key={index}
-                id={item.id}
-                type="artist"
-                name={item.name}
-                thumbnail={item.images[0].url}
-              />
-            ))
-          }
-          if (category.name === 'Albums') {
-            return data.data.map((item: any, index: number) => (
-              <SidebarItem
-                key={index}
-                id={item.id}
-                artists={item.artists}
-                type="album"
-                name={item.name}
-                thumbnail={item.images[0].url}
-              />
-            ))
-          }
-        }
-      )
-    })()
+    fetchData()
   }, [category])
 
   return (
@@ -120,20 +87,25 @@ const Library = () => {
         </div>
       </div>
 
-      <div
-        className={cx({ selection: true, 'bottom-shadow': bottomShadow })}
-      >
-        {libSelection.map((item, index) => (
-          <button onClick={() => handleClick(item)} key={index}>
-            {item.name}
+      <div className={cx({ selection: true, 'bottom-shadow': bottomShadow })}>
+        {libSelections.map((item, index) => (
+          <button onClick={() => handleClick(item.type)} key={index}>
+            {item.title}
           </button>
         ))}
       </div>
-      <div
-        onScroll={(e) => handleScroll(e)}
-        className={cx('playlist-section')}
-      >
-        {renderData}
+      <div onScroll={(e) => handleScroll(e)} className={cx('playlist-section')}>
+        {data?.map((item: any, index: number) => (
+          <SidebarItem
+            key={index}
+            id={item.id}
+            author={item?.owner && item?.owner.display_name}
+            artists={item?.artists && item?.artists}
+            type={libSelection?.type}
+            name={item.name}
+            thumbnail={item.images[0].url}
+          />
+        ))}
       </div>
     </div>
   )

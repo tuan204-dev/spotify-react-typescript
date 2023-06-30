@@ -1,13 +1,13 @@
 import classNames from 'classnames/bind'
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import { ArtistDataProps } from '../../../../types'
+import { ArtistData } from '../../../../types'
 import styles from './ArtistList.module.scss'
 
 const cx = classNames.bind(styles)
 
 interface ArtistListProps {
-  data: ArtistDataProps[] | null | string
+  data: ArtistData[] | null | string
 }
 
 const ArtistList: React.FC<ArtistListProps> = (props) => {

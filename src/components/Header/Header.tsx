@@ -6,21 +6,11 @@ import Skeleton from 'react-loading-skeleton'
 import { ArtistList } from '..'
 import styles from './Header.module.scss'
 import { Artists } from '../UIs'
+import { HeaderProps } from '../../../types'
 
 const cx = classNames.bind(styles)
 
-interface HeaderProps {
-  title?: string
-  thumbnail?: string
-  quantity?: number
-  type?: 'Playlist' | 'album' | 'single' | 'compilation'
-  bgColor?: string
-  desc?: string
-  isLoading?: boolean
-  artists?: string
-  releaseDate?: string
-  isWhiteColor?: boolean
-}
+//Header of Playlist page & Album page
 
 const Header: React.FC<HeaderProps> = ({
   title,
@@ -37,10 +27,7 @@ const Header: React.FC<HeaderProps> = ({
   console.log(desc)
 
   return (
-    <main
-      style={{ backgroundColor: `${bgColor}` }}
-      className={cx('wrapper')}
-    >
+    <main style={{ backgroundColor: `${bgColor}` }} className={cx('wrapper')}>
       <div className={cx('body')}>
         <div className={cx('img')}>
           {!isLoading ? (
@@ -74,9 +61,7 @@ const Header: React.FC<HeaderProps> = ({
                       {<Artists isWhiteColor={isWhiteColor} data={artists} />}
                     </div>{' '}
                     <div className={cx('dot')}></div>{' '}
-                    <div className={cx('release-date')}>
-                      {releaseDate?.slice(0, 4)}
-                    </div>
+                    <div className={cx('release-date')}>{releaseDate?.slice(0, 4)}</div>
                   </>
                 )}
                 <div className={cx('dot')}></div>
@@ -91,10 +76,7 @@ const Header: React.FC<HeaderProps> = ({
           )}
         </div>
       </div>
-      <div
-        style={{ backgroundColor: `${bgColor}` }}
-        className={cx('bg-blur')}
-      ></div>
+      <div style={{ backgroundColor: `${bgColor}` }} className={cx('bg-blur')}></div>
     </main>
   )
 }

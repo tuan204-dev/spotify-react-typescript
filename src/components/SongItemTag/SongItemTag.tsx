@@ -5,15 +5,11 @@ import { TbPlayerPlayFilled } from 'react-icons/tb'
 import styles from './SongItemTag.module.scss'
 import useComponentSize from '@/hooks/useComponentSize'
 import Skeleton from 'react-loading-skeleton'
+import { SongItemTagProps } from '../../../types'
 
 const cx = classNames.bind(styles)
 
-interface SongItemTagProps {
-  thumbnailUrl?: string
-  name?: string
-  isLoading?: boolean
-  setBgColor: React.Dispatch<React.SetStateAction<string>>
-}
+
 
 const SongItemTag: React.FC<SongItemTagProps> = (props) => {
   const { thumbnailUrl, name, setBgColor, isLoading } = props

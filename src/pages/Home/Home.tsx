@@ -2,8 +2,12 @@ import classNames from 'classnames/bind'
 import { useState, useEffect } from 'react'
 import styles from './Home.module.scss'
 import { Footer, Greeting, Navbar, Section } from '@/components'
-import { SectionProps } from '@/components/Section/Section'
-import { getAccessToken, getFeaturedPlaylists, getNewReleases } from './../../utils/fetchData'
+import {
+  getAccessToken,
+  getFeaturedPlaylists,
+  getNewReleases,
+} from './../../utils/fetchData'
+import { SectionProps } from '../../../types'
 
 const cx = classNames.bind(styles)
 
@@ -11,40 +15,10 @@ const Home: React.FC = () => {
   const [bgColor, setBgColor] = useState<string>('#c0b8c1')
   const [navOpacity, setNavOpacity] = useState<number>(0)
   const [albumsData, setAlbumsData] = useState<SectionProps | null>(null)
-  const [playlistData, setPlaylistData] = useState<SectionProps | null>(
-    null
-  )
-  const [artistsData, setArtistsData] = useState<any>()
-  const [featurePlaylistData, setFeaturePlaylist] = useState<any>()
-  const [newReleasesData, setNewReleaseData] = useState<any>()
-  // const [trendingData, setTrendingData] = useState<SectionProps | null>(
-  //   null
-  // )
-  // const [topMixesData, setTopMixesData] = useState<SectionProps | null>(
-  //   null
-  // )
-
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const trendingRes = await fetch('/data/00001.json')
-  //     const trendingData = await trendingRes.json()
-  //     // console.log(trendingData)
-  //     setTrendingData(trendingData)
-  //   }
-
-  //   fetchData()
-  // }, [])
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const topMixesRes = await fetch('/data/00002.json')
-  //     const topMixesData = await topMixesRes.json()
-  //     setTopMixesData(topMixesData)
-  //   }
-
-  //   fetchData()
-  // }, [])
+  const [playlistData, setPlaylistData] = useState<SectionProps | null>(null)
+  const [artistsData, setArtistsData] = useState<SectionProps>()
+  const [featurePlaylistData, setFeaturePlaylist] = useState<SectionProps>()
+  const [newReleasesData, setNewReleaseData] = useState<SectionProps>()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -54,15 +28,13 @@ const Home: React.FC = () => {
         limit: 10,
         country: 'VN',
       })
-
       setNewReleaseData({
         title: 'New Releases',
         href: '/section?newReleases',
         dataType: 'album',
-        data: responseData
+        data: responseData,
       })
     }
-
     fetchData()
   }, [])
 
@@ -74,15 +46,13 @@ const Home: React.FC = () => {
         limit: 10,
         country: 'VN',
       })
-
       setFeaturePlaylist({
         title: 'Feature Playlist',
         href: '/section?featurePlaylist',
         dataType: 'playlist',
-        data: responseData
+        data: responseData,
       })
     }
-
     fetchData()
   }, [])
 
@@ -110,15 +80,12 @@ const Home: React.FC = () => {
       const playlistData = await playlistRes.json()
       setPlaylistData(playlistData)
     }
-
     fetchData()
   }, [])
 
   // console.log(trendingData, topMixesData)
 
-  const handleScroll = (
-    e: React.UIEvent<HTMLDivElement, UIEvent>
-  ): void => {
+  const handleScroll = (e: React.UIEvent<HTMLDivElement, UIEvent>): void => {
     const yAxis = e.currentTarget.scrollTop
     // console.log(yAxis)
     if (yAxis > 64) {
@@ -133,10 +100,6 @@ const Home: React.FC = () => {
       <Navbar isHome navOpacity={navOpacity} bgColor={bgColor} />
       <div onScroll={(e) => handleScroll(e)} className={cx('body')}>
         <Greeting bgColor={bgColor} setBgColor={setBgColor} />
-        {/* <Section {...trendingData} />
-        <Section {...playlistData} />
-        <Section {...topMixesData} /> */}
-        {/* <Section {...albumsData}/> */}
         <Section
           title={newReleasesData?.title}
           href={newReleasesData?.href}

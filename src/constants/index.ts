@@ -1,5 +1,5 @@
 import { BsFacebook } from 'react-icons/bs'
-import { FaInstagram, FaGithub } from 'react-icons/fa'
+import { FaGithub, FaInstagram } from 'react-icons/fa'
 
 export const footerLinks = [
   {
@@ -56,3 +56,4 @@ export const siteInfo = [
   { title: 'About Ads', url: '/' },
   { title: 'Accessibility', url: '/' },
 ]
+

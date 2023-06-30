@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
-import styles from './Section.module.scss'
-import classNames from 'classnames/bind'
-import { SectionItemI } from '../../../types'
-import Navbar from '@/components/Navbar/Navbar'
-import Footer from '@/components/Footer/Footer'
 import { Section as SectionContent } from '@/components'
+import Footer from '@/components/Footer/Footer'
+import Navbar from '@/components/Navbar/Navbar'
 import {
   getAccessToken,
   getFeaturedPlaylists,
   getNewReleases,
 } from '@/utils/fetchData'
+import classNames from 'classnames/bind'
+import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
+import { ResponseSectionItem } from '../../../types'
+import styles from './Section.module.scss'
 
 const cx = classNames.bind(styles)
 
@@ -18,7 +18,7 @@ interface SectionData {
   title?: string
   href?: string
   dataType?: string
-  data?: SectionItemI[]
+  data?: ResponseSectionItem[]
 }
 
 const Section: React.FC = () => {

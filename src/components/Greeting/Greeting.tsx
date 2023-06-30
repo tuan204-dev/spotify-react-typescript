@@ -26,12 +26,14 @@ const Greeting: FC<GreetingProps> = (props) => {
   }, [initSongs])
 
   useEffect(() => {
-    (async () => {
+    const fetchData = async () => {
       const response = await fetch('data/initSongs.json')
       const data = await response.json()
 
       setInitSongs(data.data)
-    })()
+    }
+
+    fetchData()
   }, [])
 
   const greeting = (): string => {

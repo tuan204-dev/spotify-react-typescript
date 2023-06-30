@@ -36,13 +36,13 @@ const SectionItem: React.FC<SectionItemI> = ({
           )}
         </div>
         <div className={cx('btn-pivot')}>
-          <button
+          {!isLoading && <button
             className={cx({
               'play-btn': true,
             })}
           >
             <TbPlayerPlayFilled className={cx('play-btn-child')} />
-          </button>
+          </button>}
         </div>
         <div className={cx('body')}>
           {!isLoading ? (

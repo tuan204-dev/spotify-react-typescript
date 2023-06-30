@@ -1,12 +1,12 @@
-import React, { memo } from 'react'
-import styles from './Footer.module.scss'
+import { footerLinks, siteInfo, socialNetworkLinks } from '@/constants'
 import classNames from 'classnames/bind'
-import { footerLinks, socialNetworkLinks, siteInfo } from '@/constants'
+import { FC, memo } from 'react'
+import styles from './Footer.module.scss'
 import LinkGroup from './LinkGroup/LinkGroup'
 
 const cx = classNames.bind(styles)
 
-const Footer: React.FC = () => {
+const Footer: FC = () => {
   return (
     <footer className={cx('footer')}>
       <nav className={cx('footer__top')}>
@@ -29,11 +29,7 @@ const Footer: React.FC = () => {
       <nav className={cx('footer__bottom')}>
         <div className={cx('footer__bottom-links')}>
           {siteInfo.map((item, index) => (
-            <a
-              key={index}
-              className={cx('footer__bottom-links-item')}
-              href={item.url}
-            >
+            <a key={index} className={cx('footer__bottom-links-item')} href={item.url}>
               {item.title}
             </a>
           ))}

@@ -18,16 +18,13 @@ const Playlist: React.FC = () => {
   const [data, setData] = useState<any>()
   const [isLoading, setLoading] = useState<boolean>(true)
   const { search } = useLocation()
-  const bgColor = useRaiseColorTone(
-    useDominantColor(data?.images[0].url) || '#121212'
-  )
+  const bgColor = useRaiseColorTone(useDominantColor(data?.images[0].url) || '#121212')
 
   const { width } = useContext(MainLayoutContext)
 
   const { ref, inView } = useInView({
     threshold: 0,
   })
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,9 +45,7 @@ const Playlist: React.FC = () => {
     setLoading(Boolean(!data))
   }, [data])
 
-  const handleScroll = (
-    e: React.UIEvent<HTMLDivElement, UIEvent>
-  ): void => {
+  const handleScroll = (e: React.UIEvent<HTMLDivElement, UIEvent>): void => {
     const yAxis = e.currentTarget.scrollTop
     // console.log(yAxis)
     if (yAxis > 64) {
@@ -76,10 +71,7 @@ const Playlist: React.FC = () => {
           quantity={data?.tracks.total}
         />
         <div className={cx('song-list')}>
-          <div
-            style={{ backgroundColor: `${bgColor}` }}
-            className={cx('bg-blur')}
-          ></div>
+          <div style={{ backgroundColor: `${bgColor}` }} className={cx('bg-blur')}></div>
           <div className={cx('main')}>
             <div className={cx('action-bar')}>
               <button
@@ -123,34 +115,29 @@ const Playlist: React.FC = () => {
                   let order = 1
                   if (!isLoading) {
                     // console.log('im here')
-                    return data?.tracks.items.map(
-                      (item: any, index: number) => {
-                        if (item.track) {
-                          return (
-                            <SongItem
-                              key={index}
-                              order={order++}
-                              thumb={item?.track.album.images[0].url}
-                              songName={item?.track.name}
-                              artists={item?.track.artists}
-                              album={item?.track.album.name}
-                              dateAdd={item?.added_at}
-                              duration={item?.track.duration_ms}
-                              isExplicit={item?.track.explicit}
-                              isLoading={isLoading}
-                            />
-                          )
-                        }
+                    return data?.tracks.items.map((item: any, index: number) => {
+                      if (item.track) {
+                        return (
+                          <SongItem
+                            key={index}
+                            order={order++}
+                            thumb={item?.track.album.images[0].url}
+                            songName={item?.track.name}
+                            artists={item?.track.artists}
+                            album={item?.track.album.name}
+                            dateAdd={item?.added_at}
+                            duration={item?.track.duration_ms}
+                            isExplicit={item?.track.explicit}
+                            isLoading={isLoading}
+                          />
+                        )
                       }
-                    )
+                    })
                   } else {
                     return Array(9)
                       .fill(0)
                       .map((item, index) => (
-                        <SongItem
-                          isLoading={isLoading}
-                          key={item + index}
-                        />
+                        <SongItem isLoading={isLoading} key={item + index} />
                       ))
                   }
                 })()}

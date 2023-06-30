@@ -5,13 +5,8 @@ import Skeleton from 'react-loading-skeleton'
 import { Link } from 'react-router-dom'
 import SectionItem from '../SectionItem/SectionItem'
 import styles from './Section.module.scss'
-export interface SectionProps {
-  title?: string
-  href?: string
-  data?: any[]
-  isFull?: boolean
-  dataType?: string
-}
+import { SectionProps } from '../../../types'
+
 
 const cx = classNames.bind(styles)
 
@@ -29,6 +24,7 @@ const Section: React.FC<SectionProps> = ({
     (width - 2 * 24 - (quantityCol - 1) * 24) / quantityCol
 
   // console.log(width, quantityCol)
+  // console.log(data)
 
   useEffect(() => {
     setLoading(Boolean(!data))
@@ -71,7 +67,7 @@ const Section: React.FC<SectionProps> = ({
                   artists={item?.artists}
                   desc={item?.description}
                   author={
-                    (item?.artists && item?.artists.name) ||
+                    (item?.artists && item?.artists[0].name) ||
                     (item?.owner && item?.owner.display_name)
                   }
                 />
@@ -89,7 +85,7 @@ const Section: React.FC<SectionProps> = ({
                     desc={item?.description}
                     imageUrl={item?.images[0]?.url}
                     author={
-                      (item?.artists && item?.artists.name) ||
+                      (item?.artists && item?.artists[0].name) ||
                       (item?.owner && item?.owner.display_name)
                     }
                   />

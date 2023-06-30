@@ -1,13 +1,12 @@
-import { ArtistDataProps } from '../../types'
+import { ArtistData } from '../../types'
 
 export default function htmlCleaner(
   htmlString: string | undefined
-): ArtistDataProps[] | null | string {
-  
+): ArtistData[] | null | string {
   if (!htmlString) return null
   const parser = new DOMParser()
   const doc = parser.parseFromString(htmlString, 'text/html')
-  const playlists: ArtistDataProps[] = []
+  const playlists: ArtistData[] = []
 
   const links = doc.querySelectorAll('a')
   if (links.length === 0) {
