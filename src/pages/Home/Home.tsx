@@ -1,13 +1,9 @@
-import classNames from 'classnames/bind'
-import { useState, useEffect } from 'react'
-import styles from './Home.module.scss'
 import { Footer, Greeting, Navbar, Section } from '@/components'
-import {
-  getAccessToken,
-  getFeaturedPlaylists,
-  getNewReleases,
-} from './../../utils/fetchData'
+import classNames from 'classnames/bind'
+import { useEffect, useState } from 'react'
 import { SectionProps } from '../../../types'
+import styles from './Home.module.scss'
+import { fetchHomePageSectionData } from '@/utils'
 
 const cx = classNames.bind(styles)
 
@@ -21,39 +17,8 @@ const Home: React.FC = () => {
   const [newReleasesData, setNewReleaseData] = useState<SectionProps>()
 
   useEffect(() => {
-    const fetchData = async () => {
-      const token = await getAccessToken()
-      const responseData = await getNewReleases({
-        accessToken: token,
-        limit: 10,
-        country: 'VN',
-      })
-      setNewReleaseData({
-        title: 'New Releases',
-        href: '/section?newReleases',
-        dataType: 'album',
-        data: responseData,
-      })
-    }
-    fetchData()
-  }, [])
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const token = await getAccessToken()
-      const responseData = await getFeaturedPlaylists({
-        accessToken: token,
-        limit: 10,
-        country: 'VN',
-      })
-      setFeaturePlaylist({
-        title: 'Feature Playlist',
-        href: '/section?featurePlaylist',
-        dataType: 'playlist',
-        data: responseData,
-      })
-    }
-    fetchData()
+    fetchHomePageSectionData({ type: 'newRelease', setData: setNewReleaseData })
+    fetchHomePageSectionData({ type: 'featuredPlaylists', setData: setFeaturePlaylist })
   }, [])
 
   useEffect(() => {

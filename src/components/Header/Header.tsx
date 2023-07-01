@@ -1,5 +1,5 @@
 import logoImage from '@/assets/image/logo/logo.svg'
-import htmlCleaner from '@/utils/htmlCleaner'
+import {htmlCleaner} from '@/utils'
 import classNames from 'classnames/bind'
 import React, { memo } from 'react'
 import Skeleton from 'react-loading-skeleton'
@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({
   releaseDate,
   isWhiteColor = false,
 }) => {
-  console.log(desc, artists)
+  // console.log(desc, artists)
 
   return (
     <main style={{ backgroundColor: `${bgColor}` }} className={cx('wrapper')}>

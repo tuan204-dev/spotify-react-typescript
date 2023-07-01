@@ -19,6 +19,12 @@ function App() {
   const [showSidebar, setShowSidebar] = useState<boolean>(true)
 
   useEffect(() => {
+    const clearLocalStorage = () => localStorage.clear()
+    window.addEventListener('beforeunload', clearLocalStorage)
+    return () => window.removeEventListener('beforeunload', clearLocalStorage)
+  }, [])
+
+  useEffect(() => {
     setShowSidebar(
       ['/', '/search', '/artist', '/section', '/playlist', '/album'].includes(pathname)
     )

@@ -1,5 +1,5 @@
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
-import { convertDateFormat } from '@/utils/convertDateFormat'
+import { convertDateFormat } from '@/utils'
 import classNames from 'classnames/bind'
 import React, { memo, useContext } from 'react'
 import Skeleton from 'react-loading-skeleton'
