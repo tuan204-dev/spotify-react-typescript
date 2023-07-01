@@ -1,4 +1,4 @@
-import { footerLinks, siteInfo, socialNetworkLinks, bottomLinks, topLinkGroups } from '@/constants'
+import { bottomLinks, socialNetworkLinks, topLinkGroups } from '@/constants'
 import classNames from 'classnames/bind'
 import { FC, memo } from 'react'
 import styles from './Footer.module.scss'
