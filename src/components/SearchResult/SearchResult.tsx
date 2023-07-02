@@ -187,7 +187,6 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
           </>
         )}
       </div>
-      <Footer />
     </div>
   )
 }

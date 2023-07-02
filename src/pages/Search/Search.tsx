@@ -14,9 +14,14 @@ const Search: FC<SearchProps> = () => {
   const [debounceValue, setDebounceValue] = useState<string>('')
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setDebounceValue(query)
-    }, 500)
+    let timeoutId: any
+    if (!query) {
+      setDebounceValue('')
+    } else {
+      timeoutId = setTimeout(() => {
+        setDebounceValue(query)
+      }, 500)
+    }
 
     return () => clearTimeout(timeoutId)
   }, [query])
@@ -25,16 +30,15 @@ const Search: FC<SearchProps> = () => {
     <div className={cx('search')}>
       <Navbar isSearch {...{ query, setQuery }} />
       <div className={cx('body')}>
-        {debounceValue ? (
+        {debounceValue && (
           <>
             <SearchResult query={debounceValue} />
           </>
-        ) : (
-          <>
-            <SearchBanner />
-            <Footer />
-          </>
         )}
+        <div style={{ display: debounceValue && 'none' }}>
+          <SearchBanner />
+        </div>
+        <Footer />
       </div>
     </div>
   )
