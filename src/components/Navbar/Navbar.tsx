@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect, useRef } from 'react'
 import { FaUser } from 'react-icons/fa'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { FiSearch } from 'react-icons/fi'
@@ -32,6 +32,14 @@ const Navbar: FC<NavbarProps> = (props) => {
 
   const {key} = useLocation()
   const navigate = useNavigate()
+  const queryRef = useRef<any>(null)
+
+  useEffect(() => {
+    if(isSearch) {
+      queryRef?.current.focus()
+    }
+  }, [])
+  
 
   return (
     <div className={cx('nav')}>
@@ -67,6 +75,7 @@ const Navbar: FC<NavbarProps> = (props) => {
             <form action="#">
               <input
                 type="text"
+                ref={queryRef}
                 placeholder="What do you want to listen to?"
                 onChange={(e) => setQuery!(e.target.value)}
                 value={query}

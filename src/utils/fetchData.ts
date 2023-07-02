@@ -1,4 +1,4 @@
-import { FeaturedPlaylistsProps, NewReleasesArgs, RequestArg } from "../../types"
+import { FeaturedPlaylistsProps, NewReleasesArgs, RequestArg } from '../../types'
 
 export const getAccessToken = async () => {
   const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID
@@ -19,15 +19,12 @@ export const getAccessToken = async () => {
 export const fetchSpotifyData = async (args: Partial<RequestArg>) => {
   const { type, accessToken, id } = args
 
-  const response = await fetch(
-    `https://api.spotify.com/v1/${type}/${id}`,
-    {
-      method: 'GET',
-      headers: {
-        Authorization: 'Bearer ' + accessToken,
-      },
-    }
-  )
+  const response = await fetch(`https://api.spotify.com/v1/${type}/${id}`, {
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + accessToken,
+    },
+  })
 
   const data = await response.json()
   return data
@@ -50,9 +47,7 @@ export const getNewReleases = async (args: Partial<NewReleasesArgs>) => {
   return data.albums.items
 }
 
-export const getFeaturedPlaylists = async (
-  args: Partial<FeaturedPlaylistsProps>
-) => {
+export const getFeaturedPlaylists = async (args: Partial<FeaturedPlaylistsProps>) => {
   const { limit, accessToken, country } = args
 
   const response = await fetch(
@@ -67,4 +62,27 @@ export const getFeaturedPlaylists = async (
 
   const data = await response.json()
   return data.playlists.items
+}
+
+interface SearchArgs {
+  query: string
+  accessToken: string
+}
+
+export const searchData = async (args: Partial<SearchArgs>) => {
+  const { query = '', accessToken } = args
+
+  const response = await fetch(
+    `https://api.spotify.com/v1/search?q=${encodeURIComponent(
+      query
+    )}&type=album%2Cplaylist%2Ctrack%2Cartist%2Cshow%2Cepisode%2Caudiobook&market=VN`,
+    {
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer ' + accessToken,
+      },
+    }
+  )
+  const data = await response.json()
+  return data
 }

@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import { SectionItemI } from '../../../types'
 import { Artists } from '../UIs'
 import styles from './SectionItem.module.scss'
+import { convertDateFormat } from '@/utils'
 
 const cx = classNames.bind(styles)
 
@@ -20,13 +21,14 @@ const SectionItem: React.FC<SectionItemI> = ({
   artists,
   desc,
   isLoading,
+  isShow = false,
+  publisher,
+  dateAdd
 }) => {
   return (
     <Link to={`/${dataType}?${id}`}>
       <div className={cx('wrapper')}>
-        <div
-          className={cx({ img: true, isArtist: dataType === 'artist' })}
-        >
+        <div className={cx({ img: true, isArtist: dataType === 'artist' })}>
           {!isLoading ? (
             <>
               <img loading="lazy" src={imageUrl} alt={title || name} />
@@ -36,13 +38,15 @@ const SectionItem: React.FC<SectionItemI> = ({
           )}
         </div>
         <div className={cx('btn-pivot')}>
-          {!isLoading && <button
-            className={cx({
-              'play-btn': true,
-            })}
-          >
-            <TbPlayerPlayFilled className={cx('play-btn-child')} />
-          </button>}
+          {!isLoading && (
+            <button
+              className={cx({
+                'play-btn': true,
+              })}
+            >
+              <TbPlayerPlayFilled className={cx('play-btn-child')} />
+            </button>
+          )}
         </div>
         <div className={cx('body')}>
           {!isLoading ? (
@@ -58,10 +62,12 @@ const SectionItem: React.FC<SectionItemI> = ({
               //     : 'Lorem ipsum dolor sit amet consectetur adipisicing elit.'}
               // </p>
               <p>
-                {desc || (author && `By ${author}`) ||
+                {(isShow && publisher) ||
+                (dataType === 'episode' && convertDateFormat(dateAdd)) ||
+                  desc ||
+                  (author && `By ${author}`) ||
                   (dataType === 'artist' && 'Artist') ||
                   (artists && <Artists data={artists} />) ||
-                  
                   'Lorem ipsum dolor sit amet consectetur adipisicing elit.'}
               </p>
             ) : (

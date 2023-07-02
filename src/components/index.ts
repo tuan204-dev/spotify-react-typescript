@@ -11,6 +11,7 @@ import SidebarItem from './SidebarItem/SidebarItem'
 import SongItem from './SongItem/SongItem'
 import SongItemTag from './SongItemTag/SongItemTag'
 import ArtistList from './Header/ArtistList/ArtistList'
+import SearchResult from './SearchResult/SearchResult';
 
 
 export {
@@ -26,5 +27,6 @@ export {
   SidebarItem,
   SongItem,
   SongItemTag,
-  ArtistList
+  ArtistList,
+  SearchResult
 }

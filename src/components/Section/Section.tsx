@@ -7,7 +7,6 @@ import SectionItem from '../SectionItem/SectionItem'
 import styles from './Section.module.scss'
 import { SectionProps } from '../../../types'
 
-
 const cx = classNames.bind(styles)
 
 const Section: React.FC<SectionProps> = ({
@@ -16,30 +15,30 @@ const Section: React.FC<SectionProps> = ({
   data,
   isFull = false,
   dataType,
+  isSearch = false,
+  isShow = false,
 }) => {
   const [isLoading, setLoading] = useState<boolean>(true)
   const { quantityCol, width } = useContext(MainLayoutContext)
 
-  const columnWidth =
-    (width - 2 * 24 - (quantityCol - 1) * 24) / quantityCol
-
-  // console.log(columnWidth)
-  // console.log(width, quantityCol)
-  // console.log(data)
+  const columnWidth = (width - 2 * 24 - (quantityCol - 1) * 24) / quantityCol
 
   useEffect(() => {
     setLoading(Boolean(!data))
   }, [data])
 
   return (
-    <section className={cx('wrapper')}>
+    <section className={cx({ wrapper: true })}>
       <div className={cx('header')}>
         {!isLoading ? (
           <>
-            <Link to={`${href}`}>
-              <h2 className={cx('heading')}>{title}</h2>
+            <Link
+              className={cx({ 'is-search': isSearch })}
+              to={!isSearch ? `${href}` : '#'}
+            >
+              <h2 className={cx({ heading: true })}>{title}</h2>
             </Link>
-            {(data?.length || 0) > quantityCol && !isFull && (
+            {(data?.length || 0) > quantityCol && !isFull && !isSearch && (
               <Link to={`${href}`}>Show all</Link>
             )}
           </>
@@ -59,16 +58,19 @@ const Section: React.FC<SectionProps> = ({
           ? isFull
             ? data?.map((item, index) => (
                 <SectionItem
+                  isShow={isShow}
                   dataType={dataType}
                   isLoading={isLoading}
                   key={index}
-                  id={item.id}
-                  title={item.name}
-                  imageUrl={item?.images[0]?.url}
+                  id={item?.id}
+                  title={item?.name}
                   artists={item?.artists}
                   desc={item?.description}
+                  publisher={item?.publisher}
+                  imageUrl={item?.images[0]?.url}
+                  dateAdd={item?.release_date}
                   author={
-                    (item?.artists && item?.artists[0].name) ||
+                    (item?.artists && item?.artists[0]?.name) ||
                     (item?.owner && item?.owner.display_name)
                   }
                 />
@@ -77,16 +79,19 @@ const Section: React.FC<SectionProps> = ({
                 ?.slice(0, Math.min(quantityCol, data.length))
                 .map((item, index) => (
                   <SectionItem
+                    isShow={isShow}
                     dataType={dataType}
                     isLoading={isLoading}
                     key={index}
-                    id={item.id}
-                    title={item.name}
+                    id={item?.id}
+                    title={item?.name}
                     artists={item?.artists}
                     desc={item?.description}
+                    publisher={item?.publisher}
                     imageUrl={item?.images[0]?.url}
+                    dateAdd={item?.release_date}
                     author={
-                      (item?.artists && item?.artists[0].name) ||
+                      (item?.artists && item?.artists[0]?.name) ||
                       (item?.owner && item?.owner.display_name)
                     }
                   />

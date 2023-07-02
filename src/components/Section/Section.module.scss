@@ -38,3 +38,11 @@
   grid-gap: 24px;
   // max-height: 305px;
 }
+
+.is-search {
+  &:hover {
+    text-decoration: none !important;
+    cursor: text;
+  }
+  pointer-events: none;
+}

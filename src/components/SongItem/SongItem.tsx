@@ -6,21 +6,11 @@ import Skeleton from 'react-loading-skeleton'
 import { Artists } from '../UIs'
 import styles from './SongItem.module.scss'
 import { PlayIcon } from '@/assets/icons'
+import { SongItemProps } from '../../../types'
 
 const cx = classNames.bind(styles)
 
-interface SongItemProps {
-  songName?: string
-  artists?: any[]
-  thumb?: string
-  duration?: number
-  order?: number
-  isLoading?: boolean
-  album?: string
-  dateAdd?: string
-  isAlbumTrack?: boolean
-  isExplicit?: boolean
-}
+
 
 const SongItem: React.FC<SongItemProps> = ({
   songName,
@@ -31,8 +21,9 @@ const SongItem: React.FC<SongItemProps> = ({
   isLoading = false,
   dateAdd,
   album,
-  isAlbumTrack = false,
   isExplicit = false,
+  isAlbumTrack = false,
+  isSearch = false,
 }) => {
   const { width } = useContext(MainLayoutContext)
 
@@ -42,18 +33,21 @@ const SongItem: React.FC<SongItemProps> = ({
         wrapper: true,
         'grid-md': width <= 780 && !isAlbumTrack,
         'is-album-track': isAlbumTrack,
+        'is-search-result': isSearch,
       })}
     >
-      <div className={cx('order')}>
-        {!isLoading && (
-          <>
-            <span className={cx('order-number')}>{order}</span>{' '}
-            <button className={cx('order-icon')}>
-              <PlayIcon />
-            </button>
-          </>
-        )}
-      </div>
+      {!isSearch && (
+        <div className={cx('order')}>
+          {!isLoading && (
+            <>
+              <span className={cx('order-number')}>{order}</span>{' '}
+              <button className={cx('order-icon')}>
+                <PlayIcon />
+              </button>
+            </>
+          )}
+        </div>
+      )}
       <div className={cx('main')}>
         {!isAlbumTrack && (
           <div className={cx('thumb')}>
@@ -82,7 +76,7 @@ const SongItem: React.FC<SongItemProps> = ({
           )}
         </div>
       </div>
-      {!isAlbumTrack && (
+      {!isAlbumTrack && !isSearch && (
         <>
           <div className={cx('album')}>{!isLoading && album}</div>
           {width > 780 && (

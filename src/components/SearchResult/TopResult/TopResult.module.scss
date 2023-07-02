@@ -1,0 +1,101 @@
+@import '../../../scss/variable';
+@import '../../../scss/mixin';
+
+.wrapper {
+  width: 100%;
+  padding-inline: 24px;
+  display: flex;
+  justify-content: space-between;
+  gap: $panel-gap;
+}
+
+.left,
+.right {
+  flex: 1;
+
+  .header {
+    margin-bottom: 16px;
+
+    .heading {
+      font-size: 24px;
+      font-weight: 700;
+    }
+  }
+
+}
+
+.left {
+
+  .body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: $bg-card;
+    transition: background-color .3s ease;
+    border-radius: $panel-border-radius;
+    gap: 14px;
+
+
+    .thumb {
+      height: 92px;
+      width: 92px;
+      overflow: hidden;
+      border-radius: 4px;
+
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .main {
+      min-height: 62px;
+
+      .name {
+        font-size: 32px;
+        color: $white;
+        font-weight: 700;
+        margin: 10px 0 18px;
+
+        h3 {
+          padding: 0;
+          margin: 0;
+        }
+      }
+    }
+
+    .btn-pivot {
+      position: absolute;
+      bottom: 18px;
+      right: 18px;
+
+      .play-btn {
+        @include button-icon(50px, $primary, $primary);
+        font-size: 24px;
+        box-shadow: 0 8px 8px rgba(0, 0, 0, .3);
+        opacity: 0;
+        transform: translateY(8px);
+        transition: transform .3s ease scale .05s ease;
+
+        &:hover {
+          scale: 1.04;
+        }
+      }
+    }
+
+
+    &:hover {
+      background-color: $bg-card-highlight;
+
+      .play-btn {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+.responsive {
+  flex-direction: column;
+}

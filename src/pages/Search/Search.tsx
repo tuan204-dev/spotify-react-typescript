@@ -1,7 +1,7 @@
+import { Footer, Navbar, SearchBanner, SearchResult } from '@/components'
 import classNames from 'classnames/bind'
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import styles from './Search.module.scss'
-import { Footer, Navbar, SearchBanner } from '@/components'
 
 const cx = classNames.bind(styles)
 
@@ -11,13 +11,30 @@ interface SearchProps {
 
 const Search: FC<SearchProps> = () => {
   const [query, setQuery] = useState<string>('')
+  const [debounceValue, setDebounceValue] = useState<string>('')
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setDebounceValue(query)
+    }, 500)
+
+    return () => clearTimeout(timeoutId)
+  }, [query])
 
   return (
     <div className={cx('search')}>
       <Navbar isSearch {...{ query, setQuery }} />
       <div className={cx('body')}>
-        <SearchBanner />
-        <Footer />
+        {debounceValue ? (
+          <>
+            <SearchResult query={debounceValue} />
+          </>
+        ) : (
+          <>
+            <SearchBanner />
+            <Footer />
+          </>
+        )}
       </div>
     </div>
   )

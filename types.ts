@@ -237,20 +237,24 @@ export interface AlbumItem {
 
 export interface SectionItemI extends PlayListItem, ArtistItem, AlbumItem {
   isArtist?: boolean
+  isShow?: boolean
   isLoading?: boolean
   columnWidth?: number
   dataType?: string
   artists?: ArtistData[]
   desc?: string
+  publisher?: string
+  dateAdd?: string
 }
-
 
 export interface SectionProps {
   title?: string
   href?: string
   data?: ResponseSectionItem[]
-  isFull?: boolean
   dataType?: string
+  isFull?: boolean
+  isSearch?: boolean
+  isShow?: boolean
 }
 
 export interface SongItemTagProps {
@@ -298,9 +302,30 @@ export interface ResponseSectionItem {
   images: {
     url: string
   }[]
+  publisher?: string
   artists?: ArtistData[]
   description?: string
   owner?: {
     display_name: string
   }
+  release_date?: string
+}
+
+export interface SongItemProps {
+  songName?: string
+  artists?: ArtistData[]
+  thumb?: string
+  duration?: number
+  order?: number
+  isLoading?: boolean
+  album?: string
+  dateAdd?: string
+  isAlbumTrack?: boolean
+  isExplicit?: boolean
+  isSearch?: boolean
+}
+export interface SongListProps {
+  songList: SongItemProps[]
+  isLoading?: boolean
+  pivotTop: number
 }
