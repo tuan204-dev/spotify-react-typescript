@@ -3,6 +3,7 @@ import styles from './BannerItem.module.scss'
 import classNames from 'classnames/bind'
 import { SearchBannerItem } from '../../../../types'
 import { Link } from 'react-router-dom'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 const cx = classNames.bind(styles)
 
@@ -19,7 +20,7 @@ const BannerItem: React.FC<SearchBannerItem> = ({
       >
         <h4 className={cx('title')}>{title}</h4>
         <div className={cx('img')}>
-          <img loading="lazy" src={imageUrl} alt={title} />
+          <LazyLoadImage effect="blur" src={imageUrl} alt={title} />
         </div>
       </div>
     </Link>

@@ -7,6 +7,7 @@ import useComponentSize from '@/hooks/useComponentSize'
 import Skeleton from 'react-loading-skeleton'
 import { SongItemTagProps } from '../../../types'
 import { Link } from 'react-router-dom'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 const cx = classNames.bind(styles)
 
@@ -40,7 +41,7 @@ const SongItemTag: React.FC<SongItemTagProps> = (props) => {
           // style={{ backgroundImage: `url(${thumbnailUrl})` }}
         >
           {!isLoading ? (
-            <img src={thumbnailUrl} alt={name} />
+            <LazyLoadImage effect="blur" src={thumbnailUrl} alt={name} />
           ) : (
             <Skeleton height={'100%'} />
           )}

@@ -6,6 +6,7 @@ import { Artists } from '@/components/UIs'
 import { TbPlayerPlayFilled } from 'react-icons/tb'
 import Skeleton from 'react-loading-skeleton'
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 const cx = classNames.bind(styles)
 
@@ -34,7 +35,7 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
         <div className={cx('body')}>
           <div className={cx('thumb')}>
             {!isLoading ? (
-              <img src={topResult?.album?.images[0].url} alt={topResult?.name} />
+              <LazyLoadImage effect="blur" src={topResult?.album?.images[0].url} alt={topResult?.name} />
             ) : (
               <Skeleton height="100%" width="100%" />
             )}

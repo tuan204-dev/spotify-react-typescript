@@ -7,6 +7,7 @@ import { ArtistList } from '..'
 import styles from './Header.module.scss'
 import { Artists } from '../UIs'
 import { HeaderProps } from '../../../types'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const cx = classNames.bind(styles)
 
@@ -31,7 +32,7 @@ const Header: React.FC<HeaderProps> = ({
       <div className={cx('body')}>
         <div className={cx('img')}>
           {!isLoading ? (
-            <img src={thumbnail} alt={title} />
+            <LazyLoadImage effect="blur" src={thumbnail} alt={title} />
           ) : (
             <Skeleton height={'100%'} />
           )}

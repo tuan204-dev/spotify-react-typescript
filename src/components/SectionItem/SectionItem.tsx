@@ -9,6 +9,7 @@ import { Artists } from '../UIs'
 import styles from './SectionItem.module.scss'
 import { convertDateFormat } from '@/utils'
 import { UserImgDefault } from '@/assets/icons'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 const cx = classNames.bind(styles)
 
@@ -35,14 +36,14 @@ const SectionItem: React.FC<SectionItemI> = ({
           {!isLoading ? (
             dataType === 'artist' ? (
               imageUrl ? (
-                <img loading="lazy" src={imageUrl} alt={title || name} />
+                <LazyLoadImage effect="blur" src={imageUrl} alt={title || name} />
               ) : (
                 <div className={cx('user-img-default')}>
                     <UserImgDefault/>
                   </div>
               )
             ) : (
-              <img loading="lazy" src={imageUrl} alt={title || name} />
+              <LazyLoadImage effect="blur" src={imageUrl} alt={title || name} />
             )
           ) : (
             <Skeleton height={'100%'} />

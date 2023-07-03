@@ -7,6 +7,7 @@ import { Artists } from '../UIs'
 import styles from './SongItem.module.scss'
 import { PlayIcon } from '@/assets/icons'
 import { SongItemProps } from '../../../types'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 const cx = classNames.bind(styles)
 
@@ -52,7 +53,7 @@ const SongItem: React.FC<SongItemProps> = ({
         {!isAlbumTrack && (
           <div className={cx('thumb')}>
             {!isLoading ? (
-              <img loading="lazy" src={thumb} alt={songName} />
+              <LazyLoadImage effect="blur" src={thumb} alt={songName} />
             ) : (
               <Skeleton height={'100%'} />
             )}
