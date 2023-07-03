@@ -4,6 +4,8 @@ import React, { FC, useContext, useEffect, useState, memo } from 'react'
 import SongItemTag from '../SongItemTag/SongItemTag'
 import styles from './Greeting.module.scss'
 import Skeleton from 'react-loading-skeleton'
+import { getAccessToken, searchData } from '@/utils/fetchData'
+import { ResponseSectionItem } from '../../../types'
 
 const cx = classNames.bind(styles)
 
@@ -16,21 +18,30 @@ const Greeting: FC<GreetingProps> = (props) => {
   const { bgColor, setBgColor } = props
 
   const [isLoading, setLoading] = useState<boolean>(true)
-  const [initSongs, setInitSongs] = useState<[]>([])
+  const [initAlbums, setInitAlbums] = useState<ResponseSectionItem[]>([])
 
   const { width } = useContext(MainLayoutContext)
 
   useEffect(() => {
     setBgColor('#e0e0e0')
-    setLoading(Boolean(!initSongs))
-  }, [initSongs])
+    setLoading(initAlbums.length === 0)
+  }, [initAlbums])
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('data/initSongs.json')
-      const data = await response.json()
+      const token = await getAccessToken()
+      const data = await searchData({
+        query: 'album',
+        accessToken: token,
+        types: ['album'],
+        limit: 50
+      })
+      console.log(data)
 
-      setInitSongs(data.data)
+      // const response = await fetch('data/initSongs.json')
+      // const data = await response.json()
+
+      setInitAlbums(data?.albums.items)
     }
 
     fetchData()
@@ -63,14 +74,14 @@ const Greeting: FC<GreetingProps> = (props) => {
         })}
       >
         {!isLoading
-          ? initSongs
-              .slice(0, 6)
-              .map((item: any, index) => (
+          ? initAlbums.slice(10, 16)
+              .map((item: ResponseSectionItem, index: number) => (
                 <SongItemTag
+                  id={item.id}
                   isLoading={isLoading}
                   key={index}
-                  thumbnailUrl={item.imageUrl}
-                  name={item.title}
+                  thumbnailUrl={item.images[0].url}
+                  name={item.name}
                   setBgColor={setBgColor}
                 />
               ))

@@ -35,7 +35,8 @@
     transition: background-color .3s ease;
     border-radius: $panel-border-radius;
     gap: 14px;
-
+    max-width: 500px;
+    overflow: hidden;
 
     .thumb {
       height: 92px;
@@ -51,6 +52,8 @@
 
     .main {
       min-height: 62px;
+      // max-width: 100%;
+      // overflow: hidden;
 
       .name {
         font-size: 32px;
@@ -61,6 +64,7 @@
         h3 {
           padding: 0;
           margin: 0;
+          @include text-in-one-line;
         }
       }
     }

@@ -8,6 +8,7 @@ import { SectionItemI } from '../../../types'
 import { Artists } from '../UIs'
 import styles from './SectionItem.module.scss'
 import { convertDateFormat } from '@/utils'
+import { UserImgDefault } from '@/assets/icons'
 
 const cx = classNames.bind(styles)
 
@@ -23,16 +24,26 @@ const SectionItem: React.FC<SectionItemI> = ({
   isLoading,
   isShow = false,
   publisher,
-  dateAdd
+  dateAdd,
 }) => {
+  // if(!imageUrl) return
+
   return (
     <Link to={`/${dataType}?${id}`}>
       <div className={cx('wrapper')}>
         <div className={cx({ img: true, isArtist: dataType === 'artist' })}>
           {!isLoading ? (
-            <>
+            dataType === 'artist' ? (
+              imageUrl ? (
+                <img loading="lazy" src={imageUrl} alt={title || name} />
+              ) : (
+                <div className={cx('user-img-default')}>
+                    <UserImgDefault/>
+                  </div>
+              )
+            ) : (
               <img loading="lazy" src={imageUrl} alt={title || name} />
-            </>
+            )
           ) : (
             <Skeleton height={'100%'} />
           )}
@@ -56,14 +67,9 @@ const SectionItem: React.FC<SectionItemI> = ({
           )}
           <div className={cx('desc')}>
             {!isLoading ? (
-              // <p>
-              //   {author
-              //     ? `By ${author}`
-              //     : 'Lorem ipsum dolor sit amet consectetur adipisicing elit.'}
-              // </p>
               <p>
                 {(isShow && publisher) ||
-                (dataType === 'episode' && convertDateFormat(dateAdd)) ||
+                  (dataType === 'episode' && convertDateFormat(dateAdd)) ||
                   desc ||
                   (author && `By ${author}`) ||
                   (dataType === 'artist' && 'Artist') ||

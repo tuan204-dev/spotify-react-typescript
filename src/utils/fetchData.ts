@@ -1,4 +1,4 @@
-import { FeaturedPlaylistsProps, NewReleasesArgs, RequestArg } from '../../types'
+import { FeaturedPlaylistsProps, NewReleasesArgs, RequestArg, countries } from '../../types'
 
 export const getAccessToken = async () => {
   const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID
@@ -65,17 +65,32 @@ export const getFeaturedPlaylists = async (args: Partial<FeaturedPlaylistsProps>
 }
 
 interface SearchArgs {
-  query: string
   accessToken: string
+  query: string
+  types?: SearchTypes
+  limit?: number
+  market?: countries
 }
 
+type SearchTypes =
+  | 'all'
+  | Array<'album' | 'artist' | 'playlist' | 'track' | 'show' | 'episode' | 'audiobook'>
+
 export const searchData = async (args: Partial<SearchArgs>) => {
-  const { query = '', accessToken } = args
+  const { query = '', accessToken, types = 'all', limit = 10, market = 'VN' } = args
+  let typesParam: string
+
+  if (types === 'all') {
+    typesParam = 'album%2Cplaylist%2Ctrack%2Cartist%2Cshow%2Cepisode%2Caudiobook'
+  } else {
+    typesParam = types.map((type) => encodeURIComponent(type)).join('%2C')
+  }
+
 
   const response = await fetch(
     `https://api.spotify.com/v1/search?q=${encodeURIComponent(
       query
-    )}&type=album%2Cplaylist%2Ctrack%2Cartist%2Cshow%2Cepisode%2Caudiobook&market=VN`,
+    )}&type=${typesParam}&market=${market}&limit=${limit}`,
     {
       method: 'GET',
       headers: {

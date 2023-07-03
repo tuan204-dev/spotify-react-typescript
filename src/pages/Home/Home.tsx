@@ -10,45 +10,22 @@ const cx = classNames.bind(styles)
 const Home: React.FC = () => {
   const [bgColor, setBgColor] = useState<string>('#c0b8c1')
   const [navOpacity, setNavOpacity] = useState<number>(0)
-  const [albumsData, setAlbumsData] = useState<SectionProps | null>(null)
-  const [playlistData, setPlaylistData] = useState<SectionProps | null>(null)
-  const [artistsData, setArtistsData] = useState<SectionProps>()
   const [featurePlaylistData, setFeaturePlaylist] = useState<SectionProps>()
   const [newReleasesData, setNewReleaseData] = useState<SectionProps>()
+  const [topMixes, setTopMixes] = useState<SectionProps>()
+  const [suggestArtists, setSuggestArtists] = useState<SectionProps>()
 
   useEffect(() => {
     fetchHomePageSectionData({ type: 'newRelease', setData: setNewReleaseData })
     fetchHomePageSectionData({ type: 'featuredPlaylists', setData: setFeaturePlaylist })
+    fetchHomePageSectionData({ type: 'topMixes', setData: setTopMixes })
+    fetchHomePageSectionData({
+      type: 'suggestedArtists',
+      setData: setSuggestArtists,
+    })
   }, [])
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const albumsRes = await fetch('/data/00005.json')
-      const albumsData = await albumsRes.json()
-      setAlbumsData(albumsData)
-    }
-    fetchData()
-  }, [])
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const artistsRes = await fetch('/data/00004.json')
-      const artistsData = await artistsRes.json()
-      setArtistsData(artistsData)
-    }
-    fetchData()
-  }, [])
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const playlistRes = await fetch('/data/00003.json')
-      const playlistData = await playlistRes.json()
-      setPlaylistData(playlistData)
-    }
-    fetchData()
-  }, [])
-
-  // console.log(trendingData, topMixesData)
+  console.log(suggestArtists)
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement, UIEvent>): void => {
     const yAxis = e.currentTarget.scrollTop
@@ -78,22 +55,16 @@ const Home: React.FC = () => {
           dataType={featurePlaylistData?.dataType}
         />
         <Section
-          title={playlistData?.title}
-          href={playlistData?.href}
-          data={playlistData?.data?.slice(0, 10)}
-          dataType={playlistData?.dataType}
+          title={topMixes?.title}
+          href={topMixes?.href}
+          data={topMixes?.data}
+          dataType={topMixes?.dataType}
         />
         <Section
-          title={albumsData?.title}
-          href={albumsData?.href}
-          data={albumsData?.data}
-          dataType={albumsData?.dataType}
-        />
-        <Section
-          title={artistsData?.title}
-          href={artistsData?.href}
-          data={artistsData?.data}
-          dataType={artistsData?.dataType}
+          title={suggestArtists?.title}
+          href={suggestArtists?.href}
+          data={suggestArtists?.data}
+          dataType={suggestArtists?.dataType}
         />
         <Footer />
       </div>

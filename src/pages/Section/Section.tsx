@@ -1,20 +1,17 @@
 import { Section as SectionContent } from '@/components'
 import Footer from '@/components/Footer/Footer'
 import Navbar from '@/components/Navbar/Navbar'
-import {
-  getAccessToken,
-  getFeaturedPlaylists,
-  getNewReleases,
-} from '@/utils/fetchData'
+import { getAccessToken, getFeaturedPlaylists, getNewReleases } from '@/utils/fetchData'
 import classNames from 'classnames/bind'
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { ResponseSectionItem } from '../../../types'
 import styles from './Section.module.scss'
+import { fetchHomePageSectionData } from '@/utils'
 
 const cx = classNames.bind(styles)
 
-interface SectionData {
+export interface SectionData {
   title?: string
   href?: string
   dataType?: string
@@ -56,10 +53,14 @@ const Section: React.FC = () => {
           dataType: 'playlist',
           data: responseData,
         })
-      } else {
-        const response = await fetch(`/data/${search.substring(1)}.json`)
-        const data = await response.json()
-        setData(data)
+      } else if (search === '?topMixes') {
+        fetchHomePageSectionData({ type: 'topMixes', setData: setData, limit: 50 })
+      } else if(search === '?suggestedArtists') {
+        fetchHomePageSectionData({
+          type: 'suggestedArtists',
+          setData: setData,
+          limit: 50,
+        })
       }
     }
     fetchData()

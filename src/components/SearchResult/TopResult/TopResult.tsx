@@ -24,8 +24,9 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
     }
   }, [topResult, songs])
 
+
   return (
-    <div className={cx({ wrapper: true, responsive: width <= 700 })}>
+    <div className={cx({ wrapper: true, responsive: width <= 1000 })}>
       <div className={cx('left')}>
         <div className={cx('header')}>
           <h2 className={cx('heading')}>Top result</h2>

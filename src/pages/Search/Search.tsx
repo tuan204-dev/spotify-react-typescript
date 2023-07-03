@@ -15,11 +15,11 @@ const Search: FC<SearchProps> = () => {
 
   useEffect(() => {
     let timeoutId: any
-    if (!query) {
+    if (!query.trim()) {
       setDebounceValue('')
     } else {
       timeoutId = setTimeout(() => {
-        setDebounceValue(query)
+        setDebounceValue(query.trim())
       }, 500)
     }
 

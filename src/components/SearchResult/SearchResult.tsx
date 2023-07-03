@@ -100,7 +100,7 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
     )
   }
 
-  console.log(data)
+  // console.log(data)
 
   return (
     <div className={cx('wrapper')}>
@@ -115,7 +115,7 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
           </button>
         ))}
       </div>
-      <div style={{marginTop: '52px'}}>
+      <div style={{ marginTop: '52px' }}>
         {category !== 'all' ? (
           searchSelection
             .filter((item) => item.active)
@@ -127,28 +127,40 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
                       key={index}
                       dataType={item.key.slice(0, -1)}
                       isFull
-                      data={data[item.key].items.filter((item: any) => item)}
+                      data={data[item.key].items
+                        .filter((item: any) => item)
+                        .sort((a: any, b: any) => -a.popularity + b.popularity)}
                     />
                   </div>
                 )
               } else {
                 return (
-                  <SongList pivotTop={116} key={index} songList={data.tracks.items.filter((item: any) => item)} />
+                  <SongList
+                    pivotTop={116}
+                    key={index}
+                    songList={data.tracks.items
+                      .filter((item: any) => item)
+                      .sort((a: any, b: any) => -a.popularity + b.popularity)}
+                  />
                 )
               }
             })
         ) : (
           <>
-            <TopResult
+            {data?.tracks.items?.filter((item: any) => item).length !== 0 && <TopResult
               topResult={data?.tracks?.items[0]}
-              songs={data?.tracks?.items.filter((item: any) => item)}
-            />
+              songs={data?.tracks?.items
+                .filter((item: any) => item)
+                .sort((a: any, b: any) => -a.popularity + b.popularity)}
+            />}
             {data?.artists?.items.filter((item: any) => item).length !== 0 && (
               <Section
                 isSearch
                 title="Artists"
                 dataType="artist"
-                data={data?.artists?.items.filter((item: any) => item)}
+                data={data?.artists?.items
+                  .filter((item: any) => item)
+                  .sort((a: any, b: any) => -a.popularity + b.popularity)}
               />
             )}
             {data?.albums?.items.filter((item: any) => item).length !== 0 && (
@@ -156,7 +168,9 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
                 isSearch
                 title="Albums"
                 dataType="album"
-                data={data?.albums?.items.filter((item: any) => item)}
+                data={data?.albums?.items
+                  .filter((item: any) => item)
+                  .sort((a: any, b: any) => -a.popularity + b.popularity)}
               />
             )}
             {data?.playlists?.items.filter((item: any) => item).length !== 0 && (
@@ -164,7 +178,9 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
                 isSearch
                 title="Playlists"
                 dataType="playlist"
-                data={data?.playlists?.items.filter((item: any) => item)}
+                data={data?.playlists?.items
+                  .filter((item: any) => item)
+                  .sort((a: any, b: any) => -a.popularity + b.popularity)}
               />
             )}
             {data?.episodes?.items.filter((item: any) => item).length !== 0 && (
@@ -172,7 +188,9 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
                 isSearch
                 title="Episodes"
                 dataType="episode"
-                data={data?.episodes?.items.filter((item: any) => item)}
+                data={data?.episodes?.items
+                  .filter((item: any) => item)
+                  .sort((a: any, b: any) => -a.popularity + b.popularity)}
               />
             )}
             {data?.shows?.items.filter((item: any) => item).length !== 0 && (
@@ -180,7 +198,9 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
                 isSearch
                 title="Podcasts"
                 dataType="show"
-                data={data?.shows?.items.filter((item: any) => item)}
+                data={data?.shows?.items
+                  .filter((item: any) => item)
+                  .sort((a: any, b: any) => -a.popularity + b.popularity)}
                 isShow
               />
             )}

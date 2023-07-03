@@ -261,6 +261,7 @@ export interface SongItemTagProps {
   thumbnailUrl?: string
   name?: string
   isLoading?: boolean
+  id?: string
   setBgColor: React.Dispatch<React.SetStateAction<string>>
 }
 
