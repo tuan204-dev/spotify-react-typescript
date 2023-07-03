@@ -133,7 +133,11 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
           console.log(responseData)
           localStorage.setItem(
             'suggestedArtists',
-            JSON.stringify(responseData?.artists.items)
+            JSON.stringify(
+              responseData?.artists.items
+                .sort((a: any, b: any) => -a.popularity + b.popularity)
+                .filter((artist: any) => artist.images.length !== 0)
+            )
           )
           setData!({
             title: 'Suggested artists',
