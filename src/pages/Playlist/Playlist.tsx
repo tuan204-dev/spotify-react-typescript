@@ -1,15 +1,13 @@
-import React, { useEffect, useState, useContext, memo } from 'react'
-import { Footer, Header, Navbar, SongItem } from '@/components'
-import { ClockIcon, HeartIcon } from '@/assets/icons'
+import { HeartIcon } from '@/assets/icons'
+import { Footer, Header, Navbar, SongList } from '@/components'
+import { useRaiseColorTone } from '@/hooks'
 import useDominantColor from '@/hooks/useDominantColor'
+import { fetchSpotifyData, getAccessToken } from '@/utils/fetchData'
 import classNames from 'classnames/bind'
+import React, { memo, useEffect, useState } from 'react'
 import { TbPlayerPlayFilled } from 'react-icons/tb'
 import { useLocation } from 'react-router-dom'
 import styles from './Playlist.module.scss'
-import { useInView } from 'react-intersection-observer'
-import { MainLayoutContext } from '@/contexts/MainLayoutContext'
-import { useRaiseColorTone } from '@/hooks'
-import { fetchSpotifyData, getAccessToken } from '@/utils/fetchData'
 
 const cx = classNames.bind(styles)
 
@@ -19,12 +17,6 @@ const Playlist: React.FC = () => {
   const [isLoading, setLoading] = useState<boolean>(true)
   const { search } = useLocation()
   const bgColor = useRaiseColorTone(useDominantColor(data?.images[0].url) || '#121212')
-
-  const { width } = useContext(MainLayoutContext)
-
-  const { ref, inView } = useInView({
-    threshold: 0,
-  })
 
   useEffect(() => {
     const fetchData = async () => {
@@ -54,6 +46,7 @@ const Playlist: React.FC = () => {
     setNavOpacity(yAxis / 64)
   }
 
+  console.log(data?.tracks.items)
 
   return (
     <main className={cx('wrapper')}>
@@ -83,62 +76,7 @@ const Playlist: React.FC = () => {
                 <HeartIcon />
               </button>
             </div>
-            <div className={cx('list')}>
-              <div
-                ref={ref}
-                style={{
-                  position: 'absolute',
-                  top: '-64px',
-                  zIndex: '-9',
-                }}
-              ></div>
-              <div
-                className={cx({
-                  'freeze-top-row': true,
-                  stuck: !inView,
-                  'grid-md': width <= 780,
-                })}
-              >
-                <div>#</div>
-                <div>Title</div>
-                <div>Album</div>
-                {width > 780 && <div>Date added</div>}
-                <div className={cx('clock-icon')}>
-                  <ClockIcon />
-                </div>
-              </div>
-              <div className={cx('songs')}>
-                {(() => {
-                  let order = 1
-                  if (!isLoading) {
-                    return data?.tracks.items.map((item: any, index: number) => {
-                      if (item.track) {
-                        return (
-                          <SongItem
-                            key={index}
-                            order={order++}
-                            thumb={item?.track.album.images[0].url}
-                            songName={item?.track.name}
-                            artists={item?.track.artists}
-                            album={item?.track.album.name}
-                            dateAdd={item?.added_at}
-                            duration={item?.track.duration_ms}
-                            isExplicit={item?.track.explicit}
-                            isLoading={isLoading}
-                          />
-                        )
-                      }
-                    })
-                  } else {
-                    return Array(9)
-                      .fill(0)
-                      .map((item, index) => (
-                        <SongItem isLoading={isLoading} key={item + index} />
-                      ))
-                  }
-                })()}
-              </div>
-            </div>
+            <SongList top={0} pivotTop={64} songList={data?.tracks.items} />
           </div>
         </div>
         <Footer />

@@ -15,7 +15,6 @@
     align-items: center;
     position: -webkit-sticky;
     position: sticky;
-    top: 52px;
     z-index: 9999;
     transform: translateZ(10px);
 
@@ -42,4 +41,8 @@
     box-shadow: 0 -1px 0 0 #181818;
     -webkit-box-shadow: 0 -1px 0 0 #181818;
   }
+}
+
+.grid-md {
+  grid-template-columns: 16px minmax(300px, 4fr) 2fr 50px !important;
 }

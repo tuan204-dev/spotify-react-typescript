@@ -115,7 +115,7 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
           </button>
         ))}
       </div>
-      <div style={{ marginTop: '52px' }}>
+      <div>
         {category !== 'all' ? (
           searchSelection
             .filter((item) => item.active)
@@ -136,7 +136,8 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
               } else {
                 return (
                   <SongList
-                    pivotTop={116}
+                  top={52}
+                    pivotTop={126}
                     key={index}
                     songList={data.tracks.items
                       .filter((item: any) => item)

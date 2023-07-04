@@ -9,7 +9,7 @@ import { SongListProps } from '../../../types'
 
 const cx = classNames.bind(styles)
 
-const SongList: FC<SongListProps> = ({ songList, pivotTop, isLoading = false }) => {
+const SongList: FC<SongListProps> = ({ songList, pivotTop, isLoading = false, top }) => {
   const { width } = useContext(MainLayoutContext)
 
   const { ref, inView } = useInView({
@@ -23,13 +23,10 @@ const SongList: FC<SongListProps> = ({ songList, pivotTop, isLoading = false }) 
         style={{
           position: 'absolute',
           top: `-${pivotTop}px`,
-          // zIndex: '-9',
-          width: '200px',
-          height: '10px',
-          backgroundColor: 'red',
         }}
       ></div>
       <div
+        style={{top: `${top}px`}}
         className={cx({
           'freeze-top-row': true,
           stuck: !inView,
@@ -52,13 +49,16 @@ const SongList: FC<SongListProps> = ({ songList, pivotTop, isLoading = false }) 
               <SongItem
                 key={index}
                 order={order++}
-                thumb={item?.album.images[0].url}
-                songName={item?.name}
-                artists={item?.artists}
-                album={item?.album.name}
+                thumb={
+                  item?.album?.images[item?.album.images.length - 1]?.url ||
+                  item?.track?.album?.images[item?.track?.album?.images.length - 1].url
+                }
+                songName={item?.name || item?.track?.name}
+                artists={item?.artists || item?.track?.artists}
+                album={item?.album?.name || item?.track?.album.name}
                 dateAdd={item?.added_at}
-                duration={item?.duration_ms}
-                isExplicit={item?.explicit}
+                duration={item?.duration_ms || item?.track?.duration_ms}
+                isExplicit={item?.explicit || item?.track?.explicit}
                 isLoading={isLoading}
               />
             ))
