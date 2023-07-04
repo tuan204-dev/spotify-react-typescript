@@ -327,7 +327,8 @@ export interface SongItemProps {
 }
 export interface SongListProps {
   songList: SongItemProps[]
-  isLoading?: boolean
   pivotTop: number
   top: number
+  isLoading?: boolean
+  isAlbumTrack?: boolean
 }

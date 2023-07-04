@@ -9,7 +9,13 @@ import { SongListProps } from '../../../types'
 
 const cx = classNames.bind(styles)
 
-const SongList: FC<SongListProps> = ({ songList, pivotTop, isLoading = false, top }) => {
+const SongList: FC<SongListProps> = ({
+  songList,
+  pivotTop,
+  isLoading = false,
+  top,
+  isAlbumTrack = false,
+}) => {
   const { width } = useContext(MainLayoutContext)
 
   const { ref, inView } = useInView({
@@ -26,20 +32,34 @@ const SongList: FC<SongListProps> = ({ songList, pivotTop, isLoading = false, to
         }}
       ></div>
       <div
-        style={{top: `${top}px`}}
+        style={{ top: `${top}px` }}
         className={cx({
           'freeze-top-row': true,
           stuck: !inView,
           'grid-md': width <= 780,
+          'is-album-track': isAlbumTrack,
         })}
       >
-        <div>#</div>
-        <div>Title</div>
-        <div>Album</div>
-        {width > 780 && <div>Date added</div>}
-        <div className={cx('clock-icon')}>
-          <ClockIcon />
-        </div>
+        {!isAlbumTrack ? (
+          <>
+            {' '}
+            <div>#</div>
+            <div>Title</div>
+            <div>Album</div>
+            {width > 780 && <div>Date added</div>}
+            <div className={cx('clock-icon')}>
+              <ClockIcon />
+            </div>{' '}
+          </>
+        ) : (
+          <>
+            <div>#</div>
+            <div>Title</div>
+            <div className={cx('clock-icon')}>
+              <ClockIcon />
+            </div>
+          </>
+        )}
       </div>
       <div className={cx('songs')}>
         {(() => {
@@ -47,6 +67,7 @@ const SongList: FC<SongListProps> = ({ songList, pivotTop, isLoading = false, to
           if (!isLoading) {
             return songList?.map((item: any, index: number) => (
               <SongItem
+                isAlbumTrack={isAlbumTrack}
                 key={index}
                 order={order++}
                 thumb={

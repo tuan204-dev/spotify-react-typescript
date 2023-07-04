@@ -76,7 +76,12 @@ const Playlist: React.FC = () => {
                 <HeartIcon />
               </button>
             </div>
-            <SongList top={0} pivotTop={64} songList={data?.tracks.items} />
+            <SongList
+              isLoading={isLoading}
+              top={0}
+              pivotTop={64}
+              songList={data?.tracks.items}
+            />
           </div>
         </div>
         <Footer />

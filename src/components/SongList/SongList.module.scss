@@ -46,3 +46,7 @@
 .grid-md {
   grid-template-columns: 16px minmax(300px, 4fr) 2fr 50px !important;
 }
+
+.is-album-track {
+  grid-template-columns: 16px 4fr 50px !important;
+}
