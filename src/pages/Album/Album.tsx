@@ -1,13 +1,12 @@
-import { ClockIcon, HeartIcon } from '@/assets/icons'
-import { Footer, Header, Navbar, SongItem, SongList } from '@/components'
+import { HeartIcon } from '@/assets/icons'
+import { Footer, Header, Navbar, SongList } from '@/components'
 import { useRaiseColorTone } from '@/hooks'
 import useDominantColor from '@/hooks/useDominantColor'
-import { convertDateFormat } from '@/utils'
+import { dateFormatConvertor } from '@/utils'
 import { fetchSpotifyData, getAccessToken } from '@/utils/fetchData'
 import classNames from 'classnames/bind'
 import React, { useEffect, useState } from 'react'
 import { TbPlayerPlayFilled } from 'react-icons/tb'
-import { useInView } from 'react-intersection-observer'
 import { useLocation } from 'react-router-dom'
 import styles from './Album.module.scss'
 
@@ -41,9 +40,6 @@ const Album: React.FC = () => {
     setLoading(Boolean(!data))
   }, [data])
 
-  // const { ref, inView } = useInView({
-  //   threshold: 0,
-  // })
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement, UIEvent>): void => {
     const yAxis = e.currentTarget.scrollTop
@@ -97,7 +93,7 @@ const Album: React.FC = () => {
         </div>
 
         <div className={cx('copy-rights')}>
-          <p className={cx('date')}>{convertDateFormat(data?.release_date)}</p>
+          <p className={cx('date')}>{dateFormatConvertor(data?.release_date)}</p>
           {data?.copyrights.map((item: any, index: number) => (
             <p key={index}>
               {item.text.replace(/\(C\)|\(P\)/g, (match: any) => {

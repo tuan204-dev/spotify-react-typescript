@@ -2,8 +2,8 @@
 @import '../../scss/breakpoint';
 
 .body {
-  margin-top: -64px;
-  padding-top: 64px;
+  margin-top: -$navbar-height;
+  padding-top: $navbar-height;
   padding-inline: 24px;
   position: relative;
   font-family: CircularSp;

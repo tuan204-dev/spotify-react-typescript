@@ -15,7 +15,7 @@ const Section: React.FC<SectionProps> = ({
   data,
   isFull = false,
   dataType,
-  isSearch = false,
+  isClickable = false,
   isShow = false,
 }) => {
   const [isLoading, setLoading] = useState<boolean>(true)
@@ -33,12 +33,12 @@ const Section: React.FC<SectionProps> = ({
         {!isLoading ? (
           <>
             <Link
-              className={cx({ 'is-search': isSearch })}
-              to={!isSearch ? `${href}` : '#'}
+              className={cx({ 'is-search': isClickable })}
+              to={!isClickable ? `${href}` : '#'}
             >
               <h2 className={cx({ heading: true })}>{title}</h2>
             </Link>
-            {(data?.length || 0) > quantityCol && !isFull && !isSearch && (
+            {(data?.length || 0) > quantityCol && !isFull && !isClickable && (
               <Link to={`${href}`}>Show all</Link>
             )}
           </>

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import { SectionItemI } from '../../../types'
 import { Artists } from '../UIs'
 import styles from './SectionItem.module.scss'
-import { convertDateFormat } from '@/utils'
+import { dateFormatConvertor } from '@/utils'
 import { UserImgDefault } from '@/assets/icons'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 
@@ -70,7 +70,7 @@ const SectionItem: React.FC<SectionItemI> = ({
             {!isLoading ? (
               <p>
                 {(isShow && publisher) ||
-                  (dataType === 'episode' && convertDateFormat(dateAdd)) ||
+                  (dataType === 'episode' && dateFormatConvertor(dateAdd)) ||
                   desc ||
                   (author && `By ${author}`) ||
                   (dataType === 'artist' && 'Artist') ||

@@ -253,7 +253,7 @@ export interface SectionProps {
   data?: ResponseSectionItem[]
   dataType?: string
   isFull?: boolean
-  isSearch?: boolean
+  isClickable?: boolean
   isShow?: boolean
 }
 

@@ -1,5 +1,5 @@
 import logoImage from '@/assets/image/logo/logo.svg'
-import {htmlCleaner} from '@/utils'
+import { htmlCleaner, stringCleaner } from '@/utils'
 import classNames from 'classnames/bind'
 import React, { memo } from 'react'
 import Skeleton from 'react-loading-skeleton'
@@ -7,7 +7,7 @@ import { ArtistList } from '..'
 import styles from './Header.module.scss'
 import { Artists } from '../UIs'
 import { HeaderProps } from '../../../types'
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 const cx = classNames.bind(styles)
 
@@ -25,7 +25,6 @@ const Header: React.FC<HeaderProps> = ({
   releaseDate,
   isWhiteColor = false,
 }) => {
-
   return (
     <main style={{ backgroundColor: `${bgColor}` }} className={cx('wrapper')}>
       <div className={cx('body')}>
@@ -48,7 +47,7 @@ const Header: React.FC<HeaderProps> = ({
               </p>
               <h2 className={cx('title')}>{title}</h2>
               <div className={cx('desc')}>
-                <ArtistList data={htmlCleaner(desc)} />
+                <ArtistList data={htmlCleaner(stringCleaner(desc))} />
               </div>
               <div className={cx('quantity')}>
                 <div

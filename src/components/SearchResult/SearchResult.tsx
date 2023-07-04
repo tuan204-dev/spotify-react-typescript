@@ -63,7 +63,7 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
       const data = await searchData({
         query: query,
         accessToken: token,
-        market: 'VN'
+        market: 'VN',
       })
 
       setData({ ...data })
@@ -101,7 +101,6 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
     )
   }
 
-
   return (
     <div className={cx('wrapper')}>
       <div className={cx('search__kind')}>
@@ -136,7 +135,7 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
               } else {
                 return (
                   <SongList
-                  top={52}
+                    top={52}
                     pivotTop={126}
                     key={index}
                     songList={data.tracks.items
@@ -148,15 +147,17 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
             })
         ) : (
           <>
-            {data?.tracks.items?.filter((item: any) => item).length !== 0 && <TopResult
-              topResult={data?.tracks?.items[0]}
-              songs={data?.tracks?.items
-                .filter((item: any) => item)
-                .sort((a: any, b: any) => -a.popularity + b.popularity)}
-            />}
+            {data?.tracks.items?.filter((item: any) => item).length !== 0 && (
+              <TopResult
+                topResult={data?.tracks?.items[0]}
+                songs={data?.tracks?.items
+                  .filter((item: any) => item)
+                  .sort((a: any, b: any) => -a.popularity + b.popularity)}
+              />
+            )}
             {data?.artists?.items.filter((item: any) => item).length !== 0 && (
               <Section
-                isSearch
+                isClickable
                 title="Artists"
                 dataType="artist"
                 data={data?.artists?.items
@@ -166,7 +167,7 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
             )}
             {data?.albums?.items.filter((item: any) => item).length !== 0 && (
               <Section
-                isSearch
+                isClickable
                 title="Albums"
                 dataType="album"
                 data={data?.albums?.items
@@ -176,7 +177,7 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
             )}
             {data?.playlists?.items.filter((item: any) => item).length !== 0 && (
               <Section
-                isSearch
+                isClickable
                 title="Playlists"
                 dataType="playlist"
                 data={data?.playlists?.items
@@ -186,7 +187,7 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
             )}
             {data?.episodes?.items.filter((item: any) => item).length !== 0 && (
               <Section
-                isSearch
+                isClickable
                 title="Episodes"
                 dataType="episode"
                 data={data?.episodes?.items
@@ -196,7 +197,7 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
             )}
             {data?.shows?.items.filter((item: any) => item).length !== 0 && (
               <Section
-                isSearch
+                isClickable
                 title="Podcasts"
                 dataType="show"
                 data={data?.shows?.items

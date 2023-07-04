@@ -133,6 +133,11 @@
   color: $text-neutral;
 }
 
+.duration {
+  text-align: end;
+  transform: translateX(-10px);
+}
+
 .grid-md {
   grid-template-columns: 16px minmax(300px, 4fr) 2fr 50px !important;
 }

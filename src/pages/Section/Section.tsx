@@ -55,7 +55,7 @@ const Section: React.FC = () => {
         })
       } else if (search === '?topMixes') {
         fetchHomePageSectionData({ type: 'topMixes', setData: setData, limit: 50 })
-      } else if(search === '?suggestedArtists') {
+      } else if (search === '?suggestedArtists') {
         fetchHomePageSectionData({
           type: 'suggestedArtists',
           setData: setData,
@@ -71,6 +71,7 @@ const Section: React.FC = () => {
       <Navbar isSection />
       <div className={cx('body')}>
         <SectionContent
+          isClickable
           isFull
           dataType={data.dataType}
           title={data.title}

@@ -1,5 +1,6 @@
 import htmlCleaner from './htmlCleaner'
 import fetchHomePageSectionData from './fetchHomePageSectionData'
-import convertDateFormat from './convertDateFormat'
+import dateFormatConvertor from './dateFormatConvertor'
+import stringCleaner from './stringCleaner'
 
-export { htmlCleaner, fetchHomePageSectionData, convertDateFormat }
+export { htmlCleaner, fetchHomePageSectionData, dateFormatConvertor, stringCleaner }

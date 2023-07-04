@@ -1,5 +1,5 @@
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
-import { convertDateFormat } from '@/utils'
+import { dateFormatConvertor } from '@/utils'
 import classNames from 'classnames/bind'
 import React, { memo, useContext } from 'react'
 import Skeleton from 'react-loading-skeleton'
@@ -8,6 +8,7 @@ import styles from './SongItem.module.scss'
 import { PlayIcon } from '@/assets/icons'
 import { SongItemProps } from '../../../types'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
+import durationConvertor from '@/utils/durationConvertor'
 
 const cx = classNames.bind(styles)
 
@@ -65,7 +66,6 @@ const SongItem: React.FC<SongItemProps> = ({
               <p className={cx('name')}>{songName}</p>
               <div className={cx('sub-title')}>
                 {isExplicit && <span className={cx('explicit')}>E</span>}
-                {/* <div className={cx('artists')}>{Artist(artists)}</div> */}
                 <Artists data={artists} />
               </div>
             </>
@@ -83,7 +83,7 @@ const SongItem: React.FC<SongItemProps> = ({
           {width > 780 && (
             <div className={cx('date-add')}>
               {dateAdd !== '1970-01-01T00:00:00Z' && dateAdd
-                ? convertDateFormat(dateAdd)
+                ? dateFormatConvertor(dateAdd)
                 : ''}
             </div>
           )}
@@ -91,9 +91,7 @@ const SongItem: React.FC<SongItemProps> = ({
       )}
       <div className={cx('duration')}>
         {!isLoading &&
-          `${String(Math.floor(duration / 60000)).padStart(2, '0')}:${String(
-            Math.floor((duration % 60000) / 1000)
-          ).padStart(2, '0')}`}
+          durationConvertor(duration)}
       </div>
     </div>
   )

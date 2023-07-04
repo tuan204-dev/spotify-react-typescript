@@ -1,4 +1,4 @@
-const convertDateFormat = (dateString: string | undefined): string => {
+const dateFormatConvertor = (dateString: string | undefined): string => {
   if(!dateString) return ''
   const date = new Date(dateString)
   return date.toLocaleDateString('en-US', {
@@ -8,4 +8,4 @@ const convertDateFormat = (dateString: string | undefined): string => {
   })
 }
 
-export default convertDateFormat
+export default dateFormatConvertor

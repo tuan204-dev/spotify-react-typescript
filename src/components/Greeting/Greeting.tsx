@@ -34,7 +34,7 @@ const Greeting: FC<GreetingProps> = (props) => {
         query: 'album',
         accessToken: token,
         types: ['album'],
-        limit: 50
+        limit: 50,
       })
 
       setInitAlbums(data?.albums.items)
@@ -50,14 +50,12 @@ const Greeting: FC<GreetingProps> = (props) => {
     return 'Good evening'
   }
 
-
   return (
     <div style={{ backgroundColor: `${bgColor}` }} className={cx('body')}>
       <div className={cx('greet')}>
         {!isLoading ? (
           <p>{greeting()}</p>
         ) : (
-          // <p>Good evening</p>
           <Skeleton width={'35%'} height={50} borderRadius={50} />
         )}
       </div>
@@ -69,7 +67,8 @@ const Greeting: FC<GreetingProps> = (props) => {
         })}
       >
         {!isLoading
-          ? initAlbums.slice(10, 16)
+          ? initAlbums
+              .slice(10, 16)
               .map((item: ResponseSectionItem, index: number) => (
                 <SongItemTag
                   id={item.id}
