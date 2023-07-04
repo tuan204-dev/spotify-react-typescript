@@ -25,11 +25,9 @@ const Home: React.FC = () => {
     })
   }, [])
 
-  console.log(suggestArtists)
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement, UIEvent>): void => {
     const yAxis = e.currentTarget.scrollTop
-    // console.log(yAxis)
     if (yAxis > 64) {
       setNavOpacity(1)
       return
@@ -48,6 +46,12 @@ const Home: React.FC = () => {
           data={newReleasesData?.data}
           dataType={newReleasesData?.dataType}
         />
+          <Section
+            title={suggestArtists?.title}
+            href={suggestArtists?.href}
+            data={suggestArtists?.data}
+            dataType={suggestArtists?.dataType}
+          />
         <Section
           title={featurePlaylistData?.title}
           href={featurePlaylistData?.href}
@@ -59,12 +63,6 @@ const Home: React.FC = () => {
           href={topMixes?.href}
           data={topMixes?.data}
           dataType={topMixes?.dataType}
-        />
-        <Section
-          title={suggestArtists?.title}
-          href={suggestArtists?.href}
-          data={suggestArtists?.data}
-          dataType={suggestArtists?.dataType}
         />
         <Footer />
       </div>

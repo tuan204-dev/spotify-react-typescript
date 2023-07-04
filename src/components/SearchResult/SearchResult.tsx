@@ -63,6 +63,7 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
       const data = await searchData({
         query: query,
         accessToken: token,
+        market: 'VN'
       })
 
       setData({ ...data })
@@ -100,7 +101,6 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
     )
   }
 
-  // console.log(data)
 
   return (
     <div className={cx('wrapper')}>

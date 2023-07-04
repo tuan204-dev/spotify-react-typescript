@@ -1,13 +1,12 @@
+import useComponentSize from '@/hooks/useComponentSize'
 import useDominantColor from '@/hooks/useDominantColor'
 import classNames from 'classnames/bind'
 import React, { useRef } from 'react'
 import { TbPlayerPlayFilled } from 'react-icons/tb'
-import styles from './SongItemTag.module.scss'
-import useComponentSize from '@/hooks/useComponentSize'
 import Skeleton from 'react-loading-skeleton'
-import { SongItemTagProps } from '../../../types'
 import { Link } from 'react-router-dom'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
+import { SongItemTagProps } from '../../../types'
+import styles from './SongItemTag.module.scss'
 
 const cx = classNames.bind(styles)
 
@@ -25,7 +24,6 @@ const SongItemTag: React.FC<SongItemTagProps> = (props) => {
 
   const { width } = useComponentSize(songTagRef)
 
-  // console.log('im here')
 
   return (
     <Link to={`/album?${id}`}>
@@ -41,7 +39,7 @@ const SongItemTag: React.FC<SongItemTagProps> = (props) => {
           // style={{ backgroundImage: `url(${thumbnailUrl})` }}
         >
           {!isLoading ? (
-            <LazyLoadImage effect="blur" src={thumbnailUrl} alt={name} />
+            <img src={thumbnailUrl} alt={name} />
           ) : (
             <Skeleton height={'100%'} />
           )}

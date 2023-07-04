@@ -39,8 +39,8 @@ const SectionItem: React.FC<SectionItemI> = ({
                 <LazyLoadImage effect="blur" src={imageUrl} alt={title || name} />
               ) : (
                 <div className={cx('user-img-default')}>
-                    <UserImgDefault/>
-                  </div>
+                  <UserImgDefault />
+                </div>
               )
             ) : (
               <LazyLoadImage effect="blur" src={imageUrl} alt={title || name} />

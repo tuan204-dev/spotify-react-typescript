@@ -12,7 +12,6 @@ interface ArtistsProps {
 
 const Artists: FC<ArtistsProps> = ({ data, isWhiteColor }) => {
   const renderData: any[] = []
-  // console.log(data)
   if (data) {
     if (data.length === 1) {
       renderData.push(

@@ -17,7 +17,6 @@ interface PropsType {
 
 const fetchHomePageSectionData = (args: Partial<PropsType>) => {
   const { type, setData, limit = 50 } = args
-  console.log(limit)
 
   switch (type) {
     case 'newRelease': {
@@ -94,11 +93,10 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
           const token = await getAccessToken()
           const responseData = await searchData({
             accessToken: token,
-            query: 'mixes',
+            query: 'top mixes',
             types: ['playlist'],
             limit: limit,
           })
-          console.log(responseData)
           localStorage.setItem('topMixes', JSON.stringify(responseData?.playlists.items))
           setData!({
             title: 'Top mixes',
@@ -130,7 +128,6 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
             types: ['artist'],
             limit: limit,
           })
-          console.log(responseData)
           localStorage.setItem(
             'suggestedArtists',
             JSON.stringify(

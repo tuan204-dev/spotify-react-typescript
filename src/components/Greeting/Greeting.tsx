@@ -36,10 +36,6 @@ const Greeting: FC<GreetingProps> = (props) => {
         types: ['album'],
         limit: 50
       })
-      console.log(data)
-
-      // const response = await fetch('data/initSongs.json')
-      // const data = await response.json()
 
       setInitAlbums(data?.albums.items)
     }
@@ -54,7 +50,6 @@ const Greeting: FC<GreetingProps> = (props) => {
     return 'Good evening'
   }
 
-  // console.log('im here')
 
   return (
     <div style={{ backgroundColor: `${bgColor}` }} className={cx('body')}>

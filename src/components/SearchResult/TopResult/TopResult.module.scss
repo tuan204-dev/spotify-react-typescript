@@ -6,12 +6,11 @@
   padding-inline: 24px;
   display: flex;
   justify-content: space-between;
-  gap: $panel-gap;
+  gap: 48px;
 }
 
 .left,
 .right {
-  flex: 1;
 
   .header {
     margin-bottom: 16px;
@@ -24,7 +23,12 @@
 
 }
 
+.right {
+  flex: 6;
+}
+
 .left {
+  flex: 4;
 
   .body {
     padding: 20px;
@@ -46,6 +50,7 @@
 
       img {
         height: 100%;
+        width: 100%;
         object-fit: cover;
       }
     }

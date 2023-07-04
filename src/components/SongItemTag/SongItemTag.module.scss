@@ -21,9 +21,6 @@
 .thumbnail {
   height: 100%;
   aspect-ratio: 1 / 1;
-  // background-position: center;
-  // background-repeat: no-repeat;
-  // background-size: cover;
 
   img {
     height: 100%;
@@ -68,9 +65,6 @@
       scale: 1.1;
     }
 
-    // @include responsive(md) {
-    //   display: none;
-    // }
 
     &-hidden {
       display: none;

@@ -36,7 +36,6 @@ const Library: FC = () => {
     ],
     [category]
   )
-  // console.log(data)
 
   const libSelection = useMemo(
     () => libSelections.find((libSelection) => libSelection.active),
@@ -50,7 +49,6 @@ const Library: FC = () => {
   const handleScroll = (e: React.UIEvent<HTMLDivElement, UIEvent>): void => {
     const yAxis = e.currentTarget.scrollTop
 
-    // console.log(yAxis)
     if (yAxis > 0) {
       setBottomShadow(true)
     } else {

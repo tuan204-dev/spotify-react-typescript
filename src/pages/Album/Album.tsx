@@ -50,7 +50,6 @@ const Album: React.FC = () => {
     e: React.UIEvent<HTMLDivElement, UIEvent>
   ): void => {
     const yAxis = e.currentTarget.scrollTop
-    // console.log(yAxis)
     if (yAxis > 64) {
       setNavOpacity(1)
       return
@@ -58,7 +57,6 @@ const Album: React.FC = () => {
     setNavOpacity(yAxis / 64)
   }
 
-  console.log(data)
 
   return (
     <main className={cx('wrapper')}>
@@ -114,12 +112,9 @@ const Album: React.FC = () => {
                 </div>
               </div>
               <div className={cx('songs')}>
-                {/* <SongItem isExplicit={true} isAlbumTrack songName='Song names'artist='MCK' duration={0} order={1} /> */}
                 {(() => {
-                  // console.log(data?.tracks.items, isLoading)
                   let order = 1
                   if (!isLoading) {
-                    // console.log('im here')
                     return data?.tracks.items.map(
                       (item: any, index: number) => {
                         return (

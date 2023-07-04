@@ -25,7 +25,6 @@ const Header: React.FC<HeaderProps> = ({
   releaseDate,
   isWhiteColor = false,
 }) => {
-  // console.log(desc, artists)
 
   return (
     <main style={{ backgroundColor: `${bgColor}` }} className={cx('wrapper')}>

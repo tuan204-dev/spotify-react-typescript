@@ -46,10 +46,8 @@ const SongList: FC<SongListProps> = ({ songList, pivotTop, isLoading = false }) 
       </div>
       <div className={cx('songs')}>
         {(() => {
-          // console.log(data?.tracks.items, isLoading)
           let order = 1
           if (!isLoading) {
-            // console.log('im here')
             return songList?.map((item: any, index: number) => (
               <SongItem
                 key={index}
