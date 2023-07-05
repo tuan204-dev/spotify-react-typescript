@@ -6,7 +6,7 @@ import { fetchSpotifyData, getAccessToken } from '@/utils/fetchData'
 import classNames from 'classnames/bind'
 import React, { memo, useEffect, useState } from 'react'
 import { TbPlayerPlayFilled } from 'react-icons/tb'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import styles from './Playlist.module.scss'
 
 const cx = classNames.bind(styles)
@@ -18,6 +18,8 @@ const Playlist: React.FC = () => {
   const { search } = useLocation()
   const bgColor = useRaiseColorTone(useDominantColor(data?.images[0].url) || '#121212')
 
+  const navigate = useNavigate()
+
   useEffect(() => {
     const fetchData = async () => {
       const token = await getAccessToken()
@@ -26,7 +28,9 @@ const Playlist: React.FC = () => {
         accessToken: token,
         id: search.substring(1),
       })
-      setData({ ...data })
+      if (data?.error) {
+        navigate('/not-found')
+      } else setData({ ...data })
     }
     if (search !== '?undefined') {
       fetchData()
