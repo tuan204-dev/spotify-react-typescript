@@ -68,7 +68,7 @@ const Section: React.FC = () => {
 
   return (
     <div className={cx('wrapper')}>
-      <Navbar isSection />
+      <Navbar type='section' />
       <div className={cx('body')}>
         <SectionContent
           isClickable

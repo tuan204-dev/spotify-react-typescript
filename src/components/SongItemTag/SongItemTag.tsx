@@ -7,10 +7,9 @@ import Skeleton from 'react-loading-skeleton'
 import { Link } from 'react-router-dom'
 import { SongItemTagProps } from '../../../types'
 import styles from './SongItemTag.module.scss'
+import { PlayButton } from '../UIs'
 
 const cx = classNames.bind(styles)
-
-
 
 const SongItemTag: React.FC<SongItemTagProps> = (props) => {
   const { thumbnailUrl, name, setBgColor, isLoading, id } = props
@@ -24,7 +23,6 @@ const SongItemTag: React.FC<SongItemTagProps> = (props) => {
 
   const { width } = useComponentSize(songTagRef)
 
-
   return (
     <Link to={`/album?${id}`}>
       <div
@@ -33,11 +31,7 @@ const SongItemTag: React.FC<SongItemTagProps> = (props) => {
         onMouseLeave={() => setBgColor('#e0e0e0')}
         className={cx('song-item-tag')}
       >
-        <div
-          className={cx('thumbnail')}
-          ref={imgRef}
-          // style={{ backgroundImage: `url(${thumbnailUrl})` }}
-        >
+        <div className={cx('thumbnail')} ref={imgRef}>
           {!isLoading ? (
             <img src={thumbnailUrl} alt={name} />
           ) : (
@@ -48,14 +42,11 @@ const SongItemTag: React.FC<SongItemTagProps> = (props) => {
           {!isLoading ? (
             <>
               <p className={cx('body-name')}>{name}</p>
-              <button
-                className={cx({
-                  'play-btn': true,
-                  'play-btn-hidden': width !== -1 && width <= 270,
-                })}
+              <div
+                className={cx({ 'play-btn': true, hidden: width !== -1 && width <= 270 })}
               >
-                <TbPlayerPlayFilled className={cx('play-btn-child')} />
-              </button>
+                <PlayButton size={50} scaleHovering={1.1} transitionDuration={33} />
+              </div>
             </>
           ) : (
             <Skeleton

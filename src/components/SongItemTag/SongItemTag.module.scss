@@ -12,9 +12,14 @@
   overflow: hidden;
   position: relative;
   color: $white;
+  transition: all .3s ease;
 
   &:hover .body .play-btn {
     opacity: 1;
+  }
+
+  &:hover {
+    background-color: $bg-card-highlight;
   }
 }
 
@@ -50,25 +55,12 @@
     font-weight: 700;
   }
 
-
-
   .play-btn {
-    @include button-icon(50px, $primary, $primary);
     opacity: 0;
-    font-size: 24px;
-    transition: opacity .2s ease, scale .1s ease;
-    box-shadow: 0 8px 8px rgba(0, 0, 0, .3);
-
-
-
-    &:hover {
-      scale: 1.1;
-    }
-
-
-    &-hidden {
-      display: none;
-    }
-
+    transition: all .3s ease;
   }
+}
+
+.hidden {
+  display: none !important;
 }

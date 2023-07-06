@@ -1,0 +1,23 @@
+@import '../../scss/variable';
+
+.wrapper {
+  height: max(40vh, 330px);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 24px 24px;
+}
+
+.name {
+  font-size: 96px;
+  font-weight: 700;
+  color: $white
+}
+
+.follower {
+  font-size: 14px;
+}
+

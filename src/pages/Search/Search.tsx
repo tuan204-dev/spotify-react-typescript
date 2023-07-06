@@ -28,7 +28,7 @@ const Search: FC<SearchProps> = () => {
 
   return (
     <div className={cx('search')}>
-      <Navbar isSearch {...{ query, setQuery }} />
+      <Navbar type='search' {...{ query, setQuery }} />
       <div className={cx('body')}>
         {debounceValue && (
           <>

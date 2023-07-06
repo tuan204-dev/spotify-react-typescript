@@ -45,16 +45,6 @@
       align-items: center;
       gap: 32px;
 
-      .play-btn {
-        @include button-icon(56px, $primary, $primary);
-        font-size: 24px;
-        box-shadow: 0 8px 8px rgba(0, 0, 0, .3);
-
-        &:hover {
-          scale: 1.04;
-        }
-      }
-
       .heart {
         @include button-icon(42px, transparent, transparent);
         color: $text-subdued;

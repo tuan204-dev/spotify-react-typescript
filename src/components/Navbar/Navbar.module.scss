@@ -98,6 +98,31 @@
       }
 
     }
+
+    &-play-btn {
+      display: flex;
+      align-items: center;
+      gap: $panel-gap;
+
+      .play-btn {
+        @include button-icon(48px, $primary, $primary);
+        opacity: 1;
+        font-size: 24px;
+        transition: opacity .2s ease, scale 33ms ease;
+        box-shadow: 0 8px 8px rgba(0, 0, 0, .3);
+
+        &:hover {
+          scale: 1.05;
+        }
+      }
+
+      .artist-name {
+        font-size: 24px;
+        font-weight: 700;
+      }
+
+    }
+
   }
 
   .user {

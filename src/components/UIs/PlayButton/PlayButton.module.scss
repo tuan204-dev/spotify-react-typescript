@@ -1,0 +1,21 @@
+@import '../../../scss/variable';
+
+.wrapper {}
+
+.play-btn {
+  position: relative;
+  font-size: 24px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, .3);
+  color: $black;
+  border: none;
+  cursor: pointer;
+  transition: all ease-in-out .2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $primary;
+  
+  &:hover {
+    scale: 1.04;
+  }
+}

@@ -15,8 +15,6 @@
     background-color: $bg-card-highlight;
   }
 
-
-
   .img {
     width: 100%;
     aspect-ratio: 1 / 1;
@@ -46,8 +44,6 @@
       background-color: #333;
       color: $text-neutral;
     }
-
-
   }
 
   .btn-pivot {
@@ -56,20 +52,12 @@
     position: relative;
 
     .play-btn {
-      @include button-icon(50px, $primary, $primary);
-      font-size: 24px;
-      box-shadow: 0 8px 8px rgba(0, 0, 0, .3);
       position: absolute;
       z-index: 999;
       top: -66px;
       right: 8px;
       opacity: 0;
-      transition: transform .3s ease scale .05s ease;
-
-      &:hover {
-        scale: 1.04;
-      }
-
+      transition: transform .3s ease, opacity 0.3s;
     }
   }
 

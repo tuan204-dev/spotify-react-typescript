@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { SectionProps } from '../../../types'
 import styles from './Home.module.scss'
 import { fetchHomePageSectionData } from '@/utils'
+import { fetchArtistData, getAccessToken } from '@/utils/fetchData'
 
 const cx = classNames.bind(styles)
 
@@ -25,7 +26,6 @@ const Home: React.FC = () => {
     })
   }, [])
 
-
   const handleScroll = (e: React.UIEvent<HTMLDivElement, UIEvent>): void => {
     const yAxis = e.currentTarget.scrollTop
     if (yAxis > 64) {
@@ -37,7 +37,7 @@ const Home: React.FC = () => {
 
   return (
     <div className={cx('home')}>
-      <Navbar isHome navOpacity={navOpacity} bgColor={bgColor} />
+      <Navbar type='home' navOpacity={navOpacity} bgColor={bgColor} />
       <div onScroll={(e) => handleScroll(e)} className={cx('body')}>
         <Greeting bgColor={bgColor} setBgColor={setBgColor} />
         <Section
@@ -46,12 +46,12 @@ const Home: React.FC = () => {
           data={newReleasesData?.data}
           dataType={newReleasesData?.dataType}
         />
-          <Section
-            title={suggestArtists?.title}
-            href={suggestArtists?.href}
-            data={suggestArtists?.data}
-            dataType={suggestArtists?.dataType}
-          />
+        <Section
+          title={suggestArtists?.title}
+          href={suggestArtists?.href}
+          data={suggestArtists?.data}
+          dataType={suggestArtists?.dataType}
+        />
         <Section
           title={featurePlaylistData?.title}
           href={featurePlaylistData?.href}

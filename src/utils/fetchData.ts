@@ -1,4 +1,9 @@
-import { FeaturedPlaylistsProps, NewReleasesArgs, RequestArg, countries } from '../../types'
+import {
+  FeaturedPlaylistsProps,
+  NewReleasesArgs,
+  RequestArg,
+  countries,
+} from '../../types'
 
 export const getAccessToken = async () => {
   const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID
@@ -86,7 +91,6 @@ export const searchData = async (args: Partial<SearchArgs>) => {
     typesParam = types.map((type) => encodeURIComponent(type)).join('%2C')
   }
 
-
   const response = await fetch(
     `https://api.spotify.com/v1/search?q=${encodeURIComponent(
       query
@@ -98,6 +102,29 @@ export const searchData = async (args: Partial<SearchArgs>) => {
       },
     }
   )
+  const data = await response.json()
+  return data
+}
+
+interface ArtistSearchParams {
+  accessToken: string
+  id: string
+  type?: 'albums' | 'top-tracks' | 'related-artists'
+}
+
+export const fetchArtistData = async (args: Partial<ArtistSearchParams>) => {
+  const { id, type, accessToken } = args
+
+  const response = await fetch(
+    `https://api.spotify.com/v1/artists/${id}/${type ? type : '\n' }`,
+    {
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer ' + accessToken,
+      },
+    }
+  )
+
   const data = await response.json()
   return data
 }

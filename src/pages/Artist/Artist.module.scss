@@ -1,0 +1,14 @@
+@import '../../scss/variable';
+
+
+.body {
+  height: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+  padding-bottom: 32px;
+  padding-top: $navbar-height;
+
+  // &::-webkit-scrollbar {
+  //   display: none;
+  // }
+}

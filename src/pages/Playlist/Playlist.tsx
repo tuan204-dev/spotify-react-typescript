@@ -8,6 +8,7 @@ import React, { memo, useEffect, useState } from 'react'
 import { TbPlayerPlayFilled } from 'react-icons/tb'
 import { useLocation, useNavigate } from 'react-router-dom'
 import styles from './Playlist.module.scss'
+import { PlayButton } from '@/components/UIs'
 
 const cx = classNames.bind(styles)
 
@@ -50,8 +51,6 @@ const Playlist: React.FC = () => {
     setNavOpacity(yAxis / 64)
   }
 
-  console.log(data?.tracks.items)
-
   return (
     <main className={cx('wrapper')}>
       <Navbar navOpacity={navOpacity} bgColor={bgColor} />
@@ -69,13 +68,12 @@ const Playlist: React.FC = () => {
           <div style={{ backgroundColor: `${bgColor}` }} className={cx('bg-blur')}></div>
           <div className={cx('main')}>
             <div className={cx('action-bar')}>
-              <button
-                className={cx({
-                  'play-btn': true,
-                })}
-              >
-                <TbPlayerPlayFilled className={cx('play-btn-child')} />
-              </button>
+              <PlayButton
+                size={56}
+                fontSize={24}
+                scaleHovering={1.04}
+                transitionDuration={33}
+              />
               <button className={cx('heart')}>
                 <HeartIcon />
               </button>

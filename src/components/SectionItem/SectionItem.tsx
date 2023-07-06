@@ -5,7 +5,7 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { Link } from 'react-router-dom'
 import { SectionItemI } from '../../../types'
-import { Artists } from '../UIs'
+import { Artists, PlayButton } from '../UIs'
 import styles from './SectionItem.module.scss'
 import { dateFormatConvertor } from '@/utils'
 import { UserImgDefault } from '@/assets/icons'
@@ -51,13 +51,18 @@ const SectionItem: React.FC<SectionItemI> = ({
         </div>
         <div className={cx('btn-pivot')}>
           {!isLoading && (
-            <button
+            <div
               className={cx({
                 'play-btn': true,
               })}
             >
-              <TbPlayerPlayFilled className={cx('play-btn-child')} />
-            </button>
+              <PlayButton
+                size={50}
+                fontSize={24}
+                scaleHovering={1.04}
+                transitionDuration={33}
+              />
+            </div>
           )}
         </div>
         <div className={cx('body')}>

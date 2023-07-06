@@ -1,10 +1,8 @@
-
 function useRaiseColorTone(color: string): string {
-
   // Extract the RGB components from the color code
-  const red = parseInt(color.substr(1, 2), 16)
-  const green = parseInt(color.substr(3, 2), 16)
-  const blue = parseInt(color.substr(5, 2), 16)
+  const red = parseInt(color.substring(1, 3), 16)
+  const green = parseInt(color.substring(3, 5), 16)
+  const blue = parseInt(color.substring(5, 7), 16)
 
   // Calculate the raised color values
   const raisedRed = Math.min(Math.round(red * 1.2), 255)
@@ -12,9 +10,7 @@ function useRaiseColorTone(color: string): string {
   const raisedBlue = Math.min(Math.round(blue * 1.2), 255)
 
   // Convert the raised color values back to hexadecimal
-  const raisedColor = `#${raisedRed
-    .toString(16)
-    .padStart(2, '0')}${raisedGreen
+  const raisedColor = `#${raisedRed.toString(16).padStart(2, '0')}${raisedGreen
     .toString(16)
     .padStart(2, '0')}${raisedBlue.toString(16).padStart(2, '0')}`
 

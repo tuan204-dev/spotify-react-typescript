@@ -6,16 +6,18 @@ import { MdOutlineClear } from 'react-icons/md'
 import styles from './Navbar.module.scss'
 import classNames from 'classnames/bind'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { TbPlayerPlayFilled } from 'react-icons/tb'
+import { PlayButton } from '../UIs'
 
 const cx = classNames.bind(styles)
 
 interface NavbarProps {
+  type?: 'default' | 'home' | 'section' | 'search' | 'artist'
   bgColor?: string | null
   navOpacity?: number
-  isHome?: boolean
-  isSearch?: boolean
-  isSection?: boolean
   query?: string
+  artistName?: string
+  playBtnVisible?: boolean
   setQuery?: React.Dispatch<React.SetStateAction<string>>
 }
 
@@ -23,43 +25,38 @@ const Navbar: FC<NavbarProps> = (props) => {
   const {
     bgColor,
     navOpacity = 1,
-    isHome = false,
-    isSearch = false,
-    isSection = false,
     query,
     setQuery,
+    type = 'default',
+    artistName,
+    playBtnVisible = false,
   } = props
 
-  const {key} = useLocation()
+  const { key } = useLocation()
   const navigate = useNavigate()
   const queryRef = useRef<any>(null)
 
   useEffect(() => {
-    if(isSearch) {
+    if (type === 'search') {
       queryRef?.current.focus()
     }
   }, [])
-  
 
   return (
     <div className={cx('nav')}>
       <div
         style={{
-          backgroundColor: `${!isSection ? bgColor : '#121212'}`,
+          backgroundColor: `${type === 'section' ? '#121212' : bgColor}`,
           opacity: `${navOpacity}`,
           backgroundImage: `${
-            isHome &&
-            'linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6))'
+            type === 'home' && 'linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6))'
           }`,
         }}
         className={cx('nav-bg')}
       ></div>
       <div className={cx('nav-control')}>
         <div className={cx('nav-control-button')}>
-          <button
-            disabled={key === 'default'}
-            onClick={() => navigate(-1)}
-          >
+          <button disabled={key === 'default'} onClick={() => navigate(-1)}>
             <IoIosArrowBack />
           </button>
           <button
@@ -70,7 +67,7 @@ const Navbar: FC<NavbarProps> = (props) => {
           </button>
         </div>
 
-        {isSearch && (
+        {type === 'search' && (
           <div className={cx('nav-control-search')}>
             <form action="#">
               <input
@@ -93,6 +90,16 @@ const Navbar: FC<NavbarProps> = (props) => {
                 <MdOutlineClear />
               </button>
             )}
+          </div>
+        )}
+        {type === 'artist' && playBtnVisible && (
+          <div className={cx('nav-control-play-btn')}>
+            <div>
+              <PlayButton size={48} transitionDuration={33} scaleHovering={1.04} />
+            </div>
+            <div className={cx('artist-name')}>
+              <span>{artistName}</span>P
+            </div>
           </div>
         )}
       </div>
