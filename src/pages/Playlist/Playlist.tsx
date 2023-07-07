@@ -71,7 +71,7 @@ const Playlist: React.FC = () => {
               <PlayButton
                 size={56}
                 fontSize={24}
-                scaleHovering={1.04}
+                scaleHovering={1.005}
                 transitionDuration={33}
               />
               <button className={cx('heart')}>

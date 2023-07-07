@@ -95,7 +95,7 @@ const Navbar: FC<NavbarProps> = (props) => {
         {type === 'artist' && playBtnVisible && (
           <div className={cx('nav-control-play-btn')}>
             <div>
-              <PlayButton size={48} transitionDuration={33} scaleHovering={1.04} />
+              <PlayButton size={48} transitionDuration={33} scaleHovering={1.005} />
             </div>
             <div className={cx('artist-name')}>
               <span>{artistName}</span>P

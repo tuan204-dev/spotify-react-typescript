@@ -13,6 +13,7 @@ import SongItemTag from './SongItemTag/SongItemTag'
 import ArtistList from './Header/ArtistList/ArtistList'
 import SearchResult from './SearchResult/SearchResult'
 import SongList from './SongList/SongList'
+import TopTracks from './TopTracks/TopTracks'
 
 export {
   Section,
@@ -30,4 +31,5 @@ export {
   ArtistList,
   SearchResult,
   SongList,
+  TopTracks
 }

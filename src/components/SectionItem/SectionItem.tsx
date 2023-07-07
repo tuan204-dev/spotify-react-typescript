@@ -59,7 +59,7 @@ const SectionItem: React.FC<SectionItemI> = ({
               <PlayButton
                 size={50}
                 fontSize={24}
-                scaleHovering={1.04}
+                scaleHovering={1.005}
                 transitionDuration={33}
               />
             </div>

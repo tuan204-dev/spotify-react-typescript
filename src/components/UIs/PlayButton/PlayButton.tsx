@@ -32,7 +32,8 @@ const PlayButton: FC<PlayButtonProps> = (props) => {
           borderRadius: `${size / 2}px`,
           fontSize: `${fontSize}px`,
           transitionDuration: `${transitionDuration}ms`,
-          scale: isHovering ? scaleHovering : undefined,
+          // scale: isHovering ? scaleHovering : undefined,
+          transform: isHovering ? `scale(${scaleHovering})` : undefined
         }}
       >
         <TbPlayerPlayFilled className={cx('play-btn-child')} />

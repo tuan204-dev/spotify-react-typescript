@@ -1,14 +1,69 @@
 @import '../../scss/variable';
 
 
+.wrapper {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: $bg-base;
+}
+
+.banner-img {
+  width: 100%;
+  position: absolute;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 0;
+  transition: all 1ms ease;
+  transform-origin: center;
+}
+
 .body {
   height: 100%;
   overflow: hidden;
   overflow-y: scroll;
   padding-bottom: 32px;
   padding-top: $navbar-height;
+  position: relative;
+  z-index: 9;
 
-  // &::-webkit-scrollbar {
-  //   display: none;
-  // }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.bg-blur {
+  position: absolute;
+  height: 232px;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, .6) 0, $bg-base 100%), $bg-noise;
+  z-index: 0;
+}
+
+.action-bar {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  gap: 24px;
+
+  .follow-btn {
+    color: $white;
+    background-color: transparent;
+    border: 1px solid hsla(0,0%,100%,.3);
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    padding: 7px 15px;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $white;
+    }
+  }
 }

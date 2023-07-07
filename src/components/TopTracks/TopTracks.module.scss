@@ -1,0 +1,38 @@
+@import '../../scss/variable';
+
+.wrapper {
+  position: relative;
+  z-index: 1;
+  padding-inline: $col-gap;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  margin: 2px 0 10px;
+
+  h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+}
+
+.show-more-btn {
+  color: hsla(0,0%,100%,.7);
+  cursor: pointer;
+  margin: 4px 0;
+
+  button {
+    background: none;
+    border: none;
+    font-size: 14px;
+    color: hsla(0,0%,100%,.7);
+    padding: 16px;
+    cursor: pointer;
+
+    &:hover {
+      color: $white;
+    }
+  }
+
+}
