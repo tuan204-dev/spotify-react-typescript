@@ -157,7 +157,7 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
             )}
             {data?.artists?.items.filter((item: any) => item).length !== 0 && (
               <Section
-                isClickable
+                isClickable={false}
                 title="Artists"
                 dataType="artist"
                 data={data?.artists?.items
@@ -167,7 +167,7 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
             )}
             {data?.albums?.items.filter((item: any) => item).length !== 0 && (
               <Section
-                isClickable
+                isClickable={false}
                 title="Albums"
                 dataType="album"
                 data={data?.albums?.items
@@ -177,7 +177,7 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
             )}
             {data?.playlists?.items.filter((item: any) => item).length !== 0 && (
               <Section
-                isClickable
+                isClickable={false}
                 title="Playlists"
                 dataType="playlist"
                 data={data?.playlists?.items
@@ -187,7 +187,7 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
             )}
             {data?.episodes?.items.filter((item: any) => item).length !== 0 && (
               <Section
-                isClickable
+                isClickable={false}
                 title="Episodes"
                 dataType="episode"
                 data={data?.episodes?.items
@@ -197,13 +197,13 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
             )}
             {data?.shows?.items.filter((item: any) => item).length !== 0 && (
               <Section
-                isClickable
+                isClickable={false}
                 title="Podcasts"
                 dataType="show"
                 data={data?.shows?.items
                   .filter((item: any) => item)
                   .sort((a: any, b: any) => -a.popularity + b.popularity)}
-                isShow
+                type="show"
               />
             )}
           </>

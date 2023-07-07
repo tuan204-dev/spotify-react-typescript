@@ -1,25 +1,20 @@
-import React, { useRef } from 'react'
-import classNames from 'classnames/bind'
-import { useLocation } from 'react-router-dom'
-import styles from './Artist.module.scss'
-import { useState } from 'react'
-import { useEffect } from 'react'
-import { fetchArtistData, getAccessToken } from '@/utils/fetchData'
-import { Footer, Navbar, TopTracks } from '@/components'
+import { Discography, Footer, Navbar, Section, TopTracks } from '@/components'
 import ArtistBanner from '@/components/ArtistBanner/ArtistBanner'
-import { useComponentSize } from '@/hooks'
 import { PlayButton } from '@/components/UIs'
+import { useComponentSize } from '@/hooks'
+import classNames from 'classnames/bind'
+import React, { useEffect, useRef, useState } from 'react'
+import styles from './Artist.module.scss'
 
 const cx = classNames.bind(styles)
 
 const Artist: React.FC = () => {
   // const [data, setData] = useState<any>()
   const [overviewData, setOverViewData] = useState<any>()
-  const [topTracks, setTopTracks] = useState<any>()
   const [navOpacity, setNavOpacity] = useState<number>(0)
   const [bgBannerOpacity, setBgBannerOpacity] = useState<number>(0)
   const [bgBannerScale, setBgBannerScale] = useState<number>(1.05)
-  const [navPlayBtnVisible, setNavPlayBtnVisble] = useState<boolean>(false)
+  const [navPlayBtnVisible, setNavPlayBtnVisible] = useState<boolean>(false)
 
   const bannerRef = useRef<any>()
 
@@ -53,16 +48,6 @@ const Artist: React.FC = () => {
     fetchData()
   }, [])
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch('data/initTopTracks.json')
-      const data = await response.json()
-      
-      setTopTracks(data)
-    }
-    fetchData()
-  }, [])
-
   const handleScroll = (e: React.UIEvent<HTMLDivElement, UIEvent>): void => {
     const yAxis = e.currentTarget.scrollTop
     // console.log(yAxis)
@@ -79,7 +64,12 @@ const Artist: React.FC = () => {
     if (yAxis > 0.6 * bannerHeight) {
       setNavOpacity(1)
     } else setNavOpacity(yAxis / (0.6 * bannerHeight))
+
+    if (yAxis > bannerHeight + 14) {
+      setNavPlayBtnVisible(true)
+    } else setNavPlayBtnVisible(false)
   }
+  console.log(overviewData)
 
   return (
     <main className={cx('wrapper')}>
@@ -99,35 +89,71 @@ const Artist: React.FC = () => {
         }}
       ></div>
       <div onScroll={(e) => handleScroll(e)} className={cx('body')}>
-        <div
-          style={{
-            backgroundColor:
-              overviewData?.visuals.headerImage.extractedColors.colorRaw.hex,
-            top: `${bannerHeight}px`,
-          }}
-          className={cx('bg-blur')}
-        ></div>
-        <div ref={bannerRef}>
-          <ArtistBanner
-            name={overviewData?.profile.name}
-            avatar={overviewData?.visuals.avatarImage.sources[0].url}
-            followerNumber={overviewData?.stats.followers}
-            monthlyListeners={overviewData?.stats.monthlyListeners}
-            dominantColor={overviewData?.visuals.headerImage.extractedColors.colorRaw.hex}
-            bgBannerOpacity={bgBannerOpacity}
-            isVerified={overviewData?.profile.verified}
+        <div style={{ position: 'relative' }}>
+          <div
+            style={{
+              position: 'absolute',
+              top: `${bannerHeight}px`,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: '#121212',
+              zIndex: -1,
+            }}
+          ></div>
+          <div
+            style={{
+              backgroundColor:
+                overviewData?.visuals.headerImage.extractedColors.colorRaw.hex,
+              top: `${bannerHeight}px`,
+            }}
+            className={cx('bg-blur')}
+          ></div>
+          <div ref={bannerRef}>
+            <ArtistBanner
+              name={overviewData?.profile.name}
+              avatar={overviewData?.visuals.avatarImage.sources[0].url}
+              followerNumber={overviewData?.stats.followers}
+              monthlyListeners={overviewData?.stats.monthlyListeners}
+              dominantColor={
+                overviewData?.visuals.headerImage.extractedColors.colorRaw.hex
+              }
+              bgBannerOpacity={bgBannerOpacity}
+              isVerified={overviewData?.profile.verified}
+            />
+          </div>
+          <div className={cx('action-bar')}>
+            <PlayButton size={56} transitionDuration={33} scaleHovering={1.005} />
+            <button className={cx('follow-btn')}>Follow</button>
+          </div>
+          <TopTracks songList={overviewData?.discography.topTracks.items} />
+          <Discography data={overviewData?.discography}/>
+
+          <Section
+            title={`Featuring ${overviewData?.profile.name}`}
+            data={overviewData?.relatedContent.featuring.items}
+            dataType="playlist"
           />
+          <Section
+            title="Fans also like"
+            data={overviewData?.relatedContent.relatedArtists.items}
+            dataType="artist"
+            type="artist"
+          />
+          <Section
+            title="Artist Playlists"
+            data={overviewData?.profile.playlists.items}
+            dataType="playlist"
+            isClickable={false}
+          />
+          <Section
+            title="Discovered on"
+            data={overviewData?.relatedContent.discoveredOn.items}
+            dataType="playlist"
+          />
+
+          <Footer />
         </div>
-        <div className={cx('action-bar')}>
-          <PlayButton size={56} transitionDuration={33} scaleHovering={1.005} />
-          <button className={cx('follow-btn')}>
-            Follow
-          </button>
-        </div>
-        <TopTracks songList={topTracks}/>
-        <div style={{ minHeight: '2000px', background: '#121212' }}>TopTop</div>
-        
-        <Footer/>
       </div>
     </main>
   )

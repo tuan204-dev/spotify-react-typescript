@@ -12,8 +12,6 @@ import durationConvertor from '@/utils/durationConvertor'
 
 const cx = classNames.bind(styles)
 
-
-
 const SongItem: React.FC<SongItemProps> = ({
   songName,
   artists,
@@ -24,8 +22,7 @@ const SongItem: React.FC<SongItemProps> = ({
   dateAdd,
   album,
   isExplicit = false,
-  isAlbumTrack = false,
-  isSearch = false,
+  type = 'default',
 }) => {
   const { width } = useContext(MainLayoutContext)
 
@@ -33,12 +30,12 @@ const SongItem: React.FC<SongItemProps> = ({
     <div
       className={cx({
         wrapper: true,
-        'grid-md': width <= 780 && !isAlbumTrack,
-        'is-album-track': isAlbumTrack,
-        'is-search-result': isSearch,
+        'grid-md': width <= 780 && type !== 'album',
+        'is-album-track': type === 'album',
+        'is-search-result': type === 'search',
       })}
     >
-      {!isSearch && (
+      {type !== 'search' && (
         <div className={cx('order')}>
           {!isLoading && (
             <>
@@ -51,7 +48,7 @@ const SongItem: React.FC<SongItemProps> = ({
         </div>
       )}
       <div className={cx('main')}>
-        {!isAlbumTrack && (
+        {type !== 'album' && (
           <div className={cx('thumb')}>
             {!isLoading ? (
               <LazyLoadImage effect="blur" src={thumb} alt={songName} />
@@ -64,10 +61,12 @@ const SongItem: React.FC<SongItemProps> = ({
           {!isLoading ? (
             <>
               <p className={cx('name')}>{songName}</p>
-              <div className={cx('sub-title')}>
-                {isExplicit && <span className={cx('explicit')}>E</span>}
-                <Artists data={artists} />
-              </div>
+              {type !== 'artist' && (
+                <div className={cx('sub-title')}>
+                  {isExplicit && <span className={cx('explicit')}>E</span>}
+                  <Artists data={artists} />
+                </div>
+              )}
             </>
           ) : (
             <>
@@ -77,7 +76,7 @@ const SongItem: React.FC<SongItemProps> = ({
           )}
         </div>
       </div>
-      {!isAlbumTrack && !isSearch && (
+      {type !== 'album' && type !== 'search' && (
         <>
           <div className={cx('album')}>{!isLoading && album}</div>
           {width > 780 && (
@@ -89,10 +88,7 @@ const SongItem: React.FC<SongItemProps> = ({
           )}
         </>
       )}
-      <div className={cx('duration')}>
-        {!isLoading &&
-          durationConvertor(duration)}
-      </div>
+      <div className={cx('duration')}>{!isLoading && durationConvertor(duration)}</div>
     </div>
   )
 }

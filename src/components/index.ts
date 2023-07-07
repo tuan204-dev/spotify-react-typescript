@@ -14,6 +14,7 @@ import ArtistList from './Header/ArtistList/ArtistList'
 import SearchResult from './SearchResult/SearchResult'
 import SongList from './SongList/SongList'
 import TopTracks from './TopTracks/TopTracks'
+import Discography from './Discography/Discography'
 
 export {
   Section,
@@ -31,5 +32,6 @@ export {
   ArtistList,
   SearchResult,
   SongList,
-  TopTracks
+  TopTracks,
+  Discography,
 }

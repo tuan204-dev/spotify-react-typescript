@@ -90,13 +90,13 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
                     order={index + 1}
                     album={item.album.name}
                     isExplicit={item.explicit}
-                    isSearch
+                    type='search'
                   />
                 ))
             : Array(4)
                 .fill(0)
                 .map((item, index) => (
-                  <SongItem isLoading={isLoading} isSearch key={index} order={item} />
+                  <SongItem isLoading={isLoading} type='search' key={index} order={item} />
                 ))}
         </div>
       </div>

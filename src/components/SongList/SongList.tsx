@@ -14,7 +14,7 @@ const SongList: FC<SongListProps> = ({
   pivotTop,
   isLoading = false,
   top,
-  isAlbumTrack = false,
+  type = 'default'
 }) => {
   const { width } = useContext(MainLayoutContext)
 
@@ -37,10 +37,10 @@ const SongList: FC<SongListProps> = ({
           'freeze-top-row': true,
           stuck: !inView,
           'grid-md': width <= 780,
-          'is-album-track': isAlbumTrack,
+          'is-album-track': type === 'album',
         })}
       >
-        {!isAlbumTrack ? (
+        {type !== 'album' ? (
           <>
             {' '}
             <div>#</div>
@@ -67,7 +67,7 @@ const SongList: FC<SongListProps> = ({
           if (!isLoading) {
             return songList?.map((item: any, index: number) => (
               <SongItem
-                isAlbumTrack={isAlbumTrack}
+                type={type}
                 key={index}
                 order={order++}
                 thumb={

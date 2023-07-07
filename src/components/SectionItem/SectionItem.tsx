@@ -1,15 +1,14 @@
+import { UserImgDefault } from '@/assets/icons'
+import { dateFormatConvertor } from '@/utils'
 import classNames from 'classnames/bind'
 import React, { memo } from 'react'
-import { TbPlayerPlayFilled } from 'react-icons/tb'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { Link } from 'react-router-dom'
 import { SectionItemI } from '../../../types'
 import { Artists, PlayButton } from '../UIs'
 import styles from './SectionItem.module.scss'
-import { dateFormatConvertor } from '@/utils'
-import { UserImgDefault } from '@/assets/icons'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 const cx = classNames.bind(styles)
 
@@ -23,9 +22,9 @@ const SectionItem: React.FC<SectionItemI> = ({
   artists,
   desc,
   isLoading,
-  isShow = false,
   publisher,
   dateAdd,
+  type
 }) => {
   // if(!imageUrl) return
 
@@ -74,7 +73,7 @@ const SectionItem: React.FC<SectionItemI> = ({
           <div className={cx('desc')}>
             {!isLoading ? (
               <p>
-                {(isShow && publisher) ||
+                {(type === 'show' && publisher) ||
                   (dataType === 'episode' && dateFormatConvertor(dateAdd)) ||
                   desc ||
                   (author && `By ${author}`) ||

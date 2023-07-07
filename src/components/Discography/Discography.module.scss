@@ -1,0 +1,42 @@
+@import '../../scss/variable';
+@import '../../scss/mixin';
+
+.wrapper {
+  padding-inline: $col-gap;
+  margin-top: 32px;
+}
+
+.title {
+
+
+  h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+}
+
+.selection {
+  display: flex;
+  gap: 10px;
+  padding: 7px 0 10px;
+  margin: 14px 0;
+  background-color: $bg-base;
+  min-height: 52px;
+  
+
+  .btn {
+    @include button-text(4px 12px, $bg-button, $bg-button-highlight);
+    color: $white;
+    font-size: 14px;
+    border-radius: 32px;
+  }
+
+  .active {
+    color: $black;
+    @include button-text(4px 12px, $white, $white);
+  }
+}
+
+.section {
+  margin-inline: -24px;
+}

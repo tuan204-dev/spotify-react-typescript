@@ -7,7 +7,9 @@ import { SongItem } from '..'
 const cx = classNames.bind(styles)
 
 interface TopTrackProps {
-  songList: SongItemProps[]
+  songList: {
+    track: SongItemProps
+  }[]
 }
 
 const TopTrack: FC<TopTrackProps> = ({ songList }) => {
@@ -21,13 +23,13 @@ const TopTrack: FC<TopTrackProps> = ({ songList }) => {
       <div className={cx('song-list')}>
         {songList?.slice(0, isLess ? 5 : 10).map((item: any, index: number) => (
           <SongItem
+            type="artist"
             key={index}
-            songName={item.name}
-            artists={item.artists}
-            thumb={item.album.images[item.album.images.length - 1].url}
-            duration={item.duration_ms}
+            songName={item.track.name}
+            artists={item.track.artists}
+            thumb={item.track.album.coverArt.sources[item.track.album.coverArt.sources.length - 1].url}
+            duration={item.track.duration.totalMilliseconds}
             order={index + 1}
-            isExplicit={item.explicit}
           />
         ))}
       </div>

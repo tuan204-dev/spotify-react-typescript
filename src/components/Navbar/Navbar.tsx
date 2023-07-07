@@ -1,13 +1,12 @@
+import classNames from 'classnames/bind'
 import React, { FC, useEffect, useRef } from 'react'
 import { FaUser } from 'react-icons/fa'
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { FiSearch } from 'react-icons/fi'
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { MdOutlineClear } from 'react-icons/md'
-import styles from './Navbar.module.scss'
-import classNames from 'classnames/bind'
-import { useNavigate, useLocation } from 'react-router-dom'
-import { TbPlayerPlayFilled } from 'react-icons/tb'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { PlayButton } from '../UIs'
+import styles from './Navbar.module.scss'
 
 const cx = classNames.bind(styles)
 
@@ -92,13 +91,16 @@ const Navbar: FC<NavbarProps> = (props) => {
             )}
           </div>
         )}
-        {type === 'artist' && playBtnVisible && (
-          <div className={cx('nav-control-play-btn')}>
+        {type === 'artist' && (
+          <div
+            className={cx('nav-control-play-btn')}
+            style={{ opacity: playBtnVisible ? 1 : undefined }}
+          >
             <div>
               <PlayButton size={48} transitionDuration={33} scaleHovering={1.005} />
             </div>
             <div className={cx('artist-name')}>
-              <span>{artistName}</span>P
+              <span>{artistName}</span>
             </div>
           </div>
         )}

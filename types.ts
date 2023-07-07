@@ -237,7 +237,6 @@ export interface AlbumItem {
 
 export interface SectionItemI extends PlayListItem, ArtistItem, AlbumItem {
   isArtist?: boolean
-  isShow?: boolean
   isLoading?: boolean
   columnWidth?: number
   dataType?: string
@@ -245,6 +244,7 @@ export interface SectionItemI extends PlayListItem, ArtistItem, AlbumItem {
   desc?: string
   publisher?: string
   dateAdd?: string
+  type?: 'default' | 'playlist' | 'album' | 'artistList' | 'artist' | 'show'
 }
 
 export interface SectionProps {
@@ -254,7 +254,8 @@ export interface SectionProps {
   dataType?: string
   isFull?: boolean
   isClickable?: boolean
-  isShow?: boolean
+  hideHeader?: boolean
+  type?: 'default' | 'playlist' | 'album' | 'artistList' | 'artist' | 'show'
 }
 
 export interface SongItemTagProps {
@@ -295,6 +296,7 @@ export interface ResponseLibItem {
   images?: {
     url?: string
   }[]
+  
 }
 
 export interface ResponseSectionItem {
@@ -302,7 +304,7 @@ export interface ResponseSectionItem {
   name?: string
   images: {
     url: string
-  }[]
+  }[] | any
   publisher?: string
   artists?: ArtistData[]
   description?: string
@@ -310,6 +312,10 @@ export interface ResponseSectionItem {
     display_name: string
   }
   release_date?: string
+  uri?: string
+  visuals?: any
+  profile?: any
+  releases?: any
 }
 
 export interface SongItemProps {
@@ -321,14 +327,13 @@ export interface SongItemProps {
   isLoading?: boolean
   album?: string
   dateAdd?: string
-  isAlbumTrack?: boolean
   isExplicit?: boolean
-  isSearch?: boolean
+  type?: 'default' | 'playlist' | 'album' | 'search' | 'artist'
 }
 export interface SongListProps {
   songList: SongItemProps[]
   pivotTop: number
   top: number
   isLoading?: boolean
-  isAlbumTrack?: boolean
+  type?: 'default' | 'playlist' | 'album' | 'search' | 'artist'
 }

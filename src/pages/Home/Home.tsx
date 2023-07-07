@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import { SectionProps } from '../../../types'
 import styles from './Home.module.scss'
 import { fetchHomePageSectionData } from '@/utils'
-import { fetchArtistData, getAccessToken } from '@/utils/fetchData'
 
 const cx = classNames.bind(styles)
 

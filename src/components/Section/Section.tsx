@@ -15,8 +15,9 @@ const Section: React.FC<SectionProps> = ({
   data,
   isFull = false,
   dataType,
-  isClickable = false,
-  isShow = false,
+  isClickable = true,
+  hideHeader = false,
+  type = 'default',
 }) => {
   const [isLoading, setLoading] = useState<boolean>(true)
   const { quantityCol, width } = useContext(MainLayoutContext)
@@ -29,23 +30,27 @@ const Section: React.FC<SectionProps> = ({
 
   return (
     <section className={cx({ wrapper: true })}>
-      <div className={cx('header')}>
-        {!isLoading ? (
-          <>
-            <Link
-              className={cx({ 'is-search': isClickable })}
-              to={!isClickable ? `${href}` : '#'}
-            >
-              <h2 className={cx({ heading: true })}>{title}</h2>
-            </Link>
-            {(data?.length || 0) > quantityCol && !isFull && !isClickable && (
-              <Link to={`${href}`}>Show all</Link>
-            )}
-          </>
-        ) : (
-          <Skeleton width={225} height={20} borderRadius={50} />
-        )}
-      </div>
+      {!hideHeader && (
+        <div className={cx('header')}>
+          {!isLoading ? (
+            <>
+              <Link
+                className={cx({
+                  'is-search': !isClickable,
+                })}
+                to={isClickable ? `${href}` : '#'}
+              >
+                <h2 className={cx({ heading: true })}>{title}</h2>
+              </Link>
+              {(data?.length || 0) > quantityCol && !isFull && isClickable && (
+                <Link to={`${href}`}>Show all</Link>
+              )}
+            </>
+          ) : (
+            <Skeleton width={225} height={20} borderRadius={50} />
+          )}
+        </div>
+      )}
       <div
         style={{
           gridTemplateColumns: `repeat(${quantityCol}, minmax(0,1fr))`,
@@ -58,16 +63,20 @@ const Section: React.FC<SectionProps> = ({
           ? isFull
             ? data?.map((item, index) => (
                 <SectionItem
-                  isShow={isShow}
+                  type={type}
                   dataType={dataType}
                   isLoading={isLoading}
                   key={index}
-                  id={item?.id}
-                  title={item?.name}
+                  id={item?.id || item.uri?.split(':')[item.uri.split.length]}
+                  title={item?.name || item?.profile.name}
                   artists={item?.artists}
                   desc={item?.description}
                   publisher={item?.publisher}
-                  imageUrl={item?.images[0]?.url}
+                  imageUrl={
+                    (type === 'artist' && item?.visuals?.avatarImage?.sources[0]?.url) ||
+                    item?.images[0]?.url ||
+                    item?.images?.items[0]?.sources[0]?.url
+                  }
                   dateAdd={item?.release_date}
                   author={
                     (item?.artists && item?.artists[0]?.name) ||
@@ -79,16 +88,33 @@ const Section: React.FC<SectionProps> = ({
                 ?.slice(0, Math.min(quantityCol, data.length))
                 .map((item, index) => (
                   <SectionItem
-                    isShow={isShow}
                     dataType={dataType}
                     isLoading={isLoading}
                     key={index}
-                    id={item?.id}
-                    title={item?.name}
+                    id={
+                      (type === 'artist' &&
+                        (item.uri?.split(':')[item.uri.split.length] ||
+                          item?.releases?.items[0].id)) ||
+                      item?.id
+                    }
+                    title={
+                      (type === 'artist' &&
+                        (item?.profile?.name || item?.releases?.items[0].name)) ||
+                      item?.name
+                    }
                     artists={item?.artists}
-                    desc={item?.description}
+                    desc={
+                      (type === 'artist' && item?.releases?.items[0].type) ||
+                      item?.description
+                    }
                     publisher={item?.publisher}
-                    imageUrl={item?.images[0]?.url}
+                    imageUrl={
+                      (type === 'artist' &&
+                        (item?.visuals?.avatarImage?.sources[0]?.url ||
+                          item?.releases?.items[0].coverArt.sources[0].url)) ||
+                      item?.images[0]?.url ||
+                      item?.images?.items[0]?.sources[0]?.url
+                    }
                     dateAdd={item?.release_date}
                     author={
                       (item?.artists && item?.artists[0]?.name) ||

@@ -1,15 +1,14 @@
 import { HeartIcon } from '@/assets/icons'
 import { Footer, Header, Navbar, SongList } from '@/components'
+import { PlayButton } from '@/components/UIs'
 import { useRaiseColorTone } from '@/hooks'
 import useDominantColor from '@/hooks/useDominantColor'
 import { dateFormatConvertor } from '@/utils'
 import { fetchSpotifyData, getAccessToken } from '@/utils/fetchData'
 import classNames from 'classnames/bind'
 import React, { useEffect, useState } from 'react'
-import { TbPlayerPlayFilled } from 'react-icons/tb'
 import { useLocation, useNavigate } from 'react-router-dom'
 import styles from './Album.module.scss'
-import { PlayButton } from '@/components/UIs'
 
 const cx = classNames.bind(styles)
 
@@ -84,11 +83,11 @@ const Album: React.FC = () => {
               </button>
             </div>
             <SongList
+              type='album'
               top={0}
               pivotTop={64}
               songList={data?.tracks.items}
               isLoading={isLoading}
-              isAlbumTrack
             />
           </div>
         </div>
