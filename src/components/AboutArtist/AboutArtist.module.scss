@@ -1,0 +1,52 @@
+@import '../../scss/variable';
+@import '../../scss/mixin';
+
+.wrapper {
+  padding-inline: $col-gap;
+  margin: 12px 0;
+}
+
+.title {
+  h2 {
+    margin: 0;
+    font-size: 24px;
+    color: $white;
+  }
+  margin: 8px 0;
+}
+
+.body {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 516px;
+  width: min(800px, 100%);
+  border-radius: 8px;
+  display: flex;
+  align-items: flex-end;
+  transform: scale(1);
+  transform-origin: center;
+  transition: all .25s ease;
+
+
+  &:hover {
+    transform: scale(1.01);
+  }
+}
+
+.text-content {
+  width: 80%;
+  padding: 40px;
+
+  .monthly-listener {
+    font-size: 16px;
+    margin: 8px 0;
+    font-weight: 700;
+  }
+
+  .desc {
+    font-size: 16px;
+    @include text-line-clamp(3);
+    line-height: 1.3;
+  }
+}

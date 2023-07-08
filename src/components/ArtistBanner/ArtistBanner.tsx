@@ -13,6 +13,8 @@ interface ArtistBannerProps {
   monthlyListeners: number
   bgBannerOpacity?: number
   isVerified?: boolean
+  isHeaderImg?: boolean
+  isLoading?: boolean
 }
 
 const ArtistBanner: FC<ArtistBannerProps> = (props) => {
@@ -21,30 +23,46 @@ const ArtistBanner: FC<ArtistBannerProps> = (props) => {
     monthlyListeners,
     dominantColor,
     bgBannerOpacity,
-    isVerified
+    isVerified,
+    isHeaderImg,
+    avatar,
+    isLoading,
   } = props
 
+  console.log('rerender')
+
   return (
-    <div className={cx('wrapper')}>
+    <div className={cx({ wrapper: true, 'no-header-img': !isHeaderImg })}>
       <div className={cx('main')}>
-        <div className={cx('avatar')}></div>
+        {!isHeaderImg && (
+          <div className={cx('avatar')}>
+            <img src={avatar} alt="avt" />
+          </div>
+        )}
         <div className={cx('info')}>
-          {isVerified && <div className={cx('verified')}>
-            <span className={cx('icon')}>
-              <Verified />
-              <div className={cx('check-white')}></div>
-            </span>
-            <span className={cx('text')}>Verified Artist</span>
-          </div>}
+          {isVerified && (
+            <div className={cx('verified')}>
+              <span className={cx('icon')}>
+                <Verified />
+                <div className={cx('check-white')}></div>
+              </span>
+              <span className={cx('text')}>Verified Artist</span>
+            </div>
+          )}
           <h1 className={cx('name')}>{name}</h1>
-          <span className={cx('monthly-listener')}>
-            {monthlyListeners?.toLocaleString()} monthly listeners
-          </span>
+          {!isLoading && (
+            <span className={cx('monthly-listener')}>
+              {monthlyListeners?.toLocaleString()} monthly listeners
+            </span>
+          )}
         </div>
       </div>
       <div
         className={cx('blur')}
-        style={{ backgroundColor: dominantColor, opacity: bgBannerOpacity }}
+        style={{
+          backgroundColor: dominantColor,
+          opacity: isHeaderImg ? bgBannerOpacity : 1,
+        }}
       ></div>
     </div>
   )

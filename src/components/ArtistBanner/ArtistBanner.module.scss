@@ -1,4 +1,5 @@
 @import '../../scss/variable';
+@import '../../scss/mixin';
 
 .wrapper {
   position: relative;
@@ -25,7 +26,23 @@
 .main {
   display: flex;
   transform: translateZ(10px);
-  z-index: 99;
+  z-index: 7;
+  align-items: flex-end;
+  gap: $col-gap;
+}
+
+
+.avatar {
+  height: 232px;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 50%;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
 }
 
 .info {
@@ -64,10 +81,16 @@
   .name {
     font-size: 96px;
     margin: 0 0 16px;
+    // @include text-shadow;
+    @include text-line-clamp(2);
   }
 
   .monthly-listener {
     font-size: 16px;
     margin: 8px 0;
   }
+}
+
+.no-header-img {
+  height: clamp(340px,30vh,400px) !important;
 }

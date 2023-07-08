@@ -18,23 +18,24 @@ const Discography: FC<DiscographyProps> = ({ data }) => {
         key: 'popularReleases',
         display: 'Popular releases',
         active: 'popularReleases' === category,
+        isEmpty: data?.popularReleases.items.length === 0,
       },
 
       {
         key: 'albums',
         display: 'Albums',
         active: 'albums' === category,
+        isEmpty: data?.albums.items.length === 0,
       },
       {
         key: 'singles',
         display: 'Singles',
         active: 'singles' === category,
+        isEmpty: data?.singles.items.length === 0,
       },
     ],
     [category]
   )
-  
-  console.log(data)
 
   return (
     <div className={cx('wrapper')}>
@@ -42,15 +43,18 @@ const Discography: FC<DiscographyProps> = ({ data }) => {
         <h2>Discography</h2>
       </div>
       <div className={cx('selection')}>
-        {selection.map((item, index) => (
-          <button
-            key={index}
-            className={cx({ btn: true, active: item.active })}
-            onClick={() => setCategory(item.key)}
-          >
-            {item.display}
-          </button>
-        ))}
+        {selection.map((item, index) => {
+          if (!item.isEmpty)
+            return (
+              <button
+                key={index}
+                className={cx({ btn: true, active: item.active })}
+                onClick={() => setCategory(item.key)}
+              >
+                {item.display}
+              </button>
+            )
+        })}
       </div>
       <div className={cx('section')}>
         <Section
@@ -60,7 +64,7 @@ const Discography: FC<DiscographyProps> = ({ data }) => {
             (category === 'albums' && data?.albums.items) ||
             (category === 'singles' && data?.singles.items)
           }
-          type='artist'
+          type="artist"
           hideHeader
         />
       </div>

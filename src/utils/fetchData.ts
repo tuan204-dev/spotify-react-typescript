@@ -1,3 +1,4 @@
+import axios from 'axios'
 import {
   FeaturedPlaylistsProps,
   NewReleasesArgs,
@@ -106,25 +107,21 @@ export const searchData = async (args: Partial<SearchArgs>) => {
   return data
 }
 
-interface ArtistSearchParams {
-  accessToken: string
-  id: string
-  type?: 'albums' | 'top-tracks' | 'related-artists'
-}
-
-export const fetchArtistData = async (args: Partial<ArtistSearchParams>) => {
-  const { id, type, accessToken } = args
-
-  const response = await fetch(
-    `https://api.spotify.com/v1/artists/${id}/${type ? type : '\n' }`,
-    {
-      method: 'GET',
-      headers: {
-        Authorization: 'Bearer ' + accessToken,
-      },
+export const fetchArtistData = async (id: string) => {
+  const apiKey = import.meta.env.VITE_RAPID_SPOTIFY_API
+  console.log(apiKey)
+  const options = {
+    method: 'GET',
+    url: 'https://spotify23.p.rapidapi.com/artist_overview/',
+    params: {
+      id: id
+    },
+    headers: {
+      'X-RapidAPI-Key': apiKey,
+      'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
     }
-  )
-
-  const data = await response.json()
-  return data
+  };
+  const response = await axios.request(options);
+	return response.data.data.artist
+  
 }

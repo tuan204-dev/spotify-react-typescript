@@ -28,7 +28,7 @@ const SidebarItem: FC<SidebarItemProps> = (props) => {
   return (
     <Link to={`/${type}?${id}`}>
       <div className={cx('sidebar-item')}>
-        <LazyLoadImage effect="blur" src={thumbnail} className={cx('thumbnail')}/>
+        <LazyLoadImage effect="blur" src={thumbnail} className={cx('thumbnail')} alt={name}/>
         <div className={cx('body')}>
           <h4 className={cx('heading')}>{name}</h4>
           <span className={cx('type')}>
