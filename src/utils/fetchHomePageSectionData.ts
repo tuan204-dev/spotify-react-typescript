@@ -1,4 +1,4 @@
-import { SectionData } from '@/pages/Section/Section'
+
 import { SectionProps } from '../../types'
 import {
   getAccessToken,
@@ -11,7 +11,6 @@ interface PropsType {
   type: 'newRelease' | 'featuredPlaylists' | 'topMixes' | 'suggestedArtists'
   setData:
     | React.Dispatch<React.SetStateAction<SectionProps | undefined>>
-    | React.Dispatch<React.SetStateAction<SectionData>>
   limit?: number
 }
 
@@ -27,6 +26,7 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
           href: '/section?newReleases',
           dataType: 'album',
           data: JSON.parse(data),
+          apiType: 'spotify'
         })
       } else {
         const fetchData = async () => {
@@ -42,6 +42,7 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
             href: '/section?newReleases',
             dataType: 'album',
             data: responseData,
+            apiType: 'spotify'
           })
         }
         fetchData()
@@ -57,6 +58,7 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
           href: '/section?featurePlaylist',
           dataType: 'playlist',
           data: JSON.parse(data),
+          apiType: 'spotify'
         })
       } else {
         const fetchData = async () => {
@@ -72,6 +74,7 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
             href: '/section?featurePlaylist',
             dataType: 'playlist',
             data: responseData,
+            apiType: 'spotify'
           })
         }
         fetchData()
@@ -87,6 +90,7 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
           href: '/section?topMixes',
           dataType: 'playlist',
           data: JSON.parse(data),
+          apiType: 'spotify'
         })
       } else {
         const fetchData = async () => {
@@ -103,6 +107,7 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
             href: '/section?topMixes',
             dataType: 'playlist',
             data: responseData?.playlists.items,
+            apiType: 'spotify'
           })
         }
         fetchData()
@@ -118,6 +123,7 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
           href: '/section?suggestedArtists',
           dataType: 'artist',
           data: JSON.parse(data),
+          apiType: 'spotify'
         })
       } else {
         const fetchData = async () => {
@@ -143,6 +149,7 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
             data: responseData?.artists.items
               .sort((a: any, b: any) => -a.popularity + b.popularity)
               .filter((artist: any) => artist.images.length !== 0),
+            apiType: 'spotify'
           })
         }
         fetchData()

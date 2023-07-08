@@ -40,24 +40,28 @@ const Home: React.FC = () => {
       <div onScroll={(e) => handleScroll(e)} className={cx('body')}>
         <Greeting bgColor={bgColor} setBgColor={setBgColor} />
         <Section
+          apiType='spotify'
           title={newReleasesData?.title}
           href={newReleasesData?.href}
           data={newReleasesData?.data}
           dataType={newReleasesData?.dataType}
         />
         <Section
+          apiType='spotify'
           title={suggestArtists?.title}
           href={suggestArtists?.href}
           data={suggestArtists?.data}
           dataType={suggestArtists?.dataType}
         />
         <Section
+          apiType='spotify'
           title={featurePlaylistData?.title}
           href={featurePlaylistData?.href}
           data={featurePlaylistData?.data}
           dataType={featurePlaylistData?.dataType}
         />
         <Section
+          apiType='spotify'
           title={topMixes?.title}
           href={topMixes?.href}
           data={topMixes?.data}

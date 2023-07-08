@@ -1,25 +1,25 @@
 import { Section as SectionContent } from '@/components'
 import Footer from '@/components/Footer/Footer'
 import Navbar from '@/components/Navbar/Navbar'
+import { fetchHomePageSectionData } from '@/utils'
 import { getAccessToken, getFeaturedPlaylists, getNewReleases } from '@/utils/fetchData'
 import classNames from 'classnames/bind'
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { ResponseSectionItem } from '../../../types'
+import { SectionProps } from '../../../types'
 import styles from './Section.module.scss'
-import { fetchHomePageSectionData } from '@/utils'
 
 const cx = classNames.bind(styles)
 
-export interface SectionData {
-  title?: string
-  href?: string
-  dataType?: string
-  data?: ResponseSectionItem[]
-}
+// export interface SectionData {
+//   title?: string
+//   href?: string
+//   dataType?: string
+//   data?: ResponseSectionItem[]
+// }
 
 const Section: React.FC = () => {
-  const [data, setData] = useState<SectionData>({})
+  const [data, setData] = useState<SectionProps | undefined>()
 
   const { search } = useLocation()
 
@@ -38,6 +38,7 @@ const Section: React.FC = () => {
           href: '/section?newReleases',
           dataType: 'album',
           data: responseData,
+          apiType: 'spotify'
         })
       } else if (search === '?featurePlaylist') {
         const token = await getAccessToken()
@@ -52,6 +53,7 @@ const Section: React.FC = () => {
           href: '/section?featurePlaylist',
           dataType: 'playlist',
           data: responseData,
+          apiType: 'spotify'
         })
       } else if (search === '?topMixes') {
         fetchHomePageSectionData({ type: 'topMixes', setData: setData, limit: 50 })
@@ -68,14 +70,15 @@ const Section: React.FC = () => {
 
   return (
     <div className={cx('wrapper')}>
-      <Navbar type='section' />
+      <Navbar type="section" />
       <div className={cx('body')}>
         <SectionContent
+          apiType="spotify"
           isClickable
           isFull
-          dataType={data.dataType}
-          title={data.title}
-          data={data.data}
+          dataType={data?.dataType}
+          title={data?.title}
+          data={data?.data}
         />
         <Footer />
       </div>

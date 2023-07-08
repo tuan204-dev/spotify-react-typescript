@@ -58,6 +58,7 @@ const Discography: FC<DiscographyProps> = ({ data }) => {
       </div>
       <div className={cx('section')}>
         <Section
+          apiType='rapid'
           dataType="album"
           data={
             (category === 'popularReleases' && data?.popularReleases.items) ||
