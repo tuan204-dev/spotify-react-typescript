@@ -244,7 +244,8 @@ export interface SectionItemI extends PlayListItem, ArtistItem, AlbumItem {
   desc?: string
   publisher?: string
   dateAdd?: string
-  type?: 'default' | 'playlist' | 'album' | 'artistList' | 'artist' | 'show'
+  type?: 'default' | 'playlist' | 'album' | 'artistList' | 'artist' | 'show' 
+  
 }
 
 export interface SectionProps {
@@ -256,6 +257,7 @@ export interface SectionProps {
   isClickable?: boolean
   hideHeader?: boolean
   type?: 'default' | 'playlist' | 'album' | 'artistList' | 'artist' | 'show'
+  apiType?: 'spotify' | 'rapid'
 }
 
 export interface SongItemTagProps {

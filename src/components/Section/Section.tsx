@@ -18,11 +18,14 @@ const Section: React.FC<SectionProps> = ({
   isClickable = true,
   hideHeader = false,
   type = 'default',
+  apiType,
 }) => {
   const [isLoading, setLoading] = useState<boolean>(true)
   const { quantityCol, width } = useContext(MainLayoutContext)
 
   const columnWidth = (width - 2 * 24 - (quantityCol - 1) * 24) / quantityCol
+
+  console.log(data)
 
   useEffect(() => {
     setLoading(Boolean(!data))
@@ -70,12 +73,17 @@ const Section: React.FC<SectionProps> = ({
                   id={item?.id || item.uri?.split(':')[item.uri.split.length]}
                   title={item?.name || item?.profile.name}
                   artists={item?.artists}
-                  desc={item?.description}
+                  desc={
+                    (type === 'artist' && item?.releases?.items[0].type) ||
+                    (apiType === 'spotify' && item?.description)
+                  }
                   publisher={item?.publisher}
                   imageUrl={
-                    (type === 'artist' && item?.visuals?.avatarImage?.sources[0]?.url) ||
-                    item?.images[0]?.url ||
-                    item?.images?.items[0]?.sources[0]?.url
+                    (type === 'artist' &&
+                      (item?.visuals?.avatarImage?.sources[0]?.url ||
+                        item?.releases?.items[0]?.coverArt?.sources[0]?.url)) ||
+                    (apiType === 'spotify' && item?.images[0]?.url) ||
+                    (apiType === 'rapid' && item?.images?.items[0]?.sources[0]?.url)
                   }
                   dateAdd={item?.release_date}
                   author={
@@ -105,15 +113,15 @@ const Section: React.FC<SectionProps> = ({
                     artists={item?.artists}
                     desc={
                       (type === 'artist' && item?.releases?.items[0].type) ||
-                      item?.description
+                      (apiType === 'spotify' && item?.description)
                     }
                     publisher={item?.publisher}
                     imageUrl={
                       (type === 'artist' &&
                         (item?.visuals?.avatarImage?.sources[0]?.url ||
-                          item?.releases?.items[0].coverArt.sources[0].url)) ||
-                      item?.images[0]?.url ||
-                      item?.images?.items[0]?.sources[0]?.url
+                          item?.releases?.items[0]?.coverArt?.sources[0]?.url)) ||
+                      (apiType === 'spotify' && item?.images[0]?.url) ||
+                      (apiType === 'rapid' && item?.images?.items[0]?.sources[0]?.url)
                     }
                     dateAdd={item?.release_date}
                     author={

@@ -123,6 +123,7 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
                 return (
                   <div style={{ marginTop: '-64px' }}>
                     <Section
+                      apiType="spotify"
                       key={index}
                       dataType={item.key.slice(0, -1)}
                       isFull
@@ -157,6 +158,7 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
             )}
             {data?.artists?.items.filter((item: any) => item).length !== 0 && (
               <Section
+                apiType="spotify"
                 isClickable={false}
                 title="Artists"
                 dataType="artist"
@@ -167,6 +169,7 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
             )}
             {data?.albums?.items.filter((item: any) => item).length !== 0 && (
               <Section
+                apiType="spotify"
                 isClickable={false}
                 title="Albums"
                 dataType="album"
@@ -177,6 +180,7 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
             )}
             {data?.playlists?.items.filter((item: any) => item).length !== 0 && (
               <Section
+                apiType="spotify"
                 isClickable={false}
                 title="Playlists"
                 dataType="playlist"
@@ -187,6 +191,7 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
             )}
             {data?.episodes?.items.filter((item: any) => item).length !== 0 && (
               <Section
+                apiType="spotify"
                 isClickable={false}
                 title="Episodes"
                 dataType="episode"
@@ -197,6 +202,7 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
             )}
             {data?.shows?.items.filter((item: any) => item).length !== 0 && (
               <Section
+                apiType="spotify"
                 isClickable={false}
                 title="Podcasts"
                 dataType="show"

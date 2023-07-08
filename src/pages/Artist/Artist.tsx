@@ -137,6 +137,7 @@ const Artist: React.FC = () => {
 
           {overviewData?.relatedContent?.featuring?.items.length !== 0 && (
             <Section
+              apiType='rapid'
               title={`Featuring ${overviewData?.profile?.name}`}
               data={overviewData?.relatedContent?.featuring?.items}
               dataType="playlist"
@@ -145,6 +146,7 @@ const Artist: React.FC = () => {
           )}
           {overviewData?.relatedContent?.relatedArtists?.items.length !== 0 && (
             <Section
+              apiType='rapid'
               title="Fans also like"
               data={overviewData?.relatedContent?.relatedArtists?.items}
               dataType="artist"
@@ -154,6 +156,7 @@ const Artist: React.FC = () => {
           )}
           {overviewData?.profile?.playlists?.items?.length !== 0 && (
             <Section
+              apiType='rapid'
               title="Artist Playlists"
               data={overviewData?.profile?.playlists?.items}
               dataType="playlist"
@@ -162,6 +165,7 @@ const Artist: React.FC = () => {
           )}
           {overviewData?.relatedContent?.discoveredOn?.items?.length !== 0 && (
             <Section
+              apiType='rapid'
               title="Discovered on"
               data={overviewData?.relatedContent?.discoveredOn?.items}
               dataType="playlist"
