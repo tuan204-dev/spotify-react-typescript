@@ -15,7 +15,7 @@ const Artists: FC<ArtistsProps> = ({ data, isWhiteColor }) => {
   if (data) {
     if (data.length === 1) {
       renderData.push(
-        <Link key={0} to={`/artist?${data[0].id}`}>
+        <Link key={0} to={`/artist/${data[0].id}`}>
           <span
             className={cx({ 'artist-item': true, 'white-color': isWhiteColor })}
           >
@@ -27,7 +27,7 @@ const Artists: FC<ArtistsProps> = ({ data, isWhiteColor }) => {
       for (let i = 0; i < data.length - 1; i++) {
         renderData.push(
           <Fragment key={i}>
-            <Link to={`/artist?${data[i].id}`}>
+            <Link to={`/artist/${data[i].id}`}>
               <span
                 className={cx({
                   'artist-item': true,
@@ -44,7 +44,7 @@ const Artists: FC<ArtistsProps> = ({ data, isWhiteColor }) => {
 
       renderData.push(
         <Fragment key={data.length - 1}>
-          <Link to={`/artist?${data[data.length - 1].id}`}>
+          <Link to={`/artist/${data[data.length - 1].id}`}>
             <span
               className={cx({
                 'artist-item': true,

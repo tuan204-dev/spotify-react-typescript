@@ -1,0 +1,332 @@
+[
+  {
+    "title": "Podcasts",
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8a9417936d038e7a2f8dee2554",
+    "bgColor": "rgb(225, 51, 0)"
+  },
+  {
+    "title": "Live Events",
+    "imageUrl": "https://concerts.spotifycdn.com/images/live-events_category-image.jpg",
+    "bgColor": "rgb(115, 88, 255)"
+  },
+  {
+    "title": "Made For You",
+    "imageUrl": "https://t.scdn.co/images/ea364e99656e46a096ea1df50f581efe",
+    "bgColor": "rgb(30, 50, 100)"
+  },
+  {
+    "title": "New releases",
+    "imageUrl": "https://i.scdn.co/image/ab67706f000000027ea4d505212b9de1f72c5112",
+    "bgColor": "rgb(232, 17, 91)"
+  },
+  {
+    "title": "Vietnamese",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005caf55dfb53724670e4db6cee444",
+    "bgColor": "rgb(96, 129, 8)"
+  },
+  {
+    "title": "Pop",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafa862ab80dd85682b37c4e768",
+    "bgColor": "rgb(20, 138, 8)"
+  },
+  {
+    "title": "K-pop",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005caf013ee3c983e6f60bf28bad5a",
+    "bgColor": "rgb(20, 138, 8)"
+  },
+  {
+    "title": "Hip-Hop",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005caf7e11c8413dc33c00740579c1",
+    "bgColor": "rgb(188, 89, 0)"
+  },
+  {
+    "title": "Charts",
+    "imageUrl": "https://charts-images.scdn.co/assets/locale_en/regional/weekly/region_global_default.jpg",
+    "bgColor": "rgb(141, 103, 171)"
+  },
+  {
+    "title": "Fresh Finds",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafcc1499bbb8565f490858c2bc",
+    "bgColor": "rgb(255, 0, 144)"
+  },
+  {
+    "title": "EQUAL",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005caf9ed6e364e8839210dc4dbff7",
+    "bgColor": "rgb(5, 105, 82)"
+  },
+  {
+    "title": "GLOW",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005caf50cfe3fbd3a9fb8810da45ea",
+    "bgColor": "rgb(13, 115, 236)"
+  },
+  {
+    "title": "RADAR",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafdb2aa9c7caea42f900721497",
+    "bgColor": "rgb(119, 119, 119)"
+  },
+  {
+    "title": "Discover",
+    "imageUrl": "https://t.scdn.co/images/d0fb2ab104dc4846bdc56d72b0b0d785.jpeg",
+    "bgColor": "rgb(141, 103, 171)"
+  },
+  {
+    "title": "Karaoke",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005caf8eb00a9a2c00093ccde516c6",
+    "bgColor": "rgb(80, 55, 80)"
+  },
+  {
+    "title": "Mood",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005caf271f9d895003c5f5561c1354",
+    "bgColor": "rgb(225, 17, 140)"
+  },
+  {
+    "title": "Rock",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafae7e69beb88f16969641b53e",
+    "bgColor": "rgb(233, 20, 41)"
+  },
+  {
+    "title": "Latin",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafa59f90c077c9f618fd0dde30",
+    "bgColor": "rgb(225, 17, 140)"
+  },
+  {
+    "title": "Dance/Electronic",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafdfdaac1cf9574a196ca25196",
+    "bgColor": "rgb(216, 64, 0)"
+  },
+  {
+    "title": "Indie",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafa1a252e3a815b65778d8c2aa",
+    "bgColor": "rgb(233, 20, 41)"
+  },
+  {
+    "title": "Workout",
+    "imageUrl": "https://i.scdn.co/image/ab67706f000000029249b35f23fb596b6f006a15",
+    "bgColor": "rgb(119, 119, 119)"
+  },
+  {
+    "title": "Country",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafc0d2222b4c6441930e1a386e",
+    "bgColor": "rgb(216, 64, 0)"
+  },
+  {
+    "title": "R&B",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafbe6a6e705e1a71117c2d0c2c",
+    "bgColor": "rgb(220, 20, 140)"
+  },
+  {
+    "title": "Chill",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005caf47e942f5bea637f4f4760170",
+    "bgColor": "rgb(216, 64, 0)"
+  },
+  {
+    "title": "Sleep",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafdfdaac1cf9574a196ca25196",
+    "bgColor": "rgb(30, 50, 100)"
+  },
+  {
+    "title": "Party",
+    "imageUrl": "https://i.scdn.co/image/ab67706f00000002b70e0223f544b1faa2e95ed0",
+    "bgColor": "rgb(83, 122, 161)"
+  },
+  {
+    "title": "At Home",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafc0d2222b4c6441930e1a386e",
+    "bgColor": "rgb(81, 121, 161)"
+  },
+  {
+    "title": "Decades",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafcbf80f8ea695536eace4fd2c",
+    "bgColor": "rgb(186, 93, 7)"
+  },
+  {
+    "title": "Love",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafe914a07d20cec7a65e2e5dad",
+    "bgColor": "rgb(230, 30, 50)"
+  },
+  {
+    "title": "Metal",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005caff005a355830c374754d32868",
+    "bgColor": "rgb(233, 20, 41)"
+  },
+  {
+    "title": "Jazz",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafe289743024639ea8f202364d",
+    "bgColor": "rgb(119, 119, 119)"
+  },
+  {
+    "title": "Trending",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005caf1867113f5218598847550acd",
+    "bgColor": "rgb(176, 40, 151)"
+  },
+  {
+    "title": "Classical",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005caf12809992dfc5b318892ea07b",
+    "bgColor": "rgb(125, 75, 50)"
+  },
+  {
+    "title": "Acoustic",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafcc70a3c2e4c71398708bdc4a",
+    "bgColor": "rgb(188, 89, 0)"
+  },
+  {
+    "title": "Focus",
+    "imageUrl": "https://i.scdn.co/image/ab67706f00000002e4eadd417a05b2546e866934",
+    "bgColor": "rgb(80, 55, 80)"
+  },
+  {
+    "title": "Soul",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafd82e2c83fe100a89e9cbb2a2",
+    "bgColor": "rgb(220, 20, 140)"
+  },
+  {
+    "title": "Family",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005caf8a04560a209b3f32165ea8a2",
+    "bgColor": "rgb(141, 103, 171)"
+  },
+  {
+    "title": "Gaming",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005caf26dd3719e8824756914ae61f",
+    "bgColor": "rgb(232, 17, 91)"
+  },
+  {
+    "title": "Anime",
+    "imageUrl": "https://i.scdn.co/image/ab67706f00000002c19c5f13f8b3ff2d73ff00bc",
+    "bgColor": "rgb(228, 29, 99)"
+  },
+  {
+    "title": "TV & Movies",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafb4c4523336133ec3c7fd1744",
+    "bgColor": "rgb(175, 40, 150)"
+  },
+  {
+    "title": "Disney",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005caf89f004e1bf07dca45ce9c64c",
+    "bgColor": "rgb(13, 114, 234)"
+  },
+  {
+    "title": "Netflix",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005caf0b0c71c920d6a745461ada69",
+    "bgColor": "rgb(235, 30, 50)"
+  },
+  {
+    "title": "Instrumental",
+    "imageUrl": "https://i.scdn.co/image/ab67706f000000028ed1a5002b96c2ea882541b2",
+    "bgColor": "rgb(83, 122, 161)"
+  },
+  {
+    "title": "Wellness",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005caf8dec632effd9735fa8aba06e",
+    "bgColor": "rgb(165, 103, 82)"
+  },
+  {
+    "title": "Punk",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafb2cdd7a95b0a5444aa15cfb5",
+    "bgColor": "rgb(30, 50, 100)"
+  },
+  {
+    "title": "Anime",
+    "imageUrl": "https://i.scdn.co/image/ab67706f00000002c19c5f13f8b3ff2d73ff00bc",
+    "bgColor": "rgb(228, 29, 99)"
+  },
+  {
+    "title": "TV & Movies",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafb4c4523336133ec3c7fd1744",
+    "bgColor": "rgb(175, 40, 150)"
+  },
+  {
+    "title": "Disney",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005caf89f004e1bf07dca45ce9c64c",
+    "bgColor": "rgb(13, 114, 234)"
+  },
+  {
+    "title": "Netflix",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005caf0b0c71c920d6a745461ada69",
+    "bgColor": "rgb(235, 30, 50)"
+  },
+  {
+    "title": "Instrumental",
+    "imageUrl": "https://i.scdn.co/image/ab67706f000000028ed1a5002b96c2ea882541b2",
+    "bgColor": "rgb(83, 122, 161)"
+  },
+  {
+    "title": "Wellness",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005caf8dec632effd9735fa8aba06e",
+    "bgColor": "rgb(165, 103, 82)"
+  },
+  {
+    "title": "Punk",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafb2cdd7a95b0a5444aa15cfb5",
+    "bgColor": "rgb(30, 50, 100)"
+  },
+  {
+    "title": "Ambient",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafa6ee95dc83af715115f40522",
+    "bgColor": "rgb(71, 125, 149)"
+  },
+  {
+    "title": "Blues",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005caff22ac5cab318d550b593ffac",
+    "bgColor": "rgb(176, 98, 57)"
+  },
+  {
+    "title": "Dining",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafe53d71d0920a4f1f441d803c",
+    "bgColor": "rgb(186, 93, 7)"
+  },
+  {
+    "title": "Alternative",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafda178a834e4f87371e9fa543",
+    "bgColor": "rgb(233, 20, 41)"
+  },
+  {
+    "title": "Travel",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafe53d71d0920a4f1f441d803c",
+    "bgColor": "rgb(13, 114, 237)"
+  },
+  {
+    "title": "Caribbean",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafe53d71d0920a4f1f441d803c",
+    "bgColor": "rgb(13, 115, 236)"
+  },
+  {
+    "title": "Afro",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005caf8ba1febbb4f77336b6f9aace",
+    "bgColor": "rgb(216, 64, 0)"
+  },
+  {
+    "title": "Songwriters",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005caf04faccb4f5e1828600921f37",
+    "bgColor": "rgb(140, 25, 50)"
+  },
+  {
+    "title": "Noise",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafb973ab1288f74f333e7e2e22",
+    "bgColor": "rgb(71, 125, 149)"
+  },
+  {
+    "title": "Disco",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafbbf84e26e69a78883118913c",
+    "bgColor": "rgb(230, 30, 50)"
+  },
+  {
+    "title": "Legends",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005cafbb0e4ea229824157eee7467d",
+    "bgColor": "rgb(20, 138, 8)"
+  },
+  {
+    "title": "Spotify Singles",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005caf2b1ff59a971dd399dea96009",
+    "bgColor": "rgb(119, 119, 119)"
+  },
+  {
+    "title": "Summer",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005caf14030380532b34badbf0a229",
+    "bgColor": "rgb(39, 133, 106)"
+  },
+  {
+    "title": "Tastemakers",
+    "imageUrl": "https://i.scdn.co/image/ab67fb8200005caf097a46192e6bb67e52cdff60",
+    "bgColor": "rgb(232, 17, 91)"
+  }
+]

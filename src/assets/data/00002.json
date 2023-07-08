@@ -1,0 +1,57 @@
+{
+  "title": "Top mixes",
+  "id": "00002",
+  "dataType": "playlist",
+  "data": [
+    {
+      "title": "Pop Mix",
+      "imageUrl": "https://seed-mix-image.spotifycdn.com/v6/img/pop/4xnihxcoXWK3UqryOSnbw5/en/default",
+      "id": "37i9dQZF1EQncLwOalG3K7"
+    },
+    {
+      "title": "R&B Mix",
+      "imageUrl": "https://seed-mix-image.spotifycdn.com/v6/img/r_and_b/7tYKF4w9nC0nq9CsPZTHyP/en/default",
+      "id": "37i9dQZF1EQoqCH7BwIYb7"
+    },
+    {
+      "title": "RPT MCK Mix",
+      "imageUrl": "https://seed-mix-image.spotifycdn.com/v6/img/artist/1zSv9qZANOWB4HRE8sxeTL/vi/default",
+      "id": "37i9dQZF1EIYlLpgHrOJax"
+    },
+    {
+      "title": "2010s Mix",
+      "imageUrl": "https://seed-mix-image.spotifycdn.com/v6/img/twenty_tens/5IH6FPUwQTxPSXurCrcIov/en/default",
+      "id": "37i9dQZF1EQqedj0y9Uwvu"
+    },
+    {
+      "title": "Chill Mix",
+      "imageUrl": "https://seed-mix-image.spotifycdn.com/v6/img/chill/0wJWawRvX8K9joiK9QqkX5/en/default",
+      "id": "37i9dQZF1EVHGWrwldPRtj"
+    },
+    {
+      "title": "K-Pop Mix",
+      "imageUrl": "https://seed-mix-image.spotifycdn.com/v6/img/k_pop/2AfmfGFbe0A0WsTYm0SDTx/en/default",
+      "id": "37i9dQZF1EQpesGsmIyqcW"
+    },
+    {
+      "title": "Sơn Tùng M-TP Mix",
+      "imageUrl": "https://seed-mix-image.spotifycdn.com/v6/img/artist/5dfZ5uSmzR7VQK0udbAVpf/vi/default",
+      "id": "37i9dQZF1EIYVFZyV5RRx0"
+    },
+    {
+      "title": "2000s Mix",
+      "imageUrl": "https://seed-mix-image.spotifycdn.com/v6/img/two_thousands/04gDigrS5kc9YWfZHwBETP/en/default",
+      "id": "37i9dQZF1EQn4jwNIohw50"
+    },
+    {
+      "title": "Moody Mix",
+      "imageUrl": "https://seed-mix-image.spotifycdn.com/v6/img/moody/5IH6FPUwQTxPSXurCrcIov/en/default",
+      "id": "37i9dQZF1EVKuMoAJjoTIw"
+    },
+    {
+      "title": "Hip Hop Mix",
+      "imageUrl": "https://seed-mix-image.spotifycdn.com/v6/img/hip_hop/4grjJqg7iwQ8RKHs8d9Snh/en/default",
+      "id": "37i9dQZF1EQnqst5TRi17F"
+    }
+  ]
+}

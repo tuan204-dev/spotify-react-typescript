@@ -107,7 +107,7 @@ export const searchData = async (args: Partial<SearchArgs>) => {
   return data
 }
 
-export const fetchArtistData = async (id: string) => {
+export const fetchArtistData = async (id: string | undefined) => {
   const apiKey = import.meta.env.VITE_RAPID_SPOTIFY_API
   console.log(apiKey)
   const options = {

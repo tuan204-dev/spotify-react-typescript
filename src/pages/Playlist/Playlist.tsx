@@ -6,7 +6,7 @@ import useDominantColor from '@/hooks/useDominantColor'
 import { fetchSpotifyData, getAccessToken } from '@/utils/fetchData'
 import classNames from 'classnames/bind'
 import React, { memo, useEffect, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import styles from './Playlist.module.scss'
 
 const cx = classNames.bind(styles)
@@ -15,8 +15,9 @@ const Playlist: React.FC = () => {
   const [navOpacity, setNavOpacity] = useState<number>(0)
   const [data, setData] = useState<any>()
   const [isLoading, setLoading] = useState<boolean>(true)
-  const { search } = useLocation()
   const bgColor = useRaiseColorTone(useDominantColor(data?.images[0].url) || '#121212')
+  
+  const {id} = useParams()
 
   const navigate = useNavigate()
 
@@ -26,16 +27,17 @@ const Playlist: React.FC = () => {
       const data = await fetchSpotifyData({
         type: 'playlists',
         accessToken: token,
-        id: search.substring(1),
+        // id: search.substring(1),
+        id: id,
       })
       if (data?.error) {
         navigate('/not-found')
       } else setData({ ...data })
     }
-    if (search !== '?undefined') {
+    if (id !== 'undefined') {
       fetchData()
     }
-  }, [search])
+  }, [id])
 
   useEffect(() => {
     setLoading(Boolean(!data))

@@ -7,7 +7,7 @@ import { dateFormatConvertor } from '@/utils'
 import { fetchSpotifyData, getAccessToken } from '@/utils/fetchData'
 import classNames from 'classnames/bind'
 import React, { useEffect, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import styles from './Album.module.scss'
 
 const cx = classNames.bind(styles)
@@ -19,7 +19,9 @@ const Album: React.FC = () => {
 
   const bgColor = useRaiseColorTone(useDominantColor(data?.images[0].url))
 
-  const { search } = useLocation()
+  const {id}= useParams()
+  const params = useParams()
+  console.log(params)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -28,16 +30,16 @@ const Album: React.FC = () => {
       const data = await fetchSpotifyData({
         accessToken: token,
         type: 'albums',
-        id: search.substring(1),
+        id: id,
       })
       if (data?.error) {
         navigate('/not-found')
       } else setData(data)
     }
-    if (search !== '?undefined') {
+    if (id !== 'undefined') {
       fetchData()
     }
-  }, [search])
+  }, [id])
 
   useEffect(() => {
     setLoading(Boolean(!data))

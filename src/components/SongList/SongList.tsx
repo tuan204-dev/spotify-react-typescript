@@ -71,12 +71,12 @@ const SongList: FC<SongListProps> = ({
                 key={index}
                 order={order++}
                 thumb={
-                  item?.album?.images[item?.album.images.length - 1]?.url ||
-                  item?.track?.album?.images[item?.track?.album?.images.length - 1].url
+                  item?.album?.images[item?.album?.images?.length - 1]?.url ||
+                  item?.track?.album?.images[item?.track?.album?.images?.length - 1]?.url
                 }
                 songName={item?.name || item?.track?.name}
                 artists={item?.artists || item?.track?.artists}
-                album={item?.album?.name || item?.track?.album.name}
+                album={item?.album?.name || item?.track?.album?.name}
                 dateAdd={item?.added_at}
                 duration={item?.duration_ms || item?.track?.duration_ms}
                 isExplicit={item?.explicit || item?.track?.explicit}
@@ -85,8 +85,8 @@ const SongList: FC<SongListProps> = ({
             ))
           } else {
             return Array(9)
-              .fill(0)
-              .map((item, index) => <SongItem isLoading={isLoading} key={item + index} />)
+              ?.fill(0)
+              ?.map((item, index) => <SongItem isLoading={isLoading} key={item + index} />)
           }
         })()}
       </div>

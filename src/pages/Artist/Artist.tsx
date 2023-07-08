@@ -12,7 +12,7 @@ import { useComponentSize } from '@/hooks'
 import { fetchArtistData } from '@/utils/fetchData'
 import classNames from 'classnames/bind'
 import React, { useEffect, useRef, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import styles from './Artist.module.scss'
 
 const cx = classNames.bind(styles)
@@ -29,15 +29,16 @@ const Artist: React.FC = () => {
 
   const { height: bannerHeight } = useComponentSize(bannerRef)
 
-  const { search } = useLocation()
+  const { id } = useParams()
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchArtistData(search.substring(1))
+      // const data = await fetchArtistData(search.substring(1))
+      const data = await fetchArtistData(id)
       setOverViewData(data)
     }
     fetchData()
-  }, [search])
+  }, [id])
 
   useEffect(() => {
     setLoading(Boolean(!overviewData))
@@ -137,7 +138,7 @@ const Artist: React.FC = () => {
 
           {overviewData?.relatedContent?.featuring?.items.length !== 0 && (
             <Section
-              apiType='rapid'
+              apiType="rapid"
               title={`Featuring ${overviewData?.profile?.name}`}
               data={overviewData?.relatedContent?.featuring?.items}
               dataType="playlist"
@@ -146,7 +147,7 @@ const Artist: React.FC = () => {
           )}
           {overviewData?.relatedContent?.relatedArtists?.items.length !== 0 && (
             <Section
-              apiType='rapid'
+              apiType="rapid"
               title="Fans also like"
               data={overviewData?.relatedContent?.relatedArtists?.items}
               dataType="artist"
@@ -156,7 +157,7 @@ const Artist: React.FC = () => {
           )}
           {overviewData?.profile?.playlists?.items?.length !== 0 && (
             <Section
-              apiType='rapid'
+              apiType="rapid"
               title="Artist Playlists"
               data={overviewData?.profile?.playlists?.items}
               dataType="playlist"
@@ -165,7 +166,7 @@ const Artist: React.FC = () => {
           )}
           {overviewData?.relatedContent?.discoveredOn?.items?.length !== 0 && (
             <Section
-              apiType='rapid'
+              apiType="rapid"
               title="Discovered on"
               data={overviewData?.relatedContent?.discoveredOn?.items}
               dataType="playlist"
@@ -173,7 +174,7 @@ const Artist: React.FC = () => {
               isClickable={false}
             />
           )}
-          {overviewData?.visuals?.headerImage?.sources[0]?.url && (
+          {overviewData?.visuals?.gallery?.items[0]?.sources[0]?.url && (
             <AboutArtist
               stats={overviewData?.stats}
               profile={overviewData?.profile}

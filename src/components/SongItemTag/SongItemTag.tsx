@@ -23,7 +23,7 @@ const SongItemTag: React.FC<SongItemTagProps> = (props) => {
   const { width } = useComponentSize(songTagRef)
 
   return (
-    <Link to={`/album?${id}`}>
+    <Link to={`/album/${id}`}>
       <div
         ref={songTagRef}
         onMouseEnter={handleHover}

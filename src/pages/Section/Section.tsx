@@ -5,7 +5,7 @@ import { fetchHomePageSectionData } from '@/utils'
 import { getAccessToken, getFeaturedPlaylists, getNewReleases } from '@/utils/fetchData'
 import classNames from 'classnames/bind'
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { SectionProps } from '../../../types'
 import styles from './Section.module.scss'
 
@@ -21,11 +21,12 @@ const cx = classNames.bind(styles)
 const Section: React.FC = () => {
   const [data, setData] = useState<SectionProps | undefined>()
 
-  const { search } = useLocation()
+  const {id} = useParams()
+  
 
   useEffect(() => {
     const fetchData = async () => {
-      if (search === '?newReleases') {
+      if (id === 'newReleases') {
         const token = await getAccessToken()
         const responseData = await getNewReleases({
           accessToken: token,
@@ -40,7 +41,7 @@ const Section: React.FC = () => {
           data: responseData,
           apiType: 'spotify'
         })
-      } else if (search === '?featurePlaylist') {
+      } else if (id === 'featurePlaylist') {
         const token = await getAccessToken()
         const responseData = await getFeaturedPlaylists({
           accessToken: token,
@@ -55,9 +56,9 @@ const Section: React.FC = () => {
           data: responseData,
           apiType: 'spotify'
         })
-      } else if (search === '?topMixes') {
+      } else if (id === 'topMixes') {
         fetchHomePageSectionData({ type: 'topMixes', setData: setData, limit: 50 })
-      } else if (search === '?suggestedArtists') {
+      } else if (id === 'suggestedArtists') {
         fetchHomePageSectionData({
           type: 'suggestedArtists',
           setData: setData,

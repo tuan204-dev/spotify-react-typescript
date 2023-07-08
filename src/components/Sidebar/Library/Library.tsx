@@ -1,16 +1,18 @@
-import classNames from 'classnames/bind'
-import { HiArrowRight, HiOutlinePlus } from 'react-icons/hi'
-import styles from './Library.module.scss'
-import { useEffect, useState, useMemo, FC } from 'react'
 import { LibraryIcon } from '@/assets/icons'
 import { SidebarItem } from '@/components'
-import { LibSelection, ResponseLibItem } from '../../../../types'
+import classNames from 'classnames/bind'
+import { FC, useMemo, useState } from 'react'
+import { HiArrowRight, HiOutlinePlus } from 'react-icons/hi'
+import { LibSelection } from '../../../../types'
+import playlists from '../../../assets/data/00003.json'
+import artists from '../../../assets/data/00004.json'
+import albums from '../../../assets/data/00005.json'
+import styles from './Library.module.scss'
 
 const cx = classNames.bind(styles)
 
 const Library: FC = () => {
   const [category, setCategory] = useState<'playlist' | 'album' | 'artist'>('playlist')
-  const [data, setData] = useState<ResponseLibItem[]>()
   const [bottomShadow, setBottomShadow] = useState<boolean>(false)
 
   const libSelections: LibSelection[] = useMemo(
@@ -20,18 +22,21 @@ const Library: FC = () => {
         title: 'Playlists',
         id: '00003',
         active: category === 'playlist',
+        data: playlists,
       },
       {
         type: 'artist',
         title: 'Artists',
         id: '00004',
         active: category === 'artist',
+        data: artists,
       },
       {
         type: 'album',
         title: 'Albums',
         id: '00005',
         active: category === 'album',
+        data: albums,
       },
     ],
     [category]
@@ -55,16 +60,6 @@ const Library: FC = () => {
       setBottomShadow(false)
     }
   }
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(`data/${libSelection!.id}.json`)
-      const data = await response.json()
-      setData(data.data)
-    }
-
-    fetchData()
-  }, [category])
 
   return (
     <div className={cx('lib')}>
@@ -93,7 +88,7 @@ const Library: FC = () => {
         ))}
       </div>
       <div onScroll={(e) => handleScroll(e)} className={cx('playlist-section')}>
-        {data?.map((item: any, index: number) => (
+        {libSelection?.data?.data?.map((item: any, index: number) => (
           <SidebarItem
             key={index}
             id={item.id}

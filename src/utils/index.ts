@@ -3,6 +3,7 @@ import fetchHomePageSectionData from './fetchHomePageSectionData'
 import dateFormatConvertor from './dateFormatConvertor'
 import stringCleaner from './stringCleaner'
 import unicodeDecoder from './unicodeDecoder'
+import fetchLocalData from './fetchLocalData'
 
 export {
   htmlCleaner,
@@ -10,4 +11,5 @@ export {
   dateFormatConvertor,
   stringCleaner,
   unicodeDecoder,
+  fetchLocalData,
 }

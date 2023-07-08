@@ -29,7 +29,7 @@ const SectionItem: React.FC<SectionItemI> = ({
   // if(!imageUrl) return
 
   return (
-    <Link to={`/${dataType}?${id}`}>
+    <Link to={`/${dataType}/${id}`}>
       <div className={cx('wrapper')}>
         <div className={cx({ img: true, isArtist: dataType === 'artist' })}>
           {!isLoading ? (
