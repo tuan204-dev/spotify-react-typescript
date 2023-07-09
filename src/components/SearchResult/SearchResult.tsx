@@ -104,9 +104,9 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
   return (
     <div className={cx('wrapper')}>
       <div className={cx('search__kind')}>
-        {searchSelection.map((item, index) => (
+        {searchSelection.map((item) => (
           <button
-            key={index}
+            key={item.key}
             className={cx({ btn: true, active: item.active })}
             onClick={() => setCategory(item.key)}
           >
@@ -118,13 +118,13 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
         {category !== 'all' ? (
           searchSelection
             .filter((item) => item.active)
-            .map((item, index) => {
+            .map((item) => {
               if (item.key !== 'tracks') {
                 return (
                   <div style={{ marginTop: '-64px' }}>
                     <Section
                       apiType="spotify"
-                      key={index}
+                      key={item.key}
                       dataType={item.key.slice(0, -1)}
                       isFull
                       data={data[item.key].items
@@ -138,7 +138,7 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
                   <SongList
                     top={52}
                     pivotTop={126}
-                    key={index}
+                    key={item.key}
                     songList={data.tracks.items
                       .filter((item: any) => item)
                       .sort((a: any, b: any) => -a.popularity + b.popularity)}

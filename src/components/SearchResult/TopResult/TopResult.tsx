@@ -82,7 +82,7 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
                 .map((item, index) => (
                   <SongItem
                     isLoading={isLoading}
-                    key={index}
+                    key={item.id || index}
                     songName={item.name}
                     artists={item.artists}
                     thumb={item.album.images[item.album.images.length - 1].url}

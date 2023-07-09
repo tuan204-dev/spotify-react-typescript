@@ -1,4 +1,4 @@
-const unicodeDecoder = (input: string | undefined): string => {
+export const unicodeDecoder = (input: string | undefined): string => {
   if(!input) return ''
   return input.replace(
     /&#(\d+);/g,
@@ -7,5 +7,3 @@ const unicodeDecoder = (input: string | undefined): string => {
     }
   )
 }
-
-export default unicodeDecoder

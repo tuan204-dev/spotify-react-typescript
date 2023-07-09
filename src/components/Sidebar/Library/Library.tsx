@@ -47,6 +47,7 @@ const Library: FC = () => {
     [category]
   )
 
+
   const handleClick = (type: 'playlist' | 'album' | 'artist'): void => {
     setCategory(type)
   }
@@ -90,7 +91,7 @@ const Library: FC = () => {
       <div onScroll={(e) => handleScroll(e)} className={cx('playlist-section')}>
         {libSelection?.data?.data?.map((item: any, index: number) => (
           <SidebarItem
-            key={index}
+            key={item.id || index}
             id={item.id}
             author={item?.owner && item?.owner.display_name}
             artists={item?.artists && item?.artists}

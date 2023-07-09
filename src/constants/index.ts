@@ -1,34 +1,6 @@
 import { BsFacebook } from 'react-icons/bs'
 import { FaGithub, FaInstagram } from 'react-icons/fa'
 
-export const footerLinks = [
-  {
-    title: 'Company',
-    link: [
-      { title: 'About', url: '/' },
-      { title: 'Jobs', url: '/' },
-      { title: 'For the Record', url: '/' },
-    ],
-  },
-  {
-    title: 'Communities',
-    link: [
-      { title: 'For Artists', url: '/' },
-      { title: 'Developers', url: '/' },
-      { title: 'Advertising', url: '/' },
-      { title: 'Investors', url: '/' },
-      { title: 'Vendors', url: '/' },
-      { title: 'Spotify for Work', url: '/' },
-    ],
-  },
-  {
-    title: 'Useful Links',
-    link: [
-      { title: 'Support', url: '/' },
-      { title: 'Free Mobile App', url: '/' },
-    ],
-  },
-]
 
 export const socialNetworkLinks = [
   {
@@ -48,39 +20,31 @@ export const socialNetworkLinks = [
   },
 ]
 
-export const siteInfo = [
-  { title: 'Legal', url: '/' },
-  { title: 'Privacy Center', url: '/' },
-  { title: 'Privacy Policy', url: '/' },
-  { title: 'Cookies', url: '/' },
-  { title: 'About Ads', url: '/' },
-  { title: 'Accessibility', url: '/' },
-]
 
 export const bottomLinks = [
   {
     title: 'Legal',
-    href: 'https://www.spotify.com/vn-en/legal/',
+    href: 'https://www.facebook.com/tuan204.dev',
   },
   {
     title: 'Privacy Center',
-    href: 'https://www.spotify.com/vn-en/privacy/',
+    href: 'https://www.facebook.com/tuan204.dev',
   },
   {
     title: 'Privacy Policy',
-    href: 'https://www.spotify.com/vn-en/legal/privacy-policy/',
+    href: 'https://www.facebook.com/tuan204.dev',
   },
   {
     title: 'Cookies',
-    href: 'https://www.spotify.com/vn-en/legal/cookies-policy/',
+    href: 'https://www.facebook.com/tuan204.dev',
   },
   {
     title: 'About Ads',
-    href: 'https://www.spotify.com/vn-en/legal/privacy-policy/#s3',
+    href: 'https://www.facebook.com/tuan204.dev',
   },
   {
     title: 'Accessibility',
-    href: 'https://www.spotify.com/vn-en/accessibility/',
+    href: 'https://www.facebook.com/tuan204.dev',
   },
 ]
 
@@ -90,7 +54,7 @@ export const topLinkGroups = [
     links: [
       {
         title: 'About',
-        href: 'https://www.spotify.com/vn-en/about-us/contact/',
+        href: 'https://www.facebook.com/tuan204.dev',
         dataAttributes: {
           'data-ga-category': 'menu',
           'data-ga-action': 'about',
@@ -98,7 +62,7 @@ export const topLinkGroups = [
       },
       {
         title: 'Jobs',
-        href: 'https://www.lifeatspotify.com/',
+        href: 'https://www.facebook.com/tuan204.dev',
         dataAttributes: {
           'data-ga-category': 'menu',
           'data-ga-action': 'jobs',
@@ -106,7 +70,7 @@ export const topLinkGroups = [
       },
       {
         title: 'For the Record',
-        href: 'https://newsroom.spotify.com/',
+        href: 'https://www.facebook.com/tuan204.dev',
         dataAttributes: {
           'data-ga-category': 'menu',
           'data-ga-action': 'press',
@@ -119,7 +83,7 @@ export const topLinkGroups = [
     links: [
       {
         title: 'For Artists',
-        href: 'https://artists.spotify.com/',
+        href: 'https://www.facebook.com/tuan204.dev',
         dataAttributes: {
           'data-ga-category': 'menu',
           'data-ga-action': 'artists',
@@ -127,7 +91,7 @@ export const topLinkGroups = [
       },
       {
         title: 'Developers',
-        href: 'https://developer.spotify.com/',
+        href: 'https://www.facebook.com/tuan204.dev',
         dataAttributes: {
           'data-ga-category': 'menu',
           'data-ga-action': 'developers',
@@ -135,7 +99,7 @@ export const topLinkGroups = [
       },
       {
         title: 'Advertising',
-        href: 'https://ads.spotify.com/',
+        href: 'https://www.facebook.com/tuan204.dev',
         dataAttributes: {
           'data-ga-category': 'menu',
           'data-ga-action': 'advertising',
@@ -143,7 +107,7 @@ export const topLinkGroups = [
       },
       {
         title: 'Investors',
-        href: 'https://investors.spotify.com/',
+        href: 'https://www.facebook.com/tuan204.dev',
         dataAttributes: {
           'data-ga-category': 'menu',
           'data-ga-action': 'investors',
@@ -151,7 +115,7 @@ export const topLinkGroups = [
       },
       {
         title: 'Vendors',
-        href: 'https://spotifyforvendors.com/',
+        href: 'https://www.facebook.com/tuan204.dev',
         dataAttributes: {
           'data-ga-category': 'menu',
           'data-ga-action': 'vendors',
@@ -159,7 +123,7 @@ export const topLinkGroups = [
       },
       {
         title: 'Spotify for Work',
-        href: 'https://www.spotify.com/spotifyforwork/',
+        href: 'https://www.facebook.com/tuan204.dev',
         dataAttributes: {
           'data-ga-category': 'menu',
           'data-ga-action': 'spotify_for_work',
@@ -172,7 +136,7 @@ export const topLinkGroups = [
     links: [
       {
         title: 'Support',
-        href: 'https://support.spotify.com/',
+        href: 'https://www.facebook.com/tuan204.dev',
         dataAttributes: {
           'data-ga-category': 'menu',
           'data-ga-action': 'help',
@@ -180,7 +144,7 @@ export const topLinkGroups = [
       },
       {
         title: 'Web Player',
-        href: 'https://open.spotify.com/',
+        href: 'https://www.facebook.com/tuan204.dev',
         dataAttributes: {
           'data-ga-category': 'menu',
           'data-ga-action': 'play',
@@ -188,7 +152,7 @@ export const topLinkGroups = [
       },
       {
         title: 'Free Mobile App',
-        href: 'https://www.spotify.com/vn-en/download/',
+        href: 'https://www.facebook.com/tuan204.dev',
         dataAttributes: {
           'data-ga-category': 'menu',
           'data-ga-action': 'free',

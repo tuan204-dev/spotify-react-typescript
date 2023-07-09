@@ -11,7 +11,7 @@ import Show from './pages/Show/Show'
 import Episode from './pages/Episode/Episode'
 import { NotFound } from './components'
 
-const App1 = () => {
+const App = () => {
   useEffect(() => {
     const clearLocalStorage = () => localStorage.clear()
     window.addEventListener('beforeunload', clearLocalStorage)
@@ -37,4 +37,4 @@ const App1 = () => {
   )
 }
 
-export default App1
+export default App

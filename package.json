@@ -7,7 +7,7 @@
     "dev": "vite --port 5000 --host",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview --host"
+    "preview": "vite preview --port 5001 --host"
   },
   "dependencies": {
     "@types/node": "^20.2.5",

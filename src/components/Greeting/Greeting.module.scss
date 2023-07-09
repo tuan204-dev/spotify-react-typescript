@@ -28,11 +28,6 @@
     grid-template: auto / repeat(3, 1fr);
     padding: 15px 0;
     font-weight: 700;
-
-    // @include responsive(lg) {
-    //   grid-template: auto / repeat(2, 1fr);
-    // }
-
   }
 
   .songs-section-responsive {

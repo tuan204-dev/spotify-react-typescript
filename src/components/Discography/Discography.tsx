@@ -43,11 +43,11 @@ const Discography: FC<DiscographyProps> = ({ data }) => {
         <h2>Discography</h2>
       </div>
       <div className={cx('selection')}>
-        {selection.map((item, index) => {
+        {selection.map(item => {
           if (!item.isEmpty)
             return (
               <button
-                key={index}
+                key={item.key}
                 className={cx({ btn: true, active: item.active })}
                 onClick={() => setCategory(item.key)}
               >

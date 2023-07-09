@@ -109,19 +109,17 @@ export const searchData = async (args: Partial<SearchArgs>) => {
 
 export const fetchArtistData = async (id: string | undefined) => {
   const apiKey = import.meta.env.VITE_RAPID_SPOTIFY_API
-  console.log(apiKey)
   const options = {
     method: 'GET',
     url: 'https://spotify23.p.rapidapi.com/artist_overview/',
     params: {
-      id: id
+      id: id,
     },
     headers: {
       'X-RapidAPI-Key': apiKey,
-      'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
-    }
-  };
-  const response = await axios.request(options);
-	return response.data.data.artist
-  
+      'X-RapidAPI-Host': 'spotify23.p.rapidapi.com',
+    },
+  }
+  const response = await axios.request(options)
+  return response.data.data.artist
 }

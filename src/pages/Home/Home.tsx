@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { SectionProps } from '../../../types'
 import styles from './Home.module.scss'
 import { fetchHomePageSectionData } from '@/utils'
+import { useDocumentTitle } from 'usehooks-ts'
 
 const cx = classNames.bind(styles)
 
@@ -14,6 +15,8 @@ const Home: React.FC = () => {
   const [newReleasesData, setNewReleaseData] = useState<SectionProps>()
   const [topMixes, setTopMixes] = useState<SectionProps>()
   const [suggestArtists, setSuggestArtists] = useState<SectionProps>()
+
+  useDocumentTitle('Spotify - Clone')
 
   useEffect(() => {
     fetchHomePageSectionData({ type: 'newRelease', setData: setNewReleaseData })

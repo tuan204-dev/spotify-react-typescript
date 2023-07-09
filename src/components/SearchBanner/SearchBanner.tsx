@@ -17,9 +17,9 @@ const SearchBanner: React.FC = () => {
       const data = await response.json()
       setData(data)
     }
-
     fetchData()
   }, [])
+
 
   return (
     <div className={cx('wrapper')}>

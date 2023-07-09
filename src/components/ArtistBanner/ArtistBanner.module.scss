@@ -81,7 +81,7 @@
   .name {
     font-size: 96px;
     margin: 0 0 16px;
-    // @include text-shadow;
+    letter-spacing: -2px;
     @include text-line-clamp(2);
   }
 

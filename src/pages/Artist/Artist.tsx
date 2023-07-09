@@ -14,6 +14,7 @@ import classNames from 'classnames/bind'
 import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import styles from './Artist.module.scss'
+import { useDocumentTitle } from 'usehooks-ts'
 
 const cx = classNames.bind(styles)
 
@@ -25,6 +26,10 @@ const Artist: React.FC = () => {
   const [navPlayBtnVisible, setNavPlayBtnVisible] = useState<boolean>(false)
   const [isLoading, setLoading] = useState<boolean>(true)
 
+  useDocumentTitle(
+    `${overviewData?.profile?.name ? overviewData?.profile?.name : 'Artist'} | Spotify`
+  )
+
   const bannerRef = useRef<any>()
 
   const { height: bannerHeight } = useComponentSize(bannerRef)
@@ -33,7 +38,6 @@ const Artist: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // const data = await fetchArtistData(search.substring(1))
       const data = await fetchArtistData(id)
       setOverViewData(data)
     }
@@ -46,7 +50,6 @@ const Artist: React.FC = () => {
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement, UIEvent>): void => {
     const yAxis = e.currentTarget.scrollTop
-    // console.log(yAxis)
     if (yAxis > bannerHeight / 2) {
       setNavOpacity(1)
       setBgBannerOpacity(1)
@@ -66,29 +69,40 @@ const Artist: React.FC = () => {
     } else setNavPlayBtnVisible(false)
   }
 
+  console.log(overviewData)
+
   return (
     <main className={cx('wrapper')}>
       <Navbar
         type="artist"
-        artistName={overviewData?.profile.name}
+        inclPlayBtn={true}
+        title={overviewData?.profile.name}
         playBtnVisible={navPlayBtnVisible}
         navOpacity={navOpacity}
         bgColor={
-          overviewData?.visuals?.headerImage?.extractedColors?.colorRaw?.hex ||
-          overviewData?.visuals?.avatarImage?.extractedColors?.colorRaw?.hex
+          overviewData?.visuals?.avatarImage?.extractedColors?.colorRaw?.hex ||
+          overviewData?.visuals?.headerImage?.extractedColors?.colorRaw?.hex
         }
       />
       <div
         className={cx('banner-img')}
         style={{
-          backgroundImage: `url(${overviewData?.visuals?.headerImage?.sources[0]?.url})`,
+          // backgroundImage: `url(${overviewData?.visuals?.headerImage?.sources[0]?.url})`,
           transform: `scale(${bgBannerScale})`,
           height: `${bannerHeight}px`,
           backgroundColor:
             !overviewData?.visuals?.headerImage?.sources[0]?.url &&
             overviewData?.visuals?.avatarImage?.extractedColors?.colorRaw?.hex,
         }}
-      ></div>
+      >
+        {!isLoading && (
+          <img
+            src={overviewData?.visuals?.headerImage?.sources[0]?.url}
+            alt="banner-image"
+          />
+        )}
+        <div className={cx('overlay')}></div>
+      </div>
       <div onScroll={(e) => handleScroll(e)} className={cx('body')}>
         <div style={{ position: 'relative' }}>
           <div
@@ -105,8 +119,8 @@ const Artist: React.FC = () => {
           <div
             style={{
               backgroundColor:
-                overviewData?.visuals?.headerImage?.extractedColors?.colorRaw?.hex ||
-                overviewData?.visuals?.avatarImage?.extractedColors?.colorRaw?.hex,
+                overviewData?.visuals?.avatarImage?.extractedColors?.colorRaw?.hex ||
+                overviewData?.visuals?.headerImage?.extractedColors?.colorRaw?.hex,
               top: `${bannerHeight}px`,
             }}
             className={cx('bg-blur')}
@@ -118,6 +132,7 @@ const Artist: React.FC = () => {
               followerNumber={overviewData?.stats?.followers}
               monthlyListeners={overviewData?.stats.monthlyListeners}
               dominantColor={
+                overviewData?.visuals?.avatarImage?.extractedColors?.colorRaw?.hex ||
                 overviewData?.visuals?.headerImage?.extractedColors?.colorRaw?.hex
               }
               bgBannerOpacity={bgBannerOpacity}

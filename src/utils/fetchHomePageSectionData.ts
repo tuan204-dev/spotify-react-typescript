@@ -23,7 +23,7 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
       if (data) {
         setData!({
           title: 'New Releases',
-          href: '/section?newReleases',
+          href: '/section/newReleases',
           dataType: 'album',
           data: JSON.parse(data),
           apiType: 'spotify'
@@ -39,7 +39,7 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
           localStorage.setItem('newReleasesData', JSON.stringify(responseData))
           setData!({
             title: 'New Releases',
-            href: '/section?newReleases',
+            href: '/section/newReleases',
             dataType: 'album',
             data: responseData,
             apiType: 'spotify'
@@ -55,7 +55,7 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
       if (data) {
         setData!({
           title: 'Feature Playlist',
-          href: '/section?featurePlaylist',
+          href: '/section/featurePlaylist',
           dataType: 'playlist',
           data: JSON.parse(data),
           apiType: 'spotify'
@@ -71,7 +71,7 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
           localStorage.setItem('featuredPlaylists', JSON.stringify(responseData))
           setData!({
             title: 'Feature Playlist',
-            href: '/section?featurePlaylist',
+            href: '/section/featurePlaylist',
             dataType: 'playlist',
             data: responseData,
             apiType: 'spotify'
@@ -87,7 +87,7 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
       if (data) {
         setData!({
           title: 'Top mixes',
-          href: '/section?topMixes',
+          href: '/section/topMixes',
           dataType: 'playlist',
           data: JSON.parse(data),
           apiType: 'spotify'
@@ -104,7 +104,7 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
           localStorage.setItem('topMixes', JSON.stringify(responseData?.playlists.items))
           setData!({
             title: 'Top mixes',
-            href: '/section?topMixes',
+            href: '/section/topMixes',
             dataType: 'playlist',
             data: responseData?.playlists.items,
             apiType: 'spotify'
@@ -120,7 +120,7 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
       if (data) {
         setData!({
           title: 'Suggested artists',
-          href: '/section?suggestedArtists',
+          href: '/section/suggestedArtists',
           dataType: 'artist',
           data: JSON.parse(data),
           apiType: 'spotify'
@@ -144,7 +144,7 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
           )
           setData!({
             title: 'Suggested artists',
-            href: '/section?suggestedArtists',
+            href: '/section/suggestedArtists',
             dataType: 'artist',
             data: responseData?.artists.items
               .sort((a: any, b: any) => -a.popularity + b.popularity)

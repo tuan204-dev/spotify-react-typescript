@@ -69,11 +69,11 @@ const Greeting: FC<GreetingProps> = (props) => {
         {!isLoading
           ? initAlbums
               .slice(10, 16)
-              .map((item: ResponseSectionItem, index: number) => (
+              .map((item: ResponseSectionItem, index) => (
                 <SongItemTag
-                  id={item.id}
+                  id={item?.id}
                   isLoading={isLoading}
-                  key={index}
+                  key={item.id || index}
                   thumbnailUrl={item.images[0].url}
                   name={item.name}
                   setBgColor={setBgColor}

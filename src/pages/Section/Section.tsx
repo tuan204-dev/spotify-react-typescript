@@ -11,12 +11,6 @@ import styles from './Section.module.scss'
 
 const cx = classNames.bind(styles)
 
-// export interface SectionData {
-//   title?: string
-//   href?: string
-//   dataType?: string
-//   data?: ResponseSectionItem[]
-// }
 
 const Section: React.FC = () => {
   const [data, setData] = useState<SectionProps | undefined>()

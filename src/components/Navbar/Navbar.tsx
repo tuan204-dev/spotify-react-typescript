@@ -15,8 +15,9 @@ interface NavbarProps {
   bgColor?: string | null
   navOpacity?: number
   query?: string
-  artistName?: string
+  title?: string
   playBtnVisible?: boolean
+  inclPlayBtn?: boolean
   setQuery?: React.Dispatch<React.SetStateAction<string>>
 }
 
@@ -27,8 +28,9 @@ const Navbar: FC<NavbarProps> = (props) => {
     query,
     setQuery,
     type = 'default',
-    artistName,
+    title,
     playBtnVisible = false,
+    inclPlayBtn = false,
   } = props
 
   const { key } = useLocation()
@@ -42,7 +44,7 @@ const Navbar: FC<NavbarProps> = (props) => {
   }, [])
 
   return (
-    <div className={cx('nav')}>
+    <nav className={cx('nav')}>
       <div
         style={{
           backgroundColor: `${type === 'section' ? '#121212' : bgColor}`,
@@ -51,7 +53,7 @@ const Navbar: FC<NavbarProps> = (props) => {
             type === 'home' && 'linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6))'
           }`,
         }}
-        className={cx('nav-bg')}
+        className={cx({ 'nav-bg': true, darken: bgColor })}
       ></div>
       <div className={cx('nav-control')}>
         <div className={cx('nav-control-button')}>
@@ -91,7 +93,7 @@ const Navbar: FC<NavbarProps> = (props) => {
             )}
           </div>
         )}
-        {type === 'artist' && (
+        {inclPlayBtn && (
           <div
             className={cx('nav-control-play-btn')}
             style={{ opacity: playBtnVisible ? 1 : undefined }}
@@ -100,7 +102,7 @@ const Navbar: FC<NavbarProps> = (props) => {
               <PlayButton size={48} transitionDuration={33} scaleHovering={1.005} />
             </div>
             <div className={cx('artist-name')}>
-              <span>{artistName}</span>
+              <span>{title}</span>
             </div>
           </div>
         )}
@@ -110,7 +112,7 @@ const Navbar: FC<NavbarProps> = (props) => {
           <FaUser />
         </button>
       </div>
-    </div>
+    </nav>
   )
 }
 

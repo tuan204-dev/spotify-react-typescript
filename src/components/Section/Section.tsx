@@ -25,7 +25,6 @@ const Section: React.FC<SectionProps> = ({
 
   const columnWidth = (width - 2 * 24 - (quantityCol - 1) * 24) / quantityCol
 
-  console.log(data)
 
   useEffect(() => {
     setLoading(Boolean(!data))
@@ -69,7 +68,7 @@ const Section: React.FC<SectionProps> = ({
                   type={type}
                   dataType={dataType}
                   isLoading={isLoading}
-                  key={index}
+                  key={item.id || index}
                   id={item?.id || item.uri?.split(':')[item.uri.split.length]}
                   title={item?.name || item?.profile.name}
                   artists={item?.artists}
@@ -98,7 +97,7 @@ const Section: React.FC<SectionProps> = ({
                   <SectionItem
                     dataType={dataType}
                     isLoading={isLoading}
-                    key={index}
+                    key={item.id || index}
                     id={
                       (type === 'artist' &&
                         (item.uri?.split(':')[item.uri.split.length] ||

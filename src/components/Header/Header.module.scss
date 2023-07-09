@@ -4,9 +4,7 @@
 
 .wrapper {
   position: relative;
-  height: 30vh;
-  min-height: 340px;
-  max-height: 400px;
+  height: clamp(340px, 30vh, 400px);
   color: $white;
   margin-top: -64px;
   padding: 0 24px 24px;

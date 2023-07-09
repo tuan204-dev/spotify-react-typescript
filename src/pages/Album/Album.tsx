@@ -1,13 +1,14 @@
 import { HeartIcon } from '@/assets/icons'
 import { Footer, Header, Navbar, SongList } from '@/components'
 import { PlayButton } from '@/components/UIs'
-import { useRaiseColorTone } from '@/hooks'
+import { useComponentSize, useRaiseColorTone } from '@/hooks'
 import useDominantColor from '@/hooks/useDominantColor'
 import { dateFormatConvertor } from '@/utils'
 import { fetchSpotifyData, getAccessToken } from '@/utils/fetchData'
 import classNames from 'classnames/bind'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { useDocumentTitle } from 'usehooks-ts'
 import styles from './Album.module.scss'
 
 const cx = classNames.bind(styles)
@@ -16,12 +17,16 @@ const Album: React.FC = () => {
   const [data, setData] = useState<any>()
   const [navOpacity, setNavOpacity] = useState<number>(0)
   const [isLoading, setLoading] = useState<boolean>(true)
+  const [navPlayBtnVisible, setNavPlayBtnVisible] = useState<boolean>(false)
+
+  useDocumentTitle(`${data?.name} | Spotify`)
 
   const bgColor = useRaiseColorTone(useDominantColor(data?.images[0].url))
 
-  const {id}= useParams()
-  const params = useParams()
-  console.log(params)
+  const headerRef = useRef<any>()
+  const { height: headerHeight } = useComponentSize(headerRef)
+
+  const { id } = useParams()
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -49,27 +54,36 @@ const Album: React.FC = () => {
     const yAxis = e.currentTarget.scrollTop
     if (yAxis > 64) {
       setNavOpacity(1)
-      return
-    }
-    setNavOpacity(yAxis / 64)
+    } else setNavOpacity(yAxis / 64)
+    if (yAxis > headerHeight + 14) {
+      setNavPlayBtnVisible(true)
+    } else setNavPlayBtnVisible(false)
   }
 
   return (
     <main className={cx('wrapper')}>
-      <Navbar navOpacity={navOpacity} bgColor={bgColor} />
+      <Navbar
+        navOpacity={navOpacity}
+        bgColor={bgColor}
+        inclPlayBtn
+        playBtnVisible={navPlayBtnVisible}
+        title={data?.name}
+      />
       <div onScroll={(e) => handleScroll(e)} className={cx('body')}>
-        <Header
-          type={data?.album_type}
-          artists={data?.artists}
-          releaseDate={data?.release_date}
-          desc={data?.description}
-          bgColor={bgColor}
-          title={data?.name}
-          thumbnail={data?.images[0].url}
-          quantity={data?.tracks.total}
-          isLoading={isLoading}
-          isWhiteColor
-        />
+        <div ref={headerRef}>
+          <Header
+            type={data?.album_type}
+            artists={data?.artists}
+            releaseDate={data?.release_date}
+            desc={data?.description}
+            bgColor={bgColor}
+            title={data?.name}
+            thumbnail={data?.images[0].url}
+            quantity={data?.tracks.total}
+            isLoading={isLoading}
+            isWhiteColor
+          />
+        </div>
         <div className={cx('song-list')}>
           <div style={{ backgroundColor: `${bgColor}` }} className={cx('bg-blur')}></div>
           <div className={cx('main')}>
@@ -85,7 +99,7 @@ const Album: React.FC = () => {
               </button>
             </div>
             <SongList
-              type='album'
+              type="album"
               top={0}
               pivotTop={64}
               songList={data?.tracks.items}

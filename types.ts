@@ -332,6 +332,7 @@ export interface SongItemProps {
   dateAdd?: string
   isExplicit?: boolean
   type?: 'default' | 'playlist' | 'album' | 'search' | 'artist'
+  id?: string
 }
 export interface SongListProps {
   songList: SongItemProps[]
