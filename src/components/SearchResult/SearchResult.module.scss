@@ -40,29 +40,6 @@
   }
 }
 
-.not-found {
-  min-height: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-inline: 24px;
-  overflow: hidden;
-
-  .title {
-    display: block;
-    width: 100%;
-    font-size: 24px;
-    font-weight: 700;
-    text-align: center;
-    @include text-line-clamp(4);
-
-  }
-
-  .msg {
-    font-size: 14px;
-  }
-}
 
 .grid-md {
   grid-template-columns: 16px minmax(300px, 4fr) 2fr 50px !important;

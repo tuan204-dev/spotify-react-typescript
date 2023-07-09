@@ -1,10 +1,11 @@
-import { FC, useState, useEffect, useMemo } from 'react'
-import styles from './SearchResult.module.scss'
-import classNames from 'classnames/bind'
-import TopResult from './TopResult/TopResult'
-import { Footer, Section } from '..'
 import { getAccessToken, searchData } from '@/utils/fetchData'
+import classNames from 'classnames/bind'
+import { FC, useEffect, useMemo, useState } from 'react'
+import { Section } from '..'
 import SongList from '../SongList/SongList'
+import SearchNotFound from './SearchNotFound/SearchNotFound'
+import styles from './SearchResult.module.scss'
+import TopResult from './TopResult/TopResult'
 
 const cx = classNames.bind(styles)
 
@@ -88,39 +89,23 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
     data?.shows.items.filter((item: any) => item).length === 0 &&
     data?.tracks.items.filter((item: any) => item).length === 0
   ) {
-    return (
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          minHeight: '100vh',
-          justifyContent: 'space-between',
-        }}
-      >
-        <div className={cx('not-found')}>
-          <p className={cx('title')}>{`No results found for "${query}"`}</p>
-          <span className={cx('msg')}>
-            Please make sure your words are spelled correctly, or use fewer or different
-            keywords.
-          </span>
-        </div>
-        <Footer />
-      </div>
-    )
+    return <SearchNotFound query={query} />
   }
 
   return (
     <div className={cx('wrapper')}>
       <div className={cx('search__kind')}>
-        {searchSelections.filter(item => item.isExist).map((item) => (
-          <button
-            key={item.key}
-            className={cx({ btn: true, active: item.active })}
-            onClick={() => setCategory(item.key)}
-          >
-            {item.display}
-          </button>
-        ))}
+        {searchSelections
+          .filter((item) => item.isExist)
+          .map((item) => (
+            <button
+              key={item.key}
+              className={cx({ btn: true, active: item.active })}
+              onClick={() => setCategory(item.key)}
+            >
+              {item.display}
+            </button>
+          ))}
       </div>
       <div>
         {category !== 'all' ? (
