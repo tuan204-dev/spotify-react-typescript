@@ -69,7 +69,6 @@ const Artist: React.FC = () => {
     } else setNavPlayBtnVisible(false)
   }
 
-  console.log(overviewData)
 
   return (
     <main className={cx('wrapper')}>
@@ -87,7 +86,6 @@ const Artist: React.FC = () => {
       <div
         className={cx('banner-img')}
         style={{
-          // backgroundImage: `url(${overviewData?.visuals?.headerImage?.sources[0]?.url})`,
           transform: `scale(${bgBannerScale})`,
           height: `${bannerHeight}px`,
           backgroundColor:

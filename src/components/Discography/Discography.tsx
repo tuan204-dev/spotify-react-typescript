@@ -18,24 +18,25 @@ const Discography: FC<DiscographyProps> = ({ data }) => {
         key: 'popularReleases',
         display: 'Popular releases',
         active: 'popularReleases' === category,
-        isEmpty: data?.popularReleases.items.length === 0,
+        isExist: Boolean(data?.popularReleases?.totalCount),
       },
 
       {
         key: 'albums',
         display: 'Albums',
         active: 'albums' === category,
-        isEmpty: data?.albums.items.length === 0,
+        isExist: Boolean(data?.albums?.totalCount),
       },
       {
         key: 'singles',
         display: 'Singles',
         active: 'singles' === category,
-        isEmpty: data?.singles.items.length === 0,
+        isExist: Boolean(data?.singles?.totalCount),
       },
     ],
-    [category]
+    [category, data]
   )
+
 
   return (
     <div className={cx('wrapper')}>
@@ -43,22 +44,21 @@ const Discography: FC<DiscographyProps> = ({ data }) => {
         <h2>Discography</h2>
       </div>
       <div className={cx('selection')}>
-        {selection.map(item => {
-          if (!item.isEmpty)
-            return (
-              <button
-                key={item.key}
-                className={cx({ btn: true, active: item.active })}
-                onClick={() => setCategory(item.key)}
-              >
-                {item.display}
-              </button>
-            )
-        })}
+        {selection
+          .filter((item) => item.isExist)
+          .map((item) => (
+            <button
+              key={item.key}
+              className={cx({ btn: true, active: item.active })}
+              onClick={() => setCategory(item.key)}
+            >
+              {item.display}
+            </button>
+          ))}
       </div>
       <div className={cx('section')}>
         <Section
-          apiType='rapid'
+          apiType="rapid"
           dataType="album"
           data={
             (category === 'popularReleases' && data?.popularReleases.items) ||

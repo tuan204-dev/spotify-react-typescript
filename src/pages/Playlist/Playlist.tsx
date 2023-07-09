@@ -20,7 +20,7 @@ const Playlist: React.FC = () => {
 
   const bgColor = useRaiseColorTone(useDominantColor(data?.images[0].url) || '#121212')
 
-  useDocumentTitle(`${data?.name} | Spotify Playlist`)
+  useDocumentTitle(`${data?.name ? data?.name : 'Playlist'} | Spotify Playlist`)
 
   const headerRef = useRef<any>()
   const { height: headerHeight } = useComponentSize(headerRef)

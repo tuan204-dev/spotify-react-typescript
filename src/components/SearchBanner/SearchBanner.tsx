@@ -20,7 +20,6 @@ const SearchBanner: React.FC = () => {
     fetchData()
   }, [])
 
-
   return (
     <div className={cx('wrapper')}>
       <h2 className={cx('heading')}>Browse all</h2>

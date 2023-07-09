@@ -16,46 +16,55 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
   const [data, setData] = useState<any>()
   const [category, setCategory] = useState<string>('all')
 
-  const searchSelection = useMemo(
+  const searchSelections = useMemo(
     () => [
       {
         key: 'all',
         active: category === 'all',
         display: 'All',
+        isExist: true,
       },
       {
         key: 'albums',
         active: category === 'albums',
         display: 'Albums',
+        isExist: Boolean(data?.albums?.total),
       },
       {
         key: 'artists',
         active: category === 'artists',
         display: 'Artists',
+        isExist: Boolean(data?.artists?.total),
       },
       {
         key: 'tracks',
         active: category === 'tracks',
         display: 'Songs',
+        isExist: Boolean(data?.tracks?.total),
       },
       {
         key: 'playlists',
         active: category === 'playlists',
         display: 'Playlists',
+        isExist: Boolean(data?.playlists?.total),
       },
       {
         key: 'shows',
         active: category === 'shows',
         display: 'Podcasts & Shows',
+        isExist: Boolean(data?.shows?.total),
       },
       {
         key: 'episodes',
         active: category === 'episodes',
         display: 'Episodes',
+        isExist: Boolean(data?.episodes?.total),
       },
     ],
-    [category]
+    [category, data]
   )
+
+  console.log(data)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -74,7 +83,6 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
   if (
     data?.albums.items.filter((item: any) => item).length === 0 &&
     data?.artists.items.filter((item: any) => item).length === 0 &&
-    data?.audiobooks.items.filter((item: any) => item).length === 0 &&
     data?.episodes.items.filter((item: any) => item).length === 0 &&
     data?.playlists.items.filter((item: any) => item).length === 0 &&
     data?.shows.items.filter((item: any) => item).length === 0 &&
@@ -104,7 +112,7 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
   return (
     <div className={cx('wrapper')}>
       <div className={cx('search__kind')}>
-        {searchSelection.map((item) => (
+        {searchSelections.filter(item => item.isExist).map((item) => (
           <button
             key={item.key}
             className={cx({ btn: true, active: item.active })}
@@ -116,7 +124,7 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
       </div>
       <div>
         {category !== 'all' ? (
-          searchSelection
+          searchSelections
             .filter((item) => item.active)
             .map((item) => {
               if (item.key !== 'tracks') {

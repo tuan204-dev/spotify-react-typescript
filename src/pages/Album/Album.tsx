@@ -19,7 +19,7 @@ const Album: React.FC = () => {
   const [isLoading, setLoading] = useState<boolean>(true)
   const [navPlayBtnVisible, setNavPlayBtnVisible] = useState<boolean>(false)
 
-  useDocumentTitle(`${data?.name} | Spotify`)
+  useDocumentTitle(`${data?.name ? data?.name : 'Album'} | Spotify`)
 
   const bgColor = useRaiseColorTone(useDominantColor(data?.images[0].url))
 
