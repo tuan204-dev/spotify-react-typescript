@@ -10,10 +10,11 @@ interface AboutArtistProps {
   profile?: any
   visuals?: any
   isLoading?: boolean
+  aboutImg?: string
 }
 
-const AboutArtist: FC<AboutArtistProps> = ({ profile, stats, visuals, isLoading }) => {
-  const desc = unicodeDecoder(profile?.biography.text)
+const AboutArtist: FC<AboutArtistProps> = ({ profile, stats, isLoading, aboutImg }) => {
+  const desc = unicodeDecoder(profile?.bio)
 
   return (
     <div className={cx('wrapper')}>
@@ -22,7 +23,7 @@ const AboutArtist: FC<AboutArtistProps> = ({ profile, stats, visuals, isLoading 
       </div>
       <div
         className={cx('body')}
-        style={{ backgroundImage: `url(${visuals?.gallery?.items[0]?.sources[0]?.url})` }}
+        style={{ backgroundImage: `url(${aboutImg})` }}
       >
         <div className={cx('text-content')}>
           {!isLoading && (

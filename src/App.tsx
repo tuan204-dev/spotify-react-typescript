@@ -1,15 +1,15 @@
 import { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
+import { NotFound } from './components'
 import RootLayout from './layouts/RootLayout/RootLayout'
+import Album from './pages/Album/Album'
+import Artist from './pages/Artist/Artist'
+import Episode from './pages/Episode/Episode'
 import Home from './pages/Home/Home'
+import Playlist from './pages/Playlist/Playlist'
 import Search from './pages/Search/Search'
 import Section from './pages/Section/Section'
-import Artist from './pages/Artist/Artist'
-import Playlist from './pages/Playlist/Playlist'
-import Album from './pages/Album/Album'
 import Show from './pages/Show/Show'
-import Episode from './pages/Episode/Episode'
-import { NotFound } from './components'
 
 const App = () => {
   useEffect(() => {
@@ -17,6 +17,7 @@ const App = () => {
     window.addEventListener('beforeunload', clearLocalStorage)
     return () => window.removeEventListener('beforeunload', clearLocalStorage)
   }, [])
+
 
   return (
     <Routes>

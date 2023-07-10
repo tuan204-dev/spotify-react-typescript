@@ -7,6 +7,7 @@
   display: flex;
   gap: 3px;
   overflow: hidden;
+  width: 100%;
   @include text-in-one-line;
 
   .artist-item {

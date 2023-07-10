@@ -6,14 +6,14 @@ import styles from './ArtistBanner.module.scss'
 const cx = classNames.bind(styles)
 
 interface ArtistBannerProps {
-  name: string
-  avatar: string
+  name?: string
+  avatar?: string
   followerNumber?: number
   dominantColor?: string
-  monthlyListeners: number
+  monthlyListeners?: number
   bgBannerOpacity?: number
   isVerified?: boolean
-  isHeaderImg?: boolean
+  inclHeaderImg?: boolean
   isLoading?: boolean
 }
 
@@ -24,16 +24,18 @@ const ArtistBanner: FC<ArtistBannerProps> = (props) => {
     dominantColor,
     bgBannerOpacity,
     isVerified,
-    isHeaderImg,
+    inclHeaderImg,
     avatar,
     isLoading,
   } = props
 
+  console.log(isLoading)
+
   return (
-    <div className={cx({ wrapper: true, 'no-header-img': !isHeaderImg })}>
+    <div className={cx({ wrapper: true, 'no-header-img': !inclHeaderImg })}>
       {!isLoading && (
         <div className={cx('main')}>
-          {!isHeaderImg && (
+          {!inclHeaderImg && (
             <div className={cx('avatar')}>
               <img src={avatar} alt="avt" />
             </div>
@@ -61,7 +63,7 @@ const ArtistBanner: FC<ArtistBannerProps> = (props) => {
         className={cx('blur')}
         style={{
           backgroundColor: dominantColor,
-          opacity: isHeaderImg ? bgBannerOpacity : 1,
+          opacity: inclHeaderImg ? bgBannerOpacity : 1,
         }}
       ></div>
     </div>

@@ -13,7 +13,7 @@ interface ArtistListProps {
 const ArtistList: React.FC<ArtistListProps> = (props) => {
   const { data } = props
   if (typeof data === 'string') {
-    return <div>{data}</div>
+    return <div className={cx('wrapper')}>{data}</div>
   }
   const renderData: any = []
   if (data) {

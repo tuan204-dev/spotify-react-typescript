@@ -18,20 +18,20 @@ const Discography: FC<DiscographyProps> = ({ data }) => {
         key: 'popularReleases',
         display: 'Popular releases',
         active: 'popularReleases' === category,
-        isExist: Boolean(data?.popularReleases?.totalCount),
+        isExist: Boolean(data?.popularReleases?.length),
       },
 
       {
         key: 'albums',
         display: 'Albums',
         active: 'albums' === category,
-        isExist: Boolean(data?.albums?.totalCount),
+        isExist: Boolean(data?.albums?.length),
       },
       {
         key: 'singles',
         display: 'Singles',
         active: 'singles' === category,
-        isExist: Boolean(data?.singles?.totalCount),
+        isExist: Boolean(data?.singles?.length),
       },
     ],
     [category, data]
@@ -61,9 +61,9 @@ const Discography: FC<DiscographyProps> = ({ data }) => {
           apiType="rapid"
           dataType="album"
           data={
-            (category === 'popularReleases' && data?.popularReleases.items) ||
-            (category === 'albums' && data?.albums.items) ||
-            (category === 'singles' && data?.singles.items)
+            (category === 'popularReleases' && data?.popularReleases) ||
+            (category === 'albums' && data?.albums) ||
+            (category === 'singles' && data?.singles)
           }
           type="artist"
           hideHeader
