@@ -328,7 +328,10 @@ export interface SongItemProps {
   duration?: number
   order?: number
   isLoading?: boolean
-  album?: string
+  albumData?: {
+    name: string
+    id?: string
+  }
   dateAdd?: string
   isExplicit?: boolean
   type?: 'default' | 'playlist' | 'album' | 'search' | 'artist'

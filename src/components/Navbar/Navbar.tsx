@@ -70,7 +70,7 @@ const Navbar: FC<NavbarProps> = (props) => {
 
         {type === 'search' && (
           <div className={cx('nav-control-search')}>
-            <form action="#">
+            <form onSubmit={(e) => e.preventDefault()}>
               <input
                 type="text"
                 ref={queryRef}

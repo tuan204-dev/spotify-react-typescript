@@ -2,7 +2,7 @@ import { FC, useEffect, useState, useContext } from 'react'
 import styles from './TopResult.module.scss'
 import classNames from 'classnames/bind'
 import { SongItem } from '@/components'
-import { Artists } from '@/components/UIs'
+import { SubTitle } from '@/components/UIs'
 import { TbPlayerPlayFilled } from 'react-icons/tb'
 import Skeleton from 'react-loading-skeleton'
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
@@ -51,7 +51,7 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
               </div>
               <div className={cx('artists')}>
                 {!isLoading ? (
-                  <Artists data={topResult?.artists} />
+                  <SubTitle data={topResult?.artists} />
                 ) : (
                   <Skeleton height="18px" width="240px" borderRadius={50} />
                 )}
@@ -88,7 +88,7 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
                     thumb={item.album.images[item.album.images.length - 1].url}
                     duration={item.duration_ms}
                     order={index + 1}
-                    album={item.album.name}
+                    albumData={{name: item.album.name}}
                     isExplicit={item.explicit}
                     type='search'
                   />

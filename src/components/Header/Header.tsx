@@ -5,7 +5,7 @@ import React, { memo } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import { ArtistList } from '..'
 import styles from './Header.module.scss'
-import { Artists } from '../UIs'
+import { SubTitle } from '../UIs'
 import { HeaderProps } from '../../../types'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 
@@ -57,7 +57,7 @@ const Header: React.FC<HeaderProps> = ({
                 {(type === 'album' || type === 'single' || type === 'compilation') && (
                   <>
                     <div className={cx('artist')}>
-                      {<Artists isWhiteColor={isWhiteColor} data={artists} />}
+                      {<SubTitle isWhiteColor={isWhiteColor} data={artists} />}
                     </div>{' '}
                     <div className={cx('dot')}></div>{' '}
                     <div className={cx('release-date')}>{releaseDate?.slice(0, 4)}</div>

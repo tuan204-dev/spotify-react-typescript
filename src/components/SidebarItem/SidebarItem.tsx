@@ -2,7 +2,7 @@ import classNames from 'classnames/bind'
 import { FC } from 'react'
 import styles from './SidebarItem.module.scss'
 import { Link } from 'react-router-dom'
-import { Artists } from '../UIs'
+import { SubTitle } from '../UIs'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 const cx = classNames.bind(styles)
@@ -22,7 +22,7 @@ const SidebarItem: FC<SidebarItemProps> = (props) => {
   const newType = (() => {
     if(type === 'playlist') return author
     if(type === 'artist') return 'Artist'
-    if(type === 'album' && artists) return <Artists data={artists}/>
+    if(type === 'album' && artists) return <SubTitle data={artists}/>
   })()
 
   return (

@@ -2,10 +2,13 @@ import React from 'react'
 import styles from './NotFound.module.scss'
 import classNames from 'classnames/bind'
 import logoImage from '@/assets/image/logo/logo.svg'
+import { useDocumentTitle } from 'usehooks-ts'
+
 
 const cx = classNames.bind(styles)
 
 const NotFound: React.FC = () => {
+  useDocumentTitle('Page not found')
   return (
     <div className={cx('wrapper')}>
       <div

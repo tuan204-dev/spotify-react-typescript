@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, useState, memo } from 'react'
 import styles from './PlayButton.module.scss'
 import classNames from 'classnames/bind'
 import { TbPlayerPlayFilled } from 'react-icons/tb'
@@ -42,4 +42,4 @@ const PlayButton: FC<PlayButtonProps> = (props) => {
   )
 }
 
-export default PlayButton
+export default memo(PlayButton)

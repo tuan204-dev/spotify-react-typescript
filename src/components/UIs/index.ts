@@ -1,7 +1,7 @@
-import Artists from "./Artists/Artists";
+import SubTitle from "./SubTitle/SubTitle";
 import PlayButton from "./PlayButton/PlayButton";
 
 export {
-  Artists,
+  SubTitle,
   PlayButton
 }

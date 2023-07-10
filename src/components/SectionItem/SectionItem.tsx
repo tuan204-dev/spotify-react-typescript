@@ -7,7 +7,7 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { Link } from 'react-router-dom'
 import { SectionItemI } from '../../../types'
-import { Artists, PlayButton } from '../UIs'
+import { SubTitle, PlayButton } from '../UIs'
 import styles from './SectionItem.module.scss'
 
 const cx = classNames.bind(styles)
@@ -78,7 +78,7 @@ const SectionItem: React.FC<SectionItemI> = ({
                   desc ||
                   (author && `By ${author}`) ||
                   (dataType === 'artist' && 'Artist') ||
-                  (artists && <Artists data={artists} />) ||
+                  (artists && <SubTitle data={artists} />) ||
                   'Lorem ipsum dolor sit amet consectetur adipisicing elit.'}
               </p>
             ) : (

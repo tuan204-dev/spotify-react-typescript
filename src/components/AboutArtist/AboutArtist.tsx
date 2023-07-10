@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import styles from './AboutArtist.module.scss'
 import classNames from 'classnames/bind'
 import { unicodeDecoder } from '@/utils'
@@ -39,4 +39,4 @@ const AboutArtist: FC<AboutArtistProps> = ({ profile, stats, visuals, isLoading 
   )
 }
 
-export default AboutArtist
+export default memo(AboutArtist)

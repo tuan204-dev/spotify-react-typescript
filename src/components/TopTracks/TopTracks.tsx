@@ -47,11 +47,11 @@ const TopTrack: FC<TopTrackProps> = ({ songList, isLoading }) => {
                 <SongItem key={item + index} type="artist" isLoading={true} />
               ))}
       </div>
-      <div className={cx('show-more-btn')}>
+      {songList?.length > 5 && <div className={cx('show-more-btn')}>
         <button onClick={() => setLess(!isLess)}>
           {isLess ? 'See more' : 'Show less'}
         </button>
-      </div>
+      </div>}
     </div>
   )
 }

@@ -3,7 +3,7 @@ import { dateFormatConvertor } from '@/utils'
 import classNames from 'classnames/bind'
 import React, { memo, useContext } from 'react'
 import Skeleton from 'react-loading-skeleton'
-import { Artists } from '../UIs'
+import { SubTitle } from '../UIs'
 import styles from './SongItem.module.scss'
 import { PlayIcon } from '@/assets/icons'
 import { SongItemProps } from '../../../types'
@@ -20,7 +20,7 @@ const SongItem: React.FC<SongItemProps> = ({
   order,
   isLoading = false,
   dateAdd,
-  album,
+  albumData,
   isExplicit = false,
   type = 'default',
 }) => {
@@ -64,7 +64,7 @@ const SongItem: React.FC<SongItemProps> = ({
               {type !== 'artist' && (
                 <div className={cx('sub-title')}>
                   {isExplicit && <span className={cx('explicit')}>E</span>}
-                  <Artists data={artists} />
+                  <SubTitle data={artists} />
                 </div>
               )}
             </>
@@ -78,7 +78,11 @@ const SongItem: React.FC<SongItemProps> = ({
       </div>
       {type !== 'album' && type !== 'search' && (
         <>
-          <div className={cx('album')}>{!isLoading && album}</div>
+          <div className={cx('album')}>
+            {!isLoading && (
+              <SubTitle type="album" data={[{ ...albumData }]} />
+            )}
+          </div>
           {width > 780 && (
             <div className={cx('date-add')}>
               {dateAdd !== '1970-01-01T00:00:00Z' && dateAdd

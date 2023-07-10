@@ -69,7 +69,6 @@ const Artist: React.FC = () => {
     } else setNavPlayBtnVisible(false)
   }
 
-
   return (
     <main className={cx('wrapper')}>
       <Navbar

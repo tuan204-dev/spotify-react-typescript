@@ -1,4 +1,5 @@
-import { FC, useContext } from 'react'
+/* eslint-disable react-refresh/only-export-components */
+import { FC, memo, useContext } from 'react'
 import styles from './SongList.module.scss'
 import classNames from 'classnames/bind'
 import SongItem from '../SongItem/SongItem'
@@ -14,14 +15,13 @@ const SongList: FC<SongListProps> = ({
   pivotTop,
   isLoading = false,
   top,
-  type = 'default'
+  type = 'default',
 }) => {
   const { width } = useContext(MainLayoutContext)
 
   const { ref, inView } = useInView({
     threshold: 0,
   })
-
 
   return (
     <div className={cx('wrapper')}>
@@ -69,7 +69,7 @@ const SongList: FC<SongListProps> = ({
             return songList?.map((item: any, index: number) => (
               <SongItem
                 type={type}
-                key={item?.track?.id ||index}
+                key={item?.track?.id || index}
                 order={order++}
                 thumb={
                   item?.album?.images[item?.album?.images?.length - 1]?.url ||
@@ -77,7 +77,10 @@ const SongList: FC<SongListProps> = ({
                 }
                 songName={item?.name || item?.track?.name}
                 artists={item?.artists || item?.track?.artists}
-                album={item?.album?.name || item?.track?.album?.name}
+                albumData={{
+                  name: item?.album?.name || item?.track?.album?.name,
+                  id: item?.track?.album?.id,
+                }}
                 dateAdd={item?.added_at}
                 duration={item?.duration_ms || item?.track?.duration_ms}
                 isExplicit={item?.explicit || item?.track?.explicit}
@@ -87,7 +90,9 @@ const SongList: FC<SongListProps> = ({
           } else {
             return Array(9)
               ?.fill(0)
-              ?.map((item, index) => <SongItem isLoading={isLoading} key={item + index} />)
+              ?.map((item, index) => (
+                <SongItem isLoading={isLoading} key={item + index} />
+              ))
           }
         })()}
       </div>
@@ -95,4 +100,4 @@ const SongList: FC<SongListProps> = ({
   )
 }
 
-export default SongList
+export default memo(SongList)
