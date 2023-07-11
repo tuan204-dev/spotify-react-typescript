@@ -11,8 +11,7 @@ import { PlayButton } from '@/components/UIs'
 import { ArtistContext } from '@/contexts/ArtistContext'
 import { useComponentSize } from '@/hooks'
 import classNames from 'classnames/bind'
-import React, { useContext, useEffect, useRef, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useContext, useRef, useState } from 'react'
 import { useDocumentTitle } from 'usehooks-ts'
 import styles from './Artist.module.scss'
 
@@ -24,9 +23,7 @@ const Artist: React.FC = () => {
   const [bgBannerScale, setBgBannerScale] = useState<number>(1.05)
   const [navPlayBtnVisible, setNavPlayBtnVisible] = useState<boolean>(false)
 
-  const { id } = useParams()
   const {
-    setId,
     isLoading,
     profile,
     headerImg,
@@ -43,10 +40,6 @@ const Artist: React.FC = () => {
     visuals,
   } = useContext(ArtistContext)
   useDocumentTitle(`${profile?.name ? profile?.name : 'Artist'} | Spotify`)
-
-  useEffect(() => {
-    setId(id)
-  }, [id])
 
   const bannerRef = useRef<any>()
 
@@ -140,7 +133,8 @@ const Artist: React.FC = () => {
               title={`Featuring ${profile?.name}`}
               data={featuring}
               dataType="playlist"
-              isClickable={false}
+              isClickable={true}
+              href="featuring"
             />
           )}
           {relatedArtists?.length !== 0 && (
@@ -150,7 +144,8 @@ const Artist: React.FC = () => {
               data={relatedArtists}
               dataType="artist"
               type="artist"
-              isClickable={false}
+              isClickable={true}
+              href="related"
             />
           )}
           {playlists?.length !== 0 && (
@@ -159,7 +154,8 @@ const Artist: React.FC = () => {
               title="Artist Playlists"
               data={playlists}
               dataType="playlist"
-              isClickable={false}
+              isClickable={true}
+              href="playlists"
             />
           )}
           {discoveredOn?.length !== 0 && (
@@ -169,7 +165,8 @@ const Artist: React.FC = () => {
               data={discoveredOn}
               dataType="playlist"
               type="artist"
-              isClickable={false}
+              isClickable={true}
+              href="discovered-on"
             />
           )}
           {aboutImg && (

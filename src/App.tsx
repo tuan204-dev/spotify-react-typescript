@@ -27,6 +27,10 @@ const App = () => {
         <Route path="/section/:id" element={<Section />} />
         <Route path="/artist/:id">
           <Route index element={<Artist />} />
+          <Route path='/artist/:id/featuring' element={<Section />} />
+          <Route path='/artist/:id/related' element={<Section />} />
+          <Route path='/artist/:id/discovered-on' element={<Section />} />
+          <Route path='/artist/:id/playlists' element={<Section />} />
         </Route>
         <Route path="/playlist/:id" element={<Playlist />} />
         <Route path="/album/:id" element={<Album />} />

@@ -62,8 +62,6 @@ const Playlist: React.FC = () => {
     } else setNavPlayBtnVisible(false)
   }
 
-  console.log(data)
-
   return (
     <main className={cx('wrapper')}>
       <Navbar

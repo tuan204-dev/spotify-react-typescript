@@ -1,6 +1,6 @@
 import { fetchArtistData } from '@/utils/fetchData'
 import { FC, ReactNode, createContext, useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 
 interface ArtistProviderProps {
   children: ReactNode
@@ -44,15 +44,20 @@ export const ArtistProvider: FC<ArtistProviderProps> = ({ children }) => {
   const [artistData, setArtistData] = useState<any>()
   const [isLoading, setLoading] = useState<boolean>(true)
   const regex = /^\/artist\//
-
+  // /^\/artist\/.*\/featuring$/
   const { pathname } = useLocation()
+  const { id: artistId } = useParams()
 
   useEffect(() => {
-    if (!regex.test(pathname)) {
+    if (regex.test(pathname)) {
+      setId(artistId)
+    } else {
+      setId('')
       setArtistData(undefined)
       setResponseData(undefined)
     }
-  }, [id, pathname])
+  }, [pathname])
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -61,6 +66,8 @@ export const ArtistProvider: FC<ArtistProviderProps> = ({ children }) => {
     }
     if (id !== '') fetchData()
   }, [id])
+
+  console.log(artistData)
 
   useEffect(() => {
     setArtistData((prev: any) => {
@@ -75,7 +82,7 @@ export const ArtistProvider: FC<ArtistProviderProps> = ({ children }) => {
         headerImg: responseData?.visuals?.headerImage?.sources[0]?.url,
         avatarImg: responseData?.visuals?.avatarImage?.sources[0]?.url,
         colorRaw:
-          responseData?.visuals?.headerImage?.extractedColors?.colorRaw ||
+          responseData?.visuals?.headerImage?.extractedColors?.colorRaw.hex ||
           responseData?.visuals?.avatarImage?.extractedColors?.colorRaw?.hex,
         stats: {
           followerNumbers: responseData?.stats?.followers,

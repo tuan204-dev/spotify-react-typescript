@@ -257,7 +257,7 @@ export interface SectionProps {
   isClickable?: boolean
   hideHeader?: boolean
   type?: 'default' | 'playlist' | 'album' | 'artistList' | 'artist' | 'show'
-  apiType: 'spotify' | 'rapid'
+  apiType: 'spotify' | 'rapid' | undefined
 }
 
 export interface SongItemTagProps {

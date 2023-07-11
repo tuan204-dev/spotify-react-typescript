@@ -29,8 +29,6 @@ const ArtistBanner: FC<ArtistBannerProps> = (props) => {
     isLoading,
   } = props
 
-  console.log(isLoading)
-
   return (
     <div className={cx({ wrapper: true, 'no-header-img': !inclHeaderImg })}>
       {!isLoading && (
