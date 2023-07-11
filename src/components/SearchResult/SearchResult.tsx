@@ -1,6 +1,6 @@
-import { getAccessToken, searchData } from '@/utils/fetchData'
+import { SearchContext } from '@/contexts/SearchContext'
 import classNames from 'classnames/bind'
-import { FC, useEffect, useMemo, useState } from 'react'
+import { FC, useContext, useMemo, useState } from 'react'
 import { Section } from '..'
 import SongList from '../SongList/SongList'
 import SearchNotFound from './SearchNotFound/SearchNotFound'
@@ -10,12 +10,14 @@ import TopResult from './TopResult/TopResult'
 const cx = classNames.bind(styles)
 
 interface SearchResultProps {
-  query: string
+  query?: string
 }
 
 const SearchResult: FC<SearchResultProps> = ({ query }) => {
-  const [data, setData] = useState<any>()
+  // const [data, setData] = useState<any>()
   const [category, setCategory] = useState<string>('all')
+
+  const { data } = useContext(SearchContext)
 
   const searchSelections = useMemo(
     () => [
@@ -64,22 +66,6 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
     ],
     [category, data]
   )
-
-  console.log(data)
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const token = await getAccessToken()
-      const data = await searchData({
-        query: query,
-        accessToken: token,
-        market: 'VN',
-      })
-
-      setData({ ...data })
-    }
-    fetchData()
-  }, [query])
 
   if (
     data?.albums.items.filter((item: any) => item).length === 0 &&

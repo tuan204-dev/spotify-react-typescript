@@ -18,7 +18,7 @@ interface NavbarProps {
   title?: string
   playBtnVisible?: boolean
   inclPlayBtn?: boolean
-  setQuery?: React.Dispatch<React.SetStateAction<string>>
+  setQuery?: React.Dispatch<React.SetStateAction<string | undefined>>
 }
 
 const Navbar: FC<NavbarProps> = (props) => {

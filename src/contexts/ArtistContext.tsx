@@ -43,12 +43,15 @@ export const ArtistProvider: FC<ArtistProviderProps> = ({ children }) => {
   const [responseData, setResponseData] = useState<any>()
   const [artistData, setArtistData] = useState<any>()
   const [isLoading, setLoading] = useState<boolean>(true)
-  const regex = /^\/artist\//;
+  const regex = /^\/artist\//
 
-  const {pathname} = useLocation()
+  const { pathname } = useLocation()
 
   useEffect(() => {
-    if(!regex.test(pathname)) setArtistData(undefined)
+    if (!regex.test(pathname)) {
+      setArtistData(undefined)
+      setResponseData(undefined)
+    }
   }, [id, pathname])
 
   useEffect(() => {
@@ -97,8 +100,6 @@ export const ArtistProvider: FC<ArtistProviderProps> = ({ children }) => {
   useEffect(() => {
     setLoading(Boolean(!responseData))
   }, [responseData])
-
-  console.log('rerender')
 
   return (
     <ArtistContext.Provider value={{ ...artistData, setId, isLoading }}>

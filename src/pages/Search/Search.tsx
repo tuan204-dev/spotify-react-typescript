@@ -1,8 +1,9 @@
 import { Footer, Navbar, SearchBanner, SearchResult } from '@/components'
+import { SearchContext } from '@/contexts/SearchContext'
 import classNames from 'classnames/bind'
-import React, { FC, useEffect, useState } from 'react'
-import styles from './Search.module.scss'
+import React, { FC, useContext, useEffect, useState } from 'react'
 import { useDocumentTitle } from 'usehooks-ts'
+import styles from './Search.module.scss'
 
 const cx = classNames.bind(styles)
 
@@ -11,33 +12,33 @@ interface SearchProps {
 }
 
 const Search: FC<SearchProps> = () => {
-  const [query, setQuery] = useState<string>('')
-  const [debounceValue, setDebounceValue] = useState<string>('')
-
+  const { setQuery: setSearchQuery, query: searchQuery } = useContext(SearchContext)
+  const [query, setQuery] = useState<string | undefined>(searchQuery)
+  const [debounceValue, setDebounceValue] = useState<string | undefined>(searchQuery)
   useDocumentTitle('Spotify – Search')
 
   useEffect(() => {
     let timeoutId: any
-    if (!query.trim()) {
+    if (!query?.trim()) {
       setDebounceValue('')
     } else {
       timeoutId = setTimeout(() => {
-        setDebounceValue(query.trim())
+        setDebounceValue(query?.trim())
       }, 500)
     }
 
     return () => clearTimeout(timeoutId)
   }, [query])
 
+  useEffect(() => {
+    setSearchQuery(debounceValue)
+  }, [debounceValue])
+
   return (
     <div className={cx('search')}>
       <Navbar type="search" {...{ query, setQuery }} />
       <div className={cx('body')}>
-        {debounceValue && (
-          <>
-            <SearchResult query={debounceValue} />
-          </>
-        )}
+        {debounceValue && <SearchResult />}
         <div style={{ display: debounceValue && 'none' }}>
           <SearchBanner />
         </div>
