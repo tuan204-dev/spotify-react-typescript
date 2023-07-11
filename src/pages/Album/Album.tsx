@@ -10,6 +10,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDocumentTitle } from 'usehooks-ts'
 import styles from './Album.module.scss'
+import { useInView } from 'react-intersection-observer'
 
 const cx = classNames.bind(styles)
 
@@ -20,6 +21,10 @@ const Album: React.FC = () => {
   const [navPlayBtnVisible, setNavPlayBtnVisible] = useState<boolean>(false)
 
   useDocumentTitle(`${data?.name ? data?.name : 'Album'} | Spotify`)
+
+  const { ref: pivotTrackingRef, inView: isTracking } = useInView({
+    threshold: 0,
+  })
 
   const bgColor = useRaiseColorTone(useDominantColor(data?.images[0].url))
 
@@ -69,7 +74,12 @@ const Album: React.FC = () => {
         playBtnVisible={navPlayBtnVisible}
         title={data?.name}
       />
-      <div onScroll={(e) => handleScroll(e)} className={cx('body')}>
+      <div onScroll={(e) => isTracking && handleScroll(e)} className={cx('body')}>
+        <div
+          ref={pivotTrackingRef}
+          className={cx('pivot-tracking')}
+          style={{ top: `${headerHeight + 104}px` }}
+        ></div>
         <div ref={headerRef}>
           <Header
             type={data?.album_type}

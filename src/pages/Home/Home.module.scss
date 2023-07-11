@@ -11,9 +11,15 @@
   overflow-y: scroll;
   padding-bottom: 32px;
   padding-top: 64px;
+  position: relative;
   // background-color: transparent;
 
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+.pivot-tracking {
+  position: absolute;
+  z-index: -999;
 }

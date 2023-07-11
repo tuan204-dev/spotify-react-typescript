@@ -37,9 +37,9 @@ const Section: React.FC<SectionProps> = ({
             <>
               <Link
                 className={cx({
-                  'is-search': !isClickable,
+                  'un-clickable': !(isClickable && (data?.length || 0) > quantityCol),
                 })}
-                to={isClickable ? `${href}` : '#'}
+                to={isClickable && (data?.length || 0) > quantityCol ? `${href}` : '#'}
               >
                 <h2 className={cx({ heading: true })}>{title}</h2>
               </Link>

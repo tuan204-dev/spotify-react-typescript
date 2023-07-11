@@ -15,6 +15,7 @@
   overflow-y: scroll;
   padding-bottom: 32px;
   padding-top: $navbar-height;
+  position: relative;
 
   &::-webkit-scrollbar {
     display: none;
@@ -61,4 +62,9 @@
 
 .grid-md {
   grid-template-columns: 16px minmax(300px, 4fr) 2fr 50px !important;
+}
+
+.pivot-tracking {
+  position: absolute;
+  z-index: -999;
 }

@@ -58,7 +58,6 @@ export const ArtistProvider: FC<ArtistProviderProps> = ({ children }) => {
     }
   }, [pathname])
 
-
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchArtistData(id)
@@ -66,8 +65,6 @@ export const ArtistProvider: FC<ArtistProviderProps> = ({ children }) => {
     }
     if (id !== '') fetchData()
   }, [id])
-
-  console.log(artistData)
 
   useEffect(() => {
     setArtistData((prev: any) => {

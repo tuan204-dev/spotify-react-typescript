@@ -14,6 +14,7 @@ import classNames from 'classnames/bind'
 import React, { useContext, useRef, useState } from 'react'
 import { useDocumentTitle } from 'usehooks-ts'
 import styles from './Artist.module.scss'
+import { useInView } from 'react-intersection-observer'
 
 const cx = classNames.bind(styles)
 
@@ -42,6 +43,10 @@ const Artist: React.FC = () => {
   useDocumentTitle(`${profile?.name ? profile?.name : 'Artist'} | Spotify`)
 
   const bannerRef = useRef<any>()
+
+  const { ref: pivotTrackingRef, inView: isTracking } = useInView({
+    threshold: 0,
+  })
 
   const { height: bannerHeight } = useComponentSize(bannerRef)
 
@@ -84,10 +89,15 @@ const Artist: React.FC = () => {
           backgroundColor: !headerImg ? colorRaw : undefined,
         }}
       >
-        {!isLoading && <img src={headerImg} alt="banner-image" />}
+        {!isLoading && <img loading="lazy" src={headerImg} alt="banner-image" />}
         <div className={cx('overlay')}></div>
       </div>
-      <div onScroll={(e) => handleScroll(e)} className={cx('body')}>
+      <div onScroll={(e) => isTracking && handleScroll(e)} className={cx('body')}>
+        <div
+          ref={pivotTrackingRef}
+          className={cx('pivot-tracking')}
+          style={{ top: `${bannerHeight + 104}px` }}
+        ></div>
         <div style={{ position: 'relative' }}>
           <div
             style={{

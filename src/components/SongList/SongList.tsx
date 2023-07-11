@@ -69,7 +69,7 @@ const SongList: FC<SongListProps> = ({
             return songList?.map((item: any, index: number) => (
               <SongItem
                 type={type}
-                key={item?.track?.id || index}
+                key={index}
                 order={order++}
                 thumb={
                   item?.album?.images[item?.album?.images?.length - 1]?.url ||

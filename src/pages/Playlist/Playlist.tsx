@@ -9,6 +9,7 @@ import React, { memo, useEffect, useState, useRef } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import styles from './Playlist.module.scss'
 import { useDocumentTitle } from 'usehooks-ts'
+import { useInView } from 'react-intersection-observer'
 
 const cx = classNames.bind(styles)
 
@@ -19,6 +20,10 @@ const Playlist: React.FC = () => {
   const [navPlayBtnVisible, setNavPlayBtnVisible] = useState<boolean>(false)
 
   const bgColor = useRaiseColorTone(useDominantColor(data?.images[0].url) || '#121212')
+
+  const { ref: pivotTrackingRef, inView: isTracking } = useInView({
+    threshold: 0,
+  })
 
   useDocumentTitle(`${data?.name ? data?.name : 'Playlist'} | Spotify Playlist`)
 
@@ -71,7 +76,12 @@ const Playlist: React.FC = () => {
         inclPlayBtn
         title={data?.name}
       />
-      <div onScroll={(e) => handleScroll(e)} className={cx('body')}>
+      <div onScroll={(e) => isTracking && handleScroll(e)} className={cx('body')}>
+        <div
+          ref={pivotTrackingRef}
+          className={cx('pivot-tracking')}
+          style={{ top: `${headerHeight + 104}px` }}
+        ></div>
         <div ref={headerRef}>
           <Header
             type="Playlist"
