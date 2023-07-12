@@ -1,4 +1,4 @@
-import { fetchArtistData } from '@/utils/fetchData'
+import artistApi from '@/APIs/artistApi'
 import { FC, ReactNode, createContext, useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 
@@ -29,6 +29,7 @@ interface ArtistContext {
   playlists: any[] | undefined
   featuring: any[] | undefined
   relatedArtists: any[] | undefined
+  appearsOn: any[] | undefined
   discoveredOn: any[] | undefined
   aboutImg: string
   setId: React.Dispatch<React.SetStateAction<string | undefined>>
@@ -44,7 +45,6 @@ export const ArtistProvider: FC<ArtistProviderProps> = ({ children }) => {
   const [artistData, setArtistData] = useState<any>()
   const [isLoading, setLoading] = useState<boolean>(true)
   const regex = /^\/artist\//
-  // /^\/artist\/.*\/featuring$/
   const { pathname } = useLocation()
   const { id: artistId } = useParams()
 
@@ -60,7 +60,7 @@ export const ArtistProvider: FC<ArtistProviderProps> = ({ children }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchArtistData(id)
+      const data = await artistApi(id)
       setResponseData(data)
     }
     if (id !== '') fetchData()
@@ -92,9 +92,12 @@ export const ArtistProvider: FC<ArtistProviderProps> = ({ children }) => {
           singles: responseData?.discography?.singles.items,
         },
         playlists: responseData?.profile?.playlists?.items,
+        appearsOn: responseData?.relatedContent?.appearsOn?.items?.map(
+          (item: any) => item?.releases?.items[0]
+        ),
         featuring: responseData?.relatedContent?.featuring?.items,
         relatedArtists: responseData?.relatedContent?.relatedArtists?.items,
-        discoveredOn: responseData?.relatedContent?.featuring?.items,
+        discoveredOn: responseData?.relatedContent?.discoveredOn?.items,
         aboutImg: responseData?.visuals?.gallery?.items[0]?.sources[0]?.url,
         visuals: responseData?.visuals,
       }

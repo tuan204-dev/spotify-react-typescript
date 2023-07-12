@@ -1,7 +1,8 @@
-import { Fragment, FC } from 'react'
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import classNames from 'classnames/bind'
+import { FC, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './SubTitle.module.scss'
-import classNames from 'classnames/bind'
 
 const cx = classNames.bind(styles)
 
@@ -9,6 +10,7 @@ interface ArtistsProps {
   data: any
   isWhiteColor?: boolean
   type?: 'artist' | 'album'
+  apiType?: 'spotify' | 'rapid'
 }
 
 const Artists: FC<ArtistsProps> = ({ data, isWhiteColor, type = 'artist' }) => {
@@ -18,7 +20,7 @@ const Artists: FC<ArtistsProps> = ({ data, isWhiteColor, type = 'artist' }) => {
       renderData.push(
         <Link
           key={0}
-          to={type === 'album' ? `/album/${data[0].id}` : `/artist/${data[0].id}`}
+          to={type === 'album' ? `/album/${data[0]?.id}` : `/artist/${data[0]?.id}`}
         >
           <span className={cx({ 'artist-item': true, 'white-color': isWhiteColor })}>
             {data[0].name}
@@ -30,7 +32,7 @@ const Artists: FC<ArtistsProps> = ({ data, isWhiteColor, type = 'artist' }) => {
         renderData.push(
           <Fragment key={i}>
             <Link
-              to={type === 'album' ? `/album/${data[i].id}` : `/artist/${data[i].id}`}
+              to={type === 'album' ? `/album/${data[i]?.id}` : `/artist/${data[i]?.id}`}
             >
               <span
                 className={cx({
@@ -38,7 +40,7 @@ const Artists: FC<ArtistsProps> = ({ data, isWhiteColor, type = 'artist' }) => {
                   'white-color': isWhiteColor,
                 })}
               >
-                {data[i].name}
+                {data[i]?.name}
               </span>
             </Link>
             {', '}
@@ -47,12 +49,12 @@ const Artists: FC<ArtistsProps> = ({ data, isWhiteColor, type = 'artist' }) => {
       }
 
       renderData.push(
-        <Fragment key={data.length - 1}>
+        <Fragment key={data?.length - 1}>
           <Link
             to={
               type === 'album'
-                ? `/album/${data[data.length - 1].id}`
-                : `/artist/${data[data.length - 1].id}`
+                ? `/album/${data[data?.length - 1]?.id}`
+                : `/artist/${data[data?.length - 1]?.id}`
             }
           >
             <span
@@ -61,7 +63,7 @@ const Artists: FC<ArtistsProps> = ({ data, isWhiteColor, type = 'artist' }) => {
                 'white-color': isWhiteColor,
               })}
             >
-              {data[data.length - 1].name}
+              {data[data?.length - 1]?.name}
             </span>
           </Link>
         </Fragment>

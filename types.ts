@@ -286,7 +286,6 @@ export type LibSelection = {
   id: string
   type: 'playlist' | 'album' | 'artist'
   active: boolean
-  data: any
 }
 
 export interface ResponseLibItem {
@@ -319,6 +318,8 @@ export interface ResponseSectionItem {
   visuals?: any
   profile?: any
   releases?: any
+  coverArt?: any
+  date?: any
 }
 
 export interface SongItemProps {

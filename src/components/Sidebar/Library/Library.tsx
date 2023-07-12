@@ -1,12 +1,10 @@
 import { LibraryIcon } from '@/assets/icons'
 import { SidebarItem } from '@/components'
+import { fetchSidebarData } from '@/utils'
 import classNames from 'classnames/bind'
-import { FC, useMemo, useState } from 'react'
+import { FC, useEffect, useMemo, useState } from 'react'
 import { HiArrowRight, HiOutlinePlus } from 'react-icons/hi'
 import { LibSelection } from '../../../../types'
-import playlists from '../../../assets/data/00003.json'
-import artists from '../../../assets/data/00004.json'
-import albums from '../../../assets/data/00005.json'
 import styles from './Library.module.scss'
 
 const cx = classNames.bind(styles)
@@ -14,6 +12,15 @@ const cx = classNames.bind(styles)
 const Library: FC = () => {
   const [category, setCategory] = useState<'playlist' | 'album' | 'artist'>('playlist')
   const [bottomShadow, setBottomShadow] = useState<boolean>(false)
+  const [data, setData] = useState<any>()
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetchSidebarData({ type: category })
+      setData(data)
+    }
+    fetchData()
+  }, [category])
 
   const libSelections: LibSelection[] = useMemo(
     () => [
@@ -22,21 +29,18 @@ const Library: FC = () => {
         title: 'Playlists',
         id: '00003',
         active: category === 'playlist',
-        data: playlists,
       },
       {
         type: 'artist',
         title: 'Artists',
         id: '00004',
         active: category === 'artist',
-        data: artists,
       },
       {
         type: 'album',
         title: 'Albums',
         id: '00005',
         active: category === 'album',
-        data: albums,
       },
     ],
     [category]
@@ -46,7 +50,6 @@ const Library: FC = () => {
     () => libSelections.find((libSelection) => libSelection.active),
     [category]
   )
-
 
   const handleClick = (type: 'playlist' | 'album' | 'artist'): void => {
     setCategory(type)
@@ -89,7 +92,7 @@ const Library: FC = () => {
         ))}
       </div>
       <div onScroll={(e) => handleScroll(e)} className={cx('playlist-section')}>
-        {libSelection?.data?.data?.map((item: any, index: number) => (
+        {data?.data?.map((item: any, index: number) => (
           <SidebarItem
             key={item.id || index}
             id={item.id}

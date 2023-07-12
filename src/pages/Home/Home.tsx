@@ -46,9 +46,16 @@ const Home: React.FC = () => {
         <div
           ref={pivotTrackingRef}
           className={cx('pivot-tracking')}
-          style={{ top: '66px' }}
+          style={{ top: '64px' }}
         ></div>
         <Greeting bgColor={bgColor} setBgColor={setBgColor} />
+        <Section
+          apiType="spotify"
+          title={featurePlaylistData?.title}
+          href={featurePlaylistData?.href}
+          data={featurePlaylistData?.data}
+          dataType={featurePlaylistData?.dataType}
+        />
         <Section
           apiType="spotify"
           title={newReleasesData?.title}
@@ -63,13 +70,7 @@ const Home: React.FC = () => {
           data={suggestArtists?.data}
           dataType={suggestArtists?.dataType}
         />
-        <Section
-          apiType="spotify"
-          title={featurePlaylistData?.title}
-          href={featurePlaylistData?.href}
-          data={featurePlaylistData?.data}
-          dataType={featurePlaylistData?.dataType}
-        />
+
         <Section
           apiType="spotify"
           title={topMixes?.title}

@@ -4,6 +4,7 @@ import dateFormatConvertor from './dateFormatConvertor'
 import stringCleaner from './stringCleaner'
 import { unicodeDecoder } from './unicodeDecoder'
 import fetchLocalData from './fetchLocalData'
+import fetchSidebarData from './fetchSidebarData'
 
 export {
   htmlCleaner,
@@ -12,4 +13,5 @@ export {
   stringCleaner,
   unicodeDecoder,
   fetchLocalData,
+  fetchSidebarData,
 }

@@ -1,9 +1,9 @@
+import browserApi from '@/APIs/browserApi'
 import { Section as SectionContent } from '@/components'
 import Footer from '@/components/Footer/Footer'
 import Navbar from '@/components/Navbar/Navbar'
 import { ArtistContext } from '@/contexts/ArtistContext'
 import { fetchHomePageSectionData } from '@/utils'
-import { getAccessToken, getFeaturedPlaylists, getNewReleases } from '@/utils/fetchData'
 import classNames from 'classnames/bind'
 import React, { useContext, useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
@@ -18,8 +18,9 @@ const Section: React.FC = () => {
   const relatedRegex = /^\/artist\/.*\/related$/
   const playlistsRegex = /^\/artist\/.*\/playlists$/
   const discoveredOnRegex = /^\/artist\/.*\/discovered-on$/
+  const appearsOnRegex = /^\/artist\/.*\/appears-on$/
 
-  const { profile, featuring, relatedArtists, discoveredOn, playlists } =
+  const { profile, featuring, relatedArtists, discoveredOn, playlists, appearsOn } =
     useContext(ArtistContext)
 
   const { id } = useParams()
@@ -28,11 +29,10 @@ const Section: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       if (id === 'newReleases') {
-        const token = await getAccessToken()
-        const responseData = await getNewReleases({
-          accessToken: token,
+        const responseData = await browserApi({
           limit: 25,
           country: 'VN',
+          type: 'new-releases',
         })
 
         setData({
@@ -43,11 +43,10 @@ const Section: React.FC = () => {
           apiType: 'spotify',
         })
       } else if (id === 'featurePlaylist') {
-        const token = await getAccessToken()
-        const responseData = await getFeaturedPlaylists({
-          accessToken: token,
+        const responseData = await browserApi({
           limit: 25,
           country: 'VN',
+          type: 'featured-playlists',
         })
 
         setData({
@@ -93,10 +92,17 @@ const Section: React.FC = () => {
           data: playlists,
           apiType: 'rapid',
         })
+      } else if (appearsOnRegex.test(pathname)) {
+        setData({
+          title: `Appear On`,
+          dataType: 'album',
+          data: appearsOn,
+          apiType: 'rapid',
+        })
       }
     }
     fetchData()
-  }, [profile])
+  }, [pathname])
 
   return (
     <div className={cx('wrapper')}>

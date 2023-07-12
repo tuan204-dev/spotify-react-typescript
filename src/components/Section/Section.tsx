@@ -72,22 +72,20 @@ const Section: React.FC<SectionProps> = ({
                   title={item?.name || item?.profile.name}
                   artists={item?.artists}
                   desc={
-                    (type === 'artist' && item?.releases?.items[0].type) ||
-                    (apiType === 'spotify' && item?.description)
+                    (apiType === 'spotify' && item?.description) ||
+                    (apiType === 'rapid' &&
+                      (item?.releases?.items[0].type ||
+                        item?.description ||
+                        item?.date?.year))
                   }
                   publisher={item?.publisher}
                   imageUrl={
-                    (type === 'artist' &&
-                      (item?.visuals?.avatarImage?.sources[0]?.url ||
-                        item?.releases?.items[0]?.coverArt?.sources[0]?.url ||
-                        (apiType === 'spotify' && item?.images[0]?.url) ||
-                        (apiType === 'rapid' &&
-                          (item?.images?.items[0]?.sources[0]?.url ||
-                            item?.visuals?.avatarImage?.sources[0]?.url)))) ||
                     (apiType === 'spotify' && item?.images[0]?.url) ||
                     (apiType === 'rapid' &&
                       (item?.images?.items[0]?.sources[0]?.url ||
-                        item?.visuals?.avatarImage?.sources[0]?.url))
+                        item?.coverArt?.sources[0]?.url ||
+                        item?.visuals?.avatarImage?.sources[0]?.url ||
+                        item?.releases?.items[0]?.coverArt?.sources[0]?.url))
                   }
                   dateAdd={item?.release_date}
                   author={
@@ -104,31 +102,32 @@ const Section: React.FC<SectionProps> = ({
                     isLoading={isLoading}
                     key={item.id || index}
                     id={
-                      (type === 'artist' &&
+                      (apiType === 'rapid' &&
                         (item.uri?.split(':')[item.uri.split.length] ||
                           item?.releases?.items[0].id)) ||
                       item?.id
                     }
                     title={
-                      (type === 'artist' &&
+                      (apiType === 'rapid' &&
                         (item?.profile?.name || item?.releases?.items[0].name)) ||
                       item?.name
                     }
                     artists={item?.artists}
                     desc={
-                      (type === 'artist' && item?.releases?.items[0].type) ||
-                      (apiType === 'spotify' && item?.description)
+                      (apiType === 'spotify' && item?.description) ||
+                      (apiType === 'rapid' &&
+                        (item?.releases?.items[0].type ||
+                          item?.description ||
+                          item?.date?.year))
                     }
                     publisher={item?.publisher}
                     imageUrl={
-                      (type === 'artist' &&
-                        (item?.visuals?.avatarImage?.sources[0]?.url ||
-                          item?.releases?.items[0]?.coverArt?.sources[0]?.url ||
-                          (apiType === 'spotify' && item?.images[0]?.url) ||
-                          (apiType === 'rapid' &&
-                            item?.images?.items[0]?.sources[0]?.url))) ||
                       (apiType === 'spotify' && item?.images[0]?.url) ||
-                      (apiType === 'rapid' && item?.images?.items[0]?.sources[0]?.url)
+                      (apiType === 'rapid' &&
+                        (item?.images?.items[0]?.sources[0]?.url ||
+                          item?.coverArt?.sources[0]?.url ||
+                          item?.visuals?.avatarImage?.sources[0]?.url ||
+                          item?.releases?.items[0]?.coverArt?.sources[0]?.url))
                     }
                     dateAdd={item?.release_date}
                     author={

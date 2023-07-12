@@ -1,11 +1,11 @@
+import searchApi from '@/APIs/searchApi'
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
 import classNames from 'classnames/bind'
-import React, { FC, useContext, useEffect, useState, memo } from 'react'
+import React, { FC, memo, useContext, useEffect, useState } from 'react'
+import Skeleton from 'react-loading-skeleton'
+import { ResponseSectionItem } from '../../../types'
 import SongItemTag from '../SongItemTag/SongItemTag'
 import styles from './Greeting.module.scss'
-import Skeleton from 'react-loading-skeleton'
-import { getAccessToken, searchData } from '@/utils/fetchData'
-import { ResponseSectionItem } from '../../../types'
 
 const cx = classNames.bind(styles)
 
@@ -29,10 +29,8 @@ const Greeting: FC<GreetingProps> = (props) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const token = await getAccessToken()
-      const data = await searchData({
+      const data = await searchApi({
         query: 'album',
-        accessToken: token,
         types: ['album'],
         limit: 50,
       })
