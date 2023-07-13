@@ -31,8 +31,6 @@ const searchApi = async (params: Partial<SearchArgs>) => {
     },
   })
 
-  console.log(data)
-
   return data
 }
 

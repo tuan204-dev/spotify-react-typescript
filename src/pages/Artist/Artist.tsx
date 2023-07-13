@@ -51,6 +51,7 @@ const Artist: React.FC = () => {
 
   const { height: bannerHeight } = useComponentSize(bannerRef)
 
+
   const handleScroll = (e: React.UIEvent<HTMLDivElement, UIEvent>): void => {
     const yAxis = e.currentTarget.scrollTop
     if (yAxis > bannerHeight / 2) {

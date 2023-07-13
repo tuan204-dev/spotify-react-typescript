@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import categoryApi from '@/APIs/categoryApi'
 import { HeartIcon } from '@/assets/icons'
 import { Footer, Header, Navbar, SongList } from '@/components'
