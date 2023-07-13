@@ -19,19 +19,19 @@ const ArtistList: React.FC<ArtistListProps> = (props) => {
   if (data) {
     if (data.length === 1) {
       renderData.push(
-        <Link key={0} to={`/playlist/${data[0].id}`}>
-          <span className={cx('playlist')}>{data[0].name}</span>
+        <Link key={0} to={`/playlist/${data[0]?.id}`}>
+          <span className={cx('playlist')}>{data[0]?.name}</span>
         </Link>
       )
     } else if (data?.length === 2) {
       renderData.push(
         <>
-          <Link key={0} to={`/playlist/${data[0].id}`}>
-            <span className={cx('playlist')}>{data[0].name}</span>
+          <Link key={0} to={`/playlist/${data[0]?.id}`}>
+            <span className={cx('playlist')}>{data[0]?.name}</span>
           </Link>
           {', '}
-          <Link key={1} to={`/playlist/${data[1].id}`}>
-            <span className={cx('playlist')}>{data[1].name}</span>
+          <Link key={1} to={`/playlist/${data[1]?.id}`}>
+            <span className={cx('playlist')}>{data[1]?.name}</span>
           </Link>
         </>
       )
@@ -39,8 +39,8 @@ const ArtistList: React.FC<ArtistListProps> = (props) => {
       for (let i = 0; i < data.length - 2; i++) {
         renderData.push(
           <Fragment key={i}>
-            <Link to={`/playlist/${data[i].id}`}>
-              <span className={cx('playlist')}>{data[0].name}</span>
+            <Link to={`/playlist/${data[i]?.id}`}>
+              <span className={cx('playlist')}>{data[0]?.name}</span>
             </Link>
             {', '}
           </Fragment>
@@ -48,9 +48,9 @@ const ArtistList: React.FC<ArtistListProps> = (props) => {
       }
       renderData.push(
         <Fragment key={data.length - 2}>
-          <Link to={`/playlist/${data[data.length - 2].id}`}>
+          <Link to={`/playlist/${data[data.length - 2]?.id}`}>
             <span className={cx('playlist')}>
-              {data[data.length - 2].name}
+              {data[data.length - 2]?.name}
             </span>
           </Link>
           {' and '}
@@ -58,11 +58,11 @@ const ArtistList: React.FC<ArtistListProps> = (props) => {
       )
       renderData.push(
         <Link
-          key={data.length - 1}
-          to={`/playlist/${data[data.length - 1].id}`}
+          key={data?.length - 1}
+          to={`/playlist/${data[data?.length - 1]?.id}`}
         >
           <span className={cx('playlist')}>
-            {data[data.length - 1].name}
+            {data[data?.length - 1]?.name}
           </span>
         </Link>
       )
@@ -72,7 +72,7 @@ const ArtistList: React.FC<ArtistListProps> = (props) => {
 
   return (
     <div className={cx('wrapper')}>
-      {(renderData.length && renderData) || data}
+      {(renderData?.length && renderData) || data}
       <div></div>
     </div>
   )

@@ -1,12 +1,12 @@
-import { FC, useEffect, useState, useContext } from 'react'
-import styles from './TopResult.module.scss'
-import classNames from 'classnames/bind'
 import { SongItem } from '@/components'
 import { SubTitle } from '@/components/UIs'
-import { TbPlayerPlayFilled } from 'react-icons/tb'
-import Skeleton from 'react-loading-skeleton'
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
+import classNames from 'classnames/bind'
+import { FC, useContext, useLayoutEffect, useState } from 'react'
+import { TbPlayerPlayFilled } from 'react-icons/tb'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
+import Skeleton from 'react-loading-skeleton'
+import styles from './TopResult.module.scss'
 
 const cx = classNames.bind(styles)
 
@@ -19,10 +19,10 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
   const [isLoading, setLoading] = useState<boolean>(true)
   const { width } = useContext(MainLayoutContext)
 
-  useEffect(() => {
-    if (topResult && songs) {
+  useLayoutEffect(() => {
+    if (topResult && songs && topResult?.album?.images[0]?.url) {
       setLoading(false)
-    }
+    } else setLoading(true)
   }, [topResult, songs])
 
 
@@ -35,7 +35,7 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
         <div className={cx('body')}>
           <div className={cx('thumb')}>
             {!isLoading ? (
-              <LazyLoadImage effect="blur" src={topResult?.album?.images[0].url} alt={topResult?.name} />
+              <LazyLoadImage effect="blur" src={topResult?.album?.images[0]?.url} alt={topResult?.name} />
             ) : (
               <Skeleton height="100%" width="100%" />
             )}

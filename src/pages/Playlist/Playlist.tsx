@@ -1,15 +1,16 @@
+/* eslint-disable react-refresh/only-export-components */
+import categoryApi from '@/APIs/categoryApi'
 import { HeartIcon } from '@/assets/icons'
 import { Footer, Header, Navbar, SongList } from '@/components'
 import { PlayButton } from '@/components/UIs'
 import { useComponentSize, useRaiseColorTone } from '@/hooks'
 import useDominantColor from '@/hooks/useDominantColor'
-import { fetchSpotifyData, getAccessToken } from '@/utils/fetchData'
 import classNames from 'classnames/bind'
-import React, { memo, useEffect, useState, useRef } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import styles from './Playlist.module.scss'
-import { useDocumentTitle } from 'usehooks-ts'
+import React, { memo, useEffect, useRef, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useDocumentTitle } from 'usehooks-ts'
+import styles from './Playlist.module.scss'
 
 const cx = classNames.bind(styles)
 
@@ -36,10 +37,8 @@ const Playlist: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const token = await getAccessToken()
-      const data = await fetchSpotifyData({
+      const data = await categoryApi({
         type: 'playlists',
-        accessToken: token,
         id: id,
       })
       if (data?.error) {

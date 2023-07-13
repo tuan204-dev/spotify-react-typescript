@@ -1,16 +1,16 @@
+import categoryApi from '@/APIs/categoryApi'
 import { HeartIcon } from '@/assets/icons'
 import { Footer, Header, Navbar, SongList } from '@/components'
 import { PlayButton } from '@/components/UIs'
 import { useComponentSize, useRaiseColorTone } from '@/hooks'
 import useDominantColor from '@/hooks/useDominantColor'
 import { dateFormatConvertor } from '@/utils'
-import { fetchSpotifyData, getAccessToken } from '@/utils/fetchData'
 import classNames from 'classnames/bind'
 import React, { useEffect, useRef, useState } from 'react'
+import { useInView } from 'react-intersection-observer'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDocumentTitle } from 'usehooks-ts'
 import styles from './Album.module.scss'
-import { useInView } from 'react-intersection-observer'
 
 const cx = classNames.bind(styles)
 
@@ -36,9 +36,7 @@ const Album: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const token = await getAccessToken()
-      const data = await fetchSpotifyData({
-        accessToken: token,
+      const data = await categoryApi({
         type: 'albums',
         id: id,
       })

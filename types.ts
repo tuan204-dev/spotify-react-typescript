@@ -204,6 +204,45 @@ export interface RequestArg {
 }
 
 // ----------------------------------------------------
+
+interface ImageSource {
+  url: string;
+  width: number;
+  height: number;
+}
+
+interface ColorRaw {
+  hex: string;
+}
+
+interface ExtractedColors {
+  colorRaw: ColorRaw;
+}
+
+interface GalleryItem {
+  sources: ImageSource[];
+}
+
+interface Gallery {
+  items: GalleryItem[];
+}
+
+interface AvatarImage {
+  sources: ImageSource[];
+  extractedColors: ExtractedColors;
+}
+
+interface HeaderImage {
+  sources: ImageSource[];
+  extractedColors: ExtractedColors;
+}
+
+interface Visuals {
+  avatarImage: AvatarImage
+  gallery: Gallery
+  headerImage: HeaderImage
+}
+
 export interface ArtistData {
   name: string
   id: string
@@ -286,7 +325,6 @@ export type LibSelection = {
   id: string
   type: 'playlist' | 'album' | 'artist'
   active: boolean
-  data: any
 }
 
 export interface ResponseLibItem {
@@ -316,9 +354,11 @@ export interface ResponseSectionItem {
   }
   release_date?: string
   uri?: string
-  visuals?: any
+  visuals?: Visuals
   profile?: any
   releases?: any
+  coverArt?: any
+  date?: any
 }
 
 export interface SongItemProps {

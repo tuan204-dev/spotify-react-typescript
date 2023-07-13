@@ -1,5 +1,5 @@
-import { getAccessToken, searchData } from '@/utils/fetchData'
-import { ReactNode, FC, createContext, useState, useEffect } from 'react'
+import searchApi from '@/APIs/searchApi'
+import { FC, ReactNode, createContext, useEffect, useState } from 'react'
 interface SearchProviderProps {
   children: ReactNode
 }
@@ -18,16 +18,15 @@ export const SearchProvider: FC<SearchProviderProps> = ({ children }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const token = await getAccessToken()
-      const data = await searchData({
+      const data = await searchApi({
         query: query,
-        accessToken: token,
         market: 'VN',
       })
 
       setData({ ...data })
     }
     if (query) {
+      setData(null)
       fetchData()
     } else {
       setData(null)

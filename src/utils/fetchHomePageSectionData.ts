@@ -1,16 +1,10 @@
-
+import browserApi from '@/APIs/browserApi'
+import searchApi from '@/APIs/searchApi'
 import { SectionProps } from '../../types'
-import {
-  getAccessToken,
-  getFeaturedPlaylists,
-  getNewReleases,
-  searchData,
-} from './fetchData'
 
 interface PropsType {
   type: 'newRelease' | 'featuredPlaylists' | 'topMixes' | 'suggestedArtists'
-  setData:
-    | React.Dispatch<React.SetStateAction<SectionProps | undefined>>
+  setData: React.Dispatch<React.SetStateAction<SectionProps | undefined>>
   limit?: number
 }
 
@@ -26,15 +20,14 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
           href: '/section/newReleases',
           dataType: 'album',
           data: JSON.parse(data),
-          apiType: 'spotify'
+          apiType: 'spotify',
         })
       } else {
         const fetchData = async () => {
-          const token = await getAccessToken()
-          const responseData = await getNewReleases({
-            accessToken: token,
-            limit: 10,
+          const responseData = await browserApi({
+            limit: 9,
             country: 'VN',
+            type: 'new-releases',
           })
           localStorage.setItem('newReleasesData', JSON.stringify(responseData))
           setData!({
@@ -42,7 +35,7 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
             href: '/section/newReleases',
             dataType: 'album',
             data: responseData,
-            apiType: 'spotify'
+            apiType: 'spotify',
           })
         }
         fetchData()
@@ -58,15 +51,14 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
           href: '/section/featurePlaylist',
           dataType: 'playlist',
           data: JSON.parse(data),
-          apiType: 'spotify'
+          apiType: 'spotify',
         })
       } else {
         const fetchData = async () => {
-          const token = await getAccessToken()
-          const responseData = await getFeaturedPlaylists({
-            accessToken: token,
+          const responseData = await browserApi({
             limit: 10,
             country: 'VN',
+            type: 'featured-playlists',
           })
           localStorage.setItem('featuredPlaylists', JSON.stringify(responseData))
           setData!({
@@ -74,7 +66,7 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
             href: '/section/featurePlaylist',
             dataType: 'playlist',
             data: responseData,
-            apiType: 'spotify'
+            apiType: 'spotify',
           })
         }
         fetchData()
@@ -90,14 +82,12 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
           href: '/section/topMixes',
           dataType: 'playlist',
           data: JSON.parse(data),
-          apiType: 'spotify'
+          apiType: 'spotify',
         })
       } else {
         const fetchData = async () => {
-          const token = await getAccessToken()
-          const responseData = await searchData({
-            accessToken: token,
-            query: 'top mixes',
+          const responseData = await searchApi({
+            query: 'chill mix lofi',
             types: ['playlist'],
             limit: limit,
           })
@@ -107,7 +97,7 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
             href: '/section/topMixes',
             dataType: 'playlist',
             data: responseData?.playlists.items,
-            apiType: 'spotify'
+            apiType: 'spotify',
           })
         }
         fetchData()
@@ -123,13 +113,11 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
           href: '/section/suggestedArtists',
           dataType: 'artist',
           data: JSON.parse(data),
-          apiType: 'spotify'
+          apiType: 'spotify',
         })
       } else {
         const fetchData = async () => {
-          const token = await getAccessToken()
-          const responseData = await searchData({
-            accessToken: token,
+          const responseData = await searchApi({
             query: 'artist',
             types: ['artist'],
             limit: limit,
@@ -149,7 +137,7 @@ const fetchHomePageSectionData = (args: Partial<PropsType>) => {
             data: responseData?.artists.items
               .sort((a: any, b: any) => -a.popularity + b.popularity)
               .filter((artist: any) => artist.images.length !== 0),
-            apiType: 'spotify'
+            apiType: 'spotify',
           })
         }
         fetchData()

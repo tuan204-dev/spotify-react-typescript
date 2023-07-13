@@ -37,6 +37,7 @@ const Artist: React.FC = () => {
     featuring,
     relatedArtists,
     discoveredOn,
+    appearsOn,
     aboutImg,
     visuals,
   } = useContext(ArtistContext)
@@ -49,6 +50,7 @@ const Artist: React.FC = () => {
   })
 
   const { height: bannerHeight } = useComponentSize(bannerRef)
+
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement, UIEvent>): void => {
     const yAxis = e.currentTarget.scrollTop
@@ -158,6 +160,16 @@ const Artist: React.FC = () => {
               href="related"
             />
           )}
+          {appearsOn?.length !== 0 && (
+            <Section
+              apiType="rapid"
+              title="Appears On"
+              data={appearsOn}
+              dataType="album"
+              isClickable={true}
+              href="appears-on"
+            />
+          )}
           {playlists?.length !== 0 && (
             <Section
               apiType="rapid"
@@ -188,6 +200,7 @@ const Artist: React.FC = () => {
               aboutImg={aboutImg}
             />
           )}
+
           <Footer />
         </div>
       </div>
