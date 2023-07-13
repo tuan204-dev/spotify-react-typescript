@@ -43,6 +43,7 @@ const Artist: React.FC = () => {
   } = useContext(ArtistContext)
   useDocumentTitle(`${profile?.name ? profile?.name : 'Artist'} | Spotify`)
 
+
   const bannerRef = useRef<any>()
 
   const { ref: pivotTrackingRef, inView: isTracking } = useInView({
@@ -50,7 +51,6 @@ const Artist: React.FC = () => {
   })
 
   const { height: bannerHeight } = useComponentSize(bannerRef)
-
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement, UIEvent>): void => {
     const yAxis = e.currentTarget.scrollTop

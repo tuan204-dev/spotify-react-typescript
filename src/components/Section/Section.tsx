@@ -23,55 +23,13 @@ const Section: React.FC<SectionProps> = ({
 }) => {
   const [isLoading, setLoading] = useState<boolean>(true)
   const { quantityCol, width } = useContext(MainLayoutContext)
-  const [sectionProps, setSectionProps] = useState<any>()
 
   const columnWidth = (width - 2 * 24 - (quantityCol - 1) * 24) / quantityCol
 
-  // const sectionProps = useMemo(
-  //   () =>
-  //     data?.map((item, index) => {
-  //       return {
-  //         type: type,
-  //         dataType: dataType,
-  //         key: item.id || index,
-  //         id:
-  //           (apiType === 'rapid' &&
-  //             (item.uri?.split(':')[item.uri.split.length] ||
-  //               item?.releases?.items[0].id)) ||
-  //           item?.id,
-  //         title:
-  //           (apiType === 'rapid' &&
-  //             (item?.profile?.name || item?.releases?.items[0].name)) ||
-  //           item?.name,
-  //         artists: item?.artists,
-  //         desc:
-  //           (apiType === 'spotify' && item?.description) ||
-  //           (apiType === 'rapid' &&
-  //             (item?.releases?.items[0].type || item?.description || item?.date?.year)),
-  //         publisher: item?.publisher,
-  //         imageUrl:
-  //           (apiType === 'spotify' && item?.images[0]?.url) ||
-  //           (apiType === 'rapid' &&
-  //             (item?.images?.items[0]?.sources[0]?.url ||
-  //               item?.coverArt?.sources[0]?.url ||
-  //               item?.visuals?.avatarImage?.sources[0]?.url ||
-  //               item?.releases?.items[0]?.coverArt?.sources[0]?.url)),
-  //         dateAdd: item?.release_date,
-  //         author:
-  //           (item?.artists && item?.artists[0]?.name) ||
-  //           (item?.owner && item?.owner.display_name),
-  //       }
-  //     }),
-  //   [data]
-  // )
-
-  useEffect(() => {
-    setSectionProps(() =>
-      data?.map((item, index) => {
+  const sectionProps = useMemo(() => {
+    if (data) {
+      return data?.map((item) => {
         return {
-          type: type,
-          dataType: dataType,
-          key: item.id || index,
           id:
             (apiType === 'rapid' &&
               (item.uri?.split(':')[item.uri.split.length] ||
@@ -100,7 +58,7 @@ const Section: React.FC<SectionProps> = ({
             (item?.owner && item?.owner.display_name),
         }
       })
-    )
+    }
   }, [data])
 
   useEffect(() => {
@@ -150,12 +108,12 @@ const Section: React.FC<SectionProps> = ({
                 0,
                 isFull ? sectionProps.length : Math.min(quantityCol, sectionProps.length)
               )
-              .map((item: any) => (
+              .map((item, index) => (
                 <SectionItem
                   type={type}
                   dataType={dataType}
                   isLoading={isLoading}
-                  key={item.key}
+                  key={item.id || index}
                   id={item.id}
                   title={item.title}
                   artists={item.artists}
