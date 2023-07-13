@@ -13,7 +13,7 @@ const cx = classNames.bind(styles)
 
 const RootLayout: FC = () => {
   return (
-    <main className={cx('root-layout')}>
+    <main className={cx('root-layout')} style={{ display: 'flex' }}>
       <SearchProvider>
         <ArtistProvider>
           <SkeletonTheme baseColor="#333" highlightColor="hsla(0,0%,100%,.1)">

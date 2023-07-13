@@ -37,6 +37,7 @@
   aspect-ratio: 1 / 1;
   overflow: hidden;
   border-radius: 50%;
+  box-shadow: 0 4px 60px rgba(0, 0, 0, .5);
 
   img {
     height: 100%;
@@ -80,8 +81,9 @@
 
   .name {
     font-size: 96px;
-    margin: 0 0 16px;
+    margin: 28px 0 22px;
     letter-spacing: -2px;
+    line-height: 1.2;
     @include text-line-clamp(2);
   }
 
@@ -92,5 +94,5 @@
 }
 
 .no-header-img {
-  height: clamp(340px,30vh,400px) !important;
+  height: clamp(340px, 30vh, 400px) !important;
 }
