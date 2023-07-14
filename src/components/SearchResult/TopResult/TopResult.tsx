@@ -3,7 +3,6 @@ import { Image, PlayButton, SubTitle } from '@/components/UIs'
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
 import classNames from 'classnames/bind'
 import { FC, useContext, useLayoutEffect, useState } from 'react'
-import { TbPlayerPlayFilled } from 'react-icons/tb'
 import Skeleton from 'react-loading-skeleton'
 import styles from './TopResult.module.scss'
 
@@ -33,7 +32,6 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
         <div className={cx('body')}>
           <div className={cx('thumb')}>
             {!isLoading ? (
-              // <LazyLoadImage effect="blur" src={topResult?.album?.images[0]?.url} alt={topResult?.name} />
               <Image src={topResult?.album?.images[0]?.url} alt={topResult?.name} />
             ) : (
               <Skeleton height="100%" width="100%" />

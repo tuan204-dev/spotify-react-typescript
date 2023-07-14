@@ -50,7 +50,6 @@ const SongItem: React.FC<SongItemProps> = ({
         {type !== 'album' && (
           <div className={cx('thumb')}>
             {!isLoading ? (
-              // <LazyLoadImage effect="blur" src={thumb} alt={songName} />
               <Image src={thumb} alt={songName} />
             ) : (
               <Skeleton height={'100%'} />

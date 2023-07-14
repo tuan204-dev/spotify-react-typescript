@@ -34,7 +34,6 @@ const SectionItem: React.FC<SectionItemI> = ({
           {!isLoading ? (
             dataType === 'artist' ? (
               imageUrl ? (
-                // <LazyLoadImage effect="blur" src={imageUrl} alt={title || name} />
                 <Image src={imageUrl} alt={title || name} />
               ) : (
                 <div className={cx('user-img-default')}>
@@ -42,7 +41,6 @@ const SectionItem: React.FC<SectionItemI> = ({
                 </div>
               )
             ) : (
-              // <LazyLoadImage effect="blur" src={imageUrl} alt={title || name} />
               <Image src={imageUrl} alt={title || name} />
             )
           ) : (

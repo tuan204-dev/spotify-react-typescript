@@ -13,7 +13,7 @@ const ImageLazy: FC<ImageLazyProps> = (props) => {
   const [mounted, setMounted] = useState<boolean>(false)
   const { src = '', alt = '' } = props
 
-  const { ref, inView } = useInView({ threshold: 0 })
+  const { ref, inView } = useInView({ threshold: 0, triggerOnce: true })
 
   useEffect(() => {
     if (inView && !mounted) {

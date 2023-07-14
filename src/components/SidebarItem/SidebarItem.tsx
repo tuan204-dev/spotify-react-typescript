@@ -1,8 +1,7 @@
 import classNames from 'classnames/bind'
 import { FC } from 'react'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { Link } from 'react-router-dom'
-import { SubTitle } from '../UIs'
+import { Image, SubTitle } from '../UIs'
 import styles from './SidebarItem.module.scss'
 
 const cx = classNames.bind(styles)
@@ -28,12 +27,9 @@ const SidebarItem: FC<SidebarItemProps> = (props) => {
   return (
     <Link to={`/${type}/${id}`}>
       <div className={cx('sidebar-item')}>
-        <LazyLoadImage
-          effect="blur"
-          src={thumbnail}
-          className={cx('thumbnail')}
-          alt={name}
-        />
+        <div className={cx('thumbnail')}>
+          <Image src={thumbnail} alt={name} />
+        </div>
         <div className={cx('body')}>
           <h4 className={cx('heading')}>{name}</h4>
           <span className={cx('type')}>{newType}</span>

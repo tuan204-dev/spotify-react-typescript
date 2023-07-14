@@ -3,14 +3,15 @@
 
 .sidebar-item {
   height: 64px;
-  display: flex;
   padding: 8px;
   align-items: inherit;
-  background-color: transparent;
   gap: $panel-gap;
   border-radius: 6px;
   transition: all .1s ease;
   cursor: pointer;
+  display: grid;
+  grid-template-columns: 48px auto;
+
 
   &:hover {
     background-color: $bg-highlight;
@@ -21,6 +22,7 @@
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 4px;
+    overflow: hidden;
   }
 
   .body {

@@ -29,7 +29,6 @@ const Header: React.FC<HeaderProps> = ({
       <div className={cx('body')}>
         <div className={cx('img')}>
           {!isLoading ? (
-            // <LazyLoadImage effect="blur" src={thumbnail} alt={title} />
             <Image src={thumbnail} alt={title} />
           ) : (
             <Skeleton height={'100%'} />
