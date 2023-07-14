@@ -77,6 +77,7 @@ const Navbar: FC<NavbarProps> = (props) => {
                 ref={queryRef}
                 placeholder="What do you want to listen to?"
                 onChange={(e) => setQuery!(e.target.value)}
+                spellCheck={false}
                 value={query}
               />
             </form>

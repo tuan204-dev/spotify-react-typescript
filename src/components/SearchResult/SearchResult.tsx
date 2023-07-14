@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SearchContext } from '@/contexts/SearchContext'
 import classNames from 'classnames/bind'
-import { FC, useContext, useMemo, useState } from 'react'
+import { FC, useContext, useEffect, useState } from 'react'
 import { Section } from '..'
 import SongList from '../SongList/SongList'
 import SearchNotFound from './SearchNotFound/SearchNotFound'
@@ -9,18 +10,56 @@ import TopResult from './TopResult/TopResult'
 
 const cx = classNames.bind(styles)
 
-interface SearchResultProps {
-  query?: string
-}
-
-const SearchResult: FC<SearchResultProps> = ({ query }) => {
-  // const [data, setData] = useState<any>()
+const SearchResult: FC = () => {
+  const { data, query } = useContext(SearchContext)
   const [category, setCategory] = useState<string>('all')
+  const [searchSelections, setSearchSelections] = useState<any>([
+    {
+      key: 'all',
+      active: category === 'all',
+      display: 'All',
+      isExist: true,
+    },
+    {
+      key: 'albums',
+      active: category === 'albums',
+      display: 'Albums',
+      isExist: Boolean(data?.albums?.total),
+    },
+    {
+      key: 'artists',
+      active: category === 'artists',
+      display: 'Artists',
+      isExist: Boolean(data?.artists?.total),
+    },
+    {
+      key: 'tracks',
+      active: category === 'tracks',
+      display: 'Songs',
+      isExist: Boolean(data?.tracks?.total),
+    },
+    {
+      key: 'playlists',
+      active: category === 'playlists',
+      display: 'Playlists',
+      isExist: Boolean(data?.playlists?.total),
+    },
+    {
+      key: 'shows',
+      active: category === 'shows',
+      display: 'Podcasts & Shows',
+      isExist: Boolean(data?.shows?.total),
+    },
+    {
+      key: 'episodes',
+      active: category === 'episodes',
+      display: 'Episodes',
+      isExist: Boolean(data?.episodes?.total),
+    },
+  ])
 
-  const { data } = useContext(SearchContext)
-
-  const searchSelections = useMemo(
-    () => [
+  useEffect(() => {
+    setSearchSelections([
       {
         key: 'all',
         active: category === 'all',
@@ -63,9 +102,8 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
         display: 'Episodes',
         isExist: Boolean(data?.episodes?.total),
       },
-    ],
-    [category, data]
-  )
+    ])
+  }, [category, data])
 
   if (
     data?.albums.items.filter((item: any) => item).length === 0 &&
@@ -82,8 +120,8 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
     <div className={cx('wrapper')}>
       <div className={cx('search__kind')}>
         {searchSelections
-          .filter((item) => item.isExist)
-          .map((item) => (
+          .filter((item: any) => item.isExist)
+          .map((item: any) => (
             <button
               name="search category"
               key={item.key}
@@ -97,19 +135,19 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
       <div>
         {category !== 'all' ? (
           searchSelections
-            .filter((item) => item.active)
-            .map((item) => {
+            .filter((item: any) => item.active)
+            .map((item: any, index: number) => {
               if (item.key !== 'tracks') {
                 return (
-                  <div style={{ marginTop: '-64px' }}>
+                  <div style={{ marginTop: '-64px' }} key={index}>
                     <Section
                       apiType="spotify"
                       key={item.key}
                       dataType={item.key.slice(0, -1)}
                       isFull
-                      data={data[item.key].items
-                        .filter((item: any) => item)
-                        .sort((a: any, b: any) => -a.popularity + b.popularity)}
+                      data={data[item.key]?.items
+                        ?.filter((item: any) => item)
+                        ?.sort((a: any, b: any) => -a.popularity + b.popularity)}
                     />
                   </div>
                 )
