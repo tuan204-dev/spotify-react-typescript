@@ -5,7 +5,7 @@ import React, { useRef } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import { Link } from 'react-router-dom'
 import { SongItemTagProps } from '../../../types'
-import { PlayButton } from '../UIs'
+import { Image, PlayButton } from '../UIs'
 import styles from './SongItemTag.module.scss'
 
 const cx = classNames.bind(styles)
@@ -32,7 +32,8 @@ const SongItemTag: React.FC<SongItemTagProps> = (props) => {
       >
         <div className={cx('thumbnail')} ref={imgRef}>
           {!isLoading ? (
-            <img src={thumbnailUrl} alt={name} />
+            // <img src={thumbnailUrl} alt={name} />
+            <Image src={thumbnailUrl} alt={name} />
           ) : (
             <Skeleton height={'100%'} />
           )}

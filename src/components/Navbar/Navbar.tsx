@@ -57,11 +57,12 @@ const Navbar: FC<NavbarProps> = (props) => {
       ></div>
       <div className={cx('nav-control')}>
         <div className={cx('nav-control-button')}>
-          <button disabled={key === 'default'} onClick={() => navigate(-1)}>
+          <button name="back" disabled={key === 'default'} onClick={() => navigate(-1)}>
             <IoIosArrowBack />
           </button>
           <button
             // disabled={Boolean(location.next)}
+            name="forward"
             onClick={() => navigate(1)}
           >
             <IoIosArrowForward />
@@ -85,6 +86,7 @@ const Navbar: FC<NavbarProps> = (props) => {
             </div>
             {query && (
               <button
+                name="clear query"
                 className={cx({ icon: true, 'clear-btn': true })}
                 onClick={() => setQuery!('')}
               >
@@ -108,7 +110,7 @@ const Navbar: FC<NavbarProps> = (props) => {
         )}
       </div>
       <div className={cx('user')}>
-        <button>
+        <button name="user account">
           <FaUser />
         </button>
       </div>

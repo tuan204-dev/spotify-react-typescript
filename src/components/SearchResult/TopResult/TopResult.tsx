@@ -1,10 +1,9 @@
 import { SongItem } from '@/components'
-import { SubTitle } from '@/components/UIs'
+import { Image, PlayButton, SubTitle } from '@/components/UIs'
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
 import classNames from 'classnames/bind'
 import { FC, useContext, useLayoutEffect, useState } from 'react'
 import { TbPlayerPlayFilled } from 'react-icons/tb'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
 import Skeleton from 'react-loading-skeleton'
 import styles from './TopResult.module.scss'
 
@@ -25,7 +24,6 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
     } else setLoading(true)
   }, [topResult, songs])
 
-
   return (
     <div className={cx({ wrapper: true, responsive: width <= 1000 })}>
       <div className={cx('left')}>
@@ -35,7 +33,8 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
         <div className={cx('body')}>
           <div className={cx('thumb')}>
             {!isLoading ? (
-              <LazyLoadImage effect="blur" src={topResult?.album?.images[0]?.url} alt={topResult?.name} />
+              // <LazyLoadImage effect="blur" src={topResult?.album?.images[0]?.url} alt={topResult?.name} />
+              <Image src={topResult?.album?.images[0]?.url} alt={topResult?.name} />
             ) : (
               <Skeleton height="100%" width="100%" />
             )}
@@ -60,13 +59,14 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
           </div>
           <div className={cx('btn-pivot')}>
             {!isLoading && (
-              <button
-                className={cx({
-                  'play-btn': true,
-                })}
-              >
-                <TbPlayerPlayFilled className={cx('play-btn-child')} />
-              </button>
+              <div className={cx('play-btn')}>
+                <PlayButton
+                  size={50}
+                  scaleHovering={1.02}
+                  transitionDuration={33}
+                  fontSize={24}
+                />
+              </div>
             )}
           </div>
         </div>
@@ -88,15 +88,20 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
                     thumb={item.album.images[item.album.images.length - 1].url}
                     duration={item.duration_ms}
                     order={index + 1}
-                    albumData={{name: item.album.name}}
+                    albumData={{ name: item.album.name }}
                     isExplicit={item.explicit}
-                    type='search'
+                    type="search"
                   />
                 ))
             : Array(4)
                 .fill(0)
                 .map((item, index) => (
-                  <SongItem isLoading={isLoading} type='search' key={index} order={item} />
+                  <SongItem
+                    isLoading={isLoading}
+                    type="search"
+                    key={index}
+                    order={item}
+                  />
                 ))}
         </div>
       </div>

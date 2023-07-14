@@ -1,9 +1,9 @@
 import classNames from 'classnames/bind'
 import { FC } from 'react'
-import styles from './SidebarItem.module.scss'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { Link } from 'react-router-dom'
 import { SubTitle } from '../UIs'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
+import styles from './SidebarItem.module.scss'
 
 const cx = classNames.bind(styles)
 
@@ -17,23 +17,26 @@ interface SidebarItemProps {
 }
 
 const SidebarItem: FC<SidebarItemProps> = (props) => {
-  const {type, thumbnail, name, author, id, artists} = props
+  const { type, thumbnail, name, author, id, artists } = props
 
   const newType = (() => {
-    if(type === 'playlist') return author
-    if(type === 'artist') return 'Artist'
-    if(type === 'album' && artists) return <SubTitle data={artists}/>
+    if (type === 'playlist') return author
+    if (type === 'artist') return 'Artist'
+    if (type === 'album' && artists) return <SubTitle data={artists} />
   })()
 
   return (
     <Link to={`/${type}/${id}`}>
       <div className={cx('sidebar-item')}>
-        <LazyLoadImage effect="blur" src={thumbnail} className={cx('thumbnail')} alt={name}/>
+        <LazyLoadImage
+          effect="blur"
+          src={thumbnail}
+          className={cx('thumbnail')}
+          alt={name}
+        />
         <div className={cx('body')}>
           <h4 className={cx('heading')}>{name}</h4>
-          <span className={cx('type')}>
-            {newType}
-          </span>
+          <span className={cx('type')}>{newType}</span>
         </div>
       </div>
     </Link>

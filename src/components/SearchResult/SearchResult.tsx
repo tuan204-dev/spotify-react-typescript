@@ -85,6 +85,7 @@ const SearchResult: FC<SearchResultProps> = ({ query }) => {
           .filter((item) => item.isExist)
           .map((item) => (
             <button
+              name="search category"
               key={item.key}
               className={cx({ btn: true, active: item.active })}
               onClick={() => setCategory(item.key)}

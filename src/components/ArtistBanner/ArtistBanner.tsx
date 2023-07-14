@@ -2,6 +2,7 @@ import { Verified } from '@/assets/icons'
 import classNames from 'classnames/bind'
 import { FC } from 'react'
 import styles from './ArtistBanner.module.scss'
+import { Image } from '../UIs'
 
 const cx = classNames.bind(styles)
 
@@ -35,7 +36,8 @@ const ArtistBanner: FC<ArtistBannerProps> = (props) => {
         <div className={cx('main')}>
           {!inclHeaderImg && (
             <div className={cx('avatar')}>
-              <img src={avatar} alt="avt" />
+              {/* <img src={avatar} alt="avt" /> */}
+              <Image src={avatar} alt="avt" />
             </div>
           )}
           <div className={cx('info')}>

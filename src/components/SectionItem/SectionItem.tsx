@@ -2,12 +2,11 @@ import { UserImgDefault } from '@/assets/icons'
 import { dateFormatConvertor } from '@/utils'
 import classNames from 'classnames/bind'
 import React, { memo } from 'react'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { Link } from 'react-router-dom'
 import { SectionItemI } from '../../../types'
-import { SubTitle, PlayButton } from '../UIs'
+import { Image, PlayButton, SubTitle } from '../UIs'
 import styles from './SectionItem.module.scss'
 
 const cx = classNames.bind(styles)
@@ -24,7 +23,7 @@ const SectionItem: React.FC<SectionItemI> = ({
   isLoading,
   publisher,
   dateAdd,
-  type
+  type,
 }) => {
   // if(!imageUrl) return
 
@@ -35,14 +34,16 @@ const SectionItem: React.FC<SectionItemI> = ({
           {!isLoading ? (
             dataType === 'artist' ? (
               imageUrl ? (
-                <LazyLoadImage effect="blur" src={imageUrl} alt={title || name} />
+                // <LazyLoadImage effect="blur" src={imageUrl} alt={title || name} />
+                <Image src={imageUrl} alt={title || name} />
               ) : (
                 <div className={cx('user-img-default')}>
                   <UserImgDefault />
                 </div>
               )
             ) : (
-              <LazyLoadImage effect="blur" src={imageUrl} alt={title || name} />
+              // <LazyLoadImage effect="blur" src={imageUrl} alt={title || name} />
+              <Image src={imageUrl} alt={title || name} />
             )
           ) : (
             <Skeleton height={'100%'} />

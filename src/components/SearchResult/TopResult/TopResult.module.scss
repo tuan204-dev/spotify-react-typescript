@@ -78,20 +78,14 @@
 
     .btn-pivot {
       position: absolute;
-      bottom: 18px;
-      right: 18px;
+      bottom: 70px;
+      right: 70px;
 
       .play-btn {
-        @include button-icon(50px, $primary, $primary);
-        font-size: 24px;
-        box-shadow: 0 8px 8px rgba(0, 0, 0, .3);
+        position: absolute;
         opacity: 0;
         transform: translateY(8px);
-        transition: transform .3s ease scale .05s ease;
-
-        &:hover {
-          scale: 1.04;
-        }
+        transition: all .3s ease;
       }
     }
 

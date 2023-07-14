@@ -37,7 +37,6 @@ const Discography: FC<DiscographyProps> = ({ data }) => {
     [category, data]
   )
 
-
   return (
     <div className={cx('wrapper')}>
       <div className={cx('title')}>
@@ -48,6 +47,7 @@ const Discography: FC<DiscographyProps> = ({ data }) => {
           .filter((item) => item.isExist)
           .map((item) => (
             <button
+              name="category"
               key={item.key}
               className={cx({ btn: true, active: item.active })}
               onClick={() => setCategory(item.key)}

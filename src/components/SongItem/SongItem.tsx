@@ -1,14 +1,13 @@
+import { PlayIcon } from '@/assets/icons'
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
 import { dateFormatConvertor } from '@/utils'
+import durationConvertor from '@/utils/durationConvertor'
 import classNames from 'classnames/bind'
 import React, { memo, useContext } from 'react'
 import Skeleton from 'react-loading-skeleton'
-import { SubTitle } from '../UIs'
-import styles from './SongItem.module.scss'
-import { PlayIcon } from '@/assets/icons'
 import { SongItemProps } from '../../../types'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
-import durationConvertor from '@/utils/durationConvertor'
+import { Image, SubTitle } from '../UIs'
+import styles from './SongItem.module.scss'
 
 const cx = classNames.bind(styles)
 
@@ -51,7 +50,8 @@ const SongItem: React.FC<SongItemProps> = ({
         {type !== 'album' && (
           <div className={cx('thumb')}>
             {!isLoading ? (
-              <LazyLoadImage effect="blur" src={thumb} alt={songName} />
+              // <LazyLoadImage effect="blur" src={thumb} alt={songName} />
+              <Image src={thumb} alt={songName} />
             ) : (
               <Skeleton height={'100%'} />
             )}
@@ -79,9 +79,7 @@ const SongItem: React.FC<SongItemProps> = ({
       {type !== 'album' && type !== 'search' && (
         <>
           <div className={cx('album')}>
-            {!isLoading && (
-              <SubTitle type="album" data={[{ ...albumData }]} />
-            )}
+            {!isLoading && <SubTitle type="album" data={[{ ...albumData }]} />}
           </div>
           {width > 780 && (
             <div className={cx('date-add')}>

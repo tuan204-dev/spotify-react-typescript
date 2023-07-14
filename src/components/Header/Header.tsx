@@ -4,10 +4,9 @@ import classNames from 'classnames/bind'
 import React, { memo } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import { ArtistList } from '..'
-import styles from './Header.module.scss'
-import { SubTitle } from '../UIs'
 import { HeaderProps } from '../../../types'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
+import { Image, SubTitle } from '../UIs'
+import styles from './Header.module.scss'
 
 const cx = classNames.bind(styles)
 
@@ -30,7 +29,8 @@ const Header: React.FC<HeaderProps> = ({
       <div className={cx('body')}>
         <div className={cx('img')}>
           {!isLoading ? (
-            <LazyLoadImage effect="blur" src={thumbnail} alt={title} />
+            // <LazyLoadImage effect="blur" src={thumbnail} alt={title} />
+            <Image src={thumbnail} alt={title} />
           ) : (
             <Skeleton height={'100%'} />
           )}
