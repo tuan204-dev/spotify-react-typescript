@@ -1,5 +1,6 @@
 import { useEffect, lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
+import LoadingLayout from './layouts/LoadingLayout/LoadingLayout'
 const RootLayout = lazy(() => import('./layouts/RootLayout/RootLayout'))
 const Home = lazy(() => import('@/pages/Home/Home'))
 const Playlist = lazy(() => import('@/pages/Playlist/Playlist'))
@@ -19,7 +20,7 @@ const App = () => {
   }, [])
 
   return (
-    <Suspense fallback={<RootLayout />}>
+    <Suspense fallback={<LoadingLayout />}>
       <Routes>
         <Route path="/" element={<RootLayout />}>
           <Route index element={<Home />} />

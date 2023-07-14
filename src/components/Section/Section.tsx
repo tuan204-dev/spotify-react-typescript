@@ -28,7 +28,7 @@ const Section: React.FC<SectionProps> = ({
 
   const sectionProps = useMemo(() => {
     if (data) {
-      return data?.map((item) => {
+      return data.map((item) => {
         return {
           id:
             (apiType === 'rapid' &&
@@ -55,7 +55,7 @@ const Section: React.FC<SectionProps> = ({
           dateAdd: item?.release_date,
           author:
             (item?.artists && item?.artists[0]?.name) ||
-            (item?.owner && item?.owner.display_name),
+            (item?.owner && item?.owner?.display_name),
         }
       })
     }

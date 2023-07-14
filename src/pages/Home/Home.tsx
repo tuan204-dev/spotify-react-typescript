@@ -1,36 +1,24 @@
 import { Footer, Greeting, Navbar, Section } from '@/components'
+import { HomePageContext } from '@/contexts/HomePageContext'
 import classNames from 'classnames/bind'
-import { useEffect, useState } from 'react'
-import { SectionProps } from '../../../types'
-import styles from './Home.module.scss'
-import { fetchHomePageSectionData } from '@/utils'
-import { useDocumentTitle } from 'usehooks-ts'
+import { useContext, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
+import { useDocumentTitle } from 'usehooks-ts'
+import styles from './Home.module.scss'
 
 const cx = classNames.bind(styles)
 
 const Home: React.FC = () => {
   const [bgColor, setBgColor] = useState<string>('#c0b8c1')
   const [navOpacity, setNavOpacity] = useState<number>(0)
-  const [featurePlaylistData, setFeaturePlaylist] = useState<SectionProps>()
-  const [newReleasesData, setNewReleaseData] = useState<SectionProps>()
-  const [topMixes, setTopMixes] = useState<SectionProps>()
-  const [suggestArtists, setSuggestArtists] = useState<SectionProps>()
+
+  const { featurePlaylist, newReleases, suggestArtists, topMixes } =
+    useContext(HomePageContext)
 
   useDocumentTitle('Spotify - Clone')
   const { ref: pivotTrackingRef, inView: isTracking } = useInView({
     threshold: 0,
   })
-
-  useEffect(() => {
-    fetchHomePageSectionData({ type: 'newRelease', setData: setNewReleaseData })
-    fetchHomePageSectionData({ type: 'featuredPlaylists', setData: setFeaturePlaylist })
-    fetchHomePageSectionData({ type: 'topMixes', setData: setTopMixes })
-    fetchHomePageSectionData({
-      type: 'suggestedArtists',
-      setData: setSuggestArtists,
-    })
-  }, [])
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement, UIEvent>): void => {
     const yAxis = e.currentTarget.scrollTop
@@ -51,17 +39,17 @@ const Home: React.FC = () => {
         <Greeting bgColor={bgColor} setBgColor={setBgColor} />
         <Section
           apiType="spotify"
-          title={featurePlaylistData?.title}
-          href={featurePlaylistData?.href}
-          data={featurePlaylistData?.data}
-          dataType={featurePlaylistData?.dataType}
+          title={featurePlaylist?.title}
+          href={featurePlaylist?.href}
+          data={featurePlaylist?.data}
+          dataType={featurePlaylist?.dataType}
         />
         <Section
           apiType="spotify"
-          title={newReleasesData?.title}
-          href={newReleasesData?.href}
-          data={newReleasesData?.data}
-          dataType={newReleasesData?.dataType}
+          title={newReleases?.title}
+          href={newReleases?.href}
+          data={newReleases?.data}
+          dataType={newReleases?.dataType}
         />
         <Section
           apiType="spotify"

@@ -91,7 +91,7 @@ const Library: FC = () => {
           </button>
         ))}
       </div>
-      <div onScroll={(e) => handleScroll(e)} className={cx('playlist-section')}>
+      <div onScroll={handleScroll} className={cx('playlist-section')}>
         {data?.data?.map((item: any, index: number) => (
           <SidebarItem
             key={item.id || index}

@@ -1,9 +1,8 @@
-import browserApi from '@/APIs/browserApi'
 import { Section as SectionContent } from '@/components'
 import Footer from '@/components/Footer/Footer'
 import Navbar from '@/components/Navbar/Navbar'
 import { ArtistContext } from '@/contexts/ArtistContext'
-import { fetchHomePageSectionData } from '@/utils'
+import { HomePageContext } from '@/contexts/HomePageContext'
 import classNames from 'classnames/bind'
 import React, { useContext, useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
@@ -22,6 +21,8 @@ const Section: React.FC = () => {
 
   const { profile, featuring, relatedArtists, discoveredOn, playlists, appearsOn } =
     useContext(ArtistContext)
+  const { featurePlaylist, newReleases, suggestArtists, topMixes } =
+    useContext(HomePageContext)
 
   const { id } = useParams()
   const { pathname } = useLocation()
@@ -29,40 +30,36 @@ const Section: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       if (id === 'newReleases') {
-        const responseData = await browserApi({
-          limit: 25,
-          country: 'VN',
-          type: 'new-releases',
-        })
-
         setData({
-          title: 'New Releases',
-          href: '/section?newReleases',
-          dataType: 'album',
-          data: responseData,
-          apiType: 'spotify',
+          title: newReleases?.title,
+          href: newReleases?.href,
+          dataType: newReleases?.dataType,
+          data: newReleases?.data,
+          apiType: newReleases?.apiType,
         })
       } else if (id === 'featurePlaylist') {
-        const responseData = await browserApi({
-          limit: 25,
-          country: 'VN',
-          type: 'featured-playlists',
-        })
-
         setData({
-          title: 'Feature Playlist',
-          href: '/section?featurePlaylist',
-          dataType: 'playlist',
-          data: responseData,
-          apiType: 'spotify',
+          title: featurePlaylist?.title,
+          href: featurePlaylist?.href,
+          dataType: featurePlaylist?.dataType,
+          data: featurePlaylist?.data,
+          apiType: featurePlaylist?.apiType,
         })
       } else if (id === 'topMixes') {
-        fetchHomePageSectionData({ type: 'topMixes', setData: setData, limit: 50 })
+        setData({
+          title: topMixes?.title,
+          href: topMixes?.href,
+          dataType: topMixes?.dataType,
+          data: topMixes?.data,
+          apiType: topMixes?.apiType,
+        })
       } else if (id === 'suggestedArtists') {
-        fetchHomePageSectionData({
-          type: 'suggestedArtists',
-          setData: setData,
-          limit: 50,
+        setData({
+          title: suggestArtists?.title,
+          href: suggestArtists?.href,
+          dataType: suggestArtists?.dataType,
+          data: suggestArtists?.data,
+          apiType: suggestArtists?.apiType,
         })
       } else if (featuringRegex.test(pathname)) {
         setData({

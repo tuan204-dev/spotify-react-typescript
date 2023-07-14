@@ -1,4 +1,4 @@
-import searchApi from '@/APIs/searchApi'
+import { HomePageContext } from '@/contexts/HomePageContext'
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
 import classNames from 'classnames/bind'
 import React, { FC, memo, useContext, useEffect, useState } from 'react'
@@ -16,30 +16,16 @@ interface GreetingProps {
 
 const Greeting: FC<GreetingProps> = (props) => {
   const { bgColor, setBgColor } = props
-
   const [isLoading, setLoading] = useState<boolean>(true)
-  const [initAlbums, setInitAlbums] = useState<ResponseSectionItem[]>([])
+
+  const { greetingAlbum } = useContext(HomePageContext)
 
   const { width } = useContext(MainLayoutContext)
 
   useEffect(() => {
     setBgColor('#e0e0e0')
-    setLoading(initAlbums.length === 0)
-  }, [initAlbums])
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await searchApi({
-        query: 'album',
-        types: ['album'],
-        limit: 50,
-      })
-
-      setInitAlbums(data?.albums.items)
-    }
-
-    fetchData()
-  }, [])
+    setLoading(greetingAlbum?.length === 0)
+  }, [greetingAlbum])
 
   const greeting = (): string => {
     const currentHour = new Date().getHours()
@@ -65,8 +51,8 @@ const Greeting: FC<GreetingProps> = (props) => {
         })}
       >
         {!isLoading
-          ? initAlbums
-              .slice(10, 16)
+          ? greetingAlbum
+              ?.slice(10, 16)
               .map((item: ResponseSectionItem, index) => (
                 <SongItemTag
                   id={item?.id}
