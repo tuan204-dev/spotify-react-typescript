@@ -159,3 +159,35 @@ export function Verified() {
     </svg>
   )
 }
+
+export function FaceBookIcon() {
+  return (
+    <svg
+      role="img"
+      fill="currentColor"
+      height="24"
+      width="24"
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      data-encore-id="icon"
+    >
+      <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.093 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.563V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path>
+    </svg>
+  )
+}
+
+export function CloseIcon() {
+  return (
+    <svg
+      role="img"
+      fill="currentColor"
+      height="16"
+      width="16"
+      aria-hidden="true"
+      viewBox="0 0 16 16"
+      data-encore-id="icon"
+    >
+      <path d="M1.47 1.47a.75.75 0 0 1 1.06 0L8 6.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L9.06 8l5.47 5.47a.75.75 0 1 1-1.06 1.06L8 9.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L6.94 8 1.47 2.53a.75.75 0 0 1 0-1.06z"></path>
+    </svg>
+  )
+}

@@ -4,7 +4,7 @@ import {
   Footer,
   Navbar,
   Section,
-  TopTracks,
+  TopTracks
 } from '@/components'
 import ArtistBanner from '@/components/ArtistBanner/ArtistBanner'
 import { PlayButton } from '@/components/UIs'
@@ -12,9 +12,9 @@ import { ArtistContext } from '@/contexts/ArtistContext'
 import { useComponentSize } from '@/hooks'
 import classNames from 'classnames/bind'
 import React, { useContext, useRef, useState } from 'react'
+import { useInView } from 'react-intersection-observer'
 import { useDocumentTitle } from 'usehooks-ts'
 import styles from './Artist.module.scss'
-import { useInView } from 'react-intersection-observer'
 
 const cx = classNames.bind(styles)
 
@@ -200,7 +200,6 @@ const Artist: React.FC = () => {
               aboutImg={aboutImg}
             />
           )}
-
           <Footer />
         </div>
       </div>

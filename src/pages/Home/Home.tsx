@@ -66,6 +66,69 @@ const Home: React.FC = () => {
           data={topMixes?.data}
           dataType={topMixes?.dataType}
         />
+
+        {/* ------------------------------ */}
+        <Section
+          apiType="spotify"
+          title={featurePlaylist?.title}
+          href={featurePlaylist?.href}
+          data={featurePlaylist?.data}
+          dataType={featurePlaylist?.dataType}
+        />
+        <Section
+          apiType="spotify"
+          title={newReleases?.title}
+          href={newReleases?.href}
+          data={newReleases?.data}
+          dataType={newReleases?.dataType}
+        />
+        <Section
+          apiType="spotify"
+          title={suggestArtists?.title}
+          href={suggestArtists?.href}
+          data={suggestArtists?.data}
+          dataType={suggestArtists?.dataType}
+        />
+
+        <Section
+          apiType="spotify"
+          title={topMixes?.title}
+          href={topMixes?.href}
+          data={topMixes?.data}
+          dataType={topMixes?.dataType}
+        />
+
+        <Section
+          apiType="spotify"
+          title={featurePlaylist?.title}
+          href={featurePlaylist?.href}
+          data={featurePlaylist?.data}
+          dataType={featurePlaylist?.dataType}
+        />
+        <Section
+          apiType="spotify"
+          title={newReleases?.title}
+          href={newReleases?.href}
+          data={newReleases?.data}
+          dataType={newReleases?.dataType}
+        />
+        <Section
+          apiType="spotify"
+          title={suggestArtists?.title}
+          href={suggestArtists?.href}
+          data={suggestArtists?.data}
+          dataType={suggestArtists?.dataType}
+        />
+
+        <Section
+          apiType="spotify"
+          title={topMixes?.title}
+          href={topMixes?.href}
+          data={topMixes?.data}
+          dataType={topMixes?.dataType}
+        />
+
+        {/* ------------------------ */}
         <Footer />
       </div>
     </div>

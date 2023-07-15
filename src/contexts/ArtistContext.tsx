@@ -1,18 +1,15 @@
 import artistApi from '@/APIs/artistApi'
+import { ArtistModal } from '@/components'
 import { FC, ReactNode, createContext, useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
+import { ArtistProfile } from '../../types'
 
 interface ArtistProviderProps {
   children: ReactNode
 }
 
 interface ArtistContext {
-  profile: {
-    id: string | undefined
-    name: string | undefined
-    bio: string | undefined
-    isVerified: boolean | undefined
-  }
+  profile: ArtistProfile
   avatarImg: string | undefined
   headerImg: string | undefined
   colorRaw: string | undefined
@@ -35,11 +32,13 @@ interface ArtistContext {
   setId: React.Dispatch<React.SetStateAction<string | undefined>>
   isLoading: boolean
   visuals: any
+  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const ArtistContext = createContext({} as ArtistContext)
 
 export const ArtistProvider: FC<ArtistProviderProps> = ({ children }) => {
+  const [isModalOpen, setModalOpen] = useState<boolean>(false)
   const [id, setId] = useState<string | undefined>('')
   const [responseData, setResponseData] = useState<any>()
   const [artistData, setArtistData] = useState<any>()
@@ -61,6 +60,7 @@ export const ArtistProvider: FC<ArtistProviderProps> = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await artistApi(id)
+      console.log(data)
       setResponseData(data)
     }
     if (id !== '') fetchData()
@@ -109,8 +109,16 @@ export const ArtistProvider: FC<ArtistProviderProps> = ({ children }) => {
   }, [responseData])
 
   return (
-    <ArtistContext.Provider value={{ ...artistData, setId, isLoading }}>
+    <ArtistContext.Provider value={{ ...artistData, setId, isLoading, setModalOpen }}>
       {children}
+      {isModalOpen && (
+        <ArtistModal
+          profile={{ ...responseData?.profile, id: responseData?.id }}
+          aboutImg={responseData?.visuals?.gallery?.items[0]?.sources[0]?.url}
+          stats={responseData?.stats}
+          setModalOpen={setModalOpen}
+        />
+      )}
     </ArtistContext.Provider>
   )
 }

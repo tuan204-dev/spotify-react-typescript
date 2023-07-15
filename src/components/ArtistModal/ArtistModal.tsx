@@ -1,33 +1,77 @@
 import classNames from 'classnames/bind'
-import { FC } from 'react'
-import Modal from 'react-modal'
-import 'react-multi-carousel/lib/styles.css'
+import { FC, useEffect } from 'react'
 import styles from './ArtistModal.module.scss'
+import { ArtistProfile, ArtistStats } from '../../../types'
+import ArtistCityStats from '../UIs/ArtistCityStats/ArtistCityStats'
+import { stringCleaner } from '@/utils'
+import { CloseIcon } from '@/assets/icons'
 
 const cx = classNames.bind(styles)
 
 interface ArtistModalProps {
-  visualImgs?: any
-  desc?: string
-  stats?: any
+  profile: ArtistProfile
+  aboutImg: string
+  stats: ArtistStats
+  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const ArtistModal: FC<ArtistModalProps> = () => {
-  const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-      zIndex: 999,
-    },
+const ArtistModal: FC<ArtistModalProps> = ({
+  profile,
+  aboutImg,
+  stats,
+  setModalOpen,
+}) => {
+  const handleKeyPress = (e: any) => {
+    if (e.code === 'Escape') {
+      setModalOpen(false)
+    }
   }
 
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyPress)
+
+    return () => document.removeEventListener('keypress', handleKeyPress)
+  }, [])
+
   return (
-    <div className={cx('wrapper')}>
-      <Modal isOpen={true} style={customStyles}></Modal>
+    <div
+      className={cx('wrapper')}
+      onClick={() => {
+        setModalOpen(false)
+      }}
+    >
+      <div className={cx('modal')} onClick={(e) => e.stopPropagation()}>
+        <div className={cx('close-btn')} onClick={() => setModalOpen(false)}>
+          <button>
+            <CloseIcon />
+          </button>
+        </div>
+        <div className={cx('main')}>
+          <div className={cx('img')}>
+            <img src={aboutImg} alt={profile?.name} />
+          </div>
+          <div className={cx('body')}>
+            <div className={cx('left')}>
+              <div className={cx('stats-listener')}>
+                <div className={cx('quantity')}>{stats?.followers?.toLocaleString()}</div>
+                <span className={cx('type')}>Followers</span>
+              </div>
+              <div className={cx('stats-listener')}>
+                <div className={cx('quantity')}>
+                  {stats?.monthlyListeners?.toLocaleString()}
+                </div>
+                <span className={cx('type')}>Monthly Listeners</span>
+              </div>
+              {stats?.topCities?.items?.map((item) => (
+                <ArtistCityStats key={item?.city} {...item} />
+              ))}
+            </div>
+            <div className={cx('right')}>
+              <p className={cx('bio')}>{stringCleaner(profile?.biography?.text)}</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

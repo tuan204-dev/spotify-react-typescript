@@ -206,35 +206,35 @@ export interface RequestArg {
 // ----------------------------------------------------
 
 interface ImageSource {
-  url: string;
-  width: number;
-  height: number;
+  url: string
+  width: number
+  height: number
 }
 
 interface ColorRaw {
-  hex: string;
+  hex: string
 }
 
 interface ExtractedColors {
-  colorRaw: ColorRaw;
+  colorRaw: ColorRaw
 }
 
 interface GalleryItem {
-  sources: ImageSource[];
+  sources: ImageSource[]
 }
 
 interface Gallery {
-  items: GalleryItem[];
+  items: GalleryItem[]
 }
 
 interface AvatarImage {
-  sources: ImageSource[];
-  extractedColors: ExtractedColors;
+  sources: ImageSource[]
+  extractedColors: ExtractedColors
 }
 
 interface HeaderImage {
-  sources: ImageSource[];
-  extractedColors: ExtractedColors;
+  sources: ImageSource[]
+  extractedColors: ExtractedColors
 }
 
 interface Visuals {
@@ -283,8 +283,7 @@ export interface SectionItemI extends PlayListItem, ArtistItem, AlbumItem {
   desc?: string
   publisher?: string
   dateAdd?: string
-  type?: 'default' | 'playlist' | 'album' | 'artistList' | 'artist' | 'show' 
-  
+  type?: 'default' | 'playlist' | 'album' | 'artistList' | 'artist' | 'show'
 }
 
 export interface SectionProps {
@@ -337,15 +336,16 @@ export interface ResponseLibItem {
   images?: {
     url?: string
   }[]
-  
 }
 
 export interface ResponseSectionItem {
   id?: string
   name?: string
-  images: {
-    url: string
-  }[] | any
+  images:
+    | {
+        url: string
+      }[]
+    | any
   publisher?: string
   artists?: ArtistData[]
   description?: string
@@ -383,4 +383,27 @@ export interface SongListProps {
   top: number
   isLoading?: boolean
   type?: 'default' | 'playlist' | 'album' | 'search' | 'artist'
+}
+
+// ____________Artist______________
+
+export interface ArtistProfile {
+  id: string | undefined
+  name: string | undefined
+  bio: string | undefined
+  isVerified: boolean | undefined
+  biography?: { text: string }
+}
+
+export interface ArtistTopCity {
+  city: string
+  country: string
+  numberOfListeners: number
+  region: string
+}
+
+export interface ArtistStats {
+  followers: number
+  monthlyListeners: number
+  topCities: { items: ArtistTopCity[] }
 }

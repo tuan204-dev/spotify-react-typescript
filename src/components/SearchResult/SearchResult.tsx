@@ -13,50 +13,7 @@ const cx = classNames.bind(styles)
 const SearchResult: FC = () => {
   const { data, query } = useContext(SearchContext)
   const [category, setCategory] = useState<string>('all')
-  const [searchSelections, setSearchSelections] = useState<any>([
-    {
-      key: 'all',
-      active: category === 'all',
-      display: 'All',
-      isExist: true,
-    },
-    {
-      key: 'albums',
-      active: category === 'albums',
-      display: 'Albums',
-      isExist: Boolean(data?.albums?.total),
-    },
-    {
-      key: 'artists',
-      active: category === 'artists',
-      display: 'Artists',
-      isExist: Boolean(data?.artists?.total),
-    },
-    {
-      key: 'tracks',
-      active: category === 'tracks',
-      display: 'Songs',
-      isExist: Boolean(data?.tracks?.total),
-    },
-    {
-      key: 'playlists',
-      active: category === 'playlists',
-      display: 'Playlists',
-      isExist: Boolean(data?.playlists?.total),
-    },
-    {
-      key: 'shows',
-      active: category === 'shows',
-      display: 'Podcasts & Shows',
-      isExist: Boolean(data?.shows?.total),
-    },
-    {
-      key: 'episodes',
-      active: category === 'episodes',
-      display: 'Episodes',
-      isExist: Boolean(data?.episodes?.total),
-    },
-  ])
+  const [searchSelections, setSearchSelections] = useState<any>([])
 
   useEffect(() => {
     setSearchSelections([

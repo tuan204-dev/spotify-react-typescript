@@ -1,0 +1,18 @@
+@import '../../../scss/variable';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.city {
+  font-weight: 700;
+  color: $white;
+  margin: 0 0 6px;
+}
+
+.number-of-listeners {
+  color: $text-neutral;
+}

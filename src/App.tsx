@@ -1,4 +1,4 @@
-import { useEffect, lazy, Suspense } from 'react'
+import { Suspense, lazy } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import LoadingLayout from './layouts/LoadingLayout/LoadingLayout'
 const RootLayout = lazy(() => import('./layouts/RootLayout/RootLayout'))
@@ -13,12 +13,6 @@ const Episode = lazy(() => import('@/pages/Episode/Episode'))
 const NotFound = lazy(() => import('@/components/NotFound/NotFound'))
 
 const App = () => {
-  useEffect(() => {
-    const clearLocalStorage = () => localStorage.clear()
-    window.addEventListener('beforeunload', clearLocalStorage)
-    return () => window.removeEventListener('beforeunload', clearLocalStorage)
-  }, [])
-
   return (
     <Suspense fallback={<LoadingLayout />}>
       <Routes>
