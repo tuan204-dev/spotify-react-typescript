@@ -1,0 +1,54 @@
+@import '../../../scss/variable';
+
+.wrapper {
+  min-width: 180px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.thumb {
+  height: 56px;
+  aspect-ratio: 1 / 1;
+  border-radius: 4px;
+  overflow: hidden;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  justify-content: space-between;
+
+  .name {
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+
+    span {
+      color: $white;
+    }
+
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  margin-left: 4px;
+  color: hsla(0, 0%, 100%, .7);
+
+  &:hover {
+    color: $white;
+  }
+}

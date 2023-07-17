@@ -17,6 +17,7 @@ import TopTracks from './TopTracks/TopTracks'
 import Discography from './Discography/Discography'
 import AboutArtist from './AboutArtist/AboutArtist'
 import ArtistModal from './ArtistModal/ArtistModal'
+import AudioPlayer from './AudioPlayer/AudioPlayer'
 
 export {
   Section,
@@ -38,4 +39,5 @@ export {
   Discography,
   AboutArtist,
   ArtistModal,
+  AudioPlayer,
 }

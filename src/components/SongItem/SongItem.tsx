@@ -8,6 +8,7 @@ import Skeleton from 'react-loading-skeleton'
 import { SongItemProps } from '../../../types'
 import { Image, SubTitle } from '../UIs'
 import styles from './SongItem.module.scss'
+import { PlayerContext } from '@/contexts/PlayerContext'
 
 const cx = classNames.bind(styles)
 
@@ -22,11 +23,14 @@ const SongItem: React.FC<SongItemProps> = ({
   albumData,
   isExplicit = false,
   type = 'default',
+  id,
 }) => {
   const { width } = useContext(MainLayoutContext)
+  const { setId } = useContext(PlayerContext)
 
   return (
     <div
+      onClick={() => setId(id)}
       className={cx({
         wrapper: true,
         'grid-md': width <= 780 && type !== 'album',

@@ -11,9 +11,10 @@ interface ArtistsProps {
   isWhiteColor?: boolean
   type?: 'artist' | 'album'
   apiType?: 'spotify' | 'rapid'
+  fontSize?: number
 }
 
-const Artists: FC<ArtistsProps> = ({ data, isWhiteColor, type = 'artist' }) => {
+const Artists: FC<ArtistsProps> = ({ data, isWhiteColor, type = 'artist', fontSize }) => {
   const renderData: any[] = []
   if (data) {
     if (data.length === 1) {
@@ -22,7 +23,10 @@ const Artists: FC<ArtistsProps> = ({ data, isWhiteColor, type = 'artist' }) => {
           key={0}
           to={type === 'album' ? `/album/${data[0]?.id}` : `/artist/${data[0]?.id}`}
         >
-          <span className={cx({ 'artist-item': true, 'white-color': isWhiteColor })}>
+          <span
+            style={{ fontSize: fontSize ? fontSize : undefined }}
+            className={cx({ 'artist-item': true, 'white-color': isWhiteColor })}
+          >
             {data[0].name}
           </span>
         </Link>
@@ -35,6 +39,7 @@ const Artists: FC<ArtistsProps> = ({ data, isWhiteColor, type = 'artist' }) => {
               to={type === 'album' ? `/album/${data[i]?.id}` : `/artist/${data[i]?.id}`}
             >
               <span
+                style={{ fontSize: fontSize ? fontSize : undefined }}
                 className={cx({
                   'artist-item': true,
                   'white-color': isWhiteColor,
@@ -58,6 +63,7 @@ const Artists: FC<ArtistsProps> = ({ data, isWhiteColor, type = 'artist' }) => {
             }
           >
             <span
+              style={{ fontSize: fontSize ? fontSize : undefined }}
               className={cx({
                 'artist-item': true,
                 'white-color': isWhiteColor,

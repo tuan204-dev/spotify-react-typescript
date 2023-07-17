@@ -407,3 +407,13 @@ export interface ArtistStats {
   monthlyListeners: number
   topCities: { items: ArtistTopCity[] }
 }
+
+export interface TrackResponse {
+  id?: string
+  album?: {
+    id?: string
+    images?: { url?: string }[]
+  }
+  name?: string
+  artists?: ArtistData[]
+}

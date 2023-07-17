@@ -1,0 +1,76 @@
+{
+  "album": {
+    "album_type": "single",
+    "artists": [
+      {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/5dfZ5uSmzR7VQK0udbAVpf"
+        },
+        "href": "https://api.spotify.com/v1/artists/5dfZ5uSmzR7VQK0udbAVpf",
+        "id": "5dfZ5uSmzR7VQK0udbAVpf",
+        "name": "Sơn Tùng M-TP",
+        "type": "artist",
+        "uri": "spotify:artist:5dfZ5uSmzR7VQK0udbAVpf"
+      }
+    ],
+
+    "external_urls": {
+      "spotify": "https://open.spotify.com/album/6oT0WOEPWOxsa2Vmnkxwxa"
+    },
+    "href": "https://api.spotify.com/v1/albums/6oT0WOEPWOxsa2Vmnkxwxa",
+    "id": "6oT0WOEPWOxsa2Vmnkxwxa",
+    "images": [
+      {
+        "height": 640,
+        "url": "https://i.scdn.co/image/ab67616d0000b2735888c34015bebbf123957f6d",
+        "width": 640
+      },
+      {
+        "height": 300,
+        "url": "https://i.scdn.co/image/ab67616d00001e025888c34015bebbf123957f6d",
+        "width": 300
+      },
+      {
+        "height": 64,
+        "url": "https://i.scdn.co/image/ab67616d000048515888c34015bebbf123957f6d",
+        "width": 64
+      }
+    ],
+    "name": "Chúng Ta Của Hiện Tại",
+    "release_date": "2020-12-20",
+    "release_date_precision": "day",
+    "total_tracks": 1,
+    "type": "album",
+    "uri": "spotify:album:6oT0WOEPWOxsa2Vmnkxwxa"
+  },
+  "artists": [
+    {
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/5dfZ5uSmzR7VQK0udbAVpf"
+      },
+      "href": "https://api.spotify.com/v1/artists/5dfZ5uSmzR7VQK0udbAVpf",
+      "id": "5dfZ5uSmzR7VQK0udbAVpf",
+      "name": "Sơn Tùng M-TP",
+      "type": "artist",
+      "uri": "spotify:artist:5dfZ5uSmzR7VQK0udbAVpf"
+    }
+  ],
+  "disc_number": 1,
+  "duration_ms": 301538,
+  "explicit": false,
+  "external_ids": {
+    "isrc": "DGA062020720"
+  },
+  "external_urls": {
+    "spotify": "https://open.spotify.com/track/17iGUekw5nFt5mIRJcUm3R"
+  },
+  "href": "https://api.spotify.com/v1/tracks/17iGUekw5nFt5mIRJcUm3R",
+  "id": "17iGUekw5nFt5mIRJcUm3R",
+  "is_local": false,
+  "name": "Chúng Ta Của Hiện Tại",
+  "popularity": 66,
+  "preview_url": "https://p.scdn.co/mp3-preview/763b5e936ca9ae98afc2181deff0cbb023d513bb?cid=0b297fa8a249464ba34f5861d4140e58",
+  "track_number": 1,
+  "type": "track",
+  "uri": "spotify:track:17iGUekw5nFt5mIRJcUm3R"
+}

@@ -10,10 +10,11 @@ interface PlayButtonProps {
   fontSize?: number
   transitionDuration?: number //ms
   scaleHovering?: number
+  bgColor?: string
 }
 
 const PlayButton: FC<PlayButtonProps> = (props) => {
-  const { size, fontSize, transitionDuration, scaleHovering } = props
+  const { size, fontSize, transitionDuration, scaleHovering, bgColor } = props
   const [isHovering, setHovering] = useState<boolean>(false)
 
   return (
@@ -33,7 +34,8 @@ const PlayButton: FC<PlayButtonProps> = (props) => {
           fontSize: `${fontSize}px`,
           transitionDuration: `${transitionDuration}ms`,
           // scale: isHovering ? scaleHovering : undefined,
-          transform: isHovering ? `scale(${scaleHovering})` : undefined
+          transform: isHovering ? `scale(${scaleHovering})` : undefined,
+          backgroundColor: bgColor ? bgColor : undefined,
         }}
       >
         <TbPlayerPlayFilled className={cx('play-btn-child')} />

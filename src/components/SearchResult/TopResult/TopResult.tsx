@@ -79,6 +79,7 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
                 ?.slice(0, 4)
                 .map((item, index) => (
                   <SongItem
+                    id={item?.id}
                     isLoading={isLoading}
                     key={item.id || index}
                     songName={item.name}

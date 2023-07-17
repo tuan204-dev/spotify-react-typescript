@@ -1,0 +1,49 @@
+@import "../../../scss/variable";
+
+.wrapper {
+  height: 4px;
+  width: 100%;
+  background-color: rgba($color: #fff, $alpha: .3);
+  border-radius: 2px;
+  position: relative;
+
+  .process-bar {
+    width: 100%;
+    height: 100%;
+    background-color: $white;
+    border-radius: 2px;
+  }
+
+  &:hover .process-bar {
+    background-color: $second;
+  }
+
+  &:hover .controls {
+    opacity: 1;
+  }
+}
+
+
+
+.controls {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  right: 0;
+  background-color: transparent;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  opacity: 0;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: $white;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+}

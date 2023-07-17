@@ -85,6 +85,7 @@ const SongList: FC<SongListProps> = ({
                 duration={item?.duration_ms || item?.track?.duration_ms}
                 isExplicit={item?.explicit || item?.track?.explicit}
                 isLoading={isLoading}
+                id={item?.track?.id || item?.id}
               />
             ))
           } else {

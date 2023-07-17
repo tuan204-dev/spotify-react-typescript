@@ -9,6 +9,17 @@
   gap: $panel-gap;
   padding: .8rem;
   max-width: 3000px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.top {
+  height: calc(100vh - 96px);
+}
+
+.bottom {
+  height: 72px;
 }
 
 .main {

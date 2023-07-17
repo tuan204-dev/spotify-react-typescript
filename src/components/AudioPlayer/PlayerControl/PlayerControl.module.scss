@@ -1,0 +1,45 @@
+@import '../../../scss/variable';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  align-items: center;
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  color: hsla(0,0%,100%,.7);
+
+  &:hover {
+    color: $white;
+  }
+}
+
+.playback-bar {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.playback-position, .playback-duration {
+  width: 40px;
+  color: $text-subdued;
+  font-size: 11px;
+  line-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.range {
+  flex: 1;
+}
