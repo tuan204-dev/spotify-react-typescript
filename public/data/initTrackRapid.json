@@ -1,0 +1,80 @@
+{
+  "status": true,
+  "soundcloudTrack": {
+    "searchTerm": "Thằng Điên JustaTee",
+    "id": 1367461597,
+    "permalink": "https://soundcloud.com/justatee/thang-dien",
+    "title": "Thang Dien",
+    "user": {
+      "id": 4791444,
+      "permalink": "https://soundcloud.com/justatee",
+      "name": "JustaTee",
+      "verified": false
+    },
+    "audio": [
+      {
+        "quality": "hq",
+        "url": "https://scd.dlod.link/?expire=1689706973942&p=m2Aeho78wylCwhtcwLjzq-tgXMLppWmAqptt6rb2ENjb6WWJgZbGU84RGVz7pIFrvKiC66N3OZtz18GXydxQLE3ZB_OUtnFv5yztzbQfmf6125U8uknAl3BGB6ETTdPvJ87j3de-XVJdb-Xzs1fLTWDS2BnC_Wf8YVhQotJBuj30pIAJaRXeteM1ewL6Roap&s=HKb0j2-peFnbnb8xdbqfMS8TmOnP11WjdB35hLLsGKw",
+        "durationMs": 235521,
+        "durationText": "03:55",
+        "mimeType": "audio/mp4; codecs=\"mp4a.40.2\"",
+        "format": "m4a"
+      },
+      {
+        "quality": "sq",
+        "url": "https://scd.dlod.link/?expire=1689706973942&p=m2Aeho78wylCwhtcwLjzq75LnGEqWjRKM4WFRDPF9h8cfNqoSGjwe6ztbTjBwaFKBUJ6_EZtwnLSrW5nXV6w-cblq44qPVKfXxcRRmSg-DqATftXf7X6MJnPG91KdeZpl4iJvXdxBraO2F_ZEWt_A5TqrTW0OcM5kBCSvVB6Vw_z_9YY7XPtpQ5S8n02I8GnRSOTPGlW9i_FhV-EKJBYfA&s=7GCI7OqIeVyxVE0nYKmmzRY5pOKquBHiRv4-MW1CPZs",
+        "durationMs": 235546,
+        "durationText": "03:55",
+        "mimeType": "audio/mpeg",
+        "format": "mp3"
+      },
+      {
+        "quality": "sq",
+        "url": "https://scd.dlod.link/?expire=1689706973942&p=m2Aeho78wylCwhtcwLjzq_ST2Akv6p82eVc6i825e87z_h_KzH7BzRvQ5ep37M-qaUSpMHKW6CUMJ-40k9AF4plWVEDgDMDrhGWDQsNlBt8oN9hpHwelN-i6WNl_oqhhMhoUrVkt27lOEDh-CiF5aArxpNfww2IEU98fVZWaAd8_j3iS5Mx7yaSfr17suT4yFZxcee5vTRoTKfLtKHInkw&s=7tUOXV5WZZy9l2A1gK9Qw_iFyF84fo7VKdGckhv7eaQ",
+        "durationMs": 235507,
+        "durationText": "03:55",
+        "mimeType": "audio/ogg; codecs=\"opus\"",
+        "format": "opus"
+      }
+    ]
+  },
+  "spotifyTrack": {
+    "type": "track",
+    "id": "27Z9T0mSWHYWSj9SNOGvyt",
+    "name": "Thằng Điên",
+    "shareUrl": "https://open.spotify.com/track/27Z9T0mSWHYWSj9SNOGvyt",
+    "durationMs": 234000,
+    "durationText": "03:54",
+    "artists": [
+      {
+        "type": "artist",
+        "id": "3rjcQ5VIWCN4q7UFetzdeO",
+        "name": "JustaTee",
+        "shareUrl": "https://open.spotify.com/artist/3rjcQ5VIWCN4q7UFetzdeO"
+      }
+    ],
+    "album": {
+      "type": "album",
+      "id": "0t2YXNqz7bv7n6mPorj8HC",
+      "name": "Thằng Điên",
+      "shareUrl": "https://open.spotify.com/album/0t2YXNqz7bv7n6mPorj8HC",
+      "cover": [
+        {
+          "url": "https://i.scdn.co/image/ab67616d00001e0202dc41ad81138aa3c53d2b98",
+          "width": 300,
+          "height": 300
+        },
+        {
+          "url": "https://i.scdn.co/image/ab67616d0000485102dc41ad81138aa3c53d2b98",
+          "width": 64,
+          "height": 64
+        },
+        {
+          "url": "https://i.scdn.co/image/ab67616d0000b27302dc41ad81138aa3c53d2b98",
+          "width": 640,
+          "height": 640
+        }
+      ]
+    }
+  }
+}

@@ -4,73 +4,92 @@
     "artists": [
       {
         "external_urls": {
-          "spotify": "https://open.spotify.com/artist/5dfZ5uSmzR7VQK0udbAVpf"
+          "spotify": "https://open.spotify.com/artist/3rjcQ5VIWCN4q7UFetzdeO"
         },
-        "href": "https://api.spotify.com/v1/artists/5dfZ5uSmzR7VQK0udbAVpf",
-        "id": "5dfZ5uSmzR7VQK0udbAVpf",
-        "name": "Sơn Tùng M-TP",
+        "href": "https://api.spotify.com/v1/artists/3rjcQ5VIWCN4q7UFetzdeO",
+        "id": "3rjcQ5VIWCN4q7UFetzdeO",
+        "name": "JustaTee",
         "type": "artist",
-        "uri": "spotify:artist:5dfZ5uSmzR7VQK0udbAVpf"
+        "uri": "spotify:artist:3rjcQ5VIWCN4q7UFetzdeO"
+      },
+      {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/5Kh0ta0UY4uJ4g2CIdq9V9"
+        },
+        "href": "https://api.spotify.com/v1/artists/5Kh0ta0UY4uJ4g2CIdq9V9",
+        "id": "5Kh0ta0UY4uJ4g2CIdq9V9",
+        "name": "Phuong Ly",
+        "type": "artist",
+        "uri": "spotify:artist:5Kh0ta0UY4uJ4g2CIdq9V9"
       }
     ],
-
     "external_urls": {
-      "spotify": "https://open.spotify.com/album/6oT0WOEPWOxsa2Vmnkxwxa"
+      "spotify": "https://open.spotify.com/album/0t2YXNqz7bv7n6mPorj8HC"
     },
-    "href": "https://api.spotify.com/v1/albums/6oT0WOEPWOxsa2Vmnkxwxa",
-    "id": "6oT0WOEPWOxsa2Vmnkxwxa",
+    "href": "https://api.spotify.com/v1/albums/0t2YXNqz7bv7n6mPorj8HC",
+    "id": "0t2YXNqz7bv7n6mPorj8HC",
     "images": [
       {
         "height": 640,
-        "url": "https://i.scdn.co/image/ab67616d0000b2735888c34015bebbf123957f6d",
+        "url": "https://i.scdn.co/image/ab67616d0000b27302dc41ad81138aa3c53d2b98",
         "width": 640
       },
       {
         "height": 300,
-        "url": "https://i.scdn.co/image/ab67616d00001e025888c34015bebbf123957f6d",
+        "url": "https://i.scdn.co/image/ab67616d00001e0202dc41ad81138aa3c53d2b98",
         "width": 300
       },
       {
         "height": 64,
-        "url": "https://i.scdn.co/image/ab67616d000048515888c34015bebbf123957f6d",
+        "url": "https://i.scdn.co/image/ab67616d0000485102dc41ad81138aa3c53d2b98",
         "width": 64
       }
     ],
-    "name": "Chúng Ta Của Hiện Tại",
-    "release_date": "2020-12-20",
+    "name": "Thằng Điên",
+    "release_date": "2022-07-11",
     "release_date_precision": "day",
     "total_tracks": 1,
     "type": "album",
-    "uri": "spotify:album:6oT0WOEPWOxsa2Vmnkxwxa"
+    "uri": "spotify:album:0t2YXNqz7bv7n6mPorj8HC"
   },
   "artists": [
     {
       "external_urls": {
-        "spotify": "https://open.spotify.com/artist/5dfZ5uSmzR7VQK0udbAVpf"
+        "spotify": "https://open.spotify.com/artist/3rjcQ5VIWCN4q7UFetzdeO"
       },
-      "href": "https://api.spotify.com/v1/artists/5dfZ5uSmzR7VQK0udbAVpf",
-      "id": "5dfZ5uSmzR7VQK0udbAVpf",
-      "name": "Sơn Tùng M-TP",
+      "href": "https://api.spotify.com/v1/artists/3rjcQ5VIWCN4q7UFetzdeO",
+      "id": "3rjcQ5VIWCN4q7UFetzdeO",
+      "name": "JustaTee",
       "type": "artist",
-      "uri": "spotify:artist:5dfZ5uSmzR7VQK0udbAVpf"
+      "uri": "spotify:artist:3rjcQ5VIWCN4q7UFetzdeO"
+    },
+    {
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/5Kh0ta0UY4uJ4g2CIdq9V9"
+      },
+      "href": "https://api.spotify.com/v1/artists/5Kh0ta0UY4uJ4g2CIdq9V9",
+      "id": "5Kh0ta0UY4uJ4g2CIdq9V9",
+      "name": "Phuong Ly",
+      "type": "artist",
+      "uri": "spotify:artist:5Kh0ta0UY4uJ4g2CIdq9V9"
     }
   ],
   "disc_number": 1,
-  "duration_ms": 301538,
+  "duration_ms": 234000,
   "explicit": false,
   "external_ids": {
-    "isrc": "DGA062020720"
+    "isrc": "ZZOPM2237296"
   },
   "external_urls": {
-    "spotify": "https://open.spotify.com/track/17iGUekw5nFt5mIRJcUm3R"
+    "spotify": "https://open.spotify.com/track/27Z9T0mSWHYWSj9SNOGvyt"
   },
-  "href": "https://api.spotify.com/v1/tracks/17iGUekw5nFt5mIRJcUm3R",
-  "id": "17iGUekw5nFt5mIRJcUm3R",
+  "href": "https://api.spotify.com/v1/tracks/27Z9T0mSWHYWSj9SNOGvyt",
+  "id": "27Z9T0mSWHYWSj9SNOGvyt",
   "is_local": false,
-  "name": "Chúng Ta Của Hiện Tại",
-  "popularity": 66,
-  "preview_url": "https://p.scdn.co/mp3-preview/763b5e936ca9ae98afc2181deff0cbb023d513bb?cid=0b297fa8a249464ba34f5861d4140e58",
+  "name": "Thằng Điên",
+  "popularity": 65,
+  "preview_url": "https://p.scdn.co/mp3-preview/3afe0fb96801400693d36005eb356ede28707c53?cid=0b297fa8a249464ba34f5861d4140e58",
   "track_number": 1,
   "type": "track",
-  "uri": "spotify:track:17iGUekw5nFt5mIRJcUm3R"
+  "uri": "spotify:track:27Z9T0mSWHYWSj9SNOGvyt"
 }

@@ -100,7 +100,7 @@ const Album: React.FC = () => {
                 size={56}
                 fontSize={24}
                 transitionDuration={33}
-                scaleHovering={1.005}
+                scaleHovering={1.05}
               />
               <button className={cx('heart')}>
                 <HeartIcon />

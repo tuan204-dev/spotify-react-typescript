@@ -4,7 +4,7 @@ import {
   Footer,
   Navbar,
   Section,
-  TopTracks
+  TopTracks,
 } from '@/components'
 import ArtistBanner from '@/components/ArtistBanner/ArtistBanner'
 import { PlayButton } from '@/components/UIs'
@@ -42,7 +42,6 @@ const Artist: React.FC = () => {
     visuals,
   } = useContext(ArtistContext)
   useDocumentTitle(`${profile?.name ? profile?.name : 'Artist'} | Spotify`)
-
 
   const bannerRef = useRef<any>()
 
@@ -133,7 +132,7 @@ const Artist: React.FC = () => {
             />
           </div>
           <div className={cx('action-bar')}>
-            <PlayButton size={56} transitionDuration={33} scaleHovering={1.005} />
+            <PlayButton size={56} transitionDuration={33} scaleHovering={1.05} />
             <button className={cx('follow-btn')}>Follow</button>
           </div>
           <TopTracks isLoading={isLoading} songList={topTracks} />

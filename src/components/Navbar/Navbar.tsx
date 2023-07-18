@@ -102,7 +102,7 @@ const Navbar: FC<NavbarProps> = (props) => {
             style={{ opacity: playBtnVisible ? 1 : undefined }}
           >
             <div>
-              <PlayButton size={48} transitionDuration={33} scaleHovering={1.005} />
+              <PlayButton size={48} transitionDuration={33} scaleHovering={1.05} />
             </div>
             <div className={cx('artist-name')}>
               <span>{title}</span>

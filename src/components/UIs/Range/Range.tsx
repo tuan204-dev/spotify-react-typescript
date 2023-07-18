@@ -1,24 +1,42 @@
-import { FC, useState } from 'react'
+import { FC, useState, useRef } from 'react'
 import styles from './Range.module.scss'
 import classNames from 'classnames/bind'
 
 const cx = classNames.bind(styles)
 
 interface RangeProps {
-  duration?: number
-  process?: number
-  handleRangeOnChange: (e: any) => void
-  handleRangeOnMouseUp: (e: any) => void
+  maxValue: number
+  type?: 'trackProcess' | 'volume'
+  setTrackProcess: React.Dispatch<React.SetStateAction<number>>
 }
 
-const Range: FC<RangeProps> = ({
-  duration,
-  handleRangeOnChange,
-  handleRangeOnMouseUp,
-  process,
-}) => {
+const Range: FC<RangeProps> = ({ maxValue, type = 'trackProcess', setTrackProcess }) => {
+  const [process, setProcess] = useState<number>(0)
 
-  console.log(process)
+  const intervalId = useRef<any>()
+
+  const startTimer = () => {
+    clearInterval(intervalId.current)
+    intervalId.current = setInterval(() => {
+      setProcess((prev) => prev + 1)
+    }, 1000)
+  }
+
+  const handleChange = (e: any) => {
+    if (type === 'trackProcess') {
+      clearInterval(intervalId.current)
+      setProcess(e.target.value)
+    }
+
+    return
+  }
+
+  const handleMouseUp = (e: any) => {
+    if (type === 'trackProcess') {
+      startTimer()
+      setTrackProcess(e.target.value)
+    }
+  }
 
   return (
     <div className={cx('wrapper')}>
@@ -26,7 +44,7 @@ const Range: FC<RangeProps> = ({
         <div
           style={{
             transform: `translateX(calc(-100% + 100% * ${
-              duration && process ? process / duration : 0
+              maxValue ? process / maxValue : 0
             }))`,
           }}
           className={cx('process-bar')}
@@ -34,13 +52,13 @@ const Range: FC<RangeProps> = ({
       </div>
       <input
         min={0}
-        max={duration}
+        max={maxValue}
         step={1}
         className={cx('controls')}
         type="range"
         value={process}
-        onChange={handleRangeOnChange}
-        onMouseUp={handleRangeOnMouseUp}
+        onChange={handleChange}
+        onMouseUp={handleMouseUp}
       />
     </div>
   )

@@ -45,7 +45,7 @@ const SongItemTag: React.FC<SongItemTagProps> = (props) => {
               <div
                 className={cx({ 'play-btn': true, hidden: width !== -1 && width <= 270 })}
               >
-                <PlayButton size={50} scaleHovering={1.04} transitionDuration={33} />
+                <PlayButton size={50} scaleHovering={1.1} transitionDuration={33} />
               </div>
             </>
           ) : (

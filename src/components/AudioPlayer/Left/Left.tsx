@@ -9,21 +9,28 @@ import { PlayerContext } from '@/contexts/PlayerContext'
 const cx = classNames.bind(styles)
 
 const Left: FC = () => {
-  const { thumb, trackName, albumId, artists } = useContext(PlayerContext)
+  const { playBarData } = useContext(PlayerContext)
 
   return (
     <div className={cx('wrapper')}>
       <div className={cx('thumb')}>
-        <img src={thumb} alt={trackName} />
+        <img src={playBarData?.thumb} alt={playBarData?.trackName} />
       </div>
       <div className={cx('body')}>
         <div className={cx('name')}>
-          <Link to={`/album/${albumId}`}>
-            <span>{trackName}</span>
+          <Link to={`/album/${playBarData?.albumId}`}>
+            <span>{playBarData?.trackName}</span>
           </Link>
         </div>
         <div className={cx('artists')}>
-          {<SubTitle fontSize={11} apiType="spotify" type="artist" data={artists} />}
+          {
+            <SubTitle
+              fontSize={11}
+              apiType="spotify"
+              type="artist"
+              data={playBarData?.artists}
+            />
+          }
         </div>
       </div>
       <div className={cx('icon')}>

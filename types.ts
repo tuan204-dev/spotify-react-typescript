@@ -368,10 +368,7 @@ export interface SongItemProps {
   duration?: number
   order?: number
   isLoading?: boolean
-  albumData?: {
-    name: string
-    id?: string
-  }
+  albumData?: SpotifyAlbum
   dateAdd?: string
   isExplicit?: boolean
   type?: 'default' | 'playlist' | 'album' | 'search' | 'artist'
@@ -408,12 +405,28 @@ export interface ArtistStats {
   topCities: { items: ArtistTopCity[] }
 }
 
-export interface TrackResponse {
-  id?: string
-  album?: {
-    id?: string
-    images?: { url?: string }[]
-  }
-  name?: string
+export interface SpotifyAlbum {
   artists?: ArtistData[]
+  images?: { url?: string }[]
+  id?: string
+  name?: string
+}
+
+export interface SpotifyTrack {
+  album?: SpotifyAlbum
+  artists?: ArtistData[]
+  duration_ms?: number
+  name?: string
+  id?: string
+}
+
+export interface RapidTrack {
+  soundcloudTrack?: {
+    audio?: {
+      quality?: string
+      url?: string
+      durationMs?: number
+      durationText?: string
+    }[]
+  }
 }

@@ -60,7 +60,7 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
               <div className={cx('play-btn')}>
                 <PlayButton
                   size={50}
-                  scaleHovering={1.02}
+                  scaleHovering={1.05}
                   transitionDuration={33}
                   fontSize={24}
                 />
