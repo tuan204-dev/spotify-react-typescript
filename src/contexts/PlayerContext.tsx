@@ -63,10 +63,6 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
     audioRef.current.currentTime = currentTime
   }, [currentTime])
 
-  audioRef.current.pause = () => {
-    console.log('hello')
-  }
-
   const handlePlay = () => {
     audioRef.current.play()
     setPlaying(true)
@@ -82,14 +78,13 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
       duration: audioRef.current?.duration,
       playBarData: {
         trackName: spotifyData?.name,
-        thumb: spotifyData?.album?.images?.[0]?.url,
+        thumb: spotifyData?.album?.images?.[spotifyData?.album?.images?.length - 1]?.url,
         albumId: spotifyData?.album?.id,
         artists: spotifyData?.artists,
       },
     }
   }, [spotifyData, rapidData, id])
 
-  console.log('playerContext-rerender')
   return (
     <PlayerContext.Provider
       value={{

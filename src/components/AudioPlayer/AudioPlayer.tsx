@@ -4,6 +4,7 @@ import styles from './AudioPlayer.module.scss'
 import Left from './Left/Left'
 import PlayerControl from './PlayerControl/PlayerControl'
 import { PlayerContext } from '@/contexts/PlayerContext'
+import Right from './Right/Right'
 
 const cx = classNames.bind(styles)
 
@@ -18,7 +19,9 @@ const AudioPlayer: FC = () => {
         <PlayerControl />
       </div>
 
-      <div className={cx('right')}></div>
+      <div className={cx('right')}>
+        <Right />
+      </div>
     </div>
   )
 }

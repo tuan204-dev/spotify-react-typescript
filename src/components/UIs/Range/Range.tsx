@@ -8,7 +8,6 @@ interface RangeProps {
   maxValue?: number
   step?: number
   process?: number
-  setProcess?: React.Dispatch<React.SetStateAction<number>>
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   handleMouseUp: (e?: React.MouseEvent<HTMLInputElement>) => void
 }
@@ -20,8 +19,6 @@ const Range: FC<RangeProps> = ({
   handleChange,
   handleMouseUp,
 }) => {
-  console.log(process)
-
   return (
     <div className={cx('wrapper')}>
       <div style={{ overflow: 'hidden', height: '100%', borderRadius: '2px' }}>
@@ -43,6 +40,7 @@ const Range: FC<RangeProps> = ({
         value={process}
         onChange={handleChange}
         onMouseUp={handleMouseUp}
+        
       />
     </div>
   )

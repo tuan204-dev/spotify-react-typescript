@@ -25,17 +25,19 @@ const SidebarItem: FC<SidebarItemProps> = (props) => {
   })()
 
   return (
-    <Link to={`/${type}/${id}`}>
-      <div className={cx('sidebar-item')}>
-        <div className={cx('thumbnail')}>
-          <Image src={thumbnail} alt={name} />
+    <div>
+      <Link to={`/${type}/${id}`}>
+        <div className={cx('sidebar-item')}>
+          <div className={cx('thumbnail')}>
+            <Image src={thumbnail} alt={name} />
+          </div>
+          <div className={cx('body')}>
+            <h4 className={cx('heading')}>{name}</h4>
+            <span className={cx('type')}>{newType}</span>
+          </div>
         </div>
-        <div className={cx('body')}>
-          <h4 className={cx('heading')}>{name}</h4>
-          <span className={cx('type')}>{newType}</span>
-        </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   )
 }
 

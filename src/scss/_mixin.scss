@@ -18,6 +18,11 @@
   transition: all ease-in-out .2s;
 }
 
+@mixin reset-button {
+  border: none;
+  outline: none;
+}
+
 @mixin button-icon($size, $bg, $bg-highlight) {
   position: relative;
   width: $size;

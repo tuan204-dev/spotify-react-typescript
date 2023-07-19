@@ -20,15 +20,15 @@ const PlayerControl: FC = () => {
     id,
   } = useContext(PlayerContext)
 
-  const [trackProcess, setTrackProcess] = useState<number>(audioRef.current?.currentTime)
+  const [trackProcess, setTrackProcess] = useState<number>(audioRef?.current?.currentTime)
 
   useEffect(() => {
     setTrackProcess(0)
-    clearInterval(intervalIdRef.current)
+    clearInterval(intervalIdRef?.current)
   }, [id])
 
   const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    clearInterval(intervalIdRef.current)
+    clearInterval(intervalIdRef?.current)
     setTrackProcess(+e.target.value)
   }
 
@@ -38,9 +38,9 @@ const PlayerControl: FC = () => {
   }
 
   const startTimer = () => {
-    clearInterval(intervalIdRef.current)
+    clearInterval(intervalIdRef?.current)
     intervalIdRef.current = setInterval(() => {
-      if (!audioRef.current?.paused) {
+      if (!audioRef?.current?.paused) {
         setTrackProcess((prev) => +prev + 1)
       }
     }, 1000)
@@ -49,16 +49,14 @@ const PlayerControl: FC = () => {
   const handlePlayBtn = () => {
     if (!duration) return
     if (isPlaying) {
-      clearInterval(intervalIdRef.current)
+      clearInterval(intervalIdRef?.current)
       handlePause()
     } else {
-      setTrackProcess(audioRef.current?.currentTime)
+      setTrackProcess(audioRef?.current?.currentTime)
       startTimer()
       handlePlay()
     }
   }
-
-  console.log('playerControl---rerender')
 
   return (
     <div className={cx('wrapper')}>

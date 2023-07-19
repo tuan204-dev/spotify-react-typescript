@@ -1,0 +1,31 @@
+@import '../../../scss/variable';
+@import '../../../scss/mixin';
+
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 16px;
+
+  .btn {
+    background-color: transparent;
+    color: $text-subdued;
+    @include reset-button;
+    padding: 8px;
+    cursor: pointer;
+
+    &:hover {
+      color: $white;
+    }
+  }
+}
+
+
+.volume {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 125px;
+}
