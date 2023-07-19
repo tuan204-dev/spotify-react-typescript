@@ -3,7 +3,6 @@ import classNames from 'classnames/bind'
 import { FC, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './SubTitle.module.scss'
-import { ArtistData } from '../../../../types'
 
 const cx = classNames.bind(styles)
 
@@ -79,7 +78,11 @@ const Artists: FC<ArtistsProps> = ({ data, isWhiteColor, type = 'artist', fontSi
     }
   }
 
-  return <div className={cx('artists')}>{renderData}</div>
+  return (
+    <div onClick={(e) => e.stopPropagation()} className={cx('artists')}>
+      {renderData}
+    </div>
+  )
 }
 
 export default Artists

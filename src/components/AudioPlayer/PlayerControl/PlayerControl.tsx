@@ -2,28 +2,63 @@ import { RepeatIcon, ShuffleIcon, SkipBackIcon, SkipForwardIcon } from '@/assets
 import { PlayButton, Range } from '@/components/UIs'
 import { PlayerContext } from '@/contexts/PlayerContext'
 import classNames from 'classnames/bind'
-import { FC, useContext } from 'react'
+import React, { FC, useContext, useEffect, useState } from 'react'
 import styles from './PlayerControl.module.scss'
+import durationConvertor from '@/utils/durationConvertor'
 
 const cx = classNames.bind(styles)
 
 const PlayerControl: FC = () => {
   const {
+    isPlaying,
     handlePlay,
     handlePause,
-    isPlaying,
-    durationText,
-    setTrackProcess,
-    durationMs,
+    setCurrentTime,
+    intervalIdRef,
+    duration,
+    audioRef,
+    id,
   } = useContext(PlayerContext)
 
+  const [trackProcess, setTrackProcess] = useState<number>(audioRef.current?.currentTime)
+
+  useEffect(() => {
+    setTrackProcess(0)
+    clearInterval(intervalIdRef.current)
+  }, [id])
+
+  const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    clearInterval(intervalIdRef.current)
+    setTrackProcess(+e.target.value)
+  }
+
+  const handleMouseUp = () => {
+    setCurrentTime(trackProcess)
+    startTimer()
+  }
+
+  const startTimer = () => {
+    clearInterval(intervalIdRef.current)
+    intervalIdRef.current = setInterval(() => {
+      if (!audioRef.current?.paused) {
+        setTrackProcess((prev) => +prev + 1)
+      }
+    }, 1000)
+  }
+
   const handlePlayBtn = () => {
+    if (!duration) return
     if (isPlaying) {
+      clearInterval(intervalIdRef.current)
       handlePause()
     } else {
+      setTrackProcess(audioRef.current?.currentTime)
+      startTimer()
       handlePlay()
     }
   }
+
+  console.log('playerControl---rerender')
 
   return (
     <div className={cx('wrapper')}>
@@ -52,15 +87,21 @@ const PlayerControl: FC = () => {
         </button>
       </div>
       <div className={cx('playback-bar')}>
-        <div className={cx('playback-position')}>00:00</div>
+        <div className={cx('playback-position')}>
+          {durationConvertor(+trackProcess * 1000)}
+        </div>
         <div className={cx('range')}>
           <Range
-            type="trackProcess"
-            maxValue={Math.ceil(durationMs ? durationMs / 1000 : 0)}
-            setTrackProcess={setTrackProcess}
+            maxValue={Math.floor(duration ? duration : 0)}
+            step={1}
+            process={trackProcess}
+            handleChange={handleRangeChange}
+            handleMouseUp={handleMouseUp}
           />
         </div>
-        <div className={cx('playback-duration')}>{durationText}</div>
+        <div className={cx('playback-duration')}>
+          {durationConvertor(duration ? duration * 1000 : 0)}
+        </div>
       </div>
     </div>
   )

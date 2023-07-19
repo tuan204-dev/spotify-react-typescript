@@ -1,42 +1,26 @@
-import { FC, useState, useRef } from 'react'
-import styles from './Range.module.scss'
 import classNames from 'classnames/bind'
+import React, { FC } from 'react'
+import styles from './Range.module.scss'
 
 const cx = classNames.bind(styles)
 
 interface RangeProps {
-  maxValue: number
-  type?: 'trackProcess' | 'volume'
-  setTrackProcess: React.Dispatch<React.SetStateAction<number>>
+  maxValue?: number
+  step?: number
+  process?: number
+  setProcess?: React.Dispatch<React.SetStateAction<number>>
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  handleMouseUp: (e?: React.MouseEvent<HTMLInputElement>) => void
 }
 
-const Range: FC<RangeProps> = ({ maxValue, type = 'trackProcess', setTrackProcess }) => {
-  const [process, setProcess] = useState<number>(0)
-
-  const intervalId = useRef<any>()
-
-  const startTimer = () => {
-    clearInterval(intervalId.current)
-    intervalId.current = setInterval(() => {
-      setProcess((prev) => prev + 1)
-    }, 1000)
-  }
-
-  const handleChange = (e: any) => {
-    if (type === 'trackProcess') {
-      clearInterval(intervalId.current)
-      setProcess(e.target.value)
-    }
-
-    return
-  }
-
-  const handleMouseUp = (e: any) => {
-    if (type === 'trackProcess') {
-      startTimer()
-      setTrackProcess(e.target.value)
-    }
-  }
+const Range: FC<RangeProps> = ({
+  maxValue,
+  step,
+  process,
+  handleChange,
+  handleMouseUp,
+}) => {
+  console.log(process)
 
   return (
     <div className={cx('wrapper')}>
@@ -44,18 +28,18 @@ const Range: FC<RangeProps> = ({ maxValue, type = 'trackProcess', setTrackProces
         <div
           style={{
             transform: `translateX(calc(-100% + 100% * ${
-              maxValue ? process / maxValue : 0
+              maxValue && process ? process / maxValue : 0
             }))`,
           }}
           className={cx('process-bar')}
         ></div>
       </div>
       <input
-        min={0}
-        max={maxValue}
-        step={1}
         className={cx('controls')}
         type="range"
+        min={0}
+        max={maxValue}
+        step={step}
         value={process}
         onChange={handleChange}
         onMouseUp={handleMouseUp}

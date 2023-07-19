@@ -27,6 +27,7 @@ const TopTrack: FC<TopTrackProps> = ({ songList, isLoading }) => {
               ?.slice(0, isLess ? 5 : 10)
               .map((item: any, index: number) => (
                 <SongItem
+                  id={item?.track?.id}
                   type="artist"
                   key={item.track.id || index}
                   songName={item.track.name}

@@ -60,7 +60,6 @@ export const ArtistProvider: FC<ArtistProviderProps> = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await artistApi(id)
-      console.log(data)
       setResponseData(data)
     }
     if (id !== '') fetchData()

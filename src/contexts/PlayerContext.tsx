@@ -1,15 +1,7 @@
 import trackApi from '@/APIs/trackApi'
-import {
-  FC,
-  ReactNode,
-  createContext,
-  useMemo,
-  useState,
-  useEffect,
-  useCallback,
-  useRef,
-} from 'react'
+import { FC, ReactNode, createContext, useEffect, useMemo, useRef, useState } from 'react'
 import { ArtistData, RapidTrack, SpotifyTrack } from '../../types'
+import rapidDataD from '../assets/data/initTrackRapid.json'
 
 interface PlayBarData {
   trackName?: string
@@ -22,81 +14,96 @@ interface PlayerProviderProps {
   children: ReactNode
 }
 
-interface PlayerContext {
+interface ReturnData {
+  duration?: number
   playBarData?: PlayBarData
+}
+
+interface PlayerContext extends ReturnData {
   id?: string
-  setId: React.Dispatch<React.SetStateAction<string | undefined>>
-  isPlaying?: boolean
   handlePlay: () => void
   handlePause: () => void
-  durationText?: string
-  durationMs?: number
-  setTrackProcess: React.Dispatch<React.SetStateAction<number>>
+  audioRef: React.MutableRefObject<any>
+  isPlaying: boolean
+  setId: React.Dispatch<React.SetStateAction<string | undefined>>
+  setCurrentTime: React.Dispatch<React.SetStateAction<number>>
+  intervalIdRef: any
 }
 
 export const PlayerContext = createContext({} as PlayerContext)
 
 export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
   const [id, setId] = useState<string | undefined>('')
-  const [spotifyData, setSpotifyData] = useState<SpotifyTrack>()
-  const [rapidData, setRapidData] = useState<RapidTrack>()
+  const [spotifyData, setSpotifyData] = useState<SpotifyTrack>({})
+  const [rapidData] = useState<RapidTrack>(rapidDataD)
   const [isPlaying, setPlaying] = useState<boolean>(false)
-  const [trackProcess, setTrackProcess] = useState<number>(0)
+  const [currentTime, setCurrentTime] = useState<number>(0)
+
+  const intervalIdRef = useRef<any>()
 
   useEffect(() => {
-    const fetchSpotifyData = async () => {
-      const response = await fetch('http://localhost:5000/data/initTrack.json')
-      const data = await response.json()
+    const fetchData = async () => {
+      const data = await trackApi({ id })
       setSpotifyData(data)
     }
 
-    const fetchRapidData = async () => {
-      const response = await fetch('http://localhost:5000/data/initTrackRapid.json')
-      const data = await response.json()
-      setRapidData(data)
+    if (id) {
+      fetchData()
     }
-    handlePause()
-    fetchSpotifyData()
-    fetchRapidData()
   }, [id])
 
   const audioRef = useRef<any>(new Audio(rapidData?.soundcloudTrack?.audio?.[0]?.url))
 
   useEffect(() => {
+    handlePause()
     audioRef.current = new Audio(rapidData?.soundcloudTrack?.audio?.[0]?.url)
   }, [id])
 
-  const handlePlay = useCallback(() => {
-    audioRef.current?.play()
+  useEffect(() => {
+    audioRef.current.currentTime = currentTime
+  }, [currentTime])
+
+  audioRef.current.pause = () => {
+    console.log('hello')
+  }
+
+  const handlePlay = () => {
+    audioRef.current.play()
     setPlaying(true)
-  }, [id])
+  }
 
-  const handlePause = useCallback(() => {
-    audioRef.current?.pause()
+  const handlePause = () => {
+    audioRef.current.pause()
     setPlaying(false)
-  }, [id])
+  }
 
-  const contextValue = useMemo(() => {
+  const returnData = useMemo(() => {
     return {
-      durationText: rapidData?.soundcloudTrack?.audio?.[0]?.durationText,
-      durationMs: rapidData?.soundcloudTrack?.audio?.[0]?.durationMs,
-      isPlaying: isPlaying,
-      id: id,
-      setId: setId,
-      handlePlay: handlePlay,
-      handlePause: handlePause,
+      duration: audioRef.current?.duration,
       playBarData: {
         trackName: spotifyData?.name,
         thumb: spotifyData?.album?.images?.[0]?.url,
-        artists: spotifyData?.artists,
         albumId: spotifyData?.album?.id,
+        artists: spotifyData?.artists,
       },
-      setTrackProcess: setTrackProcess,
     }
-  }, [rapidData, spotifyData, isPlaying, id])
+  }, [spotifyData, rapidData, id])
 
+  console.log('playerContext-rerender')
   return (
-    <PlayerContext.Provider value={{ ...contextValue }}>
+    <PlayerContext.Provider
+      value={{
+        id,
+        handlePlay,
+        handlePause,
+        audioRef,
+        isPlaying,
+        ...returnData,
+        setId,
+        setCurrentTime,
+        intervalIdRef,
+      }}
+    >
       {children}
     </PlayerContext.Provider>
   )

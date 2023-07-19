@@ -1,9 +1,9 @@
-@import "../../../scss/variable";
+@import '../../../scss/variable';
 
 .wrapper {
   height: 4px;
   width: 100%;
-  background-color: rgba($color: #fff, $alpha: .3);
+  background-color: rgba($color: #fff, $alpha: 0.3);
   border-radius: 2px;
   position: relative;
 
@@ -12,7 +12,6 @@
     height: 100%;
     background-color: $white;
     border-radius: 2px;
-    transition: all .05s ease;
   }
 
   &:hover .process-bar {
@@ -23,8 +22,6 @@
     opacity: 1;
   }
 }
-
-
 
 .controls {
   position: absolute;

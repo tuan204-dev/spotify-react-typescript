@@ -5,6 +5,7 @@ import classNames from 'classnames/bind'
 import { FC, useContext, useLayoutEffect, useState } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import styles from './TopResult.module.scss'
+import { PlayerContext } from '@/contexts/PlayerContext'
 
 const cx = classNames.bind(styles)
 
@@ -16,6 +17,7 @@ interface TopResultProps {
 const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
   const [isLoading, setLoading] = useState<boolean>(true)
   const { width } = useContext(MainLayoutContext)
+  const { setId } = useContext(PlayerContext)
 
   useLayoutEffect(() => {
     if (topResult && songs && topResult?.album?.images[0]?.url) {
@@ -57,7 +59,7 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
           </div>
           <div className={cx('btn-pivot')}>
             {!isLoading && (
-              <div className={cx('play-btn')}>
+              <div onClick={() => setId(topResult?.id)} className={cx('play-btn')}>
                 <PlayButton
                   size={50}
                   scaleHovering={1.05}
