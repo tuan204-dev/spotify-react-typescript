@@ -23,10 +23,12 @@ const Header: React.FC<HeaderProps> = ({
   artists,
   releaseDate,
   isWhiteColor = false,
+  headerType,
+  publisher,
 }) => {
   return (
     <main style={{ backgroundColor: `${bgColor}` }} className={cx('wrapper')}>
-      <div className={cx('body')}>
+      <div className={cx({ body: true, show: headerType === 'show' })}>
         <div className={cx('img')}>
           {!isLoading ? (
             <Image src={thumbnail} alt={title} />
@@ -42,29 +44,36 @@ const Header: React.FC<HeaderProps> = ({
                 {(type === 'album' && 'Album') ||
                   (type === 'single' && 'Single') ||
                   (type === 'compilation' && 'Compilation') ||
+                  (type === 'podcast' && 'Podcast') ||
                   type}
               </p>
               <h2 className={cx('title')}>{title}</h2>
               <div className={cx('desc')}>
                 <ArtistList data={htmlCleaner(stringCleaner(desc))} />
               </div>
-              <div className={cx('quantity')}>
-                <div
-                  style={{ backgroundImage: `url(${logoImage})` }}
-                  className={cx('logo')}
-                ></div>
-                {(type === 'album' || type === 'single' || type === 'compilation') && (
-                  <>
-                    <div className={cx('artist')}>
-                      {<SubTitle isWhiteColor={isWhiteColor} data={artists} />}
-                    </div>{' '}
-                    <div className={cx('dot')}></div>{' '}
-                    <div className={cx('release-date')}>{releaseDate?.slice(0, 4)}</div>
-                  </>
-                )}
-                <div className={cx('dot')}></div>
-                <div className={'text'}>{`${quantity || 0} songs`}</div>
-              </div>{' '}
+              {headerType === 'show' ? (
+                <div className={cx('publisher')}>
+                  <span>{publisher}</span>
+                </div>
+              ) : (
+                <div className={cx('quantity')}>
+                  <div
+                    style={{ backgroundImage: `url(${logoImage})` }}
+                    className={cx('logo')}
+                  ></div>
+                  {(type === 'album' || type === 'single' || type === 'compilation') && (
+                    <>
+                      <div className={cx('artist')}>
+                        {<SubTitle isWhiteColor={isWhiteColor} data={artists} />}
+                      </div>{' '}
+                      <div className={cx('dot')}></div>{' '}
+                      <div className={cx('release-date')}>{releaseDate?.slice(0, 4)}</div>
+                    </>
+                  )}
+                  <div className={cx('dot')}></div>
+                  <div className={'text'}>{`${quantity || 0} songs`}</div>
+                </div>
+              )}
             </>
           ) : (
             <div style={{}} className={cx('skeleton')}>

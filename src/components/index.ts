@@ -18,6 +18,9 @@ import Discography from './Discography/Discography'
 import AboutArtist from './AboutArtist/AboutArtist'
 import ArtistModal from './ArtistModal/ArtistModal'
 import AudioPlayer from './AudioPlayer/AudioPlayer'
+import AboutShow from './AboutShow/AboutShow'
+import ShowsList from './ShowsList/ShowsList'
+import ShowItem from './ShowItem/ShowItem'
 
 export {
   Section,
@@ -40,4 +43,7 @@ export {
   AboutArtist,
   ArtistModal,
   AudioPlayer,
+  AboutShow,
+  ShowsList,
+  ShowItem,
 }

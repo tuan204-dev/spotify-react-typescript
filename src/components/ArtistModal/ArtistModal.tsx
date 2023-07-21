@@ -67,7 +67,12 @@ const ArtistModal: FC<ArtistModalProps> = ({
               ))}
             </div>
             <div className={cx('right')}>
-              <p className={cx('bio')}>{stringCleaner(profile?.biography?.text)}</p>
+              <p
+                className={cx('bio')}
+                dangerouslySetInnerHTML={{
+                  __html: profile?.biography?.text ? profile?.biography?.text : '',
+                }}
+              ></p>
             </div>
           </div>
         </div>

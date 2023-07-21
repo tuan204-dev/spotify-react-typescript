@@ -14,30 +14,58 @@ interface ArtistsProps {
   fontSize?: number
 }
 
-const Artists: FC<ArtistsProps> = ({ data, isWhiteColor, type = 'artist', fontSize }) => {
+const Artists: FC<ArtistsProps> = ({
+  data,
+  isWhiteColor,
+  type = 'artist',
+  fontSize,
+  apiType = 'spotify',
+}) => {
   const renderData: any[] = []
+  let dataNormalized: any
 
-  if (data) {
-    if (data.length === 1) {
+  if (apiType === 'rapid') {
+    if (type === 'artist') {
+      dataNormalized = data?.items?.map((item: any) => {
+        return {
+          id: item.uri.split(':').pop(),
+          name: item.profile.name,
+        }
+      })
+    }
+  } else {
+    dataNormalized = data
+  }
+
+  if (dataNormalized) {
+    if (dataNormalized.length === 1) {
       renderData.push(
         <Link
           key={0}
-          to={type === 'album' ? `/album/${data[0]?.id}` : `/artist/${data[0]?.id}`}
+          to={
+            type === 'album'
+              ? `/album/${dataNormalized[0]?.id}`
+              : `/artist/${dataNormalized[0]?.id}`
+          }
         >
           <span
             style={{ fontSize: fontSize ? fontSize : undefined }}
             className={cx({ 'artist-item': true, 'white-color': isWhiteColor })}
           >
-            {data[0].name}
+            {dataNormalized[0].name}
           </span>
         </Link>
       )
     } else {
-      for (let i = 0; i < data.length - 1; i++) {
+      for (let i = 0; i < dataNormalized.length - 1; i++) {
         renderData.push(
           <Fragment key={i}>
             <Link
-              to={type === 'album' ? `/album/${data[i]?.id}` : `/artist/${data[i]?.id}`}
+              to={
+                type === 'album'
+                  ? `/album/${dataNormalized[i]?.id}`
+                  : `/artist/${dataNormalized[i]?.id}`
+              }
             >
               <span
                 style={{ fontSize: fontSize ? fontSize : undefined }}
@@ -46,7 +74,7 @@ const Artists: FC<ArtistsProps> = ({ data, isWhiteColor, type = 'artist', fontSi
                   'white-color': isWhiteColor,
                 })}
               >
-                {data[i]?.name}
+                {dataNormalized[i]?.name}
               </span>
             </Link>
             {', '}
@@ -55,12 +83,12 @@ const Artists: FC<ArtistsProps> = ({ data, isWhiteColor, type = 'artist', fontSi
       }
 
       renderData.push(
-        <Fragment key={data?.length - 1}>
+        <Fragment key={dataNormalized?.length - 1}>
           <Link
             to={
               type === 'album'
-                ? `/album/${data[data?.length - 1]?.id}`
-                : `/artist/${data[data?.length - 1]?.id}`
+                ? `/album/${dataNormalized[dataNormalized?.length - 1]?.id}`
+                : `/artist/${dataNormalized[dataNormalized?.length - 1]?.id}`
             }
           >
             <span
@@ -70,7 +98,7 @@ const Artists: FC<ArtistsProps> = ({ data, isWhiteColor, type = 'artist', fontSi
                 'white-color': isWhiteColor,
               })}
             >
-              {data[data?.length - 1]?.name}
+              {dataNormalized[dataNormalized?.length - 1]?.name}
             </span>
           </Link>
         </Fragment>

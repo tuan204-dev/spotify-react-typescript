@@ -11,8 +11,8 @@ import TopResult from './TopResult/TopResult'
 const cx = classNames.bind(styles)
 
 const SearchResult: FC = () => {
-  const { data, query } = useContext(SearchContext)
-  const [category, setCategory] = useState<string>('all')
+  const { data, query, categoryRef } = useContext(SearchContext)
+  const [category, setCategory] = useState<string>(categoryRef.current)
   const [searchSelections, setSearchSelections] = useState<any>([])
 
   useEffect(() => {
@@ -83,7 +83,10 @@ const SearchResult: FC = () => {
               name="search category"
               key={item.key}
               className={cx({ btn: true, active: item.active })}
-              onClick={() => setCategory(item.key)}
+              onClick={() => {
+                categoryRef.current = item.key
+                setCategory(item.key)
+              }}
             >
               {item.display}
             </button>
@@ -102,7 +105,7 @@ const SearchResult: FC = () => {
                       key={item.key}
                       dataType={item.key.slice(0, -1)}
                       isFull
-                      data={data[item.key]?.items
+                      data={data?.[item?.key]?.items
                         ?.filter((item: any) => item)
                         ?.sort((a: any, b: any) => -a.popularity + b.popularity)}
                     />
@@ -137,9 +140,7 @@ const SearchResult: FC = () => {
                 isClickable={false}
                 title="Artists"
                 dataType="artist"
-                data={data?.artists?.items
-                  .filter((item: any) => item)
-                  .sort((a: any, b: any) => -a.popularity + b.popularity)}
+                data={data?.artists?.items.filter((item: any) => item)}
               />
             )}
             {data?.albums?.items.filter((item: any) => item).length !== 0 && (

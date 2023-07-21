@@ -1,0 +1,70 @@
+@import '../../scss/variable';
+@import '../../scss/mixin';
+
+.main {
+  border-top: 2px solid rgba($color: #fff, $alpha: 0.1);
+}
+
+.main:hover,
+.main:hover + .main {
+  border-color: transparent;
+}
+
+.show-item-wrapper {
+  display: flex;
+  flex-direction: row;
+  color: $white;
+  padding: 16px;
+
+  &:hover {
+    background-color: rgba($color: #fff, $alpha: 0.1);
+    border-radius: 4px;
+  }
+}
+
+.thumb {
+  width: 112px;
+  height: 112px;
+  overflow: hidden;
+  border-radius: 4px;
+  margin-right: 24px;
+}
+
+.body {
+  flex: 1;
+}
+
+.title {
+  h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.desc {
+  font-size: 14px;
+  color: $text-neutral;
+  line-height: 1.5;
+  margin: 10px 0 22px;
+  @include text-line-clamp(2);
+}
+
+.action {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .play-btn {
+    margin-right: 16px;
+  }
+
+  .release-date {
+    color: hsla(0, 0%, 100%, 0.7);
+    font-size: 14px;
+  }
+}

@@ -18,8 +18,6 @@ const AboutArtist: FC<AboutArtistProps> = ({ profile, stats, isLoading, aboutImg
   const desc = unicodeDecoder(profile?.bio)
   const { setModalOpen } = useContext(ArtistContext)
 
-  
-
   return (
     <div className={cx('wrapper')}>
       <div className={cx('title')}>
@@ -36,7 +34,10 @@ const AboutArtist: FC<AboutArtistProps> = ({ profile, stats, isLoading, aboutImg
               <div className={cx('monthly-listener')}>
                 {stats?.monthlyListeners?.toLocaleString()} monthly listeners
               </div>
-              <span className={cx('desc')}>{desc}</span>
+              <span
+                className={cx('desc')}
+                dangerouslySetInnerHTML={{ __html: desc }}
+              ></span>
             </>
           )}
         </div>

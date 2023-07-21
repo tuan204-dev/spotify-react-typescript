@@ -1,0 +1,101 @@
+@import '../../scss/variable';
+@import '../../scss/mixin';
+
+.show-wrapper {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: $bg-base;
+}
+
+.body {
+  height: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+  padding-bottom: 32px;
+  padding-top: $navbar-height;
+  position: relative;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.pivot-tracking {
+  position: absolute;
+  z-index: -999;
+}
+
+.main {
+  position: relative;
+}
+
+.bg-blur {
+  position: absolute;
+  height: 232px;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6) 0, $bg-base 100%), $bg-noise;
+  z-index: 0;
+}
+
+.action-bar {
+  display: flex;
+  position: relative;
+  padding: 24px;
+  align-items: center;
+  gap: 32px;
+
+  .follow-btn {
+    @include reset-button;
+    padding: 8px 15px;
+    font-size: 14px;
+    font-weight: 700;
+    background-color: transparent;
+    color: $white;
+    border: 1px solid #878787;
+    border-radius: 500px;
+    cursor: pointer;
+    transition: all 33ms ease;
+
+    &:hover {
+      border-color: $white;
+      transform: scale(1.04);
+    }
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 7;
+  display: flex;
+  flex-direction: row;
+  column-gap: 4%;
+  padding-inline: 24px;
+
+  .about {
+    flex: 1;
+    order: 2;
+    padding-bottom: 20px;
+  }
+
+  .episodes-list {
+    order: 1;
+    flex: 2;
+  }
+}
+
+.col-layout {
+  .content {
+    flex-direction: column;
+
+    .about {
+      order: 1;
+    }
+
+    .episodes-list {
+      order: 2;
+    }
+  }
+}

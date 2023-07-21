@@ -1,7 +1,6 @@
 @import '../../scss/variable';
 @import '../../scss/mixin';
 
-
 .wrapper {
   position: relative;
   height: clamp(340px, 30vh, 400px);
@@ -13,7 +12,7 @@
   transition: all 1s ease;
   filter: brightness(110%);
   // background-image: linear-gradient(rgba(60, 60, 60, 0.6) 0, $bg-base 100%), $bg-noise !important;
-  background: linear-gradient(transparent 0, rgba(0, 0, 0, .5) 100%), $bg-noise;
+  background: linear-gradient(transparent 0, rgba(0, 0, 0, 0.5) 100%), $bg-noise;
   // background-color: #fff;
 }
 
@@ -27,7 +26,7 @@
     height: 232px;
     min-width: 232px;
     width: 232px;
-    box-shadow: 0 4px 60px rgba(0, 0, 0, .5);
+    box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
     overflow: hidden;
 
     span {
@@ -74,7 +73,7 @@
 
     .desc {
       font-size: 14px;
-      color: hsla(0, 0%, 100%, .7);
+      color: hsla(0, 0%, 100%, 0.7);
       margin-bottom: 8px;
       @include text-line-clamp(2);
       display: flex;
@@ -100,7 +99,8 @@
         max-width: 40%;
       }
 
-      .release-date {}
+      .release-date {
+      }
 
       .logo {
         height: 20px;
@@ -119,11 +119,26 @@
         margin-inline: 5px;
       }
 
-
       .text {
         width: max-content;
       }
     }
   }
+}
 
+.show {
+  .img {
+    border-radius: 12px;
+  }
+
+  .title {
+    font-size: 72px !important;
+  }
+
+  .publisher {
+    span {
+      font-size: 24px;
+      font-weight: 700;
+    }
+  }
 }

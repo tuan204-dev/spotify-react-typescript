@@ -45,12 +45,13 @@ const PlayButton: FC<PlayButtonProps> = (props) => {
           transform:
             isHovering && scaleHovering !== 1 ? `scale(${scaleHovering})` : undefined,
           backgroundColor: bgColor ? bgColor : undefined,
+          opacity: isHovering ? 1 : undefined,
         }}
       >
         {!isPlay ? (
           <TbPlayerPlayFilled className={cx('play-btn-child')} />
         ) : (
-          <GiPauseButton />
+          <GiPauseButton className={cx('play-btn-child')} />
         )}
       </button>
     </div>

@@ -38,7 +38,13 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
   const [rapidData] = useState<RapidTrack>(rapidDataD)
   const [isPlaying, setPlaying] = useState<boolean>(false)
   const [currentTime, setCurrentTime] = useState<number>(0)
+// ---------------Queue list----------------
+  const [queue, setQueue] = useState<any>()
 
+
+
+
+// -----------------------------------------
   const intervalIdRef = useRef<any>()
 
   useEffect(() => {
