@@ -1,4 +1,4 @@
-import userApi from '@/APIs/userApi'
+import { getUserData } from '@/APIs/userApi'
 import { scopes } from '@/config/spotify'
 import { FC, ReactNode, createContext, useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -86,7 +86,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const data = await userApi()
+      const data = await getUserData()
       setUserData(data)
     }
     fetchUserData()

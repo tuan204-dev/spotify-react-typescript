@@ -7,6 +7,7 @@ import { ArtistList } from '..'
 import { HeaderProps } from '../../../types'
 import { Image, SubTitle } from '../UIs'
 import styles from './Header.module.scss'
+import { Link } from 'react-router-dom'
 
 const cx = classNames.bind(styles)
 
@@ -25,6 +26,8 @@ const Header: React.FC<HeaderProps> = ({
   isWhiteColor = false,
   headerType,
   publisher,
+  showName,
+  showId,
 }) => {
   return (
     <main style={{ backgroundColor: `${bgColor}` }} className={cx('wrapper')}>
@@ -45,6 +48,7 @@ const Header: React.FC<HeaderProps> = ({
                   (type === 'single' && 'Single') ||
                   (type === 'compilation' && 'Compilation') ||
                   (type === 'podcast' && 'Podcast') ||
+                  (type === 'episode' && 'Podcast Episode') ||
                   type}
               </p>
               <h2 className={cx('title')}>{title}</h2>
@@ -52,9 +56,11 @@ const Header: React.FC<HeaderProps> = ({
                 <ArtistList data={htmlCleaner(stringCleaner(desc))} />
               </div>
               {headerType === 'show' ? (
-                <div className={cx('publisher')}>
-                  <span>{publisher}</span>
-                </div>
+                <Link to={type === 'episode' ? `/show/${showId}` : ''}>
+                  <div className={cx({ publisher: true, underline: type === 'episode' })}>
+                    <span>{publisher || showName}</span>
+                  </div>
+                </Link>
               ) : (
                 <div className={cx('quantity')}>
                   <div

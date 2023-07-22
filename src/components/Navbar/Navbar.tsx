@@ -46,8 +46,6 @@ const Navbar: FC<NavbarProps> = (props) => {
     }
   }, [])
 
-  console.log(userData)
-
   return (
     <nav className={cx('nav')}>
       <div

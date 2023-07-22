@@ -86,7 +86,7 @@ const PlayerControl: FC = () => {
       </div>
       <div className={cx('playback-bar')}>
         <div className={cx('playback-position')}>
-          {durationConvertor(+trackProcess * 1000)}
+          {durationConvertor({ milliseconds: +trackProcess * 1000 })}
         </div>
         <div className={cx('range')}>
           <Range
@@ -98,7 +98,7 @@ const PlayerControl: FC = () => {
           />
         </div>
         <div className={cx('playback-duration')}>
-          {durationConvertor(duration ? duration * 1000 : 0)}
+          {durationConvertor({ milliseconds: duration ? duration * 1000 : 0 })}
         </div>
       </div>
     </div>

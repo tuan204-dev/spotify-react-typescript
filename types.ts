@@ -310,7 +310,7 @@ export interface HeaderProps {
   title?: string
   thumbnail?: string
   quantity?: number
-  type?: 'Playlist' | 'album' | 'single' | 'compilation' | 'podcast'
+  type?: 'Playlist' | 'album' | 'single' | 'compilation' | 'podcast' | 'episode'
   bgColor?: string
   desc?: string
   isLoading?: boolean
@@ -319,6 +319,8 @@ export interface HeaderProps {
   isWhiteColor?: boolean
   headerType?: 'playlist' | 'album' | 'show'
   publisher?: string
+  showName?: string
+  showId?: string
 }
 
 export type LibSelection = {
@@ -438,7 +440,7 @@ export interface RapidTrack {
 export interface ShowItem {
   description?: string
   html_description?: string
-  duration_ms?: string
+  duration_ms?: number
   explicit?: boolean
   id?: string
   images?: ImageSource[]
@@ -458,4 +460,13 @@ export interface ShowData {
   name?: string
   publisher?: string
   total_episodes?: number
+}
+
+export interface Episode extends ShowItem {
+  show?: {
+    id?: string
+    images?: ImageSource[]
+    name?: string
+    publisher?: string
+  }
 }

@@ -1,8 +1,9 @@
 import { LibraryIcon } from '@/assets/icons'
 import { SidebarItem } from '@/components'
+import { AuthContext } from '@/contexts/AuthContext'
 import { fetchSidebarData } from '@/utils'
 import classNames from 'classnames/bind'
-import { FC, useEffect, useMemo, useState } from 'react'
+import { FC, useContext, useEffect, useMemo, useState } from 'react'
 import { HiArrowRight, HiOutlinePlus } from 'react-icons/hi'
 import { LibSelection } from '../../../../types'
 import styles from './Library.module.scss'
@@ -10,17 +11,28 @@ import styles from './Library.module.scss'
 const cx = classNames.bind(styles)
 
 const Library: FC = () => {
+  const { userData } = useContext(AuthContext)
   const [category, setCategory] = useState<'playlist' | 'album' | 'artist'>('playlist')
   const [bottomShadow, setBottomShadow] = useState<boolean>(false)
   const [data, setData] = useState<any>()
 
+  // console.log(userData)
+
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchSidebarData({ type: category })
+      const data = await fetchSidebarData({ type: category, userId: userData?.id })
       setData(data)
     }
     fetchData()
-  }, [category])
+  }, [category, userData])
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const data = await getUserAlbum()
+  //     console.log(data)
+  //   }
+  //   fetchData()
+  // }, [])
 
   const libSelections: LibSelection[] = useMemo(
     () => [
@@ -92,15 +104,18 @@ const Library: FC = () => {
         ))}
       </div>
       <div onScroll={handleScroll} className={cx('playlist-section')}>
-        {data?.data?.map((item: any, index: number) => (
+        {data?.map((item: any, index: number) => (
           <SidebarItem
-            key={item.id || index}
-            id={item.id}
-            author={item?.owner && item?.owner.display_name}
-            artists={item?.artists && item?.artists}
+            key={item?.id || index}
+            id={item?.id || item?.album?.id}
+            author={item?.owner && item?.owner?.display_name}
+            artists={item?.artists || item?.album?.artists}
             type={libSelection?.type}
-            name={item.name}
-            thumbnail={item.images[item.images.length - 1].url}
+            name={item?.name || item?.album?.name}
+            thumbnail={
+              item?.images?.[item?.images?.length - 1]?.url ||
+              item?.album?.images[item?.album?.images.length - 1]?.url
+            }
           />
         ))}
       </div>

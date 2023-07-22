@@ -1,22 +1,22 @@
 import axios from 'axios'
 import queryString from 'query-string'
-import { getAccessToken } from './getAccessToken'
+import { getAccessToken, getAccessTokenDev } from './getAccessToken'
 
-const getAccessTokenDev = async () => {
-  const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID
-  const clientSecret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET
+// const getAccessTokenDev = async () => {
+//   const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID
+//   const clientSecret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET
 
-  const response = await fetch('https://accounts.spotify.com/api/token', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: `grant_type=client_credentials&client_id=${clientId}&client_secret=${clientSecret}`,
-  })
+//   const response = await fetch('https://accounts.spotify.com/api/token', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/x-www-form-urlencoded',
+//     },
+//     body: `grant_type=client_credentials&client_id=${clientId}&client_secret=${clientSecret}`,
+//   })
 
-  const data = await response.json()
-  return data.access_token
-}
+//   const data = await response.json()
+//   return data.access_token
+// }
 
 export const spotifyApiClient = axios.create({
   baseURL: 'https://api.spotify.com/v1',
@@ -28,6 +28,8 @@ spotifyApiClient.interceptors.request.use(async (config) => {
   if (token) {
     config.headers.Authorization = `Bearer ${token}`
   }
+
+  // config.headers.Authorization = `Bearer BQCg429UuyDwzqIyj7hS-eG5Aso9jYYSjd6o23yLxZjWdWP1Q6DF3CfySS4HfTDHkK0hC5Xcp98oIjOhpC9uN6UEOiBXmZYP49T-dfjt84NYasztB8M`
 
   return config
 })
@@ -45,7 +47,6 @@ spotifyApiClientDev.interceptors.request.use(async (config) => {
 
   return config
 })
-
 
 export const rapidApiClient = axios.create({
   baseURL: 'https://spotify23.p.rapidapi.com',

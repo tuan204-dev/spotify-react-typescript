@@ -11,9 +11,8 @@
   border-radius: 4px;
 
   &:hover {
-    background-color: hsla(0, 0%, 100%, .1);
+    background-color: hsla(0, 0%, 100%, 0.1);
     cursor: pointer;
-
 
     .order-icon {
       opacity: 1;
@@ -25,8 +24,6 @@
   }
 }
 
-
-
 .main {
   display: flex;
   align-items: center;
@@ -36,6 +33,7 @@
 
   .thumb {
     height: 40px;
+    width: 40px;
     aspect-ratio: 1 / 1;
     overflow: hidden;
 
@@ -57,6 +55,7 @@
     justify-content: space-between;
     height: 100%;
     gap: 5px;
+    flex: 1;
     // padding: 8px 0;
     overflow: hidden;
 
@@ -86,13 +85,12 @@
       font-size: 9px;
       padding: 3px 6px;
       text-transform: uppercase;
-      background-color: hsla(0, 0%, 100%, .6);
-      color: $bg-base ;
+      background-color: hsla(0, 0%, 100%, 0.6);
+      color: $bg-base;
       border-radius: 2px;
       margin-right: 8px;
     }
   }
-
 }
 
 .album {
@@ -113,7 +111,6 @@
   &-number {
     opacity: 1;
     z-index: -1;
-
   }
 
   &-icon {
@@ -125,7 +122,6 @@
     right: -3px;
     transition: none;
   }
-
 }
 
 .album,
