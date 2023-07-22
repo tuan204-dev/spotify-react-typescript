@@ -93,7 +93,9 @@ const SongItem: React.FC<SongItemProps> = ({
           )}
         </>
       )}
-      <div className={cx('duration')}>{!isLoading && durationConvertor(duration)}</div>
+      <div className={cx('duration')}>
+        {!isLoading && durationConvertor({ milliseconds: duration })}
+      </div>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import styles from './ShowItem.module.scss'
 import classNames from 'classnames/bind'
 import { ShowItem as ShowItemProps } from '../../../types'
@@ -6,6 +6,7 @@ import { Image, PlayButton } from '../UIs'
 import { dateFormatConvertor } from '@/utils'
 import { Link } from 'react-router-dom'
 import Skeleton from 'react-loading-skeleton'
+import durationConvertor from '@/utils/durationConvertor'
 
 const cx = classNames.bind(styles)
 
@@ -20,6 +21,7 @@ const ShowItem: FC<ShowItemComponentProps> = ({
   release_date,
   id,
   isLoading,
+  duration_ms,
 }) => {
   return (
     <div className={cx('main')}>
@@ -67,7 +69,11 @@ const ShowItem: FC<ShowItemComponentProps> = ({
                   />
                 </div>
                 <div className={cx('release-date')}>
-                  {dateFormatConvertor(release_date)}
+                  <span>{dateFormatConvertor(release_date)}</span>
+                  <div className={cx('dot')}></div>
+                  <span>
+                    {durationConvertor({ milliseconds: duration_ms, type: 'long' })}
+                  </span>
                 </div>
               </div>
             )}
@@ -78,4 +84,4 @@ const ShowItem: FC<ShowItemComponentProps> = ({
   )
 }
 
-export default ShowItem
+export default memo(ShowItem)

@@ -1,0 +1,153 @@
+@import '../../scss/variable';
+@import '../../scss/mixin';
+
+.episode-wrapper {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: $bg-base;
+}
+
+.body {
+  height: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+  padding-bottom: 32px;
+  padding-top: $navbar-height;
+  position: relative;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.pivot-tracking {
+  position: absolute;
+  z-index: -999;
+}
+
+.main {
+  position: relative;
+}
+
+.bg-blur {
+  position: absolute;
+  height: 232px;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6) 0, $bg-base 100%), $bg-noise;
+  z-index: 0;
+}
+
+.action-bar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  gap: 16px;
+
+  .top {
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    color: rgba($color: #fff, $alpha: 0.7);
+    align-items: center;
+    gap: 4px;
+    letter-spacing: 1px;
+
+    .dot {
+      height: 3px;
+      width: 3px;
+      border-radius: 500px;
+      background-color: rgba($color: #fff, $alpha: 0.7);
+    }
+  }
+
+  .bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .play-btn {
+      margin-right: 32px;
+    }
+
+    .plus-btn {
+      color: $text-subdued;
+      cursor: pointer;
+      transform-origin: center;
+
+      &:hover {
+        color: $white;
+        transform: scale(1.04);
+      }
+    }
+  }
+}
+
+.content {
+  position: relative;
+  padding-inline: 24px;
+  max-width: 672px;
+
+  .title {
+    font-size: 24px;
+    font-weight: 700;
+    color: $white;
+  }
+
+  .desc {
+    font-size: 16px;
+    color: $text-neutral;
+
+    a {
+      color: $white;
+      font-weight: 700;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+  }
+}
+
+.expand-btn {
+  margin-top: 4px;
+
+  button {
+    @include reset-button;
+    background-color: transparent;
+    font-size: 16px;
+    color: $white;
+    font-weight: 700;
+    cursor: pointer;
+  }
+}
+.expanded {
+  @include text-line-clamp(5);
+}
+
+.see-all-btn {
+  margin-top: 48px;
+  padding-inline: 24px;
+
+  button {
+    @include reset-button;
+    font-size: 14px;
+    font-weight: 700;
+    color: $white;
+    background-color: transparent;
+    padding: 7px 15px;
+    border-radius: 500px;
+    border: 1px solid $essential-subdued;
+    cursor: pointer;
+    transform-origin: center;
+
+    &:hover {
+      transform: scale(1.04);
+      border-color: $white;
+    }
+  }
+}

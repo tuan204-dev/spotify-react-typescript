@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import styles from './ShowsList.module.scss'
 import classNames from 'classnames/bind'
 import { ShowItem as ShowItemProps } from '../../../types'
@@ -28,4 +28,4 @@ const ShowsList: FC<ShowsListProps> = ({ data, isLoading }) => {
   )
 }
 
-export default ShowsList
+export default memo(ShowsList)

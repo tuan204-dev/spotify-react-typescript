@@ -1,8 +1,114 @@
-import {FC} from 'react'
+import episodeApi from '@/APIs/episodeApi'
+import { Footer, Header, Navbar } from '@/components'
+import { useDominantColor } from '@/hooks'
+import classNames from 'classnames/bind'
+import { FC, useEffect, useRef, useState } from 'react'
+import { useInView } from 'react-intersection-observer'
+import { useParams } from 'react-router-dom'
+import { Episode as EpisodeData } from '../../../types'
+import styles from './Episode.module.scss'
+import { PlayButton } from '@/components/UIs'
+import { dateFormatConvertor } from '@/utils'
+import durationConvertor from '@/utils/durationConvertor'
+import { PlusCircle } from '@/assets/icons'
+
+const cx = classNames.bind(styles)
 
 const Episode: FC = () => {
+  const [navOpacity, setNavOpacity] = useState<number>(0)
+  const [data, setData] = useState<EpisodeData>()
+  const [isLoading, setLoading] = useState<boolean>(true)
+  const [isExpanded, setExpanded] = useState<boolean>(false)
+  const { ref: pivotTrackingRef, inView: isTracking } = useInView() //put above all
+
+  const bgColor = useDominantColor(data?.images?.[0].url) || '#121212'
+
+  const { id } = useParams()
+
+  const headerRef = useRef<any>()
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await episodeApi({ id })
+      console.log(data)
+      setData(data)
+    }
+    fetchData()
+  }, [])
+
+  useEffect(() => {
+    setLoading(Boolean(!data))
+  }, [data])
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement, UIEvent>): void => {
+    const yAxis = e.currentTarget.scrollTop
+    if (yAxis > 64) {
+      setNavOpacity(1)
+    } else setNavOpacity(yAxis / 64)
+  }
+
+  console.log(isTracking)
+
   return (
-    <div>Episode</div>
+    <main className={cx('episode-wrapper')}>
+      <Navbar bgColor={bgColor} navOpacity={navOpacity} />
+      <div className={cx('body')} onScroll={(e) => isTracking && handleScroll(e)}>
+        <div
+          ref={pivotTrackingRef}
+          className={cx('pivot-tracking')}
+          style={{ top: `${64}px` }}
+        ></div>
+        <div ref={headerRef}>
+          <Header
+            type="episode"
+            headerType="show"
+            title={data?.name}
+            thumbnail={data?.images?.[0]?.url}
+            bgColor={bgColor}
+            showName={data?.show?.name}
+            showId={data?.show?.id}
+            isLoading={isLoading}
+          />
+        </div>
+        <div className={cx('main')}>
+          <div style={{ backgroundColor: bgColor }} className={cx('bg-blur')}></div>
+          <div className={cx('action-bar')}>
+            <div className={cx('top')}>
+              <span>{dateFormatConvertor(data?.release_date)}</span>
+              <div className={cx('dot')}></div>
+              <span>
+                {durationConvertor({ milliseconds: data?.duration_ms, type: 'long' })}
+              </span>
+            </div>
+            <div className={cx('bottom')}>
+              <div className={cx('play-btn')}>
+                <PlayButton size={56} scaleHovering={1.04} transitionDuration={33} />
+              </div>
+              <div className={cx('plus-btn')}>
+                <PlusCircle />
+              </div>
+            </div>
+          </div>
+          <div className={cx('content')}>
+            <h2 className={cx('title')}>Episode Description</h2>
+            <div className={cx({ desc: true, expanded: !isExpanded })}>
+              <span
+                dangerouslySetInnerHTML={{ __html: data?.html_description as string }}
+              ></span>
+            </div>
+            <div className={cx('expand-btn')}>
+              <button onClick={() => setExpanded((prev) => !prev)}>
+                {isExpanded ? 'Show less' : '... Show more'}
+              </button>
+            </div>
+          </div>
+          <div className={cx('see-all-btn')}>
+            <button>See all episode</button>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    </main>
   )
 }
 

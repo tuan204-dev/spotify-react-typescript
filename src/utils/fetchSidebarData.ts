@@ -1,30 +1,31 @@
-import axios from 'axios'
+import { getUserAlbum, getUserPlaylist, getUserTopArtists } from '@/APIs/userApi'
 
 interface argsProps {
   type: 'playlist' | 'album' | 'artist'
+  userId: string
 }
 
 const fetchSidebarData = async (args: Partial<argsProps>) => {
-  let url: string
-  switch (args.type) {
+  const { type, userId } = args
+
+  switch (type) {
     case 'playlist': {
-      url = 'https://api.npoint.io/36dec16e2e6bed21bfa1'
-      break
+      const data = await getUserPlaylist(userId as string)
+      return data?.items
     }
     case 'artist': {
-      url = 'https://api.npoint.io/3717808504be2e6a0355'
-      break
+      const data = await getUserTopArtists()
+      return data?.items
     }
     case 'album': {
-      url = 'https://api.npoint.io/f923219d298ac41c6c03'
-      break
+      const data = await getUserAlbum()
+      return data?.items
     }
-    default:
-      url = 'https://api.npoint.io/36dec16e2e6bed21bfa1'
+    default: {
+      const data = await getUserPlaylist(userId as string)
+      return data?.items
+    }
   }
-
-  const response = await axios(url)
-  return response.data
 }
 
 export default fetchSidebarData
