@@ -39,7 +39,7 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
   const [isPlaying, setPlaying] = useState<boolean>(false)
   const [currentTime, setCurrentTime] = useState<number>(0)
 // ---------------Queue list----------------
-  const [queue, setQueue] = useState<any>()
+  // const [queue, setQueue] = useState<any>()
 
 
 

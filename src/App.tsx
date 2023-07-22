@@ -1,7 +1,6 @@
 import { Suspense, lazy } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import LoadingLayout from './layouts/LoadingLayout/LoadingLayout'
-import Login from './pages/Login/Login'
 const RootLayout = lazy(() => import('./layouts/RootLayout/RootLayout'))
 const Home = lazy(() => import('@/pages/Home/Home'))
 const Playlist = lazy(() => import('@/pages/Playlist/Playlist'))
@@ -19,7 +18,6 @@ const App = () => {
       <Routes>
         <Route path="/" element={<RootLayout />}>
           <Route index element={<Home />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/search" element={<Search />} />
           <Route path="/section/:id" element={<Section />} />
           <Route path="/artist/:id">

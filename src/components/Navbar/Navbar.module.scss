@@ -1,7 +1,6 @@
 @import '../../scss/variable';
 @import '../../scss/mixin';
 
-
 .nav {
   padding: 16px 24px;
   display: flex;
@@ -36,13 +35,13 @@
       gap: $panel-gap;
 
       button {
-        @include button-icon(32px, rgba(0, 0, 0, .3), rgba(0, 0, 0, .4));
+        @include button-icon(32px, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4));
         font-size: 20px;
         color: $white;
       }
 
       button:disabled {
-        background-color: rgba(0, 0, 0, .3);
+        background-color: rgba(0, 0, 0, 0.3);
         cursor: not-allowed;
       }
     }
@@ -71,9 +70,8 @@
 
           &:hover {
             background-color: $bg-elevated-highlight;
-            box-shadow: 0 0 0 1px hsla(0, 0%, 100%, .2);
+            box-shadow: 0 0 0 1px hsla(0, 0%, 100%, 0.2);
           }
-
         }
       }
 
@@ -83,7 +81,7 @@
         transform: translateY(-42%);
         font-size: 18px;
         color: #fff;
-        opacity: .7;
+        opacity: 0.7;
       }
 
       .search-icon {
@@ -96,7 +94,6 @@
         background-color: transparent;
         cursor: pointer;
       }
-
     }
 
     &-play-btn {
@@ -104,14 +101,14 @@
       align-items: center;
       gap: $panel-gap;
       opacity: 0;
-      transition: all .5s ease;
+      transition: all 0.5s ease;
 
       .play-btn {
         @include button-icon(48px, $primary, $primary);
         opacity: 1;
         font-size: 24px;
-        transition: opacity .2s ease, scale 33ms ease;
-        box-shadow: 0 8px 8px rgba(0, 0, 0, .3);
+        transition: opacity 0.2s ease, scale 33ms ease;
+        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
 
         &:hover {
           scale: 1.05;
@@ -122,17 +119,54 @@
         font-size: 24px;
         font-weight: 700;
       }
-
     }
-
   }
 
   .user {
-    button {
-      @include button-icon(32px, #dfdfdf, #dfdfdf);
+    position: relative;
+    button[name='user account'] {
+      @include button-icon(32px, $bg-base, $bg-base);
       color: $white;
       font-size: 16px;
+    }
+
+    &-avt {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      overflow: hidden;
+      cursor: pointer;
       border: 3px #292929 solid;
+    }
+
+    &-dropdown {
+      display: none;
+      position: absolute;
+      top: 26px;
+      right: -60%;
+      padding-top: 10px;
+    }
+
+    &:hover .user-dropdown {
+      display: block;
+    }
+  }
+}
+
+.login-btn {
+  button {
+    @include reset-button;
+    font-size: 16px;
+    font-weight: 700;
+    background-color: $white;
+    padding: 10px 16px;
+    border-radius: 500px;
+    transform-origin: center;
+    transition: all 33ms ease;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.04);
     }
   }
 }

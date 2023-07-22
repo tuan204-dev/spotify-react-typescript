@@ -1,13 +1,14 @@
-import { FC, useState, useEffect, useRef, useContext } from 'react'
-import styles from './Show.module.scss'
-import classNames from 'classnames/bind'
-import { AboutShow, Footer, Header, Navbar, ShowsList } from '@/components'
-import { ShowData } from '../../../types'
-import { useNavigate, useParams } from 'react-router-dom'
 import showApi from '@/APIs/showApi'
-import { useComponentSize, useDominantColor, useRaiseColorTone } from '@/hooks'
-import { useInView } from 'react-intersection-observer'
+import { AboutShow, Footer, Header, Navbar, ShowsList } from '@/components'
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
+import { useDominantColor, useRaiseColorTone } from '@/hooks'
+import classNames from 'classnames/bind'
+import { FC, useContext, useEffect, useRef, useState } from 'react'
+import { useInView } from 'react-intersection-observer'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useDocumentTitle } from 'usehooks-ts'
+import { ShowData } from '../../../types'
+import styles from './Show.module.scss'
 
 const cx = classNames.bind(styles)
 
@@ -19,18 +20,17 @@ const Show: FC = () => {
   const bgColor = useRaiseColorTone(useDominantColor(data?.images?.[0].url) || '#121212')
   const { id } = useParams()
   const { width } = useContext(MainLayoutContext)
+  const { ref: pivotTrackingRef, inView: isTracking } = useInView() //put above all
+
+  useDocumentTitle(
+    `${data?.name ? data?.name : ' | Podcast on Spotify'} | Spotify Podcast`
+  )
 
   const headerRef = useRef<any>()
-  const { height: headerHeight } = useComponentSize(headerRef)
-
-  const { ref: pivotTrackingRef, inView: isTracking } = useInView({
-    threshold: 0,
-  })
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await showApi({ id })
-      console.log(data)
       if (data?.error) {
         navigate('/not-found')
       } else {
@@ -53,8 +53,6 @@ const Show: FC = () => {
     } else setNavOpacity(yAxis / 64)
   }
 
-  console.log(isTracking, headerHeight)
-
   return (
     <main className={cx({ 'show-wrapper': true, 'col-layout': width <= 1100 })}>
       <Navbar bgColor={bgColor} navOpacity={navOpacity} />
@@ -62,7 +60,7 @@ const Show: FC = () => {
         <div
           ref={pivotTrackingRef}
           className={cx('pivot-tracking')}
-          style={{ top: `${headerHeight + 104}px` }}
+          style={{ top: `${64}px` }}
         ></div>
         <div ref={headerRef}>
           <Header

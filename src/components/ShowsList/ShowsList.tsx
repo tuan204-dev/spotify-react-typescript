@@ -16,9 +16,13 @@ const ShowsList: FC<ShowsListProps> = ({ data, isLoading }) => {
     <div className={cx('shows-list-wrapper')}>
       <h3 className={cx('title')}>All Episodes</h3>
       <div className={cx('body')}>
-        {data?.map((item, index) => (
-          <ShowItem isLoading={isLoading} key={index} {...item} />
-        ))}
+        {!isLoading
+          ? data?.map((item, index) => (
+              <ShowItem isLoading={isLoading} key={index} {...item} />
+            ))
+          : Array(5)
+              .fill(0)
+              .map((item, index) => <ShowItem key={index + item} isLoading={true} />)}
       </div>
     </div>
   )

@@ -7,11 +7,13 @@ import SongList from '../SongList/SongList'
 import SearchNotFound from './SearchNotFound/SearchNotFound'
 import styles from './SearchResult.module.scss'
 import TopResult from './TopResult/TopResult'
+import { AuthContext } from '@/contexts/AuthContext'
 
 const cx = classNames.bind(styles)
 
 const SearchResult: FC = () => {
   const { data, query, categoryRef } = useContext(SearchContext)
+  const { isLogged } = useContext(AuthContext)
   const [category, setCategory] = useState<string>(categoryRef.current)
   const [searchSelections, setSearchSelections] = useState<any>([])
 
@@ -51,13 +53,13 @@ const SearchResult: FC = () => {
         key: 'shows',
         active: category === 'shows',
         display: 'Podcasts & Shows',
-        isExist: Boolean(data?.shows?.total),
+        isExist: Boolean(data?.shows?.total) && isLogged,
       },
       {
         key: 'episodes',
         active: category === 'episodes',
         display: 'Episodes',
-        isExist: Boolean(data?.episodes?.total),
+        isExist: Boolean(data?.episodes?.total) && isLogged,
       },
     ])
   }, [category, data])

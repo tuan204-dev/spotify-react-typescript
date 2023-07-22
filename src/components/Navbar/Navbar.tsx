@@ -1,12 +1,14 @@
+import { UserImgDefault } from '@/assets/icons'
+import { AuthContext } from '@/contexts/AuthContext'
 import classNames from 'classnames/bind'
-import React, { FC, useEffect, useRef } from 'react'
-import { FaUser } from 'react-icons/fa'
+import React, { FC, useContext, useEffect, useRef } from 'react'
 import { FiSearch } from 'react-icons/fi'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { MdOutlineClear } from 'react-icons/md'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { PlayButton } from '../UIs'
+import { Image, PlayButton } from '../UIs'
 import styles from './Navbar.module.scss'
+import UserDropdown from './UserDropdown/UserDropdown'
 
 const cx = classNames.bind(styles)
 
@@ -33,6 +35,7 @@ const Navbar: FC<NavbarProps> = (props) => {
     inclPlayBtn = false,
   } = props
 
+  const { isLogged, userData, handleLogin } = useContext(AuthContext)
   const { key } = useLocation()
   const navigate = useNavigate()
   const queryRef = useRef<any>(null)
@@ -42,6 +45,8 @@ const Navbar: FC<NavbarProps> = (props) => {
       queryRef?.current.focus()
     }
   }, [])
+
+  console.log(userData)
 
   return (
     <nav className={cx('nav')}>
@@ -110,11 +115,27 @@ const Navbar: FC<NavbarProps> = (props) => {
           </div>
         )}
       </div>
-      <div className={cx('user')}>
-        <button name="user account">
-          <FaUser />
-        </button>
-      </div>
+      {isLogged ? (
+        <div className={cx('user')}>
+          {userData?.images?.length === 0 ? (
+            <button name="user account">
+              <UserImgDefault />
+            </button>
+          ) : (
+            <div className={cx('user-avt')}>
+              <Image src={userData?.images?.[0].url} alt={userData?.display_name} />
+            </div>
+          )}
+
+          <div className={cx('user-dropdown')}>
+            <UserDropdown />
+          </div>
+        </div>
+      ) : (
+        <div className={cx('login-btn')}>
+          <button onClick={handleLogin}>Login</button>
+        </div>
+      )}
     </nav>
   )
 }

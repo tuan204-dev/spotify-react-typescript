@@ -13,6 +13,7 @@
 .show-item-wrapper {
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
   color: $white;
   padding: 16px;
 

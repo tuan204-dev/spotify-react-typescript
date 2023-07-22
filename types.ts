@@ -205,7 +205,7 @@ export interface RequestArg {
 
 // ----------------------------------------------------
 
-interface ImageSource {
+export interface ImageSource {
   url: string
   width: number
   height: number
@@ -441,7 +441,7 @@ export interface ShowItem {
   duration_ms?: string
   explicit?: boolean
   id?: string
-  images: ImageSource[]
+  images?: ImageSource[]
   name?: string
   release_date?: string
 }
