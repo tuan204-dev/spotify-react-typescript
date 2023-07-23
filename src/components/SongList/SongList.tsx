@@ -6,7 +6,7 @@ import SongItem from '../SongItem/SongItem'
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
 import { useInView } from 'react-intersection-observer'
 import { ClockIcon } from '@/assets/icons'
-import { SongListProps } from '../../../types'
+import { SongListProps } from '@/types/track'
 
 const cx = classNames.bind(styles)
 

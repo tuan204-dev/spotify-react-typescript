@@ -5,11 +5,11 @@ import {
   END_POINT,
   REDIRECT_URI,
   RESPONSE_TYPE,
-  SCOPE
+  SCOPE,
 } from '@/constants/auth'
+import { UserData } from '@/types/user'
 import { FC, ReactNode, createContext, useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { ImageSource, countries } from '../../types'
 
 interface AuthProviderProps {
   children: ReactNode
@@ -20,15 +20,6 @@ interface AuthContext {
   userData?: UserData
   handleLogin: () => void
   handleLogout: () => void
-}
-
-interface UserData {
-  display_name?: string
-  id?: string
-  images?: ImageSource[]
-  email?: string
-  country?: countries
-  followers?: { total?: number }
 }
 
 export const AuthContext = createContext({} as AuthContext)
@@ -84,6 +75,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     localStorage.removeItem('spotify_refresh_token')
     localStorage.removeItem('spotify_access_token')
     localStorage.removeItem('spotify_access_token_at')
+    localStorage.removeItem('spotify_auth_code')
     setLogged(false)
     window.location.reload()
   }

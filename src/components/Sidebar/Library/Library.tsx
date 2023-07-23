@@ -5,8 +5,8 @@ import { fetchSidebarData } from '@/utils'
 import classNames from 'classnames/bind'
 import { FC, useContext, useEffect, useMemo, useState } from 'react'
 import { HiArrowRight, HiOutlinePlus } from 'react-icons/hi'
-import { LibSelection } from '../../../../types'
 import styles from './Library.module.scss'
+import { LibSelection } from '@/types/sidebar'
 
 const cx = classNames.bind(styles)
 

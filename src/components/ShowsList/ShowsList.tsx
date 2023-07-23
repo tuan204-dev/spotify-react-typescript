@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import styles from './ShowsList.module.scss'
 import classNames from 'classnames/bind'
-import { ShowItem as ShowItemProps } from '../../../types'
+import { ShowItem as ShowItemProps } from '@/types/show'
 import { ShowItem } from '..'
 
 const cx = classNames.bind(styles)

@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import styles from './ShowItem.module.scss'
 import classNames from 'classnames/bind'
-import { ShowItem as ShowItemProps } from '../../../types'
+import { ShowItem as ShowItemProps } from '@/types/show'
 import { Image, PlayButton } from '../UIs'
 import { dateFormatConvertor } from '@/utils'
 import { Link } from 'react-router-dom'

@@ -6,8 +6,8 @@ import { HomePageContext } from '@/contexts/HomePageContext'
 import classNames from 'classnames/bind'
 import React, { useContext, useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
-import { SectionProps } from '../../../types'
 import styles from './Section.module.scss'
+import { SectionProps } from '@/types/section'
 
 const cx = classNames.bind(styles)
 

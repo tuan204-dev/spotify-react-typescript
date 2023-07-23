@@ -5,10 +5,10 @@ import durationConvertor from '@/utils/durationConvertor'
 import classNames from 'classnames/bind'
 import React, { memo, useContext } from 'react'
 import Skeleton from 'react-loading-skeleton'
-import { SongItemProps } from '../../../types'
 import { Image, SubTitle } from '../UIs'
 import styles from './SongItem.module.scss'
 import { PlayerContext } from '@/contexts/PlayerContext'
+import { SongItemProps } from '@/types/track'
 
 const cx = classNames.bind(styles)
 

@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind'
 import { FC, memo, useState } from 'react'
 import { SongItem } from '..'
-import { SongItemProps } from '../../../types'
 import styles from './TopTracks.module.scss'
+import { SongItemProps } from '@/types/track'
 
 const cx = classNames.bind(styles)
 

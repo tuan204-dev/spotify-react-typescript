@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './BannerItem.module.scss'
 import classNames from 'classnames/bind'
-import { SearchBannerItem } from '../../../../types'
 import { Link } from 'react-router-dom'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
+import { SearchBannerItem } from '@/types/search'
 
 const cx = classNames.bind(styles)
 

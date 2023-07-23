@@ -1,4 +1,4 @@
-import { countries } from '../../types'
+import { countries } from '@/types/contries'
 import { spotifyApiClientDev } from './axiosClient'
 
 type SearchTypes =

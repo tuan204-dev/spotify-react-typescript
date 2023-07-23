@@ -1,6 +1,6 @@
 import browserApi from '@/apis/browserApi'
 import searchApi from '@/apis/searchApi'
-import { SectionProps } from '../../types'
+import { SectionProps } from '@/types/section'
 
 interface PropsType {
   type: 'newRelease' | 'featuredPlaylists' | 'topMixes' | 'suggestedArtists'

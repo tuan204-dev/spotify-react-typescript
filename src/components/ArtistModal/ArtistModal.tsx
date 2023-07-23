@@ -1,9 +1,9 @@
 import { CloseIcon } from '@/assets/icons'
 import classNames from 'classnames/bind'
 import { FC, useEffect } from 'react'
-import { ArtistProfile, ArtistStats } from '../../../types'
 import ArtistCityStats from '../UIs/ArtistCityStats/ArtistCityStats'
 import styles from './ArtistModal.module.scss'
+import { ArtistProfile, ArtistStats } from '@/types/artist'
 
 const cx = classNames.bind(styles)
 

@@ -1,9 +1,9 @@
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
 import classNames from 'classnames/bind'
 import React, { useContext, useEffect, useState } from 'react'
-import { SearchBannerItem } from './../../../types'
 import BannerItem from './BannerItem/BannerItem'
 import styles from './SearchBanner.module.scss'
+import { SearchBannerItem } from '@/types/search'
 
 const cx = classNames.bind(styles)
 

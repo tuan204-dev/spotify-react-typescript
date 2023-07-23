@@ -4,9 +4,9 @@ import classNames from 'classnames/bind'
 import React, { useRef } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import { Link } from 'react-router-dom'
-import { SongItemTagProps } from '../../../types'
 import { Image, PlayButton } from '../UIs'
 import styles from './SongItemTag.module.scss'
+import { SongItemTagProps } from '@/types/track'
 
 const cx = classNames.bind(styles)
 

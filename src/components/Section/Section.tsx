@@ -6,7 +6,7 @@ import Skeleton from 'react-loading-skeleton'
 import { Link } from 'react-router-dom'
 import SectionItem from '../SectionItem/SectionItem'
 import styles from './Section.module.scss'
-import { SectionProps } from '../../../types'
+import { SectionProps } from '@/types/section'
 
 const cx = classNames.bind(styles)
 

@@ -1,8 +1,8 @@
 import artistApi from '@/apis/artistApi'
 import { ArtistModal } from '@/components'
+import { ArtistProfile } from '@/types/artist'
 import { FC, ReactNode, createContext, useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
-import { ArtistProfile } from '../../types'
 
 interface ArtistProviderProps {
   children: ReactNode

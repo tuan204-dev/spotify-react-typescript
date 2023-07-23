@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind'
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import { ArtistData } from '../../../../types'
 import styles from './ArtistList.module.scss'
+import { ArtistData } from '@/types/artist'
 
 const cx = classNames.bind(styles)
 

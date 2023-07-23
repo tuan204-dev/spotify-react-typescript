@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import styles from './ArtistCityStats.module.scss'
 import classNames from 'classnames/bind'
-import { ArtistTopCity } from '../../../../types'
+import { ArtistTopCity } from '@/types/artist'
 
 const cx = classNames.bind(styles)
 

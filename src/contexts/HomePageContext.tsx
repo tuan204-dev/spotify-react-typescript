@@ -1,7 +1,7 @@
 import { FC, ReactNode, createContext, useEffect, useState } from 'react'
-import { ResponseSectionItem, SectionProps } from '../../types'
 import { fetchHomePageData } from '@/utils'
 import searchApi from '@/apis/searchApi'
+import { ResponseSectionItem, SectionProps } from '@/types/section'
 
 interface HomePageProviderProps {
   children: ReactNode

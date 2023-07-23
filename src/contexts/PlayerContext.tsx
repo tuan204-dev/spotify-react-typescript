@@ -1,7 +1,8 @@
 import trackApi from '@/apis/trackApi'
 import { FC, ReactNode, createContext, useEffect, useMemo, useRef, useState } from 'react'
-import { ArtistData, RapidTrack, SpotifyTrack } from '../../types'
 import rapidDataD from '../assets/data/initTrackRapid.json'
+import { ArtistData } from '@/types/artist'
+import { RapidTrack, SpotifyTrack } from '@/types/track'
 
 interface PlayBarData {
   trackName?: string

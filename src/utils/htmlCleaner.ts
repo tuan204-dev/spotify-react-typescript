@@ -1,4 +1,4 @@
-import { ArtistData } from '../../types'
+import { ArtistData } from '@/types/artist'
 
 export default function htmlCleaner(
   htmlString: string | undefined

@@ -3,9 +3,9 @@ import { MainLayoutContext } from '@/contexts/MainLayoutContext'
 import classNames from 'classnames/bind'
 import React, { FC, memo, useContext, useEffect, useState } from 'react'
 import Skeleton from 'react-loading-skeleton'
-import { ResponseSectionItem } from '../../../types'
 import SongItemTag from '../SongItemTag/SongItemTag'
 import styles from './Greeting.module.scss'
+import { ResponseSectionItem } from '@/types/section'
 
 const cx = classNames.bind(styles)
 

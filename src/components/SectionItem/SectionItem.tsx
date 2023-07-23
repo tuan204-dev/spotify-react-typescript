@@ -5,9 +5,9 @@ import React, { memo } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { Link } from 'react-router-dom'
-import { SectionItemI } from '../../../types'
 import { Image, PlayButton, SubTitle } from '../UIs'
 import styles from './SectionItem.module.scss'
+import { SectionItemI } from '@/types/section'
 
 const cx = classNames.bind(styles)
 

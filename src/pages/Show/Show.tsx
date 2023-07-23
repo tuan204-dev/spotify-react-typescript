@@ -7,8 +7,8 @@ import { FC, useContext, useEffect, useRef, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDocumentTitle } from 'usehooks-ts'
-import { ShowData } from '../../../types'
 import styles from './Show.module.scss'
+import { ShowData } from '@/types/show'
 
 const cx = classNames.bind(styles)
 
