@@ -20,7 +20,7 @@ const Playlist: React.FC = () => {
   const [isLoading, setLoading] = useState<boolean>(true)
   const [navPlayBtnVisible, setNavPlayBtnVisible] = useState<boolean>(false)
 
-  const bgColor = useRaiseColorTone(useDominantColor(data?.images[0].url) || '#121212')
+  const bgColor = useRaiseColorTone(useDominantColor(data?.images?.[0]?.url) || '#121212')
 
   const { ref: pivotTrackingRef, inView: isTracking } = useInView({
     threshold: 0,
@@ -88,8 +88,8 @@ const Playlist: React.FC = () => {
             isLoading={isLoading}
             bgColor={bgColor}
             title={data?.name}
-            thumbnail={data?.images[0].url}
-            quantity={data?.tracks.total}
+            thumbnail={data?.images?.[0]?.url}
+            quantity={data?.tracks?.total}
           />
         </div>
         <div className={cx('song-list')}>

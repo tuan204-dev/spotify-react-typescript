@@ -1,5 +1,5 @@
 import { countries } from './contries'
-import { ImageSource } from './orther'
+import { ImageSource } from './others'
 
 export interface UserData {
   display_name?: string

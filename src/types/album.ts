@@ -1,4 +1,5 @@
-import { ArtistData } from "./artist"
+import { ArtistData } from './artist'
+import { ImageSource } from './others'
 
 export interface AlbumItem {
   title?: string
@@ -6,6 +7,12 @@ export interface AlbumItem {
   id?: string
   author?: string
   dateTime?: string
+  album?: {
+    id?: string
+    images?: ImageSource[]
+    name?: string
+    artists?: ArtistData[]
+  }
 }
 
 export interface SpotifyAlbum {

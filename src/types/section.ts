@@ -1,6 +1,7 @@
-import { AlbumItem } from "./album"
-import { ArtistData, ArtistItem, Visuals } from "./artist"
-import { PlayListItem } from "./playlist"
+import { AlbumItem } from './album'
+import { ArtistData, ArtistItem, Visuals } from './artist'
+import { ImageSource } from './others'
+import { PlayListItem } from './playlist'
 
 export interface SectionItemI extends PlayListItem, ArtistItem, AlbumItem {
   isArtist?: boolean
@@ -26,15 +27,10 @@ export interface SectionProps {
   apiType: 'spotify' | 'rapid' | undefined
 }
 
-
 export interface ResponseSectionItem {
   id?: string
   name?: string
-  images:
-    | {
-        url: string
-      }[]
-    | any
+  images: ImageSource[] | any
   publisher?: string
   artists?: ArtistData[]
   description?: string

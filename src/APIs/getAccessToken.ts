@@ -1,4 +1,3 @@
-import { CLIENT_ID, CLIENT_SECRET, refreshTokenDev } from '@/constants/auth'
 import axios from 'axios'
 import { handleRefreshToken } from './handleRefreshToken'
 
@@ -16,6 +15,9 @@ export const getAccessToken = async () => {
 }
 
 export const getAccessTokenDev = async () => {
+  const CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLIENT_ID
+  const CLIENT_SECRET = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET
+  const refreshTokenDev = import.meta.env.VITE_REFRESH_TOKEN_DEV
   const headers = {
     'Content-Type': 'application/x-www-form-urlencoded',
     Authorization: 'Basic ' + btoa(`${CLIENT_ID}:${CLIENT_SECRET}`),

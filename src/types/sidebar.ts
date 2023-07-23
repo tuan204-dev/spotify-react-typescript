@@ -1,4 +1,6 @@
-import { ArtistData } from "./artist"
+import { AlbumItem } from './album'
+import { ArtistData, ArtistItem } from './artist'
+import { PlayListItem } from './playlist'
 
 export type LibSelection = {
   title: string
@@ -17,4 +19,20 @@ export interface ResponseLibItem {
   images?: {
     url?: string
   }[]
+}
+
+export interface SidebarItemProps {
+  author?: string
+  type?: 'playlist' | 'artist' | 'album'
+  thumbnail?: string | undefined
+  name?: string | undefined
+  id?: string
+  artists?: ArtistData[]
+}
+
+export interface LibDataItem extends PlayListItem, AlbumItem, ArtistItem {
+  owner?: {
+    display_name: string
+  }
+  artists?: ArtistData[]
 }

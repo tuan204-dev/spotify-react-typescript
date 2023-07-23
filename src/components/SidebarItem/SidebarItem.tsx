@@ -1,22 +1,16 @@
 import classNames from 'classnames/bind'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import { Image, SubTitle } from '../UIs'
+import { Image, SubTitle, ThumbDefault } from '../UIs'
 import styles from './SidebarItem.module.scss'
+import { SidebarItemProps } from '@/types/sidebar'
 
 const cx = classNames.bind(styles)
 
-interface SidebarItemProps {
-  author?: string
-  type?: 'playlist' | 'artist' | 'album'
-  thumbnail?: string | undefined
-  name?: string | undefined
-  id?: string
-  artists?: any
-}
-
 const SidebarItem: FC<SidebarItemProps> = (props) => {
   const { type, thumbnail, name, author, id, artists } = props
+
+  console.log(thumbnail)
 
   const newType = (() => {
     if (type === 'playlist') return author
@@ -29,7 +23,7 @@ const SidebarItem: FC<SidebarItemProps> = (props) => {
       <Link to={`/${type}/${id}`}>
         <div className={cx('sidebar-item')}>
           <div className={cx('thumbnail')}>
-            <Image src={thumbnail} alt={name} />
+            {thumbnail ? <Image src={thumbnail} alt={name} /> : <ThumbDefault />}
           </div>
           <div className={cx('body')}>
             <h4 className={cx('heading')}>{name}</h4>

@@ -1,7 +1,8 @@
-import { CLIENT_ID, CLIENT_SECRET } from '@/constants/auth'
 import axios from 'axios'
 
 export const handleRefreshToken = async () => {
+  const CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLIENT_ID
+  const CLIENT_SECRET = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET
   const refreshToken = localStorage.getItem('spotify_refresh_token')
   const url = 'https://accounts.spotify.com/api/token'
   const headers = {

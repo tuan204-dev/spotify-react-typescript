@@ -1,12 +1,6 @@
 import { getRefreshToken } from '@/apis/getRefreshToken'
 import { getUserData } from '@/apis/userApi'
-import {
-  CLIENT_ID,
-  END_POINT,
-  REDIRECT_URI,
-  RESPONSE_TYPE,
-  SCOPE,
-} from '@/constants/auth'
+import { END_POINT, REDIRECT_URI, RESPONSE_TYPE, SCOPE } from '@/constants/auth'
 import { UserData } from '@/types/user'
 import { FC, ReactNode, createContext, useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -66,6 +60,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
   // handle login to get auth code
   const handleLogin = (): void => {
+    const CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLIENT_ID
     window.location.replace(
       `${END_POINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`
     )

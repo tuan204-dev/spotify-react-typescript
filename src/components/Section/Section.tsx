@@ -46,9 +46,9 @@ const Section: React.FC<SectionProps> = ({
               (item?.releases?.items[0].type || item?.description || item?.date?.year)),
           publisher: item?.publisher,
           imageUrl:
-            (apiType === 'spotify' && item?.images[0]?.url) ||
+            (apiType === 'spotify' && item?.images?.[0]?.url) ||
             (apiType === 'rapid' &&
-              (item?.images?.items[0]?.sources[0]?.url ||
+              (item?.images?.items?.[0]?.sources[0]?.url ||
                 item?.coverArt?.sources[0]?.url ||
                 item?.visuals?.avatarImage?.sources[0]?.url ||
                 item?.releases?.items[0]?.coverArt?.sources[0]?.url)),

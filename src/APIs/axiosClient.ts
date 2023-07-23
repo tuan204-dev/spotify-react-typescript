@@ -2,22 +2,6 @@ import axios from 'axios'
 import queryString from 'query-string'
 import { getAccessToken, getAccessTokenDev } from './getAccessToken'
 
-// const getAccessTokenDev = async () => {
-//   const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID
-//   const clientSecret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET
-
-//   const response = await fetch('https://accounts.spotify.com/api/token', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/x-www-form-urlencoded',
-//     },
-//     body: `grant_type=client_credentials&client_id=${clientId}&client_secret=${clientSecret}`,
-//   })
-
-//   const data = await response.json()
-//   return data.access_token
-// }
-
 export const spotifyApiClient = axios.create({
   baseURL: 'https://api.spotify.com/v1',
   paramsSerializer: (params) => queryString.stringify(params, { encode: false }),
@@ -25,25 +9,16 @@ export const spotifyApiClient = axios.create({
 
 spotifyApiClient.interceptors.request.use(async (config) => {
   config.headers['Content-Type'] = 'application/json'
-  const token = await getAccessToken()
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`
-  }
+  const isLogged = Boolean(localStorage.getItem('spotify_refresh_token'))
 
-  // config.headers.Authorization = `Bearer BQA2xS7Yhr8KDpYVL49qP8PChlmVcIdcK3dZMKSCCQxOnRtV6CZWTjCjDp-rnPBllKuhhSmVcR5ko3poOnWjl1CBDWmDPNYHnyTeLEBkkzAuWosqaZ-KEFTm4HNsehmPFpUOKNGFgU78MG9UXg_p-E_qgQ_b4hUM7ec9onEtCWxncQOGVhJv3ZhN8eyZ5BeA2rQxuC6f4dSCm9pKyJicPQ`
-
-  return config
-})
-
-export const spotifyApiClientDev = axios.create({
-  baseURL: 'https://api.spotify.com/v1',
-  paramsSerializer: (params) => queryString.stringify(params, { encode: false }),
-})
-
-spotifyApiClientDev.interceptors.request.use(async (config) => {
-  const token = await getAccessTokenDev()
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`
+  if (isLogged) {
+    const token = await getAccessToken()
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`
+    }
+  } else {
+    const tokenDev = await getAccessTokenDev()
+    config.headers.Authorization = `Bearer ${tokenDev}`
   }
 
   return config

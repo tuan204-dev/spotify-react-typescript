@@ -1,5 +1,5 @@
-import { SpotifyAlbum } from "./album"
-import { ArtistData } from "./artist"
+import { SpotifyAlbum } from './album'
+import { ArtistData } from './artist'
 
 export interface SongItemTagProps {
   thumbnailUrl?: string
@@ -39,8 +39,6 @@ export interface SpotifyTrack {
   id?: string
 }
 
-
-
 // -----------Rapid----------
 
 export interface RapidTrack {
@@ -51,5 +49,18 @@ export interface RapidTrack {
       durationMs?: number
       durationText?: string
     }[]
+  }
+}
+
+export interface RapidArtistTrack {
+  uid?: string
+  track?: {
+    id?: string
+    name?: string
+    uri?: string
+    playcount?: string
+    duration?: {
+      totalMilliseconds?: string
+    }
   }
 }

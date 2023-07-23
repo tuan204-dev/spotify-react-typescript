@@ -4,10 +4,10 @@ import classNames from 'classnames/bind'
 import React, { memo } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import { ArtistList } from '..'
-import { Image, SubTitle } from '../UIs'
+import { Image, SubTitle, ThumbDefault } from '../UIs'
 import styles from './Header.module.scss'
 import { Link } from 'react-router-dom'
-import { HeaderProps } from '@/types/orther'
+import { HeaderProps } from '@/types/others'
 
 const cx = classNames.bind(styles)
 
@@ -29,12 +29,18 @@ const Header: React.FC<HeaderProps> = ({
   showName,
   showId,
 }) => {
+  console.log(isLoading)
+
   return (
     <main style={{ backgroundColor: `${bgColor}` }} className={cx('wrapper')}>
       <div className={cx({ body: true, show: headerType === 'show' })}>
         <div className={cx('img')}>
           {!isLoading ? (
-            <Image src={thumbnail} alt={title} />
+            thumbnail ? (
+              <Image src={thumbnail} alt={title} />
+            ) : (
+              <ThumbDefault />
+            )
           ) : (
             <Skeleton height={'100%'} />
           )}

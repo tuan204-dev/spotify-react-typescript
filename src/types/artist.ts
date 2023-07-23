@@ -1,4 +1,4 @@
-import { ExtractedColors, Gallery, HeaderImage, ImageSource } from './orther'
+import { ExtractedColors, Gallery, HeaderImage, ImageSource } from './others'
 
 export interface ArtistData {
   name: string
@@ -9,6 +9,7 @@ export interface ArtistItem {
   name?: string
   imageUrl?: string
   id?: string
+  images?: ImageSource[]
 }
 
 export interface ArtistProfile {

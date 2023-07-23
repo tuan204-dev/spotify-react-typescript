@@ -1,6 +1,7 @@
 import artistApi from '@/apis/artistApi'
 import { ArtistModal } from '@/components'
 import { ArtistProfile } from '@/types/artist'
+import { RapidArtistTrack } from '@/types/track'
 import { FC, ReactNode, createContext, useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 
@@ -10,24 +11,24 @@ interface ArtistProviderProps {
 
 interface ArtistContext {
   profile: ArtistProfile
-  avatarImg: string | undefined
-  headerImg: string | undefined
-  colorRaw: string | undefined
+  avatarImg?: string
+  headerImg?: string
+  colorRaw?: string
   stats: {
-    followerNumbers: number | undefined
-    monthlyListeners: number | undefined
+    followerNumbers?: number
+    monthlyListeners?: number
   }
-  topTracks: any[] | undefined
+  topTracks?: RapidArtistTrack[]
   discography: {
-    popularReleases: any[] | undefined
-    albums: any[] | undefined
-    singles: any[] | undefined
+    popularReleases?: any[]
+    albums?: any[]
+    singles?: any[]
   }
-  playlists: any[] | undefined
-  featuring: any[] | undefined
-  relatedArtists: any[] | undefined
-  appearsOn: any[] | undefined
-  discoveredOn: any[] | undefined
+  playlists?: any[]
+  featuring?: any[]
+  relatedArtists?: any[]
+  appearsOn?: any[]
+  discoveredOn?: any[]
   aboutImg: string
   setId: React.Dispatch<React.SetStateAction<string | undefined>>
   isLoading: boolean
@@ -64,6 +65,9 @@ export const ArtistProvider: FC<ArtistProviderProps> = ({ children }) => {
     }
     if (id !== '') fetchData()
   }, [id])
+
+  // console.log(responseData)
+  // console.log(artistData)
 
   useEffect(() => {
     setArtistData((prev: any) => {

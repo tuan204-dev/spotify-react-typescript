@@ -30,6 +30,17 @@ const ArtistBanner: FC<ArtistBannerProps> = (props) => {
     isLoading,
   } = props
 
+  console.log(
+    name,
+    monthlyListeners,
+    dominantColor,
+    bgBannerOpacity,
+    isVerified,
+    inclHeaderImg,
+    avatar,
+    isLoading
+  )
+
   return (
     <div className={cx({ wrapper: true, 'no-header-img': !inclHeaderImg })}>
       {!isLoading && (

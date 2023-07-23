@@ -1,4 +1,4 @@
-import { ImageSource } from "./orther"
+import { ImageSource } from "./others"
 
 export interface ShowItem {
   description?: string
