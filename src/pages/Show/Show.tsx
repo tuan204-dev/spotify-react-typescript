@@ -1,4 +1,4 @@
-import showApi from '@/APIs/showApi'
+import showApi from '@/apis/showApi'
 import { AboutShow, Footer, Header, Navbar, ShowsList } from '@/components'
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
 import { useDominantColor, useRaiseColorTone } from '@/hooks'

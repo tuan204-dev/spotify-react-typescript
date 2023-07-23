@@ -1,4 +1,4 @@
-import searchApi from '@/APIs/searchApi'
+import searchApi from '@/apis/searchApi'
 import { FC, ReactNode, createContext, useEffect, useState, useRef } from 'react'
 interface SearchProviderProps {
   children: ReactNode

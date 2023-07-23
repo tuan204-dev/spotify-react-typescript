@@ -1,4 +1,4 @@
-import categoryApi from '@/APIs/categoryApi'
+import categoryApi from '@/apis/categoryApi'
 import { HeartIcon } from '@/assets/icons'
 import { Footer, Header, Navbar, SongList } from '@/components'
 import { PlayButton } from '@/components/UIs'

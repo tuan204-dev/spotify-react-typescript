@@ -1,5 +1,5 @@
-import browserApi from '@/APIs/browserApi'
-import searchApi from '@/APIs/searchApi'
+import browserApi from '@/apis/browserApi'
+import searchApi from '@/apis/searchApi'
 import { SectionProps } from '../../types'
 
 interface PropsType {

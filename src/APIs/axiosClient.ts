@@ -24,12 +24,13 @@ export const spotifyApiClient = axios.create({
 })
 
 spotifyApiClient.interceptors.request.use(async (config) => {
+  config.headers['Content-Type'] = 'application/json'
   const token = await getAccessToken()
   if (token) {
     config.headers.Authorization = `Bearer ${token}`
   }
 
-  // config.headers.Authorization = `Bearer BQCg429UuyDwzqIyj7hS-eG5Aso9jYYSjd6o23yLxZjWdWP1Q6DF3CfySS4HfTDHkK0hC5Xcp98oIjOhpC9uN6UEOiBXmZYP49T-dfjt84NYasztB8M`
+  // config.headers.Authorization = `Bearer BQA2xS7Yhr8KDpYVL49qP8PChlmVcIdcK3dZMKSCCQxOnRtV6CZWTjCjDp-rnPBllKuhhSmVcR5ko3poOnWjl1CBDWmDPNYHnyTeLEBkkzAuWosqaZ-KEFTm4HNsehmPFpUOKNGFgU78MG9UXg_p-E_qgQ_b4hUM7ec9onEtCWxncQOGVhJv3ZhN8eyZ5BeA2rQxuC6f4dSCm9pKyJicPQ`
 
   return config
 })

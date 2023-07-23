@@ -1,4 +1,4 @@
-import trackApi from '@/APIs/trackApi'
+import trackApi from '@/apis/trackApi'
 import { FC, ReactNode, createContext, useEffect, useMemo, useRef, useState } from 'react'
 import { ArtistData, RapidTrack, SpotifyTrack } from '../../types'
 import rapidDataD from '../assets/data/initTrackRapid.json'

@@ -18,6 +18,11 @@ const scopes = [
   'user-library-read',
   'user-read-email',
   'user-read-private',
+  // ---
+  // 'user-self-provisioning',
+  // 'openid',
+  // 'profile',
+  // 'email',
 ].join(' ')
 
 export { scopes }

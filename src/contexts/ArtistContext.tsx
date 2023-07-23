@@ -1,4 +1,4 @@
-import artistApi from '@/APIs/artistApi'
+import artistApi from '@/apis/artistApi'
 import { ArtistModal } from '@/components'
 import { FC, ReactNode, createContext, useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'

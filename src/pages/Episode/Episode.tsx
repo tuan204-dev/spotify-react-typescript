@@ -1,4 +1,4 @@
-import episodeApi from '@/APIs/episodeApi'
+import episodeApi from '@/apis/episodeApi'
 import { Footer, Header, Navbar } from '@/components'
 import { useDominantColor } from '@/hooks'
 import classNames from 'classnames/bind'

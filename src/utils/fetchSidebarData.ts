@@ -1,4 +1,4 @@
-import { getUserAlbum, getUserPlaylist, getUserTopArtists } from '@/APIs/userApi'
+import { getUserAlbum, getUserPlaylist, getUserTopArtists } from '@/apis/userApi'
 
 interface argsProps {
   type: 'playlist' | 'album' | 'artist'
@@ -10,6 +10,7 @@ const fetchSidebarData = async (args: Partial<argsProps>) => {
 
   switch (type) {
     case 'playlist': {
+      if (!userId) return
       const data = await getUserPlaylist(userId as string)
       return data?.items
     }
@@ -22,6 +23,7 @@ const fetchSidebarData = async (args: Partial<argsProps>) => {
       return data?.items
     }
     default: {
+      if (!userId) return
       const data = await getUserPlaylist(userId as string)
       return data?.items
     }
