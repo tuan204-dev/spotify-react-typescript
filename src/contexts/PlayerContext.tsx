@@ -138,7 +138,7 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
   useMemo(() => {
     if (rapidData) {
       // console.log(rapidData)
-      // audioRef.current.src = rapidData?.soundcloudTrack?.audio[0]?.url
+      audioRef.current.src = rapidData?.soundcloudTrack?.audio[0]?.url
     }
   }, [rapidData])
 
@@ -146,21 +146,21 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
     const fetchData = async () => {
       switch (currentTrackIndex % 3) {
         case 0: {
-          const response = await fetch('https://api.npoint.io/4057d1e2d90cc4aaa3bd')
+          const response = await fetch('https://api.npoint.io/b116c0633c2ffe944c9f')
           const data = await response.json()
           // console.log(data)
           setRapidData(data)
           break
         }
         case 1: {
-          const response = await fetch('https://api.npoint.io/4fea276b4972a523e052')
+          const response = await fetch('https://www.npoint.io/docs/0a036d37ba0b464261d7')
           const data = await response.json()
           console.log(data)
           setRapidData(data)
           break
         }
         case 2: {
-          const response = await fetch('https://api.npoint.io/732d38b39384cd131d21')
+          const response = await fetch('https://api.npoint.io/3c7bb8294d77ef942000')
           const data = await response.json()
           console.log(data)
           setRapidData(data)
@@ -296,10 +296,18 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
   // }
 
   // --------------------------
+
+  useEffect(() => {
+    audioRef.current.volume = localStorage.getItem('spotify_volume')
+      ? JSON.parse(localStorage.getItem('spotify_volume') as string)
+      : 1
+  }, [])
+
   const returnData = useMemo(() => {
     return {
       duration: rapidData?.soundcloudTrack?.audio?.[0]?.durationMs / 1000,
       // duration: fakeData?.soundcloudTrack?.audio?.[0]?.durationMs / 1000,
+      // duration: audioRef.current?.duration / 1000 || 1,
       playBarData: {
         trackName: currentTrack?.name,
         thumb:

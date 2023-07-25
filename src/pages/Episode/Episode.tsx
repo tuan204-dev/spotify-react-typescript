@@ -4,7 +4,7 @@ import { useDominantColor } from '@/hooks'
 import classNames from 'classnames/bind'
 import { FC, useEffect, useRef, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Episode as EpisodeData } from '@/types/show'
 import styles from './Episode.module.scss'
 import { PlayButton } from '@/components/UIs'
@@ -30,7 +30,6 @@ const Episode: FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await episodeApi({ id })
-      console.log(data)
       setData(data)
     }
     fetchData()
@@ -46,8 +45,6 @@ const Episode: FC = () => {
       setNavOpacity(1)
     } else setNavOpacity(yAxis / 64)
   }
-
-  console.log(isTracking)
 
   return (
     <main className={cx('episode-wrapper')}>
@@ -102,9 +99,11 @@ const Episode: FC = () => {
               </button>
             </div>
           </div>
-          <div className={cx('see-all-btn')}>
-            <button>See all episode</button>
-          </div>
+          <Link to={`/show/${data?.show?.id}`}>
+            <div className={cx('see-all-btn')}>
+              <button>See all episode</button>
+            </div>
+          </Link>
         </div>
         <Footer />
       </div>

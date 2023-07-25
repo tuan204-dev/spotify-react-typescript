@@ -49,7 +49,7 @@ const PlayerControl: FC = () => {
   }
 
   const handlePlayBtn = () => {
-    console.log(duration, isPlaying)
+    // console.log(duration, isPlaying)
     if (!duration) return
     if (isPlaying) {
       clearInterval(intervalIdRef?.current)

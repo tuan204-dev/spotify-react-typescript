@@ -5,9 +5,9 @@ function useRaiseColorTone(color: string): string {
   const blue = parseInt(color.substring(5, 7), 16)
 
   // Calculate the raised color values
-  const raisedRed = Math.min(Math.round(red * 1.2), 255)
-  const raisedGreen = Math.min(Math.round(green * 1.2), 255)
-  const raisedBlue = Math.min(Math.round(blue * 1.2), 255)
+  const raisedRed = Math.min(Math.round(red * 1.), 255)
+  const raisedGreen = Math.min(Math.round(green * 1.), 255)
+  const raisedBlue = Math.min(Math.round(blue * 1.), 255)
 
   // Convert the raised color values back to hexadecimal
   const raisedColor = `#${raisedRed.toString(16).padStart(2, '0')}${raisedGreen

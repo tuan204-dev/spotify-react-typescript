@@ -7,6 +7,7 @@ import { unicodeDecoder } from './unicodeDecoder'
 import fetchHomePageData from './fetchHomePageData'
 import normalizeAlbum from './normalizeAlbum'
 import normalizeTrack from './normalizeTrack'
+import transformDomain from './transformDomain'
 
 export {
   dateFormatConvertor,
@@ -18,4 +19,5 @@ export {
   fetchHomePageData,
   normalizeAlbum,
   normalizeTrack,
+  transformDomain,
 }

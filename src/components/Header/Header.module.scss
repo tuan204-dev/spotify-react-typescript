@@ -82,6 +82,14 @@
         color: $white;
         font-size: 14px;
       }
+
+      a {
+        color: hsla(0, 0%, 100%, 0.7);
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
 
     .quantity {

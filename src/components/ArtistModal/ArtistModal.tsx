@@ -1,6 +1,6 @@
 import { CloseIcon } from '@/assets/icons'
 import classNames from 'classnames/bind'
-import { FC, useEffect } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import ArtistCityStats from '../UIs/ArtistCityStats/ArtistCityStats'
 import styles from './ArtistModal.module.scss'
 import { ArtistProfile, ArtistStats } from '@/types/artist'
@@ -20,27 +20,35 @@ const ArtistModal: FC<ArtistModalProps> = ({
   stats,
   setModalOpen,
 }) => {
+  const timeoutId = useRef<any>()
+  const [isClose, setClose] = useState<boolean>(false)
+
   const handleKeyPress = (e: any) => {
     if (e.code === 'Escape') {
-      setModalOpen(false)
+      handleClose()
     }
   }
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeyPress)
 
-    return () => document.removeEventListener('keypress', handleKeyPress)
+    return () => {
+      clearTimeout(timeoutId.current)
+      document.removeEventListener('keypress', handleKeyPress)
+    }
   }, [])
 
+  const handleClose = () => {
+    setClose(true)
+    timeoutId.current = setTimeout(() => {
+      setModalOpen(false)
+    }, 300)
+  }
+
   return (
-    <div
-      className={cx('wrapper')}
-      onClick={() => {
-        setModalOpen(false)
-      }}
-    >
-      <div className={cx('modal')} onClick={(e) => e.stopPropagation()}>
-        <div className={cx('close-btn')} onClick={() => setModalOpen(false)}>
+    <div className={cx({ wrapper: true, close: isClose })} onClick={handleClose}>
+      <div className={cx({ modal: true })} onClick={(e) => e.stopPropagation()}>
+        <div className={cx('close-btn')} onClick={handleClose}>
           <button>
             <CloseIcon />
           </button>

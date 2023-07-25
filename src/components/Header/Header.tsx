@@ -1,5 +1,5 @@
 import logoImage from '@/assets/image/logo/logo.svg'
-import { htmlCleaner, stringCleaner } from '@/utils'
+import { htmlCleaner, stringCleaner, transformDomain } from '@/utils'
 import classNames from 'classnames/bind'
 import React, { memo } from 'react'
 import Skeleton from 'react-loading-skeleton'
@@ -56,8 +56,11 @@ const Header: React.FC<HeaderProps> = ({
                   type}
               </p>
               <h2 className={cx('title')}>{title}</h2>
-              <div className={cx('desc')}>
-                <ArtistList data={htmlCleaner(stringCleaner(desc))} />
+              <div
+                dangerouslySetInnerHTML={{ __html: desc ? transformDomain(desc) : '' }}
+                className={cx('desc')}
+              >
+                {/* <ArtistList data={htmlCleaner(stringCleaner(desc))} /> */}
               </div>
               {headerType === 'show' ? (
                 <Link to={type === 'episode' ? `/show/${showId}` : ''}>
