@@ -52,7 +52,7 @@ const Greeting: FC<GreetingProps> = (props) => {
       >
         {!isLoading
           ? greetingAlbum
-              ?.slice(10, 16)
+              ?.slice(0, 6)
               .map((item: ResponseSectionItem, index) => (
                 <SongItemTag
                   id={item?.id}

@@ -1,10 +1,10 @@
 import { RepeatIcon, ShuffleIcon, SkipBackIcon, SkipForwardIcon } from '@/assets/icons'
 import { PlayButton, Range } from '@/components/UIs'
 import { PlayerContext } from '@/contexts/PlayerContext'
+import durationConvertor from '@/utils/durationConvertor'
 import classNames from 'classnames/bind'
 import React, { FC, useContext, useEffect, useState } from 'react'
 import styles from './PlayerControl.module.scss'
-import durationConvertor from '@/utils/durationConvertor'
 
 const cx = classNames.bind(styles)
 
@@ -17,7 +17,9 @@ const PlayerControl: FC = () => {
     intervalIdRef,
     duration,
     audioRef,
-    id,
+    currentTrack,
+    handleForward,
+    handleBack,
   } = useContext(PlayerContext)
 
   const [trackProcess, setTrackProcess] = useState<number>(audioRef?.current?.currentTime)
@@ -25,7 +27,7 @@ const PlayerControl: FC = () => {
   useEffect(() => {
     setTrackProcess(0)
     clearInterval(intervalIdRef?.current)
-  }, [id])
+  }, [currentTrack])
 
   const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     clearInterval(intervalIdRef?.current)
@@ -47,6 +49,7 @@ const PlayerControl: FC = () => {
   }
 
   const handlePlayBtn = () => {
+    console.log(duration, isPlaying)
     if (!duration) return
     if (isPlaying) {
       clearInterval(intervalIdRef?.current)
@@ -65,7 +68,7 @@ const PlayerControl: FC = () => {
           <ShuffleIcon />
         </button>
 
-        <button className={cx('btn')}>
+        <button onClick={handleBack} className={cx('btn')}>
           <SkipBackIcon />
         </button>
         <div onClick={() => handlePlayBtn()} className={cx('btn')}>
@@ -77,7 +80,7 @@ const PlayerControl: FC = () => {
             scaleHovering={1}
           />
         </div>
-        <button className={cx('btn')}>
+        <button onClick={handleForward} className={cx('btn')}>
           <SkipForwardIcon />
         </button>
         <button className={cx('btn')}>

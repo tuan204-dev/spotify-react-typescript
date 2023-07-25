@@ -164,6 +164,7 @@
     transform-origin: center;
     transition: all 33ms ease;
     cursor: pointer;
+    color: $black;
 
     &:hover {
       transform: scale(1.04);

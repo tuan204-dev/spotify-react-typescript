@@ -24,7 +24,7 @@ const searchApi = async (params: Partial<SearchArgs>) => {
 
   const { data } = await spotifyApiClient('search', {
     params: {
-      q: query,
+      q: encodeURIComponent(query),
       type: typesParam,
       market: market,
       limit: limit,

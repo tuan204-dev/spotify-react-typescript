@@ -1,10 +1,12 @@
 @import '../../../scss/variable';
+@import '../../../scss/mixin';
 
 .wrapper {
   min-width: 180px;
   display: flex;
   flex-direction: row;
   gap: 16px;
+  overflow: hidden;
 }
 
 .thumb {
@@ -25,28 +27,35 @@
   flex-direction: column;
   padding: 8px 0;
   justify-content: space-between;
+  overflow: hidden;
 
   .name {
     font-size: 14px;
     font-weight: 700;
     cursor: pointer;
+    @include text-in-one-line;
 
     span {
       color: $white;
     }
 
-
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  .artists {
+    @include text-in-one-line;
+    display: flex;
+    overflow: hidden;
   }
 }
 
 .icon {
   display: flex;
   align-items: center;
-  margin-left: 4px;
-  color: hsla(0, 0%, 100%, .7);
+  color: hsla(0, 0%, 100%, 0.7);
+  margin-inline: 4px 30px;
 
   &:hover {
     color: $white;

@@ -6,16 +6,19 @@ import { useComponentSize, useRaiseColorTone } from '@/hooks'
 import useDominantColor from '@/hooks/useDominantColor'
 import { dateFormatConvertor } from '@/utils'
 import classNames from 'classnames/bind'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, useContext } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDocumentTitle } from 'usehooks-ts'
 import styles from './Album.module.scss'
+import { SpotifyAlbum } from '@/types/album'
+import { PlayerContext } from '@/contexts/PlayerContext'
 
 const cx = classNames.bind(styles)
 
 const Album: React.FC = () => {
-  const [data, setData] = useState<any>()
+  const { setCurrentTrack, setQueue, setCurrentTrackIndex } = useContext(PlayerContext)
+  const [data, setData] = useState<SpotifyAlbum>()
   const [navOpacity, setNavOpacity] = useState<number>(0)
   const [isLoading, setLoading] = useState<boolean>(true)
   const [navPlayBtnVisible, setNavPlayBtnVisible] = useState<boolean>(false)
@@ -26,7 +29,7 @@ const Album: React.FC = () => {
     threshold: 0,
   })
 
-  const bgColor = useRaiseColorTone(useDominantColor(data?.images[0].url))
+  const bgColor = useRaiseColorTone(useDominantColor(data?.images?.[0].url))
 
   const headerRef = useRef<any>()
   const { height: headerHeight } = useComponentSize(headerRef)
@@ -63,6 +66,19 @@ const Album: React.FC = () => {
     } else setNavPlayBtnVisible(false)
   }
 
+  const handleClickPlayBtn = () => {
+    setQueue(
+      data?.tracks?.items?.map((item) => {
+        return { ...item, album: { images: data?.images, id: data?.id } }
+      }) || []
+    )
+    setCurrentTrack({
+      ...data?.tracks?.items?.[0],
+      album: { images: data?.images, id: data?.id },
+    })
+    setCurrentTrackIndex(0)
+  }
+
   return (
     <main className={cx('wrapper')}>
       <Navbar
@@ -71,6 +87,7 @@ const Album: React.FC = () => {
         inclPlayBtn
         playBtnVisible={navPlayBtnVisible}
         title={data?.name}
+        handleClickPlayBtn={handleClickPlayBtn}
       />
       <div onScroll={(e) => isTracking && handleScroll(e)} className={cx('body')}>
         <div
@@ -86,8 +103,8 @@ const Album: React.FC = () => {
             desc={data?.description}
             bgColor={bgColor}
             title={data?.name}
-            thumbnail={data?.images[0].url}
-            quantity={data?.tracks.total}
+            thumbnail={data?.images?.[0].url}
+            quantity={data?.tracks?.total}
             isLoading={isLoading}
             isWhiteColor
           />
@@ -96,12 +113,14 @@ const Album: React.FC = () => {
           <div style={{ backgroundColor: `${bgColor}` }} className={cx('bg-blur')}></div>
           <div className={cx('main')}>
             <div className={cx('action-bar')}>
-              <PlayButton
-                size={56}
-                fontSize={24}
-                transitionDuration={33}
-                scaleHovering={1.05}
-              />
+              <div onClick={() => handleClickPlayBtn()}>
+                <PlayButton
+                  size={56}
+                  fontSize={24}
+                  transitionDuration={33}
+                  scaleHovering={1.05}
+                />
+              </div>
               <button className={cx('heart')}>
                 <HeartIcon />
               </button>
@@ -110,17 +129,19 @@ const Album: React.FC = () => {
               type="album"
               top={0}
               pivotTop={64}
-              songList={data?.tracks.items}
+              songList={data?.tracks?.items || []}
               isLoading={isLoading}
+              albumId={data?.id}
+              albumImages={data?.images}
             />
           </div>
         </div>
 
         <div className={cx('copy-rights')}>
           <p className={cx('date')}>{dateFormatConvertor(data?.release_date)}</p>
-          {data?.copyrights.map((item: any, index: number) => (
+          {data?.copyrights?.map((item, index: number) => (
             <p key={index}>
-              {item.text.replace(/\(C\)|\(P\)/g, (match: any) => {
+              {item?.text?.replace(/\(C\)|\(P\)/g, (match) => {
                 return match === '(C)' ? '©' : '℗'
               })}
             </p>

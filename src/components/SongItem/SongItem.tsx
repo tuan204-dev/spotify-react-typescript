@@ -1,5 +1,7 @@
 import { PlayIcon } from '@/assets/icons'
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
+import { PlayerContext } from '@/contexts/PlayerContext'
+import { SongItemProps } from '@/types/track'
 import { dateFormatConvertor } from '@/utils'
 import durationConvertor from '@/utils/durationConvertor'
 import classNames from 'classnames/bind'
@@ -7,8 +9,6 @@ import React, { memo, useContext } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import { Image, SubTitle } from '../UIs'
 import styles from './SongItem.module.scss'
-import { PlayerContext } from '@/contexts/PlayerContext'
-import { SongItemProps } from '@/types/track'
 
 const cx = classNames.bind(styles)
 
@@ -23,14 +23,19 @@ const SongItem: React.FC<SongItemProps> = ({
   albumData,
   isExplicit = false,
   type = 'default',
-  id,
+  originalData,
 }) => {
   const { width } = useContext(MainLayoutContext)
-  const { setId } = useContext(PlayerContext)
+  const { setCurrentTrack, setQueue } = useContext(PlayerContext)
+
+  const handleClick = () => {
+    setCurrentTrack(originalData)
+    setQueue(originalData ? [originalData] : [])
+  }
 
   return (
     <div
-      onClick={() => setId(id)}
+      onClick={handleClick}
       className={cx({
         wrapper: true,
         'grid-md': width <= 780 && type !== 'album',

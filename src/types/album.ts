@@ -1,5 +1,6 @@
 import { ArtistData } from './artist'
 import { ImageSource } from './others'
+import { SpotifyTrack } from './track'
 
 export interface AlbumItem {
   title?: string
@@ -17,7 +18,18 @@ export interface AlbumItem {
 
 export interface SpotifyAlbum {
   artists?: ArtistData[]
-  images?: { url?: string }[]
+  images?: ImageSource[]
   id?: string
   name?: string
+  album_type?: 'album' | 'Playlist' | 'single' | 'compilation' | 'podcast' | 'episode'
+  release_date?: string
+  description?: string
+  tracks?: {
+    total?: number
+    items: SpotifyTrack[]
+  }
+  copyrights?: {
+    text?: string
+    type?: string
+  }[]
 }

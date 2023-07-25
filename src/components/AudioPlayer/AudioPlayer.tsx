@@ -9,11 +9,11 @@ import Right from './Right/Right'
 const cx = classNames.bind(styles)
 
 const AudioPlayer: FC = () => {
-  const { id } = useContext(PlayerContext)
+  const { currentTrack } = useContext(PlayerContext)
 
   return (
     <div className={cx('wrapper')}>
-      <div className={cx('left')}>{id && <Left />}</div>
+      <div className={cx('left')}>{currentTrack && <Left />}</div>
 
       <div className={cx('center')}>
         <PlayerControl />

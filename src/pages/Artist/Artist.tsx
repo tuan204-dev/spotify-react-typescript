@@ -15,6 +15,7 @@ import React, { useContext, useRef, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useDocumentTitle } from 'usehooks-ts'
 import styles from './Artist.module.scss'
+import { PlayerContext } from '@/contexts/PlayerContext'
 
 const cx = classNames.bind(styles)
 
@@ -41,6 +42,7 @@ const Artist: React.FC = () => {
     aboutImg,
     visuals,
   } = useContext(ArtistContext)
+  const { setCurrentTrack, setCurrentTrackIndex, setQueue } = useContext(PlayerContext)
   useDocumentTitle(`${profile?.name ? profile?.name : 'Artist'} | Spotify`)
 
   const bannerRef = useRef<any>()
@@ -72,6 +74,12 @@ const Artist: React.FC = () => {
     } else setNavPlayBtnVisible(false)
   }
 
+  const handleClickPlayBtn = () => {
+    setQueue(topTracks || [])
+    setCurrentTrack(topTracks?.[0])
+    setCurrentTrackIndex(0)
+  }
+
   return (
     <main className={cx('wrapper')}>
       <Navbar
@@ -81,6 +89,7 @@ const Artist: React.FC = () => {
         playBtnVisible={navPlayBtnVisible}
         navOpacity={navOpacity}
         bgColor={colorRaw}
+        handleClickPlayBtn={handleClickPlayBtn}
       />
       <div
         className={cx('banner-img')}
@@ -132,7 +141,9 @@ const Artist: React.FC = () => {
             />
           </div>
           <div className={cx('action-bar')}>
-            <PlayButton size={56} transitionDuration={33} scaleHovering={1.05} />
+            <div onClick={handleClickPlayBtn}>
+              <PlayButton size={56} transitionDuration={33} scaleHovering={1.05} />
+            </div>
             <button className={cx('follow-btn')}>Follow</button>
           </div>
           <TopTracks isLoading={isLoading} songList={topTracks} />

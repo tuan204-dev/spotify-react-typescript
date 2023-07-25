@@ -21,6 +21,7 @@ interface NavbarProps {
   playBtnVisible?: boolean
   inclPlayBtn?: boolean
   setQuery?: React.Dispatch<React.SetStateAction<string | undefined>>
+  handleClickPlayBtn?: any
 }
 
 const Navbar: FC<NavbarProps> = (props) => {
@@ -33,6 +34,7 @@ const Navbar: FC<NavbarProps> = (props) => {
     title,
     playBtnVisible = false,
     inclPlayBtn = false,
+    handleClickPlayBtn,
   } = props
 
   const { isLogged, userData, handleLogin } = useContext(AuthContext)
@@ -104,7 +106,7 @@ const Navbar: FC<NavbarProps> = (props) => {
             className={cx('nav-control-play-btn')}
             style={{ opacity: playBtnVisible ? 1 : undefined }}
           >
-            <div>
+            <div onClick={() => handleClickPlayBtn && handleClickPlayBtn()}>
               <PlayButton size={48} transitionDuration={33} scaleHovering={1.05} />
             </div>
             <div className={cx('artist-name')}>

@@ -1,0 +1,78 @@
+@import '../../scss/variable';
+@import '../../scss/mixin';
+
+.queue-wrapper {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: $bg-base;
+}
+
+.body {
+  height: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+  padding-bottom: 32px;
+  padding-top: $navbar-height;
+  position: relative;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.title {
+  padding-inline: 24px;
+  font-size: 24px;
+  color: $white;
+}
+
+.queue-list {
+  padding-inline: 24px;
+}
+
+.queue-notify {
+  height: 50vh;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  font-size: 32px;
+}
+
+.home-btn {
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  background: #fff;
+  border: 1px solid #878787;
+  border-radius: 48px;
+  color: #000;
+  display: inline-block;
+  line-height: 24px;
+  margin-bottom: 36px;
+  padding: 12px 32px;
+  text-align: center;
+  white-space: nowrap;
+  margin: 0 0 36px;
+
+  &:hover {
+    transform: scale(1.04);
+  }
+}
+
+.help {
+  font-size: 16px;
+  color: #fff;
+  display: block;
+  font-weight: 700;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

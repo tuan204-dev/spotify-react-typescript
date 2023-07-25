@@ -5,6 +5,8 @@ import htmlCleaner from './htmlCleaner'
 import stringCleaner from './stringCleaner'
 import { unicodeDecoder } from './unicodeDecoder'
 import fetchHomePageData from './fetchHomePageData'
+import normalizeAlbum from './normalizeAlbum'
+import normalizeTrack from './normalizeTrack'
 
 export {
   dateFormatConvertor,
@@ -14,4 +16,6 @@ export {
   stringCleaner,
   unicodeDecoder,
   fetchHomePageData,
+  normalizeAlbum,
+  normalizeTrack,
 }

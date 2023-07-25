@@ -71,15 +71,18 @@ const SectionItem: React.FC<SectionItemI> = ({
           )}
           <div className={cx('desc')}>
             {!isLoading ? (
-              <p>
-                {(type === 'show' && publisher) ||
-                  (dataType === 'episode' && dateFormatConvertor(dateAdd)) ||
-                  desc ||
-                  (author && `By ${author}`) ||
-                  (dataType === 'artist' && 'Artist') ||
-                  (artists && <SubTitle data={artists} />) ||
-                  'Lorem ipsum dolor sit amet consectetur adipisicing elit.'}
-              </p>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html:
+                    (type === 'show' && publisher) ||
+                    (dataType === 'episode' && dateFormatConvertor(dateAdd)) ||
+                    desc ||
+                    (author && `By ${author}`) ||
+                    (dataType === 'artist' && 'Artist') ||
+                    (artists && <SubTitle data={artists} />) ||
+                    'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+                }}
+              ></p>
             ) : (
               <Skeleton width={'60%'} height={22.5} borderRadius={50} />
             )}

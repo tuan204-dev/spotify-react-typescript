@@ -22,10 +22,30 @@
   }
 }
 
-
 .volume {
   display: flex;
   flex-direction: row;
   align-items: center;
   width: 125px;
+}
+
+.active {
+  color: $secondary !important;
+  position: relative;
+
+  &::after {
+    content: '';
+    height: 4px;
+    width: 4px;
+    position: absolute;
+    background-color: $secondary;
+    border-radius: 50%;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &:hover {
+    color: $primary;
+  }
 }

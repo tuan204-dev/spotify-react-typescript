@@ -11,12 +11,16 @@ import { useInView } from 'react-intersection-observer'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDocumentTitle } from 'usehooks-ts'
 import styles from './Playlist.module.scss'
+import { PlaylistData } from '@/types/playlist'
+import { PlayerContext } from '@/contexts/PlayerContext'
+import { useContext } from 'react'
 
 const cx = classNames.bind(styles)
 
 const Playlist: React.FC = () => {
+  const { setQueue, setCurrentTrack, setCurrentTrackIndex } = useContext(PlayerContext)
   const [navOpacity, setNavOpacity] = useState<number>(0)
-  const [data, setData] = useState<any>()
+  const [data, setData] = useState<PlaylistData>()
   const [isLoading, setLoading] = useState<boolean>(true)
   const [navPlayBtnVisible, setNavPlayBtnVisible] = useState<boolean>(false)
 
@@ -66,6 +70,12 @@ const Playlist: React.FC = () => {
     } else setNavPlayBtnVisible(false)
   }
 
+  const handleClickPlayBtn = () => {
+    setQueue(data?.tracks?.items?.map((item) => item.track) || [])
+    setCurrentTrack(data?.tracks?.items?.[0]?.track)
+    setCurrentTrackIndex(0)
+  }
+
   return (
     <main className={cx('wrapper')}>
       <Navbar
@@ -74,6 +84,7 @@ const Playlist: React.FC = () => {
         playBtnVisible={navPlayBtnVisible}
         inclPlayBtn
         title={data?.name}
+        handleClickPlayBtn={handleClickPlayBtn}
       />
       <div onScroll={(e) => isTracking && handleScroll(e)} className={cx('body')}>
         <div
@@ -96,12 +107,14 @@ const Playlist: React.FC = () => {
           <div style={{ backgroundColor: `${bgColor}` }} className={cx('bg-blur')}></div>
           <div className={cx('main')}>
             <div className={cx('action-bar')}>
-              <PlayButton
-                size={56}
-                fontSize={24}
-                scaleHovering={1.05}
-                transitionDuration={33}
-              />
+              <div onClick={() => handleClickPlayBtn()}>
+                <PlayButton
+                  size={56}
+                  fontSize={24}
+                  scaleHovering={1.05}
+                  transitionDuration={33}
+                />
+              </div>
               <button className={cx('heart')}>
                 <HeartIcon />
               </button>
@@ -110,7 +123,8 @@ const Playlist: React.FC = () => {
               isLoading={isLoading}
               top={0}
               pivotTop={64}
-              songList={data?.tracks.items}
+              songList={data?.tracks?.items}
+              type={'playlist'}
             />
           </div>
         </div>

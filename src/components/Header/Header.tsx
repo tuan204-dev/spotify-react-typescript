@@ -29,8 +29,6 @@ const Header: React.FC<HeaderProps> = ({
   showName,
   showId,
 }) => {
-  console.log(isLoading)
-
   return (
     <main style={{ backgroundColor: `${bgColor}` }} className={cx('wrapper')}>
       <div className={cx({ body: true, show: headerType === 'show' })}>

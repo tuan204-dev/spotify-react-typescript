@@ -1,4 +1,4 @@
-import { RapidArtistTrack } from '@/types/track'
+import { SpotifyTrack } from '@/types/track'
 import classNames from 'classnames/bind'
 import { FC, memo, useState } from 'react'
 import { SongItem } from '..'
@@ -7,12 +7,13 @@ import styles from './TopTracks.module.scss'
 const cx = classNames.bind(styles)
 
 interface TopTrackProps {
-  songList?: RapidArtistTrack[]
+  songList?: SpotifyTrack[]
   isLoading?: boolean
 }
 
 const TopTrack: FC<TopTrackProps> = ({ songList, isLoading }) => {
   const [isLess, setLess] = useState<boolean>(true)
+
 
   return (
     <div className={cx('wrapper')}>
@@ -23,20 +24,17 @@ const TopTrack: FC<TopTrackProps> = ({ songList, isLoading }) => {
         {!isLoading
           ? songList
               ?.slice(0, isLess ? 5 : 10)
-              .map((item: any, index: number) => (
+              .map((item, index: number) => (
                 <SongItem
-                  id={item?.track?.id}
+                  id={item?.id}
                   type="artist"
-                  key={item.track.id || index}
-                  songName={item.track.name}
-                  artists={item.track.artists}
-                  thumb={
-                    item.track.album.coverArt.sources[
-                      item.track.album.coverArt.sources.length - 1
-                    ].url
-                  }
-                  duration={item.track.duration.totalMilliseconds}
+                  key={item?.id ?? index}
+                  songName={item?.name}
+                  artists={item?.artists}
+                  thumb={item?.album?.images?.[item?.album?.images?.length - 1]?.url}
+                  duration={item?.duration_ms}
                   order={index + 1}
+                  originalData={item}
                 />
               ))
           : Array(10)

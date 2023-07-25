@@ -8,10 +8,13 @@
   padding: 8px;
 }
 
-.left, .right {
+.left,
+.right {
   flex: 3;
+  width: 30%;
 }
 
 .center {
   flex: 4;
+  width: 40%;
 }

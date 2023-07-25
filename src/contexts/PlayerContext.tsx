@@ -1,8 +1,7 @@
-import trackApi from '@/apis/trackApi'
-import { FC, ReactNode, createContext, useEffect, useMemo, useRef, useState } from 'react'
-import rapidDataD from '../assets/data/initTrackRapid.json'
+import { getTrackRecommendation } from '@/apis/trackApi'
 import { ArtistData } from '@/types/artist'
-import { RapidTrack, SpotifyTrack } from '@/types/track'
+import { SpotifyTrack } from '@/types/track'
+import { FC, ReactNode, createContext, useEffect, useMemo, useRef, useState } from 'react'
 
 interface PlayBarData {
   trackName?: string
@@ -21,92 +20,319 @@ interface ReturnData {
 }
 
 interface PlayerContext extends ReturnData {
-  id?: string
   handlePlay: () => void
   handlePause: () => void
   audioRef: React.MutableRefObject<any>
   isPlaying: boolean
-  setId: React.Dispatch<React.SetStateAction<string | undefined>>
   setCurrentTime: React.Dispatch<React.SetStateAction<number>>
   intervalIdRef: any
+  setCurrentTrack: React.Dispatch<React.SetStateAction<SpotifyTrack | undefined>>
+  currentTrack: SpotifyTrack | undefined
+  setQueue: React.Dispatch<React.SetStateAction<SpotifyTrack[]>>
+  queue: SpotifyTrack[]
+  fakeCurrentIndex?: number
+  setCurrentTrackIndex: React.Dispatch<React.SetStateAction<number>>
+  currentTrackIndex: number
+  handleForward: () => void
+  handleBack: () => void
 }
 
 export const PlayerContext = createContext({} as PlayerContext)
 
 export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
-  const [id, setId] = useState<string | undefined>('')
-  const [spotifyData, setSpotifyData] = useState<SpotifyTrack>({})
-  const [rapidData] = useState<RapidTrack>(rapidDataD)
   const [isPlaying, setPlaying] = useState<boolean>(false)
   const [currentTime, setCurrentTime] = useState<number>(0)
-// ---------------Queue list----------------
-  // const [queue, setQueue] = useState<any>()
+  const [rapidData, setRapidData] = useState<any>()
+  const [currentTrackIndex, setCurrentTrackIndex] = useState<number>(0)
 
+  //------------------------------------------------------
+  // const [fakeData, setFakeData] = useState<any>()
+  // const [fakeCurrentIndex, setFakeCurrentIndex] = useState<number>(0)
 
+  // ---------------Queue list----------------
+  const [queue, setQueue] = useState<SpotifyTrack[]>([
+    JSON.parse(localStorage.getItem('spotify_current_track') as string),
+  ])
+  const [currentTrack, setCurrentTrack] = useState<SpotifyTrack | undefined>(
+    JSON.parse(localStorage.getItem('spotify_current_track') as string)
+  )
 
+  useEffect(() => {
+    if (currentTrack) {
+      localStorage.setItem('spotify_current_track', JSON.stringify(currentTrack))
+    }
+    if (currentTrackIndex >= queue.length - 1 && currentTrack) {
+      const getRecommendation = async () => {
+        const data = await getTrackRecommendation({
+          seed_artists: currentTrack?.artists?.[0]?.id as string,
+          seed_tracks: currentTrack?.id,
+        })
 
-// -----------------------------------------
+        setQueue((prev) => [...prev, ...data])
+      }
+      getRecommendation()
+    }
+  }, [currentTrackIndex, currentTrack])
+
+  // -----------------------------------------------
   const intervalIdRef = useRef<any>()
+
+  const audioRef = useRef<any>(new Audio())
+
+  // useMemo(() => {
+  //   if (rapidData) {
+  //     console.log(rapidData)
+  //     audioRef.current.src = rapidData?.soundcloudTrack?.audio[0]?.url
+  //   }
+  // }, [rapidData])
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const data = await getAudioTrack({ id: currentTrack?.id })
+  //     console.log(data)
+  //     setRapidData(data)
+  //   }
+  //   handlePause()
+  //   fetchData()
+  // }, [currentTrackIndex])
+
+  // const handlePlay = () => {
+  //   if (audioRef.current?.paused) {
+  //     audioRef.current.play()
+  //     setPlaying(true)
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   if (audioRef.current) {
+  //     audioRef.current.currentTime = currentTime
+  //   }
+  // }, [currentTime])
+
+  // const handlePause = () => {
+  //   // if (!audioRef.current?.paused) {
+  //   audioRef.current.pause()
+  //   setPlaying(false)
+  //   // }
+  // }
+
+  // const handleForward = () => {
+  //   handlePause()
+  //   setCurrentTrack({ ...queue[currentTrackIndex + 1] })
+  //   setCurrentTrackIndex(currentTrackIndex + 1)
+  //   setCurrentTime(0)
+  // }
+
+  // const handleBack = () => {
+  //   handlePause()
+  //   if (currentTrackIndex > 0) {
+  //     setCurrentTrack({ ...queue[currentTrackIndex - 1] })
+  //     setCurrentTrackIndex(currentTrackIndex - 1)
+  //   }
+  //   setCurrentTime(0)
+  // }
+  // console.log(rapidData)
+
+  //---------------------------------------
+
+  useMemo(() => {
+    if (rapidData) {
+      // console.log(rapidData)
+      // audioRef.current.src = rapidData?.soundcloudTrack?.audio[0]?.url
+    }
+  }, [rapidData])
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await trackApi({ id })
-      setSpotifyData(data)
+      switch (currentTrackIndex % 3) {
+        case 0: {
+          const response = await fetch('https://api.npoint.io/4057d1e2d90cc4aaa3bd')
+          const data = await response.json()
+          // console.log(data)
+          setRapidData(data)
+          break
+        }
+        case 1: {
+          const response = await fetch('https://api.npoint.io/4fea276b4972a523e052')
+          const data = await response.json()
+          console.log(data)
+          setRapidData(data)
+          break
+        }
+        case 2: {
+          const response = await fetch('https://api.npoint.io/732d38b39384cd131d21')
+          const data = await response.json()
+          console.log(data)
+          setRapidData(data)
+          break
+        }
+      }
+      // const data = await getAudioTrack({id: currentTrack?.id})
+      // console.log(data)
+      // setRapidData(data)
     }
-
-    if (id) {
-      fetchData()
-    }
-  }, [id])
-
-  const audioRef = useRef<any>(new Audio(rapidData?.soundcloudTrack?.audio?.[0]?.url))
-
-  useEffect(() => {
     handlePause()
-    audioRef.current = new Audio(rapidData?.soundcloudTrack?.audio?.[0]?.url)
-  }, [id])
+    fetchData()
+  }, [currentTrackIndex, currentTrack])
 
   useEffect(() => {
-    audioRef.current.currentTime = currentTime
+    if (audioRef.current) {
+      audioRef.current.currentTime = currentTime
+    }
   }, [currentTime])
 
   const handlePlay = () => {
-    audioRef.current.play()
-    setPlaying(true)
+    if (audioRef.current?.paused) {
+      audioRef.current.play()
+      setPlaying(true)
+    }
   }
 
   const handlePause = () => {
+    // if (!audioRef.current?.paused) {
     audioRef.current.pause()
     setPlaying(false)
+    // }
   }
 
+  const handleBack = () => {
+    // console.log('backed')
+    handlePause()
+    // setFakeCurrentIndex(() => {
+    //   if (fakeCurrentIndex === 0) {
+    //     return 0
+    //   } else {
+    //     return fakeCurrentIndex - 1
+    //   }
+    // })
+    if (currentTrackIndex > 0) {
+      setCurrentTrack({ ...queue[currentTrackIndex - 1] })
+      setCurrentTrackIndex(currentTrackIndex - 1)
+    }
+    setCurrentTime(0)
+  }
+
+  const handleForward = () => {
+    // console.log('forwarded', fakeCurrentIndex)
+    if (currentTrackIndex < queue.length - 1) {
+      handlePause()
+      setCurrentTrack({ ...queue[currentTrackIndex + 1] })
+      setCurrentTrackIndex(currentTrackIndex + 1)
+      setCurrentTime(0)
+    }
+  }
+
+  // console.dir(audioRef.current)
+
+  // ----------------------------------------------------
+  // useMemo(() => {
+  //   if (rapidData) {
+  //     audioRef.current.src = rapidData?.soundcloudTrack?.audio[0]?.url
+  //   }
+  // }, [rapidData])
+
+  // useEffect(() => {
+  //   handlePause()
+  //   const fetchAudio = async () => {
+  //     const data = await getAudioTrack({ id: currentTrack?.id })
+  //     console.log(data)
+  //     setRapidData(data)
+  //   }
+  //   if (currentTrack) {
+  //     fetchAudio()
+  //   }
+  // }, [currentTrack])
+
+  // useEffect(() => {
+  //   if (audioRef.current) {
+  //     audioRef.current.currentTime = currentTime
+  //   }
+  // }, [currentTime])
+
+  // const handlePlay = () => {
+  //   if (audioRef.current.paused) {
+  //     console.log('playing')
+  //     audioRef.current.play()
+  //   }
+  //   setPlaying(true)
+  // }
+
+  // const handlePause = () => {
+  //   if (!audioRef.current.paused) {
+  //     console.log('paused')
+  //     audioRef.current.pause()
+  //   }
+  //   setPlaying(false)
+  // }
+
+  // console.dir(audioRef.current)
+  // const handlePlay = useCallback(() => {
+  //   audioRef.current.play()
+  //   setPlaying(true)
+  // }, [rapidData, audioRef.current])
+  // const handlePause = useCallback(() => {
+  //   if (audioRef.current) {
+  //     audioRef.current.pause()
+  //   }
+  //   setPlaying(false)
+  // }, [rapidData, audioRef.current])
+
+  // console.log(currentTime)
+
+  // const handleForward = () => {
+  //   handlePause()
+  //   setCurrentTrack({ ...queue[currentTrackIndex + 1] })
+  //   setCurrentTrackIndex(currentTrackIndex + 1)
+  //   setCurrentTime(0)
+  // }
+
+  // const handleBack = () => {
+  //   if (currentTrackIndex !== 0) {
+  //     handlePause()
+  //     setCurrentTrack({ ...queue[currentTrackIndex - 1] })
+  //     setCurrentTrackIndex(currentTrackIndex - 1)
+  //   }
+  //   setCurrentTime(0)
+  // }
+
+  // --------------------------
   const returnData = useMemo(() => {
     return {
-      duration: audioRef.current?.duration,
+      duration: rapidData?.soundcloudTrack?.audio?.[0]?.durationMs / 1000,
+      // duration: fakeData?.soundcloudTrack?.audio?.[0]?.durationMs / 1000,
       playBarData: {
-        trackName: spotifyData?.name,
-        thumb: spotifyData?.album?.images?.[spotifyData?.album?.images?.length - 1]?.url,
-        albumId: spotifyData?.album?.id,
-        artists: spotifyData?.artists,
+        trackName: currentTrack?.name,
+        thumb:
+          currentTrack?.album?.images?.[currentTrack?.album?.images?.length - 1]?.url,
+        albumId: currentTrack?.album?.id,
+        artists: currentTrack?.artists,
       },
     }
-  }, [spotifyData, rapidData, id])
+  }, [currentTrack, audioRef.current, rapidData])
 
   return (
     <PlayerContext.Provider
       value={{
-        id,
         handlePlay,
         handlePause,
         audioRef,
         isPlaying,
         ...returnData,
-        setId,
+        // fakeCurrentIndex,
         setCurrentTime,
         intervalIdRef,
+        setCurrentTrack,
+        currentTrack,
+        setQueue,
+        queue,
+        setCurrentTrackIndex,
+        currentTrackIndex,
+        handleForward,
+        handleBack,
       }}
     >
       {children}
+      {/* <audio/> */}
     </PlayerContext.Provider>
   )
 }

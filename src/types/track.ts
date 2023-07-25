@@ -1,5 +1,6 @@
 import { SpotifyAlbum } from './album'
 import { ArtistData } from './artist'
+import { ImageSource } from './others'
 
 export interface SongItemTagProps {
   thumbnailUrl?: string
@@ -7,6 +8,7 @@ export interface SongItemTagProps {
   isLoading?: boolean
   id?: string
   setBgColor: React.Dispatch<React.SetStateAction<string>>
+  albumId?: string
 }
 
 export interface SongItemProps {
@@ -21,22 +23,28 @@ export interface SongItemProps {
   isExplicit?: boolean
   type?: 'default' | 'playlist' | 'album' | 'search' | 'artist'
   id?: string
+  originalData?: SpotifyTrack
 }
 
 export interface SongListProps {
-  songList: SongItemProps[]
-  pivotTop: number
-  top: number
+  songList?: SongItemProps[] | { track?: SpotifyTrack }[]
+  pivotTop?: number
+  top?: number
   isLoading?: boolean
   type?: 'default' | 'playlist' | 'album' | 'search' | 'artist'
+  albumId?: string
+  albumImages?: ImageSource[]
+  inclHeader?: boolean
 }
 
 export interface SpotifyTrack {
   album?: SpotifyAlbum
   artists?: ArtistData[]
+  explicit?: boolean
   duration_ms?: number
   name?: string
   id?: string
+  popularity?: number
 }
 
 // -----------Rapid----------
@@ -55,12 +63,14 @@ export interface RapidTrack {
 export interface RapidArtistTrack {
   uid?: string
   track?: {
+    album?: any
+    artists?: any
     id?: string
     name?: string
     uri?: string
     playcount?: string
     duration?: {
-      totalMilliseconds?: string
+      totalMilliseconds?: number
     }
   }
 }

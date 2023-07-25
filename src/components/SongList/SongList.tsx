@@ -16,6 +16,9 @@ const SongList: FC<SongListProps> = ({
   isLoading = false,
   top,
   type = 'default',
+  albumId,
+  albumImages,
+  inclHeader = true,
 }) => {
   const { width } = useContext(MainLayoutContext)
 
@@ -25,43 +28,47 @@ const SongList: FC<SongListProps> = ({
 
   return (
     <div className={cx('wrapper')}>
-      <div
-        ref={ref}
-        style={{
-          position: 'absolute',
-          top: `-${pivotTop}px`,
-        }}
-      ></div>
-      <div
-        style={{ top: `${top}px` }}
-        className={cx({
-          'freeze-top-row': true,
-          stuck: !inView,
-          'grid-md': width <= 780,
-          'is-album-track': type === 'album',
-        })}
-      >
-        {type !== 'album' ? (
-          <>
-            {' '}
-            <div>#</div>
-            <div>Title</div>
-            <div>Album</div>
-            {width > 780 && <div>Date added</div>}
-            <div className={cx('clock-icon')}>
-              <ClockIcon />
-            </div>{' '}
-          </>
-        ) : (
-          <>
-            <div>#</div>
-            <div>Title</div>
-            <div className={cx('clock-icon')}>
-              <ClockIcon />
-            </div>
-          </>
-        )}
-      </div>
+      {inclHeader && (
+        <>
+          <div
+            ref={ref}
+            style={{
+              position: 'absolute',
+              top: `-${pivotTop}px`,
+            }}
+          ></div>
+          <div
+            style={{ top: `${top}px` }}
+            className={cx({
+              'freeze-top-row': true,
+              stuck: !inView,
+              'grid-md': width <= 780,
+              'is-album-track': type === 'album',
+            })}
+          >
+            {type !== 'album' ? (
+              <>
+                {' '}
+                <div>#</div>
+                <div>Title</div>
+                <div>Album</div>
+                {width > 780 && <div>Date added</div>}
+                <div className={cx('clock-icon')}>
+                  <ClockIcon />
+                </div>{' '}
+              </>
+            ) : (
+              <>
+                <div>#</div>
+                <div>Title</div>
+                <div className={cx('clock-icon')}>
+                  <ClockIcon />
+                </div>
+              </>
+            )}
+          </div>
+        </>
+      )}
       <div className={cx('songs')}>
         {(() => {
           let order = 1
@@ -75,17 +82,25 @@ const SongList: FC<SongListProps> = ({
                   item?.album?.images[item?.album?.images?.length - 1]?.url ||
                   item?.track?.album?.images[item?.track?.album?.images?.length - 1]?.url
                 }
-                songName={item?.name || item?.track?.name}
-                artists={item?.artists || item?.track?.artists}
+                songName={item?.name ?? item?.track?.name}
+                artists={item?.artists ?? item?.track?.artists}
                 albumData={{
-                  name: item?.album?.name || item?.track?.album?.name,
+                  name: item?.album?.name ?? item?.track?.album?.name,
                   id: item?.track?.album?.id,
                 }}
                 dateAdd={item?.added_at}
-                duration={item?.duration_ms || item?.track?.duration_ms}
-                isExplicit={item?.explicit || item?.track?.explicit}
+                duration={item?.duration_ms ?? item?.track?.duration_ms}
+                isExplicit={item?.explicit ?? item?.track?.explicit}
                 isLoading={isLoading}
-                id={item?.track?.id || item?.id}
+                id={item?.track?.id ?? item?.id}
+                originalData={
+                  (type === 'playlist' && item?.track) ||
+                  (type === 'album' && {
+                    ...item,
+                    album: { images: albumImages, id: albumId },
+                  }) ||
+                  item
+                }
               />
             ))
           } else {

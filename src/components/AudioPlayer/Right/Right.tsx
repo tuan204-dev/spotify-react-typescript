@@ -5,13 +5,20 @@ import { Tooltip } from 'antd'
 import classNames from 'classnames/bind'
 import { FC, useCallback, useContext, useRef, useState } from 'react'
 import styles from './Right.module.scss'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const cx = classNames.bind(styles)
 
 const Right: FC = () => {
   const { audioRef } = useContext(PlayerContext)
-  const [volume, setVolume] = useState<number>(1)
+  const [volume, setVolume] = useState<number>(
+    JSON.parse(localStorage.getItem('spotify_volume') as string) ?? 1
+  )
   const [volumeLevel, setVolumeLevel] = useState<SoundLevel>('high')
+  const prevVolume = useRef<number>(volume)
+
+  const { pathname, key } = useLocation()
+  const navigate = useNavigate()
 
   const volumeLevelFilter = useCallback((value: number): SoundLevel => {
     if (+value === 0) {
@@ -26,16 +33,16 @@ const Right: FC = () => {
   }, [])
 
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    audioRef.current.volume = Number(e.target.value)
-    setVolumeLevel(volumeLevelFilter(+e.target.value))
-    setVolume(+e.target.value)
+    const volumeValue = Number(e.target.value)
+    localStorage.setItem('spotify_volume', JSON.stringify(volumeValue))
+    audioRef.current.volume = volumeValue
+    setVolumeLevel(volumeLevelFilter(volumeValue))
+    setVolume(volumeValue)
   }
 
   const handleMouseUp = () => {
     return
   }
-
-  const prevVolume = useRef<number>(volume)
 
   const handleSoundClicked = () => {
     if (volumeLevel === 'mute') {
@@ -49,6 +56,17 @@ const Right: FC = () => {
       setVolumeLevel('mute')
     }
   }
+
+  const handleClickQueueBtn = () => {
+    if (pathname !== '/queue') {
+      navigate('/queue')
+    } else if (key !== 'default') {
+      navigate(-1)
+    } else {
+      navigate('/')
+    }
+  }
+
   return (
     <div className={cx('wrapper')}>
       <Tooltip
@@ -60,7 +78,10 @@ const Right: FC = () => {
         </button>
       </Tooltip>
       <Tooltip overlayInnerStyle={{ backgroundColor: '#282828' }} title="Queue">
-        <button className={cx('btn')}>
+        <button
+          onClick={handleClickQueueBtn}
+          className={cx({ btn: true, active: pathname === '/queue' })}
+        >
           <QueueIcon />
         </button>
       </Tooltip>

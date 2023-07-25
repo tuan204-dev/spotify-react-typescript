@@ -13,6 +13,7 @@
   position: relative;
   color: $white;
   transition: all .3s ease;
+  cursor: pointer;
 
   &:hover .body .play-btn {
     opacity: 1;

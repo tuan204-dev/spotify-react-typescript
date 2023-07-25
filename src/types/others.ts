@@ -1,3 +1,5 @@
+import { ArtistData } from "./artist"
+
 export interface ImageSource {
   url: string
   width: number
@@ -38,7 +40,7 @@ export interface HeaderProps {
   bgColor?: string
   desc?: string
   isLoading?: boolean
-  artists?: string
+  artists?: ArtistData[]
   releaseDate?: string
   isWhiteColor?: boolean
   headerType?: 'playlist' | 'album' | 'show'

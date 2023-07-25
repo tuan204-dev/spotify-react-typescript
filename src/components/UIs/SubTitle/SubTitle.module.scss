@@ -9,6 +9,7 @@
   overflow: hidden;
   width: 100%;
   @include text-in-one-line;
+  flex: 1;
 
   .artist-item {
     font-size: 14px;

@@ -1,7 +1,8 @@
 import artistApi from '@/apis/artistApi'
 import { ArtistModal } from '@/components'
 import { ArtistProfile } from '@/types/artist'
-import { RapidArtistTrack } from '@/types/track'
+import { RapidArtistTrack, SpotifyTrack } from '@/types/track'
+import { normalizeTrack } from '@/utils'
 import { FC, ReactNode, createContext, useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 
@@ -18,7 +19,7 @@ interface ArtistContext {
     followerNumbers?: number
     monthlyListeners?: number
   }
-  topTracks?: RapidArtistTrack[]
+  topTracks?: SpotifyTrack[]
   discography: {
     popularReleases?: any[]
     albums?: any[]
@@ -51,7 +52,7 @@ export const ArtistProvider: FC<ArtistProviderProps> = ({ children }) => {
   useEffect(() => {
     if (regex.test(pathname)) {
       setId(artistId)
-    } else {
+    } else if(pathname !== '/queue') {
       setId('')
       setArtistData(undefined)
       setResponseData(undefined)
@@ -88,7 +89,7 @@ export const ArtistProvider: FC<ArtistProviderProps> = ({ children }) => {
           followerNumbers: responseData?.stats?.followers,
           monthlyListeners: responseData?.stats?.monthlyListeners,
         },
-        topTracks: responseData?.discography?.topTracks?.items,
+        topTracks: responseData?.discography?.topTracks?.items?.map((item: RapidArtistTrack) => normalizeTrack(item)),
         discography: {
           popularReleases: responseData?.discography?.popularReleases.items,
           albums: responseData?.discography?.albums.items,

@@ -10,8 +10,6 @@ const cx = classNames.bind(styles)
 const SidebarItem: FC<SidebarItemProps> = (props) => {
   const { type, thumbnail, name, author, id, artists } = props
 
-  console.log(thumbnail)
-
   const newType = (() => {
     if (type === 'playlist') return author
     if (type === 'artist') return 'Artist'

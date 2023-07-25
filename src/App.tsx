@@ -12,6 +12,7 @@ const Section = lazy(() => import('@/pages/Section/Section'))
 const Show = lazy(() => import('@/pages/Show/Show'))
 const Episode = lazy(() => import('@/pages/Episode/Episode'))
 const NotFound = lazy(() => import('@/components/NotFound/NotFound'))
+const Queue = lazy(() => import('@/pages/Queue/Queue'))
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
           <Route path="/album/:id" element={<Album />} />
           <Route path="/show/:id" element={<Show />} />
           <Route path="/episode/:id" element={<Episode />} />
+          <Route path="/queue" element={<Queue />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

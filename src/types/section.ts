@@ -44,4 +44,5 @@ export interface ResponseSectionItem {
   releases?: any
   coverArt?: any
   date?: any
+  albumId?: string
 }

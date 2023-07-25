@@ -6,21 +6,22 @@ import { FC, useContext, useLayoutEffect, useState } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import styles from './TopResult.module.scss'
 import { PlayerContext } from '@/contexts/PlayerContext'
+import { SpotifyTrack } from '@/types/track'
 
 const cx = classNames.bind(styles)
 
 interface TopResultProps {
-  topResult: any
-  songs: any[]
+  topResult: SpotifyTrack
+  songs: SpotifyTrack[]
 }
 
 const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
   const [isLoading, setLoading] = useState<boolean>(true)
   const { width } = useContext(MainLayoutContext)
-  const { setId } = useContext(PlayerContext)
+  const { setCurrentTrack } = useContext(PlayerContext)
 
   useLayoutEffect(() => {
-    if (topResult && songs && topResult?.album?.images[0]?.url) {
+    if (topResult && songs && topResult?.album?.images?.[0]?.url) {
       setLoading(false)
     } else setLoading(true)
   }, [topResult, songs])
@@ -34,7 +35,7 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
         <div className={cx('body')}>
           <div className={cx('thumb')}>
             {!isLoading ? (
-              <Image src={topResult?.album?.images[0]?.url} alt={topResult?.name} />
+              <Image src={topResult?.album?.images?.[0]?.url} alt={topResult?.name} />
             ) : (
               <Skeleton height="100%" width="100%" />
             )}
@@ -59,7 +60,7 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
           </div>
           <div className={cx('btn-pivot')}>
             {!isLoading && (
-              <div onClick={() => setId(topResult?.id)} className={cx('play-btn')}>
+              <div onClick={() => setCurrentTrack(topResult)} className={cx('play-btn')}>
                 <PlayButton
                   size={50}
                   scaleHovering={1.05}
@@ -83,15 +84,16 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
                   <SongItem
                     id={item?.id}
                     isLoading={isLoading}
-                    key={item.id || index}
-                    songName={item.name}
-                    artists={item.artists}
-                    thumb={item.album.images[item.album.images.length - 1].url}
+                    key={item?.id || index}
+                    songName={item?.name}
+                    artists={item?.artists}
+                    thumb={item?.album?.images?.[item?.album?.images?.length - 1]?.url}
                     duration={item.duration_ms}
                     order={index + 1}
-                    albumData={{ name: item.album.name }}
-                    isExplicit={item.explicit}
+                    albumData={{ name: item?.album?.name }}
+                    isExplicit={item?.explicit}
                     type="search"
+                    originalData={item}
                   />
                 ))
             : Array(4)
