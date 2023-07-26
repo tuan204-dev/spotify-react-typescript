@@ -6,11 +6,13 @@ import classNames from 'classnames/bind'
 import { FC, useCallback, useContext, useRef, useState } from 'react'
 import styles from './Right.module.scss'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { AppContext } from '@/App'
 
 const cx = classNames.bind(styles)
 
 const Right: FC = () => {
-  const { audioRef } = useContext(PlayerContext)
+  const { audioRef, queue } = useContext(PlayerContext)
+  const { setPlayingViewShowed, isPlayingViewShowed } = useContext(AppContext)
   const [volume, setVolume] = useState<number>(
     JSON.parse(localStorage.getItem('spotify_volume') as string) ?? 1
   )
@@ -67,13 +69,22 @@ const Right: FC = () => {
     }
   }
 
+  const handleClickPlayingView = () => {
+    if (queue.filter((item) => item).length !== 0) {
+      setPlayingViewShowed((prev) => !prev)
+    }
+  }
+
   return (
     <div className={cx('wrapper')}>
       <Tooltip
         overlayInnerStyle={{ backgroundColor: '#282828' }}
         title="Now Playing View"
       >
-        <button className={cx('btn')}>
+        <button
+          className={cx({ btn: true, active: isPlayingViewShowed })}
+          onClick={handleClickPlayingView}
+        >
           <PlayingViewIcon />
         </button>
       </Tooltip>

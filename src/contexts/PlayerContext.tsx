@@ -20,22 +20,26 @@ interface ReturnData {
 }
 
 interface PlayerContext extends ReturnData {
+  setCurrentTrack: React.Dispatch<React.SetStateAction<SpotifyTrack | undefined>>
+  setCurrentTime: React.Dispatch<React.SetStateAction<number>>
+  setQueue: React.Dispatch<React.SetStateAction<SpotifyTrack[]>>
+  setCurrentTrackIndex: React.Dispatch<React.SetStateAction<number>>
+  setReady: React.Dispatch<React.SetStateAction<boolean>>
+  setPlaying: React.Dispatch<React.SetStateAction<boolean>>
+  setUserClicked: React.Dispatch<React.SetStateAction<boolean>>
   handlePlay: () => void
   handlePause: () => void
-  audioRef: React.MutableRefObject<any>
-  isPlaying: boolean
-  setCurrentTime: React.Dispatch<React.SetStateAction<number>>
-  intervalIdRef: any
-  setCurrentTrack: React.Dispatch<React.SetStateAction<SpotifyTrack | undefined>>
-  currentTrack: SpotifyTrack | undefined
-  setQueue: React.Dispatch<React.SetStateAction<SpotifyTrack[]>>
-  queue: SpotifyTrack[]
-  fakeCurrentIndex?: number
-  setCurrentTrackIndex: React.Dispatch<React.SetStateAction<number>>
-  currentTrackIndex: number
   handleForward: () => void
   handleBack: () => void
+  audioRef: React.MutableRefObject<any>
+  isPlaying: boolean
+  intervalIdRef: any
+  currentTrack: SpotifyTrack | undefined
+  queue: SpotifyTrack[]
+  fakeCurrentIndex?: number
+  currentTrackIndex: number
   isReady: boolean
+  userClicked: boolean
 }
 
 export const PlayerContext = createContext({} as PlayerContext)
@@ -46,6 +50,7 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
   const [audioData, setAudioData] = useState<any>()
   const [currentTrackIndex, setCurrentTrackIndex] = useState<number>(0)
   const [isReady, setReady] = useState<boolean>(false)
+  const [userClicked, setUserClicked] = useState<boolean>(false)
 
   // ---------------Queue list----------------
   const [queue, setQueue] = useState<SpotifyTrack[]>([
@@ -70,7 +75,7 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
       }
       getRecommendation()
     }
-  }, [currentTrackIndex, currentTrack])
+  }, [currentTrack])
 
   // -----------------------------------------------
   const intervalIdRef = useRef<any>()
@@ -79,7 +84,6 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
 
   useMemo(() => {
     if (audioData) {
-      setReady(false)
       audioRef.current.src = audioData.audioLink
     }
   }, [audioData])
@@ -91,12 +95,15 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
           currentTrack?.artists?.[currentTrack?.artists?.length - 1]?.name
         }`
       )
-      console.log(currentTrack)
+      console.log(currentTrack, queue)
       setAudioData(data)
     }
     handlePause()
-    fetchData()
-  }, [ currentTrack])
+    setReady(false)
+    if (queue.filter((item) => item).length !== 0) {
+      fetchData()
+    }
+  }, [currentTrack])
 
   useEffect(() => {
     if (audioRef.current) {
@@ -157,12 +164,10 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
   }, [currentTrack, audioData])
 
   audioRef.current.onloadeddata = () => {
-    setReady(true)
-    setPlaying(true)
-  }
-
-  audioRef.current.onended = () => {
-    handleForward()
+    if (userClicked) {
+      setReady(true)
+      setPlaying(true)
+    }
   }
 
   return (
@@ -170,20 +175,24 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
       value={{
         handlePlay,
         handlePause,
-        audioRef,
-        isPlaying,
-        ...returnData,
         setCurrentTime,
-        intervalIdRef,
         setCurrentTrack,
-        currentTrack,
         setQueue,
-        queue,
         setCurrentTrackIndex,
-        currentTrackIndex,
         handleForward,
         handleBack,
+        setPlaying,
+        setReady,
+        setUserClicked,
+        audioRef,
+        isPlaying,
+        intervalIdRef,
+        currentTrack,
+        queue,
+        currentTrackIndex,
         isReady,
+        userClicked,
+        ...returnData,
       }}
     >
       {children}

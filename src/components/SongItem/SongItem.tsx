@@ -26,12 +26,12 @@ const SongItem: React.FC<SongItemProps> = ({
   originalData,
 }) => {
   const { width } = useContext(MainLayoutContext)
-  const { setCurrentTrack, setQueue, handlePlay } = useContext(PlayerContext)
+  const { setCurrentTrack, setQueue } = useContext(PlayerContext)
 
   const handleClick = () => {
     setCurrentTrack(originalData)
     setQueue(originalData ? [originalData] : [])
-    handlePlay()
+    // handlePlay()
   }
 
   return (

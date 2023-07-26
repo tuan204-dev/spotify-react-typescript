@@ -394,13 +394,14 @@ export function PlusCircle() {
   )
 }
 
-export function MusicNote() {
+export function MusicNote(props: Partial<IconProps>) {
+  const { size = 24 } = props
   return (
     <svg
       role="img"
       fill="currentColor"
-      height="24"
-      width="24"
+      height={size}
+      width={size}
       aria-hidden="true"
       data-testid="playlist"
       viewBox="0 0 24 24"

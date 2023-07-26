@@ -1,0 +1,90 @@
+@import '../../../scss/variable';
+@import '../../../scss/mixin';
+
+.next-song-wrapper {
+  border-radius: 16px;
+  padding: 16px;
+  background-color: #232323;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .title {
+    font-size: 16px;
+    font-weight: 700;
+    color: $white;
+  }
+
+  .open-queue-btn {
+    & > button {
+      @include reset-button;
+      background-color: transparent;
+      font-weight: 700;
+      font-size: 14px;
+      color: $text-subdued;
+      transform-origin: center;
+      transition: all 0.1s ease;
+      cursor: pointer;
+
+      &:hover {
+        color: $white;
+        text-decoration: underline;
+        transform: scale(1.04);
+      }
+    }
+  }
+}
+
+.body {
+  margin-top: 16px;
+}
+
+.next-song {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  height: 64px;
+  padding: 8px;
+  align-items: center;
+  border-radius: 8px;
+  overflow: hidden;
+
+  &:hover {
+    background-color: #393939;
+  }
+
+  .icon {
+    width: 16px;
+  }
+
+  .thumb {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex: 1;
+
+    .name-track {
+      font-size: 16px;
+      color: $white;
+      font-weight: 700;
+      cursor: pointer;
+      @include text-in-one-line;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

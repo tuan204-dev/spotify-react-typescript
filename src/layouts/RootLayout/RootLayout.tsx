@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useContext } from 'react'
 import styles from './RootLayout.module.scss'
 import classNames from 'classnames/bind'
 import { Outlet } from 'react-router-dom'
@@ -12,10 +12,14 @@ import { HomePageProvider } from '@/contexts/HomePageContext'
 import { AudioPlayer } from '@/components'
 import { PlayerProvider } from '@/contexts/PlayerContext'
 import { AuthProvider } from '@/contexts/AuthContext'
+import PlayingView from '@/components/PlayingView/PlayingView'
+import { AppContext } from '@/App'
 
 const cx = classNames.bind(styles)
 
 const RootLayout: FC = () => {
+  const { isPlayingViewShowed } = useContext(AppContext)
+
   return (
     <main className={cx('root-layout')}>
       <AuthProvider>
@@ -27,9 +31,10 @@ const RootLayout: FC = () => {
                   <div className={cx('top')}>
                     <Split
                       cursor="col-resize"
-                      minSize={[280, 600]}
-                      // maxSize={[600, 99999]}
-                      sizes={[20, 80]}
+                      minSize={isPlayingViewShowed ? [280, 600, 0] : [280, 600]}
+                      maxSize={isPlayingViewShowed ? [600, 99999, 400] : undefined}
+                      // sizes={[20, 70, 10]}
+                      sizes={isPlayingViewShowed ? [20, 60, 20] : [20, 80]}
                       className={styles.split}
                     >
                       <Sidebar />
@@ -38,6 +43,11 @@ const RootLayout: FC = () => {
                           <Outlet />
                         </div>
                       </MainLayoutProvider>
+                      {isPlayingViewShowed ? (
+                        <PlayingView />
+                      ) : (
+                        <div style={{ marginRight: '-8px' }}></div>
+                      )}
                     </Split>
                   </div>
                   <div className={cx('bottom')}>

@@ -21,8 +21,10 @@ const PlayerControl: FC = () => {
     handleForward,
     handleBack,
     isReady,
+    userClicked,
+    setUserClicked,
   } = useContext(PlayerContext)
-
+  const [isRepeat, setRepeat] = useState<boolean>()
   const [trackProcess, setTrackProcess] = useState<number>(audioRef?.current?.currentTime)
 
   useEffect(() => {
@@ -49,9 +51,21 @@ const PlayerControl: FC = () => {
     }, 1000)
   }
 
+  useEffect(() => {
+    if (trackProcess >= (duration ? duration - 1 : 9999999)) {
+      if (isRepeat) {
+        setCurrentTime(0)
+        setTrackProcess(0)
+      } else {
+        handleForward()
+      }
+    }
+  }, [trackProcess])
+
   const handlePlayBtn = () => {
     // console.log(duration, isPlaying)
     if (!duration && !isReady) return
+    if (!userClicked) setUserClicked(true)
     if (isPlaying) {
       clearInterval(intervalIdRef?.current)
       handlePause()
@@ -63,8 +77,8 @@ const PlayerControl: FC = () => {
   }
 
   useEffect(() => {
-    console.log(isPlaying)
-    if(isPlaying) {
+    // console.log(isPlaying)
+    if (isPlaying) {
       startTimer()
       handlePlay()
     }
@@ -92,7 +106,10 @@ const PlayerControl: FC = () => {
         <button onClick={handleForward} className={cx('btn')}>
           <SkipForwardIcon />
         </button>
-        <button className={cx('btn')}>
+        <button
+          onClick={() => setRepeat((prev) => !prev)}
+          className={cx({ btn: true, active: isRepeat })}
+        >
           <RepeatIcon />
         </button>
       </div>

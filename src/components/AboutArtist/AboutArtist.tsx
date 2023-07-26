@@ -12,17 +12,28 @@ interface AboutArtistProps {
   visuals?: any
   isLoading?: boolean
   aboutImg?: string
+  inclHeader?: boolean
+  type?: 'default' | 'playing-view'
 }
 
-const AboutArtist: FC<AboutArtistProps> = ({ profile, stats, isLoading, aboutImg }) => {
+const AboutArtist: FC<AboutArtistProps> = ({
+  profile,
+  stats,
+  isLoading,
+  aboutImg,
+  inclHeader = true,
+  type = 'default',
+}) => {
   const desc = unicodeDecoder(profile?.bio)
   const { setModalOpen } = useContext(ArtistContext)
 
   return (
-    <div className={cx('wrapper')}>
-      <div className={cx('title')}>
-        <h2>About</h2>
-      </div>
+    <div className={cx({ wrapper: true, 'playing-view': type === 'playing-view' })}>
+      {inclHeader && (
+        <div className={cx('title')}>
+          <h2>About</h2>
+        </div>
+      )}
       <div
         className={cx('body')}
         style={{ backgroundImage: `url(${aboutImg})` }}

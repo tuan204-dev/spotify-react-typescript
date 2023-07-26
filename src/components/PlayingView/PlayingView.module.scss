@@ -1,0 +1,108 @@
+@import '../../scss/variable';
+@import '../../scss/mixin';
+
+.playing-view-wrapper {
+  max-width: 400px;
+  min-width: 250px;
+  overflow: hidden;
+  overflow-y: scroll;
+  background-color: $bg-base;
+  display: flex;
+  flex-direction: column;
+  border-radius: $panel-border-radius;
+  padding: 16px;
+  gap: 16px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.header {
+  height: 32px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  .close-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    position: relative;
+
+    button {
+      position: absolute;
+      top: 2px;
+      right: 0px;
+      @include reset-button;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+      color: rgba($color: #fff, $alpha: 0.7);
+    }
+
+    &:hover {
+      background-color: rgba($color: #fff, $alpha: 0.1);
+    }
+  }
+}
+
+.track-banner {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  div {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  .title {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    .name-track {
+      font-size: 24px;
+      font-weight: 700;
+      color: $white;
+      margin: 0;
+      padding-bottom: 8px;
+
+      &:hover {
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+      }
+    }
+  }
+
+  .heart-btn {
+    width: 30px;
+    color: $text-subdued;
+    cursor: pointer;
+
+    &:hover {
+      color: $white;
+    }
+  }
+}
+
+.about-artist {
+  height: 270px;
+  overflow: hidden;
+  border-radius: 8px;
+
+  & > div {
+    margin-inline: -24px;
+    overflow: hidden;
+  }
+}

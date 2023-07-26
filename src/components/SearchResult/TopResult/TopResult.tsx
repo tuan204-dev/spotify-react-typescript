@@ -18,13 +18,18 @@ interface TopResultProps {
 const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
   const [isLoading, setLoading] = useState<boolean>(true)
   const { width } = useContext(MainLayoutContext)
-  const { setCurrentTrack } = useContext(PlayerContext)
+  const { setCurrentTrack, setQueue } = useContext(PlayerContext)
 
   useLayoutEffect(() => {
     if (topResult && songs && topResult?.album?.images?.[0]?.url) {
       setLoading(false)
     } else setLoading(true)
   }, [topResult, songs])
+
+  const handleClickPlayBtn = () => {
+    setCurrentTrack(topResult)
+    setQueue([topResult])
+  }
 
   return (
     <div className={cx({ wrapper: true, responsive: width <= 1000 })}>
@@ -60,7 +65,7 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
           </div>
           <div className={cx('btn-pivot')}>
             {!isLoading && (
-              <div onClick={() => setCurrentTrack(topResult)} className={cx('play-btn')}>
+              <div onClick={handleClickPlayBtn} className={cx('play-btn')}>
                 <PlayButton
                   size={50}
                   scaleHovering={1.05}

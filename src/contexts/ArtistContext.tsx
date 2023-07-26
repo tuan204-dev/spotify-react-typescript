@@ -52,11 +52,12 @@ export const ArtistProvider: FC<ArtistProviderProps> = ({ children }) => {
   useEffect(() => {
     if (regex.test(pathname)) {
       setId(artistId)
-    } else if(pathname !== '/queue') {
-      setId('')
-      setArtistData(undefined)
-      setResponseData(undefined)
     }
+    // } else if(pathname !== '/queue') {
+    //   setId('')
+    //   setArtistData(undefined)
+    //   setResponseData(undefined)
+    // }
   }, [pathname])
 
   useEffect(() => {
@@ -89,7 +90,9 @@ export const ArtistProvider: FC<ArtistProviderProps> = ({ children }) => {
           followerNumbers: responseData?.stats?.followers,
           monthlyListeners: responseData?.stats?.monthlyListeners,
         },
-        topTracks: responseData?.discography?.topTracks?.items?.map((item: RapidArtistTrack) => normalizeTrack(item)),
+        topTracks: responseData?.discography?.topTracks?.items?.map(
+          (item: RapidArtistTrack) => normalizeTrack(item)
+        ),
         discography: {
           popularReleases: responseData?.discography?.popularReleases.items,
           albums: responseData?.discography?.albums.items,
