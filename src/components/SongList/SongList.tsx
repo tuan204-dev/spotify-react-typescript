@@ -19,6 +19,8 @@ const SongList: FC<SongListProps> = ({
   albumId,
   albumImages,
   inclHeader = true,
+  albumName,
+  albumType,
 }) => {
   const { width } = useContext(MainLayoutContext)
 
@@ -97,7 +99,12 @@ const SongList: FC<SongListProps> = ({
                   (type === 'playlist' && item?.track) ||
                   (type === 'album' && {
                     ...item,
-                    album: { images: albumImages, id: albumId },
+                    album: {
+                      images: albumImages,
+                      id: albumId,
+                      album_type: albumType,
+                      name: albumName,
+                    },
                   }) ||
                   item
                 }

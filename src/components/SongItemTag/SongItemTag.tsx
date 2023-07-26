@@ -9,6 +9,7 @@ import Skeleton from 'react-loading-skeleton'
 import { useNavigate } from 'react-router-dom'
 import { Image, PlayButton } from '../UIs'
 import styles from './SongItemTag.module.scss'
+import { SpotifyAlbum } from '@/types/album'
 
 const cx = classNames.bind(styles)
 
@@ -29,19 +30,32 @@ const SongItemTag: React.FC<SongItemTagProps> = (props) => {
 
   const handleClickPlayBtn = () => {
     const fetchData = async () => {
-      const data = await categoryApi({
+      const data: SpotifyAlbum = await categoryApi({
         type: 'albums',
         id: id,
       })
 
       setQueue(
         data?.tracks?.items?.map((item: SpotifyTrack) => {
-          return { ...item, album: { images: data?.images, id: data?.id } }
+          return {
+            ...item,
+            album: {
+              images: data?.images,
+              id: data?.id,
+              album_type: data?.album_type,
+              name: data?.name,
+            },
+          }
         }) || []
       )
       setCurrentTrack({
         ...data?.tracks?.items?.[0],
-        album: { images: data?.images, id: data?.id },
+        album: {
+          images: data?.images,
+          id: data?.id,
+          album_type: data?.album_type,
+          name: data?.name,
+        },
       })
       setCurrentTrackIndex(0)
     }

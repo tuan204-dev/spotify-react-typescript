@@ -1,4 +1,5 @@
 @import '../../../scss/variable';
+@import '../../../scss/mixin';
 
 .wrapper {
   display: flex;
@@ -15,7 +16,7 @@
 .btn {
   background-color: transparent;
   border: none;
-  color: hsla(0,0%,100%,.7);
+  color: hsla(0, 0%, 100%, 0.7);
   cursor: pointer;
 
   &:hover {
@@ -31,7 +32,8 @@
   gap: 8px;
 }
 
-.playback-position, .playback-duration {
+.playback-position,
+.playback-duration {
   width: 40px;
   color: $text-subdued;
   font-size: 11px;
@@ -46,22 +48,12 @@
 }
 
 .active {
+  @include button-active;
+
   color: $secondary !important;
   position: relative;
 
   &::after {
-    content: '';
-    height: 4px;
-    width: 4px;
-    position: absolute;
-    background-color: $secondary;
-    border-radius: 50%;
     bottom: -3px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  &:hover {
-    color: $primary;
   }
 }

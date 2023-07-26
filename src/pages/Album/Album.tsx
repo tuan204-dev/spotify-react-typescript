@@ -69,15 +69,19 @@ const Album: React.FC = () => {
   const handleClickPlayBtn = () => {
     setQueue(
       data?.tracks?.items?.map((item) => {
-        return { ...item, album: { images: data?.images, id: data?.id } }
+        return {
+          ...item,
+          album: { images: data?.images, id: data?.id, album_type: data?.album_type, name: data?.name },
+        }
       }) || []
     )
     setCurrentTrack({
       ...data?.tracks?.items?.[0],
-      album: { images: data?.images, id: data?.id },
+      album: { images: data?.images, id: data?.id, album_type: data?.album_type, name: data?.name },
     })
     setCurrentTrackIndex(0)
   }
+  // console.log(data)
 
   return (
     <main className={cx('wrapper')}>
@@ -133,6 +137,8 @@ const Album: React.FC = () => {
               isLoading={isLoading}
               albumId={data?.id}
               albumImages={data?.images}
+              albumName={data?.name}
+              albumType={data?.album_type}
             />
           </div>
         </div>

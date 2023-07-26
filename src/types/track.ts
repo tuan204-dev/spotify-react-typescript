@@ -35,6 +35,15 @@ export interface SongListProps {
   albumId?: string
   albumImages?: ImageSource[]
   inclHeader?: boolean
+  albumName?: string
+  albumType?:
+    | 'album'
+    | 'Playlist'
+    | 'single'
+    | 'compilation'
+    | 'podcast'
+    | 'episode'
+    | undefined
 }
 
 export interface SpotifyTrack {

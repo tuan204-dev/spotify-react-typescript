@@ -93,6 +93,10 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
       const data = await getAudioTrack(
         `${currentTrack?.name} ${
           currentTrack?.artists?.[currentTrack?.artists?.length - 1]?.name
+        } ${
+          currentTrack?.album?.album_type === 'album'
+            ? `album ${currentTrack?.album?.name}`
+            : ''
         }`
       )
       console.log(currentTrack, queue)
@@ -169,6 +173,8 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
       setPlaying(true)
     }
   }
+
+  console.log(currentTrack)
 
   return (
     <PlayerContext.Provider

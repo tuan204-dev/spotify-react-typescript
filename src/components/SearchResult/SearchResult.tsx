@@ -116,10 +116,10 @@ const SearchResult: FC = () => {
                   <SongList
                     top={52}
                     pivotTop={126}
-                    key={item.key}
-                    songList={data.tracks.items
-                      .filter((item: any) => item)
-                      .sort((a: any, b: any) => -a.popularity + b.popularity)}
+                    key={item?.key}
+                    songList={data?.tracks?.items
+                      ?.filter((item: any) => item)
+                      ?.sort((a: any, b: any) => -a?.popularity + b?.popularity)}
                   />
                 )
               }
