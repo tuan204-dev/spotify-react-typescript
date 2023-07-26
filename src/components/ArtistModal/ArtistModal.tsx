@@ -42,7 +42,7 @@ const ArtistModal: FC<ArtistModalProps> = ({
     setClose(true)
     timeoutId.current = setTimeout(() => {
       setModalOpen(false)
-    }, 300)
+    }, 400)
   }
 
   return (

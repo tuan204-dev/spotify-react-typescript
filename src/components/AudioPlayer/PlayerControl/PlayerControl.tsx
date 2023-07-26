@@ -20,6 +20,7 @@ const PlayerControl: FC = () => {
     currentTrack,
     handleForward,
     handleBack,
+    isReady,
   } = useContext(PlayerContext)
 
   const [trackProcess, setTrackProcess] = useState<number>(audioRef?.current?.currentTime)
@@ -50,7 +51,7 @@ const PlayerControl: FC = () => {
 
   const handlePlayBtn = () => {
     // console.log(duration, isPlaying)
-    if (!duration) return
+    if (!duration && !isReady) return
     if (isPlaying) {
       clearInterval(intervalIdRef?.current)
       handlePause()
@@ -60,6 +61,14 @@ const PlayerControl: FC = () => {
       handlePlay()
     }
   }
+
+  useEffect(() => {
+    console.log(isPlaying)
+    if(isPlaying) {
+      startTimer()
+      handlePlay()
+    }
+  }, [isPlaying])
 
   return (
     <div className={cx('wrapper')}>

@@ -9,7 +9,7 @@
   left: 0;
   z-index: 99;
   background-color: rgba($color: #000000, $alpha: 0.7);
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
   @include item-center;
 }
 
@@ -38,7 +38,7 @@
   position: relative;
   transform-origin: bottom center;
 
-  animation: zoomOut 0.3s ease;
+  animation: zoomOut 0.4s ease;
 }
 
 .main {

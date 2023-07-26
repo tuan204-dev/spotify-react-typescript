@@ -1,13 +1,12 @@
 import logoImage from '@/assets/image/logo/logo.svg'
-import { htmlCleaner, stringCleaner, transformDomain } from '@/utils'
+import { HeaderProps } from '@/types/others'
+import { transformDomain } from '@/utils'
 import classNames from 'classnames/bind'
 import React, { memo } from 'react'
 import Skeleton from 'react-loading-skeleton'
-import { ArtistList } from '..'
+import { Link } from 'react-router-dom'
 import { Image, SubTitle, ThumbDefault } from '../UIs'
 import styles from './Header.module.scss'
-import { Link } from 'react-router-dom'
-import { HeaderProps } from '@/types/others'
 
 const cx = classNames.bind(styles)
 

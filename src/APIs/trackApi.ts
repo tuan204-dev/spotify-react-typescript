@@ -35,27 +35,45 @@ export const getTrackRecommendation = async (params: getTrackRecommendationParam
   return data.tracks
 }
 
-interface GetAudioTrackParams {
-  id?: string
-}
-
-export const getAudioTrack = async ({ id }: GetAudioTrackParams) => {
-  if (!id) return
-  const apiKey = import.meta.env.VITE_RAPID_SOUNDCLOUD_API
-
+const ytSearch = async (query: string) => {
   const options = {
     method: 'GET',
-    url: 'https://spotify-scraper.p.rapidapi.com/v1/track/download/soundcloud',
+    url: 'https://fastytapi.p.rapidapi.com/ytapi/search',
     params: {
-      track: id,
-      quality: 'hq',
+      query: `${query}`,
+      resultsType: 'video',
+      sortBy: 'relevance',
+      geo: 'GB',
     },
     headers: {
-      'X-RapidAPI-Key': apiKey,
-      'X-RapidAPI-Host': 'spotify-scraper.p.rapidapi.com',
+      'X-RapidAPI-Key': import.meta.env.VITE_RAPID_YOUTUBE_SEARCH,
+      'X-RapidAPI-Host': 'fastytapi.p.rapidapi.com',
     },
   }
 
   const { data } = await axios.request(options)
-  return data
+  console.log(`${query}`)
+  return data.data[0].videoId
+}
+
+export const getAudioTrack = async (query: string) => {
+  const id = await ytSearch(query)
+  const options = {
+    method: 'GET',
+    url: 'https://ytstream-download-youtube-videos.p.rapidapi.com/dl',
+    params: { id },
+    headers: {
+      'X-RapidAPI-Key': import.meta.env.VITE_RAPID_YOUTUBE_AUDIO,
+      'X-RapidAPI-Host': 'ytstream-download-youtube-videos.p.rapidapi.com',
+    },
+  }
+  const { data } = await axios.request(options)
+  const returnData = data.adaptiveFormats
+    .filter((item: any) => item.mimeType.includes('audio'))
+    .sort((a: any, b: any) => -a.bitrate + b.bitrate)[0]
+
+  return {
+    audioLink: returnData.url,
+    durationMs: Number(returnData.approxDurationMs),
+  }
 }
