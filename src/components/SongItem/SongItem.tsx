@@ -9,6 +9,7 @@ import React, { memo, useContext } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import { Image, SubTitle } from '../UIs'
 import styles from './SongItem.module.scss'
+import equaliser from '@/assets/image/animation/equaliser-animated-green.f5eb96f2.gif'
 
 const cx = classNames.bind(styles)
 
@@ -26,11 +27,22 @@ const SongItem: React.FC<SongItemProps> = ({
   originalData,
 }) => {
   const { width } = useContext(MainLayoutContext)
-  const { setCurrentTrack, setQueue } = useContext(PlayerContext)
+  const { setCurrentTrack, setQueue, setCurrentTrackIndex, calNextTrackIndex, queue } =
+    useContext(PlayerContext)
+  const { currentTrack, isPlaying } = useContext(PlayerContext)
 
   const handleClick = () => {
-    setCurrentTrack(originalData)
-    setQueue(originalData ? [originalData] : [])
+    const indexOfTrackInQueue = queue.findIndex((item) => item?.id === originalData?.id)
+    if (indexOfTrackInQueue === -1) {
+      setQueue(originalData ? [originalData] : [])
+      setCurrentTrack(originalData)
+      setCurrentTrackIndex(0)
+      calNextTrackIndex()
+    } else {
+      setCurrentTrack(originalData)
+      setCurrentTrackIndex(indexOfTrackInQueue)
+      calNextTrackIndex()
+    }
     // handlePlay()
   }
 
@@ -42,18 +54,24 @@ const SongItem: React.FC<SongItemProps> = ({
         'grid-md': width <= 780 && type !== 'album',
         'is-album-track': type === 'album',
         'is-search-result': type === 'search',
+        'is-playing': currentTrack?.id === originalData?.id,
       })}
     >
       {type !== 'search' && (
         <div className={cx('order')}>
-          {!isLoading && (
-            <>
-              <span className={cx('order-number')}>{order}</span>{' '}
-              <button className={cx('order-icon')}>
-                <PlayIcon />
-              </button>
-            </>
-          )}
+          {!isLoading &&
+            (isPlaying && currentTrack?.id === originalData?.id ? (
+              <div className={cx('equaliser')}>
+                <img src={equaliser} alt="equaliser" />
+              </div>
+            ) : (
+              <>
+                <span className={cx('order-number')}>{order}</span>
+                <button className={cx('order-icon')}>
+                  <PlayIcon />
+                </button>
+              </>
+            ))}
         </div>
       )}
       <div className={cx('main')}>

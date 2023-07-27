@@ -1,9 +1,10 @@
 import { Footer, Greeting, Navbar, Section } from '@/components'
 import { HomePageContext } from '@/contexts/HomePageContext'
+import { PlayerContext } from '@/contexts/PlayerContext'
+import { documentTitle } from '@/utils'
 import classNames from 'classnames/bind'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { useDocumentTitle } from 'usehooks-ts'
 import styles from './Home.module.scss'
 
 const cx = classNames.bind(styles)
@@ -12,10 +13,18 @@ const Home: React.FC = () => {
   const [bgColor, setBgColor] = useState<string>('#c0b8c1')
   const [navOpacity, setNavOpacity] = useState<number>(0)
 
+  const { isPlaying, prevDocumentTitle } = useContext(PlayerContext)
   const { featurePlaylist, newReleases, suggestArtists, topMixes } =
     useContext(HomePageContext)
 
-  useDocumentTitle('Spotify - Clone')
+  useEffect(() => {
+    if (isPlaying) {
+      prevDocumentTitle.current = 'Spotify - Clone'
+    } else {
+      documentTitle('Spotify - Clone')
+    }
+  }, [isPlaying])
+
   const { ref: pivotTrackingRef, inView: isTracking } = useInView({
     threshold: 0,
   })

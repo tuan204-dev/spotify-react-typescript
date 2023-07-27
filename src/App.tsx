@@ -1,4 +1,4 @@
-import { Suspense, createContext, lazy, useState } from 'react'
+import { Suspense, createContext, lazy, useState , useEffect} from 'react'
 import { Route, Routes } from 'react-router-dom'
 import LoadingLayout from './layouts/LoadingLayout/LoadingLayout'
 import Test from './pages/test'
@@ -22,6 +22,11 @@ export const AppContext = createContext({} as AppContext)
 
 const App = () => {
   const [isPlayingViewShowed, setPlayingViewShowed] = useState<boolean>(false)
+  useEffect(() => {
+    if(window.innerWidth < 900) {
+      alert('Please use a desktop or laptop for best experience :V')
+    }
+  }, [])
 
   return (
     <AppContext.Provider value={{ isPlayingViewShowed, setPlayingViewShowed }}>

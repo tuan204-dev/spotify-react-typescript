@@ -73,6 +73,15 @@
     color: $text-neutral;
     font-size: 16px;
     margin: 0;
+
+    a {
+      color: $text-neutral;
+      font-weight: 700;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }
 

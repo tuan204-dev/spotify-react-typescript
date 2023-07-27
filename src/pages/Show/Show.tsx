@@ -1,18 +1,20 @@
 import showApi from '@/apis/showApi'
 import { AboutShow, Footer, Header, Navbar, ShowsList } from '@/components'
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
+import { PlayerContext } from '@/contexts/PlayerContext'
 import { useDominantColor, useRaiseColorTone } from '@/hooks'
+import { ShowData } from '@/types/show'
+import { documentTitle } from '@/utils'
 import classNames from 'classnames/bind'
 import { FC, useContext, useEffect, useRef, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useDocumentTitle } from 'usehooks-ts'
 import styles from './Show.module.scss'
-import { ShowData } from '@/types/show'
 
 const cx = classNames.bind(styles)
 
 const Show: FC = () => {
+  const {isPlaying, prevDocumentTitle} = useContext(PlayerContext)
   const [navOpacity, setNavOpacity] = useState<number>(0)
   const [data, setData] = useState<ShowData>()
   const [isLoading, setLoading] = useState<boolean>(true)
@@ -22,9 +24,17 @@ const Show: FC = () => {
   const { width } = useContext(MainLayoutContext)
   const { ref: pivotTrackingRef, inView: isTracking } = useInView() //put above all
 
-  useDocumentTitle(
-    `${data?.name ? data?.name : ' | Podcast on Spotify'} | Spotify Podcast`
-  )
+  useEffect(() => {
+    if (isPlaying) {
+      prevDocumentTitle.current = `${
+        data?.name ? data?.name : ' | Podcast on Spotify'
+      } | Spotify Podcast`
+    } else {
+      documentTitle(
+        `${data?.name ? data?.name : ' | Podcast on Spotify'} | Spotify Podcast`
+      )
+    }
+  }, [isPlaying, data])
 
   const headerRef = useRef<any>()
 

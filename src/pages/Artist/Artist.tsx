@@ -9,13 +9,13 @@ import {
 import ArtistBanner from '@/components/ArtistBanner/ArtistBanner'
 import { PlayButton } from '@/components/UIs'
 import { ArtistContext } from '@/contexts/ArtistContext'
-import { useComponentSize } from '@/hooks'
-import classNames from 'classnames/bind'
-import React, { useContext, useRef, useState } from 'react'
-import { useInView } from 'react-intersection-observer'
-import { useDocumentTitle } from 'usehooks-ts'
-import styles from './Artist.module.scss'
 import { PlayerContext } from '@/contexts/PlayerContext'
+import { useComponentSize } from '@/hooks'
+import { documentTitle } from '@/utils'
+import classNames from 'classnames/bind'
+import React, { useContext, useEffect, useRef, useState } from 'react'
+import { useInView } from 'react-intersection-observer'
+import styles from './Artist.module.scss'
 
 const cx = classNames.bind(styles)
 
@@ -42,8 +42,22 @@ const Artist: React.FC = () => {
     aboutImg,
     visuals,
   } = useContext(ArtistContext)
-  const { setCurrentTrack, setCurrentTrackIndex, setQueue } = useContext(PlayerContext)
-  useDocumentTitle(`${profile?.name ? profile?.name : 'Artist'} | Spotify`)
+  const {
+    setCurrentTrack,
+    setCurrentTrackIndex,
+    setQueue,
+    calNextTrackIndex,
+    isPlaying,
+    prevDocumentTitle,
+  } = useContext(PlayerContext)
+
+  useEffect(() => {
+    if (isPlaying) {
+      prevDocumentTitle.current = `${profile?.name ? profile?.name : 'Artist'} | Spotify`
+    } else {
+      documentTitle(`${profile?.name ? profile?.name : 'Artist'} | Spotify`)
+    }
+  }, [isPlaying, profile])
 
   const bannerRef = useRef<any>()
 
@@ -78,6 +92,7 @@ const Artist: React.FC = () => {
     setQueue(topTracks || [])
     setCurrentTrack(topTracks?.[0])
     setCurrentTrackIndex(0)
+    calNextTrackIndex()
   }
 
   return (

@@ -1,16 +1,31 @@
-import { FC, useContext } from 'react'
-import styles from './Queue.module.scss'
-import classNames from 'classnames/bind'
+import { Footer, Navbar, SongItem, SongList } from '@/components'
 import { PlayerContext } from '@/contexts/PlayerContext'
-import { Footer, Navbar, SongList } from '@/components'
-import { useDocumentTitle } from 'usehooks-ts'
+import { documentTitle } from '@/utils'
+import classNames from 'classnames/bind'
+import { FC, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import styles from './Queue.module.scss'
 
 const cx = classNames.bind(styles)
 
 const Queue: FC = () => {
-  const { queue } = useContext(PlayerContext)
-  useDocumentTitle('Spotify - Play Queue')
+  const {
+    queue,
+    currentTrack,
+    currentTrackIndex,
+    isShuffle,
+    isPlaying,
+    prevDocumentTitle,
+  } = useContext(PlayerContext)
+
+  useEffect(() => {
+    if (isPlaying) {
+      prevDocumentTitle.current = 'Spotify - Play Queue'
+    } else {
+      documentTitle('Spotify - Play Queue')
+    }
+  }, [isPlaying])
+
   const queueNormalized = queue.filter((item) => item)
 
   return (
@@ -20,8 +35,34 @@ const Queue: FC = () => {
         {queueNormalized.length !== 0 ? (
           <>
             <h1 className={cx('title')}>Queue</h1>
+            <div className={cx('now-playing')}>
+              <h2 className={cx('sub-title')}>Now playing</h2>
+              <SongItem
+                id={currentTrack?.id}
+                albumData={currentTrack?.album}
+                artists={currentTrack?.artists}
+                duration={currentTrack?.duration_ms}
+                isExplicit={currentTrack?.explicit}
+                order={1}
+                songName={currentTrack?.name}
+                thumb={
+                  currentTrack?.album?.images?.[currentTrack?.album?.images?.length - 1]
+                    ?.url
+                }
+                originalData={currentTrack}
+              />
+            </div>
             <div className={cx('queue-list')}>
-              <SongList inclHeader={false} songList={queueNormalized} />
+              <h2 className={cx('sub-title')}>Next</h2>
+              <SongList
+                inclHeader={false}
+                songList={
+                  isShuffle
+                    ? queueNormalized.filter((track) => track?.id !== currentTrack?.id)
+                    : queueNormalized.slice(currentTrackIndex + 1)
+                }
+                adjustOrder={1}
+              />
             </div>
           </>
         ) : (

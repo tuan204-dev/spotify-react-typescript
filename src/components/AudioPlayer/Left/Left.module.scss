@@ -7,10 +7,13 @@
   flex-direction: row;
   gap: 16px;
   overflow: hidden;
+  justify-content: flex-start;
+  overflow: hidden;
 }
 
 .thumb {
   height: 56px;
+  width: 56px;
   aspect-ratio: 1 / 1;
   border-radius: 4px;
   overflow: hidden;
@@ -23,24 +26,47 @@
 }
 
 .body {
-  display: flex;
-  flex-direction: column;
-  padding: 8px 0;
-  justify-content: space-between;
+  // flex: 1;
   overflow: hidden;
+  max-width: calc(100% - 148px);
+
+  & > div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0;
+    justify-content: space-between;
+    overflow: hidden;
+  }
 
   .name {
     font-size: 14px;
     font-weight: 700;
     cursor: pointer;
     @include text-in-one-line;
+    position: relative;
 
-    span {
-      color: $white;
+    *::-webkit-scrollbar {
+      display: none;
     }
 
-    &:hover {
-      text-decoration: underline;
+    .pivot {
+      color: $white;
+      position: absolute;
+      opacity: 0;
+      z-index: -99;
+    }
+
+    span {
+      margin-right: 40px;
+    }
+
+    a {
+      color: $white;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 
@@ -52,10 +78,11 @@
 }
 
 .icon {
+  flex: 1;
   display: flex;
   align-items: center;
   color: hsla(0, 0%, 100%, 0.7);
-  margin-inline: 4px 30px;
+  margin-inline: 4px 40px;
 
   &:hover {
     color: $white;

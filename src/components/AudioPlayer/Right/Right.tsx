@@ -11,7 +11,7 @@ import { AppContext } from '@/App'
 const cx = classNames.bind(styles)
 
 const Right: FC = () => {
-  const { audioRef, queue } = useContext(PlayerContext)
+  const { audioRef, isBtnClickable } = useContext(PlayerContext)
   const { setPlayingViewShowed, isPlayingViewShowed } = useContext(AppContext)
   const [volume, setVolume] = useState<number>(
     JSON.parse(localStorage.getItem('spotify_volume') as string) ?? 1
@@ -70,7 +70,7 @@ const Right: FC = () => {
   }
 
   const handleClickPlayingView = () => {
-    if (queue.filter((item) => item).length !== 0) {
+    if (isBtnClickable) {
       setPlayingViewShowed((prev) => !prev)
     }
   }

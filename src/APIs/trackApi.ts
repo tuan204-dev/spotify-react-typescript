@@ -22,7 +22,7 @@ interface getTrackRecommendationParams {
 }
 
 export const getTrackRecommendation = async (params: getTrackRecommendationParams) => {
-  const { limit = 5, market = 'VN', seed_artists, seed_tracks } = params
+  const { limit = 19, market = 'VN', seed_artists, seed_tracks } = params
   const { data } = await spotifyApiClient.get('recommendations', {
     params: {
       limit,
@@ -53,7 +53,8 @@ const ytSearch = async (query: string) => {
 
   const { data } = await axios.request(options)
   console.log(`${query}`)
-  return data.data[0].videoId
+
+  return data.data.find((item: any) => item.lengthSeconds < 600).videoId
 }
 
 export const getAudioTrack = async (query: string) => {

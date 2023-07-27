@@ -121,7 +121,10 @@ export const ArtistProvider: FC<ArtistProviderProps> = ({ children }) => {
       {isModalOpen && (
         <ArtistModal
           profile={{ ...responseData?.profile, id: responseData?.id }}
-          aboutImg={responseData?.visuals?.gallery?.items[0]?.sources[0]?.url}
+          aboutImg={
+            responseData?.visuals?.gallery?.items[0]?.sources[0]?.url ??
+            responseData?.visuals?.avatarImage?.sources[0]?.url
+          }
           stats={responseData?.stats}
           setModalOpen={setModalOpen}
         />

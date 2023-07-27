@@ -27,11 +27,16 @@ interface PlayerContext extends ReturnData {
   setReady: React.Dispatch<React.SetStateAction<boolean>>
   setPlaying: React.Dispatch<React.SetStateAction<boolean>>
   setUserClicked: React.Dispatch<React.SetStateAction<boolean>>
+  setNextTrackIndex: React.Dispatch<React.SetStateAction<number>>
+  setRepeat: React.Dispatch<React.SetStateAction<boolean>>
+  setShuffle: React.Dispatch<React.SetStateAction<boolean>>
   handlePlay: () => void
   handlePause: () => void
   handleForward: () => void
   handleBack: () => void
+  calNextTrackIndex: () => void
   audioRef: React.MutableRefObject<any>
+  prevDocumentTitle: React.MutableRefObject<string>
   isPlaying: boolean
   intervalIdRef: any
   currentTrack: SpotifyTrack | undefined
@@ -40,6 +45,10 @@ interface PlayerContext extends ReturnData {
   currentTrackIndex: number
   isReady: boolean
   userClicked: boolean
+  nextTrackIndex: number
+  isRepeat: boolean
+  isShuffle: boolean
+  isBtnClickable: boolean
 }
 
 export const PlayerContext = createContext({} as PlayerContext)
@@ -49,8 +58,14 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
   const [currentTime, setCurrentTime] = useState<number>(0)
   const [audioData, setAudioData] = useState<any>()
   const [currentTrackIndex, setCurrentTrackIndex] = useState<number>(0)
+  const [nextTrackIndex, setNextTrackIndex] = useState<number>(1)
   const [isReady, setReady] = useState<boolean>(false)
   const [userClicked, setUserClicked] = useState<boolean>(false)
+  const [isRepeat, setRepeat] = useState<boolean>(false)
+  const [isShuffle, setShuffle] = useState<boolean>(false)
+  const [isBtnClickable, setBtnClickable] = useState<boolean>(
+    localStorage.getItem('spotify_current_track') !== null
+  )
 
   // ---------------Queue list----------------
   const [queue, setQueue] = useState<SpotifyTrack[]>([
@@ -69,6 +84,7 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
         const data = await getTrackRecommendation({
           seed_artists: currentTrack?.artists?.[0]?.id as string,
           seed_tracks: currentTrack?.id,
+          limit: 19,
         })
 
         setQueue((prev) => [...prev, ...data])
@@ -78,9 +94,12 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
   }, [currentTrack])
 
   // -----------------------------------------------
+
   const intervalIdRef = useRef<any>()
 
   const audioRef = useRef<any>(new Audio())
+
+  const prevDocumentTitle = useRef<string>('')
 
   useMemo(() => {
     if (audioData) {
@@ -91,15 +110,14 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await getAudioTrack(
-        `${currentTrack?.name} ${
-          currentTrack?.artists?.[currentTrack?.artists?.length - 1]?.name
-        } ${
-          currentTrack?.album?.album_type === 'album'
+        `${currentTrack?.name} ${currentTrack?.artists
+          ?.map((artist) => artist?.name)
+          .join(' ')} ${
+          currentTrack?.album?.album_type?.toLocaleLowerCase() === 'album'
             ? `album ${currentTrack?.album?.name}`
             : ''
         }`
       )
-      console.log(currentTrack, queue)
       setAudioData(data)
     }
     handlePause()
@@ -114,6 +132,34 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
       audioRef.current.currentTime = currentTime
     }
   }, [currentTime])
+
+  useEffect(() => {
+    audioRef.current.volume = localStorage.getItem('spotify_volume')
+      ? JSON.parse(localStorage.getItem('spotify_volume') as string)
+      : 1
+  }, [])
+
+  useEffect(() => {
+    calNextTrackIndex()
+  }, [currentTrack, isShuffle])
+
+  useEffect(() => {
+    if (isBtnClickable) return
+    if (localStorage.getItem('spotify_current_track') !== null) setBtnClickable(true)
+  }, [queue])
+
+  useEffect(() => {
+    if (currentTrack && userClicked) {
+      if (isPlaying) {
+        prevDocumentTitle.current = window.document.title
+        window.document.title = `${currentTrack?.name} • ${currentTrack?.artists?.[0]?.name}`
+      } else {
+        window.document.title = prevDocumentTitle.current
+      }
+    }
+  }, [currentTrack, isPlaying])
+
+  // -----------------------------------------
 
   const handlePlay = () => {
     if (audioRef.current?.paused) {
@@ -142,17 +188,24 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
   const handleForward = () => {
     if (currentTrackIndex < queue.length - 1) {
       handlePause()
-      setCurrentTrack({ ...queue[currentTrackIndex + 1] })
-      setCurrentTrackIndex(currentTrackIndex + 1)
+      setCurrentTrack({ ...queue[nextTrackIndex] })
+      setCurrentTrackIndex(nextTrackIndex)
+      calNextTrackIndex()
       setCurrentTime(0)
     }
   }
 
-  useEffect(() => {
-    audioRef.current.volume = localStorage.getItem('spotify_volume')
-      ? JSON.parse(localStorage.getItem('spotify_volume') as string)
-      : 1
-  }, [])
+  const calNextTrackIndex = () => {
+    if (isShuffle) {
+      let randomIndex = currentTrackIndex
+      while (randomIndex === currentTrackIndex) {
+        randomIndex = Math.floor(Math.random() * queue?.length)
+      }
+      setNextTrackIndex(randomIndex)
+    } else {
+      setNextTrackIndex(currentTrackIndex + 1)
+    }
+  }
 
   const returnData = useMemo(() => {
     return {
@@ -174,8 +227,6 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
     }
   }
 
-  console.log(currentTrack)
-
   return (
     <PlayerContext.Provider
       value={{
@@ -190,6 +241,10 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
         setPlaying,
         setReady,
         setUserClicked,
+        setNextTrackIndex,
+        setRepeat,
+        setShuffle,
+        calNextTrackIndex,
         audioRef,
         isPlaying,
         intervalIdRef,
@@ -199,6 +254,11 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
         isReady,
         userClicked,
         ...returnData,
+        nextTrackIndex,
+        isRepeat,
+        isShuffle,
+        isBtnClickable,
+        prevDocumentTitle,
       }}
     >
       {children}

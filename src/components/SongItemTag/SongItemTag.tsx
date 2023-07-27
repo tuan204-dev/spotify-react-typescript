@@ -15,7 +15,8 @@ const cx = classNames.bind(styles)
 
 const SongItemTag: React.FC<SongItemTagProps> = (props) => {
   const { thumbnailUrl, name, setBgColor, isLoading, id } = props
-  const { setCurrentTrack, setCurrentTrackIndex, setQueue } = useContext(PlayerContext)
+  const { setCurrentTrack, setCurrentTrackIndex, setQueue, calNextTrackIndex } =
+    useContext(PlayerContext)
   const color = useDominantColor(thumbnailUrl)
   const imgRef = useRef<HTMLDivElement>(null)
   const handleHover = (): void => {
@@ -58,6 +59,7 @@ const SongItemTag: React.FC<SongItemTagProps> = (props) => {
         },
       })
       setCurrentTrackIndex(0)
+      calNextTrackIndex()
     }
     fetchData()
   }

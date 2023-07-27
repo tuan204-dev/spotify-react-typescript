@@ -3,22 +3,28 @@ import categoryApi from '@/apis/categoryApi'
 import { HeartIcon } from '@/assets/icons'
 import { Footer, Header, Navbar, SongList } from '@/components'
 import { PlayButton } from '@/components/UIs'
+import { PlayerContext } from '@/contexts/PlayerContext'
 import { useComponentSize, useRaiseColorTone } from '@/hooks'
 import useDominantColor from '@/hooks/useDominantColor'
+import { PlaylistData } from '@/types/playlist'
+import { documentTitle } from '@/utils'
 import classNames from 'classnames/bind'
-import React, { memo, useEffect, useRef, useState } from 'react'
+import React, { memo, useContext, useEffect, useRef, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useDocumentTitle } from 'usehooks-ts'
 import styles from './Playlist.module.scss'
-import { PlaylistData } from '@/types/playlist'
-import { PlayerContext } from '@/contexts/PlayerContext'
-import { useContext } from 'react'
 
 const cx = classNames.bind(styles)
 
 const Playlist: React.FC = () => {
-  const { setQueue, setCurrentTrack, setCurrentTrackIndex } = useContext(PlayerContext)
+  const {
+    setQueue,
+    setCurrentTrack,
+    setCurrentTrackIndex,
+    calNextTrackIndex,
+    isPlaying,
+    prevDocumentTitle,
+  } = useContext(PlayerContext)
   const [navOpacity, setNavOpacity] = useState<number>(0)
   const [data, setData] = useState<PlaylistData>()
   const [isLoading, setLoading] = useState<boolean>(true)
@@ -30,7 +36,15 @@ const Playlist: React.FC = () => {
     threshold: 0,
   })
 
-  useDocumentTitle(`${data?.name ? data?.name : 'Playlist'} | Spotify Playlist`)
+  useEffect(() => {
+    if (isPlaying) {
+      prevDocumentTitle.current = `${
+        data?.name ? data?.name : 'Playlist'
+      } | Spotify Playlist`
+    } else {
+      documentTitle(`${data?.name ? data?.name : 'Playlist'} | Spotify Playlist`)
+    }
+  }, [isPlaying, data])
 
   const headerRef = useRef<any>()
   const { height: headerHeight } = useComponentSize(headerRef)
@@ -74,6 +88,7 @@ const Playlist: React.FC = () => {
     setQueue(data?.tracks?.items?.map((item) => item.track) || [])
     setCurrentTrack(data?.tracks?.items?.[0]?.track)
     setCurrentTrackIndex(0)
+    calNextTrackIndex()
   }
 
   return (

@@ -31,7 +31,7 @@ const RootLayout: FC = () => {
                   <div className={cx('top')}>
                     <Split
                       cursor="col-resize"
-                      minSize={isPlayingViewShowed ? [280, 600, 0] : [280, 600]}
+                      minSize={isPlayingViewShowed ? [280, 400, 0] : [280, 600]}
                       maxSize={isPlayingViewShowed ? [600, 99999, 400] : undefined}
                       // sizes={[20, 70, 10]}
                       sizes={isPlayingViewShowed ? [20, 60, 20] : [20, 80]}

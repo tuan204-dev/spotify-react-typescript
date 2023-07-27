@@ -21,6 +21,10 @@
 @mixin reset-button {
   border: none;
   outline: none;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 @mixin button-icon($size, $bg, $bg-highlight) {

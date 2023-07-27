@@ -122,6 +122,17 @@
     right: -3px;
     transition: none;
   }
+
+  .equaliser {
+    width: 14px;
+    height: 14px;
+    overflow: hidden;
+
+    & > img {
+      width: 100%;
+      height: 100%;
+    }
+  }
 }
 
 .album,
@@ -146,4 +157,11 @@
 
 .is-search-result {
   grid-template-columns: minmax(300px, 4fr) 50px !important;
+}
+
+.is-playing {
+  .order-number,
+  .name {
+    color: $tertiary !important;
+  }
 }

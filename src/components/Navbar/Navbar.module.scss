@@ -72,6 +72,11 @@
             background-color: $bg-elevated-highlight;
             box-shadow: 0 0 0 1px hsla(0, 0%, 100%, 0.2);
           }
+
+          &:focus {
+            box-shadow: 0 0 0 1px $white;
+
+          }
         }
       }
 

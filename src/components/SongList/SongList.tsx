@@ -21,6 +21,7 @@ const SongList: FC<SongListProps> = ({
   inclHeader = true,
   albumName,
   albumType,
+  adjustOrder = 0
 }) => {
   const { width } = useContext(MainLayoutContext)
 
@@ -79,7 +80,7 @@ const SongList: FC<SongListProps> = ({
               <SongItem
                 type={type}
                 key={index}
-                order={order++}
+                order={order++ + adjustOrder}
                 thumb={
                   item?.album?.images[item?.album?.images?.length - 1]?.url ||
                   item?.track?.album?.images[item?.track?.album?.images?.length - 1]?.url

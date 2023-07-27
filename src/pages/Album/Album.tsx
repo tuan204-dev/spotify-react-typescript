@@ -2,28 +2,40 @@ import categoryApi from '@/apis/categoryApi'
 import { HeartIcon } from '@/assets/icons'
 import { Footer, Header, Navbar, SongList } from '@/components'
 import { PlayButton } from '@/components/UIs'
+import { PlayerContext } from '@/contexts/PlayerContext'
 import { useComponentSize, useRaiseColorTone } from '@/hooks'
 import useDominantColor from '@/hooks/useDominantColor'
-import { dateFormatConvertor } from '@/utils'
+import { SpotifyAlbum } from '@/types/album'
+import { dateFormatConvertor, documentTitle } from '@/utils'
 import classNames from 'classnames/bind'
-import React, { useEffect, useRef, useState, useContext } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useDocumentTitle } from 'usehooks-ts'
 import styles from './Album.module.scss'
-import { SpotifyAlbum } from '@/types/album'
-import { PlayerContext } from '@/contexts/PlayerContext'
 
 const cx = classNames.bind(styles)
 
 const Album: React.FC = () => {
-  const { setCurrentTrack, setQueue, setCurrentTrackIndex } = useContext(PlayerContext)
+  const {
+    setCurrentTrack,
+    setQueue,
+    setCurrentTrackIndex,
+    calNextTrackIndex,
+    isPlaying,
+    prevDocumentTitle,
+  } = useContext(PlayerContext)
   const [data, setData] = useState<SpotifyAlbum>()
   const [navOpacity, setNavOpacity] = useState<number>(0)
   const [isLoading, setLoading] = useState<boolean>(true)
   const [navPlayBtnVisible, setNavPlayBtnVisible] = useState<boolean>(false)
 
-  useDocumentTitle(`${data?.name ? data?.name : 'Album'} | Spotify`)
+  useEffect(() => {
+    if (isPlaying) {
+      prevDocumentTitle.current = `${data?.name ? data?.name : 'Album'} | Spotify`
+    } else {
+      documentTitle(`${data?.name ? data?.name : 'Album'} | Spotify`)
+    }
+  }, [isPlaying, data])
 
   const { ref: pivotTrackingRef, inView: isTracking } = useInView({
     threshold: 0,
@@ -71,15 +83,26 @@ const Album: React.FC = () => {
       data?.tracks?.items?.map((item) => {
         return {
           ...item,
-          album: { images: data?.images, id: data?.id, album_type: data?.album_type, name: data?.name },
+          album: {
+            images: data?.images,
+            id: data?.id,
+            album_type: data?.album_type,
+            name: data?.name,
+          },
         }
       }) || []
     )
     setCurrentTrack({
       ...data?.tracks?.items?.[0],
-      album: { images: data?.images, id: data?.id, album_type: data?.album_type, name: data?.name },
+      album: {
+        images: data?.images,
+        id: data?.id,
+        album_type: data?.album_type,
+        name: data?.name,
+      },
     })
     setCurrentTrackIndex(0)
+    calNextTrackIndex()
   }
   // console.log(data)
 

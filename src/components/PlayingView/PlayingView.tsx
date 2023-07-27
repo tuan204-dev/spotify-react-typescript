@@ -14,8 +14,9 @@ import NextSong from './NextSong/NextSong'
 const cx = classNames.bind(styles)
 
 const PlayingView: FC = () => {
-  const { currentTrack, queue, currentTrackIndex } = useContext(PlayerContext)
-  const { setId, isLoading, profile, stats, aboutImg } = useContext(ArtistContext)
+  const { currentTrack, queue, nextTrackIndex } = useContext(PlayerContext)
+  const { setId, isLoading, profile, stats, aboutImg, avatarImg } =
+    useContext(ArtistContext)
   const { setPlayingViewShowed } = useContext(AppContext)
 
   useEffect(() => {
@@ -24,47 +25,51 @@ const PlayingView: FC = () => {
 
   return (
     <div className={cx('playing-view-wrapper')}>
-      <div className={cx('header')}>
-        <div className={cx('close-btn')}>
-          <button onClick={() => setPlayingViewShowed(false)}>
-            <CloseIcon />
-          </button>
+      <div>
+        <div className={cx('header')}>
+          <div className={cx('close-btn')}>
+            <button onClick={() => setPlayingViewShowed(false)}>
+              <CloseIcon />
+            </button>
+          </div>
         </div>
-      </div>
-      <div className={cx('track-banner')}>
-        <div>
-          <Image src={currentTrack?.album?.images?.[0]?.url} alt={currentTrack?.name} />
+        <div className={cx('track-banner')}>
+          <div>
+            <Image src={currentTrack?.album?.images?.[0]?.url} alt={currentTrack?.name} />
+          </div>
         </div>
-      </div>
-      <div className={cx('content')}>
-        <div className={cx('title')}>
-          <Link to={`/album/${currentTrack?.album?.id}`}>
-            <h2 className={cx('name-track')}>{currentTrack?.name}</h2>
-          </Link>
-          <span className={cx('artist')}>
-            <Marquee pauseOnHover={true} speed={35}>
-              <SubTitle data={currentTrack?.artists} fontSize={16} type="artist" />
-            </Marquee>
-          </span>
+        <div className={cx('content')}>
+          <div className={cx('title')}>
+            <Link to={`/album/${currentTrack?.album?.id}`}>
+              <Marquee pauseOnHover={true} speed={25}>
+                <h2 className={cx('name-track')}>{currentTrack?.name}</h2>
+              </Marquee>
+            </Link>
+            <span className={cx('artist')}>
+              <Marquee pauseOnHover={true} speed={35}>
+                <SubTitle data={currentTrack?.artists} fontSize={16} type="artist" />
+              </Marquee>
+            </span>
+          </div>
+          <div className={cx('heart-btn')}>
+            <HeartIcon size={16} />
+          </div>
         </div>
-        <div className={cx('heart-btn')}>
-          <HeartIcon size={16} />
+        <div className={cx('about-artist')}>
+          <div>
+            <AboutArtist
+              type="playing-view"
+              profile={profile}
+              stats={stats}
+              aboutImg={aboutImg ?? avatarImg}
+              inclHeader={false}
+              isLoading={isLoading}
+            />
+          </div>
         </div>
-      </div>
-      <div className={cx('about-artist')}>
-        <div>
-          <AboutArtist
-            type="playing-view"
-            profile={profile}
-            stats={stats}
-            aboutImg={aboutImg}
-            inclHeader={false}
-            isLoading={isLoading}
-          />
+        <div className={cx('next-song')}>
+          <NextSong nextSong={queue[nextTrackIndex]} />
         </div>
-      </div>
-      <div className={cx('next-song')}>
-        <NextSong nextSong={queue[currentTrackIndex + 1]} />
       </div>
     </div>
   )

@@ -1,8 +1,9 @@
 import { Footer, Navbar, SearchBanner, SearchResult } from '@/components'
+import { PlayerContext } from '@/contexts/PlayerContext'
 import { SearchContext } from '@/contexts/SearchContext'
+import { documentTitle } from '@/utils'
 import classNames from 'classnames/bind'
 import React, { FC, useContext, useEffect, useState } from 'react'
-import { useDocumentTitle } from 'usehooks-ts'
 import styles from './Search.module.scss'
 
 const cx = classNames.bind(styles)
@@ -13,9 +14,17 @@ interface SearchProps {
 
 const Search: FC<SearchProps> = () => {
   const { setQuery: setSearchQuery, query: searchQuery } = useContext(SearchContext)
+  const { isPlaying, prevDocumentTitle } = useContext(PlayerContext)
   const [query, setQuery] = useState<string | undefined>(searchQuery)
   const [debounceValue, setDebounceValue] = useState<string | undefined>(searchQuery)
-  useDocumentTitle('Spotify – Search')
+
+  useEffect(() => {
+    if (isPlaying) {
+      prevDocumentTitle.current = 'Spotify – Search'
+    } else {
+      documentTitle('Spotify – Search')
+    }
+  }, [isPlaying])
 
   useEffect(() => {
     let timeoutId: any

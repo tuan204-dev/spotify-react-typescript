@@ -18,7 +18,7 @@ interface TopResultProps {
 const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
   const [isLoading, setLoading] = useState<boolean>(true)
   const { width } = useContext(MainLayoutContext)
-  const { setCurrentTrack, setQueue } = useContext(PlayerContext)
+  const { setCurrentTrack, setQueue, setCurrentTrackIndex, calNextTrackIndex } = useContext(PlayerContext)
 
   useLayoutEffect(() => {
     if (topResult && songs && topResult?.album?.images?.[0]?.url) {
@@ -29,6 +29,8 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
   const handleClickPlayBtn = () => {
     setCurrentTrack(topResult)
     setQueue([topResult])
+    setCurrentTrackIndex(0)
+    calNextTrackIndex()
   }
 
   return (

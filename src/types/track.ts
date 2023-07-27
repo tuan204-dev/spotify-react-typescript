@@ -24,6 +24,7 @@ export interface SongItemProps {
   type?: 'default' | 'playlist' | 'album' | 'search' | 'artist'
   id?: string
   originalData?: SpotifyTrack
+  isPlaying?: boolean
 }
 
 export interface SongListProps {
@@ -44,6 +45,7 @@ export interface SongListProps {
     | 'podcast'
     | 'episode'
     | undefined
+  adjustOrder?: number
 }
 
 export interface SpotifyTrack {

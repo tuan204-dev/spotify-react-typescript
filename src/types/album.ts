@@ -22,6 +22,7 @@ export interface SpotifyAlbum {
   id?: string
   name?: string
   album_type?: 'album' | 'Playlist' | 'single' | 'compilation' | 'podcast' | 'episode'
+
   release_date?: string
   description?: string
   tracks?: {

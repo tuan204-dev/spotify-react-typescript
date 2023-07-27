@@ -5,26 +5,31 @@ import durationConvertor from '@/utils/durationConvertor'
 import classNames from 'classnames/bind'
 import React, { FC, useContext, useEffect, useState } from 'react'
 import styles from './PlayerControl.module.scss'
+import { Tooltip } from 'antd'
 
 const cx = classNames.bind(styles)
 
 const PlayerControl: FC = () => {
   const {
+    currentTrack,
+    intervalIdRef,
     isPlaying,
+    duration,
+    audioRef,
+    isReady,
+    userClicked,
+    isShuffle,
+    isRepeat,
     handlePlay,
     handlePause,
     setCurrentTime,
-    intervalIdRef,
-    duration,
-    audioRef,
-    currentTrack,
     handleForward,
     handleBack,
-    isReady,
-    userClicked,
     setUserClicked,
+    setShuffle,
+    setRepeat,
+    isBtnClickable,
   } = useContext(PlayerContext)
-  const [isRepeat, setRepeat] = useState<boolean>()
   const [trackProcess, setTrackProcess] = useState<number>(audioRef?.current?.currentTime)
 
   useEffect(() => {
@@ -51,16 +56,41 @@ const PlayerControl: FC = () => {
     }, 1000)
   }
 
-  useEffect(() => {
-    if (trackProcess >= (duration ? duration - 1 : 9999999)) {
+  // useEffect(() => {
+  //   if (trackProcess >= (duration ? duration - 2 : 9999999)) {
+  //     if (isRepeat) {
+  //       console.log('repeated')
+  //       setCurrentTime(0)
+  //       setTrackProcess(0)
+  //       startTimer()
+  //       handlePlay()
+  //     } else {
+  //       handleForward()
+  //     }
+  //   }
+  // }, [trackProcess])
+
+  if (audioRef?.current) {
+    audioRef.current.onended = () => {
       if (isRepeat) {
+        console.log('repeated')
         setCurrentTime(0)
         setTrackProcess(0)
+        startTimer()
+        handlePlay()
       } else {
         handleForward()
       }
     }
-  }, [trackProcess])
+  }
+
+  useEffect(() => {
+    // console.log(isPlaying)
+    if (isPlaying) {
+      startTimer()
+      handlePlay()
+    }
+  }, [isPlaying])
 
   const handlePlayBtn = () => {
     // console.log(duration, isPlaying)
@@ -76,42 +106,55 @@ const PlayerControl: FC = () => {
     }
   }
 
-  useEffect(() => {
-    // console.log(isPlaying)
-    if (isPlaying) {
-      startTimer()
-      handlePlay()
-    }
-  }, [isPlaying])
-
   return (
     <div className={cx('wrapper')}>
       <div className={cx('buttons')}>
-        <button className={cx('btn')}>
-          <ShuffleIcon />
-        </button>
-
-        <button onClick={handleBack} className={cx('btn')}>
-          <SkipBackIcon />
-        </button>
-        <div onClick={() => handlePlayBtn()} className={cx('btn')}>
-          <PlayButton
-            size={32}
-            bgColor="#fff"
-            transitionDuration={0}
-            isPlay={isPlaying}
-            scaleHovering={1}
-          />
-        </div>
-        <button onClick={handleForward} className={cx('btn')}>
-          <SkipForwardIcon />
-        </button>
-        <button
-          onClick={() => setRepeat((prev) => !prev)}
-          className={cx({ btn: true, active: isRepeat })}
+        <Tooltip
+          overlayInnerStyle={{ backgroundColor: '#282828' }}
+          title={isShuffle ? 'Disable shuffle' : 'Enable shuffle'}
         >
-          <RepeatIcon />
-        </button>
+          <button
+            onClick={() => isBtnClickable && setShuffle(!isShuffle)}
+            className={cx({ btn: true, active: isShuffle })}
+          >
+            <ShuffleIcon />
+          </button>
+        </Tooltip>
+        <Tooltip overlayInnerStyle={{ backgroundColor: '#282828' }} title="Previous">
+          <button onClick={() => isBtnClickable && handleBack()} className={cx('btn')}>
+            <SkipBackIcon />
+          </button>
+        </Tooltip>
+        <Tooltip
+          overlayInnerStyle={{ backgroundColor: '#282828' }}
+          title={isPlaying ? 'Pause' : 'Play'}
+        >
+          <div onClick={() => isBtnClickable && handlePlayBtn()} className={cx('btn')}>
+            <PlayButton
+              size={32}
+              bgColor="#fff"
+              transitionDuration={0}
+              isPlay={isPlaying}
+              scaleHovering={1}
+            />
+          </div>
+        </Tooltip>
+        <Tooltip overlayInnerStyle={{ backgroundColor: '#282828' }} title="Next">
+          <button onClick={() => isBtnClickable && handleForward()} className={cx('btn')}>
+            <SkipForwardIcon />
+          </button>
+        </Tooltip>
+        <Tooltip
+          overlayInnerStyle={{ backgroundColor: '#282828' }}
+          title={isRepeat ? 'Disable repeat' : 'Enable repeat'}
+        >
+          <button
+            onClick={() => isBtnClickable && setRepeat((prev) => !prev)}
+            className={cx({ btn: true, active: isRepeat })}
+          >
+            <RepeatIcon />
+          </button>
+        </Tooltip>
       </div>
       <div className={cx('playback-bar')}>
         <div className={cx('playback-position')}>
