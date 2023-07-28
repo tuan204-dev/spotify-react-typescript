@@ -71,6 +71,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     localStorage.removeItem('spotify_access_token')
     localStorage.removeItem('spotify_access_token_at')
     localStorage.removeItem('spotify_auth_code')
+    localStorage.removeItem('spotify_current_track')
     setLogged(false)
     window.location.reload()
   }

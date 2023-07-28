@@ -15,8 +15,13 @@ const cx = classNames.bind(styles)
 
 const SongItemTag: React.FC<SongItemTagProps> = (props) => {
   const { thumbnailUrl, name, setBgColor, isLoading, id } = props
-  const { setCurrentTrack, setCurrentTrackIndex, setQueue, calNextTrackIndex } =
-    useContext(PlayerContext)
+  const {
+    setCurrentTrack,
+    setCurrentTrackIndex,
+    setQueue,
+    calNextTrackIndex,
+    setPlayingType,
+  } = useContext(PlayerContext)
   const color = useDominantColor(thumbnailUrl)
   const imgRef = useRef<HTMLDivElement>(null)
   const handleHover = (): void => {
@@ -36,7 +41,7 @@ const SongItemTag: React.FC<SongItemTagProps> = (props) => {
         id: id,
       })
 
-      setQueue(
+      const queueList =
         data?.tracks?.items?.map((item: SpotifyTrack) => {
           return {
             ...item,
@@ -48,18 +53,11 @@ const SongItemTag: React.FC<SongItemTagProps> = (props) => {
             },
           }
         }) || []
-      )
-      setCurrentTrack({
-        ...data?.tracks?.items?.[0],
-        album: {
-          images: data?.images,
-          id: data?.id,
-          album_type: data?.album_type,
-          name: data?.name,
-        },
-      })
+      setQueue(queueList)
+      setCurrentTrack(queueList[0])
       setCurrentTrackIndex(0)
       calNextTrackIndex()
+      setPlayingType('track')
     }
     fetchData()
   }

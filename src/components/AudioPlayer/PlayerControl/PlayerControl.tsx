@@ -56,20 +56,6 @@ const PlayerControl: FC = () => {
     }, 1000)
   }
 
-  // useEffect(() => {
-  //   if (trackProcess >= (duration ? duration - 2 : 9999999)) {
-  //     if (isRepeat) {
-  //       console.log('repeated')
-  //       setCurrentTime(0)
-  //       setTrackProcess(0)
-  //       startTimer()
-  //       handlePlay()
-  //     } else {
-  //       handleForward()
-  //     }
-  //   }
-  // }, [trackProcess])
-
   if (audioRef?.current) {
     audioRef.current.onended = () => {
       if (isRepeat) {

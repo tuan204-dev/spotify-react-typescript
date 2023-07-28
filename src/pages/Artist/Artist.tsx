@@ -47,6 +47,7 @@ const Artist: React.FC = () => {
     setCurrentTrackIndex,
     setQueue,
     calNextTrackIndex,
+    setPlayingType,
     isPlaying,
     prevDocumentTitle,
   } = useContext(PlayerContext)
@@ -93,6 +94,7 @@ const Artist: React.FC = () => {
     setCurrentTrack(topTracks?.[0])
     setCurrentTrackIndex(0)
     calNextTrackIndex()
+    setPlayingType('track')
   }
 
   return (

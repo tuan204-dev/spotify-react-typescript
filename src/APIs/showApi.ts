@@ -1,10 +1,10 @@
 import { spotifyApiClient } from './axiosClient'
 
 interface ShowApiProps {
-  id: string
+  id?: string
 }
 
-const showApi = async (params: Partial<ShowApiProps>) => {
+const showApi = async (params: ShowApiProps) => {
   const { id } = params
 
   const { data } = await spotifyApiClient.get(`shows/${id}`)

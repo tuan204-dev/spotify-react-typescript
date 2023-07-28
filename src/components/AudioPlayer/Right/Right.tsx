@@ -3,7 +3,7 @@ import { Range } from '@/components/UIs'
 import { PlayerContext } from '@/contexts/PlayerContext'
 import { Tooltip } from 'antd'
 import classNames from 'classnames/bind'
-import { FC, useCallback, useContext, useRef, useState } from 'react'
+import { FC, useCallback, useContext, useEffect, useRef, useState } from 'react'
 import styles from './Right.module.scss'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { AppContext } from '@/App'
@@ -11,7 +11,7 @@ import { AppContext } from '@/App'
 const cx = classNames.bind(styles)
 
 const Right: FC = () => {
-  const { audioRef, isBtnClickable } = useContext(PlayerContext)
+  const { audioRef, isBtnClickable, playingType } = useContext(PlayerContext)
   const { setPlayingViewShowed, isPlayingViewShowed } = useContext(AppContext)
   const [volume, setVolume] = useState<number>(
     JSON.parse(localStorage.getItem('spotify_volume') as string) ?? 1
@@ -21,6 +21,12 @@ const Right: FC = () => {
 
   const { pathname, key } = useLocation()
   const navigate = useNavigate()
+
+  useEffect(() => {
+    if (playingType === 'show') {
+      setPlayingViewShowed(false)
+    }
+  }, [playingType])
 
   const volumeLevelFilter = useCallback((value: number): SoundLevel => {
     if (+value === 0) {
@@ -70,6 +76,7 @@ const Right: FC = () => {
   }
 
   const handleClickPlayingView = () => {
+    if (playingType === 'show') return
     if (isBtnClickable) {
       setPlayingViewShowed((prev) => !prev)
     }

@@ -1,4 +1,4 @@
-import { ImageSource } from "./others"
+import { ImageSource } from './others'
 
 export interface ShowItem {
   description?: string
@@ -9,6 +9,7 @@ export interface ShowItem {
   images?: ImageSource[]
   name?: string
   release_date?: string
+  type?: string
 }
 
 export interface ShowData {

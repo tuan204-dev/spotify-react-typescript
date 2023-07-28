@@ -21,6 +21,7 @@ import AudioPlayer from './AudioPlayer/AudioPlayer'
 import AboutShow from './AboutShow/AboutShow'
 import ShowsList from './ShowsList/ShowsList'
 import ShowItem from './ShowItem/ShowItem'
+import PlayingView from './PlayingView/PlayingView'
 
 export {
   Section,
@@ -46,4 +47,5 @@ export {
   AboutShow,
   ShowsList,
   ShowItem,
+  PlayingView,
 }

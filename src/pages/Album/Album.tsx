@@ -21,6 +21,7 @@ const Album: React.FC = () => {
     setQueue,
     setCurrentTrackIndex,
     calNextTrackIndex,
+    setPlayingType,
     isPlaying,
     prevDocumentTitle,
   } = useContext(PlayerContext)
@@ -79,7 +80,7 @@ const Album: React.FC = () => {
   }
 
   const handleClickPlayBtn = () => {
-    setQueue(
+    const queueList =
       data?.tracks?.items?.map((item) => {
         return {
           ...item,
@@ -91,17 +92,10 @@ const Album: React.FC = () => {
           },
         }
       }) || []
-    )
-    setCurrentTrack({
-      ...data?.tracks?.items?.[0],
-      album: {
-        images: data?.images,
-        id: data?.id,
-        album_type: data?.album_type,
-        name: data?.name,
-      },
-    })
+    setQueue(queueList)
+    setCurrentTrack(queueList[0])
     setCurrentTrackIndex(0)
+    setPlayingType('track')
     calNextTrackIndex()
   }
   // console.log(data)

@@ -7,6 +7,7 @@ import { MainLayoutContext } from '@/contexts/MainLayoutContext'
 import { useInView } from 'react-intersection-observer'
 import { ClockIcon } from '@/assets/icons'
 import { SongListProps } from '@/types/track'
+import { PlayerContext } from '@/contexts/PlayerContext'
 
 const cx = classNames.bind(styles)
 
@@ -21,9 +22,10 @@ const SongList: FC<SongListProps> = ({
   inclHeader = true,
   albumName,
   albumType,
-  adjustOrder = 0
+  adjustOrder = 0,
 }) => {
   const { width } = useContext(MainLayoutContext)
+  const { playingType } = useContext(PlayerContext)
 
   const { ref, inView } = useInView({
     threshold: 0,
@@ -83,7 +85,9 @@ const SongList: FC<SongListProps> = ({
                 order={order++ + adjustOrder}
                 thumb={
                   item?.album?.images[item?.album?.images?.length - 1]?.url ||
-                  item?.track?.album?.images[item?.track?.album?.images?.length - 1]?.url
+                  item?.track?.album?.images[item?.track?.album?.images?.length - 1]
+                    ?.url ||
+                  item?.images?.[item?.images?.length - 1]?.url
                 }
                 songName={item?.name ?? item?.track?.name}
                 artists={item?.artists ?? item?.track?.artists}
@@ -107,6 +111,7 @@ const SongList: FC<SongListProps> = ({
                       name: albumName,
                     },
                   }) ||
+                  (playingType === 'show' && item) ||
                   item
                 }
               />

@@ -47,23 +47,25 @@ const Queue: FC = () => {
                 songName={currentTrack?.name}
                 thumb={
                   currentTrack?.album?.images?.[currentTrack?.album?.images?.length - 1]
-                    ?.url
+                    ?.url ?? currentTrack?.images?.[currentTrack?.images?.length - 1]?.url
                 }
                 originalData={currentTrack}
               />
             </div>
-            <div className={cx('queue-list')}>
-              <h2 className={cx('sub-title')}>Next</h2>
-              <SongList
-                inclHeader={false}
-                songList={
-                  isShuffle
-                    ? queueNormalized.filter((track) => track?.id !== currentTrack?.id)
-                    : queueNormalized.slice(currentTrackIndex + 1)
-                }
-                adjustOrder={1}
-              />
-            </div>
+            {queue?.filter((item) => item)?.length > 1 && (
+              <div className={cx('queue-list')}>
+                <h2 className={cx('sub-title')}>Next</h2>
+                <SongList
+                  inclHeader={false}
+                  songList={
+                    isShuffle
+                      ? queueNormalized.filter((track) => track?.id !== currentTrack?.id)
+                      : queueNormalized.slice(currentTrackIndex + 1)
+                  }
+                  adjustOrder={1}
+                />
+              </div>
+            )}
           </>
         ) : (
           <div className={cx('queue-notify')}>

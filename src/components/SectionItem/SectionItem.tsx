@@ -1,9 +1,9 @@
 import { getArtistTopTrack } from '@/apis/artistApi'
 import categoryApi from '@/apis/categoryApi'
+import showApi from '@/apis/showApi'
 import { UserImgDefault } from '@/assets/icons'
 import { PlayerContext } from '@/contexts/PlayerContext'
 import { SectionItemI } from '@/types/section'
-import { SpotifyTrack } from '@/types/track'
 import { dateFormatConvertor } from '@/utils'
 import classNames from 'classnames/bind'
 import React, { memo, useContext } from 'react'
@@ -12,6 +12,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { useNavigate } from 'react-router-dom'
 import { Image, PlayButton, SubTitle } from '../UIs'
 import styles from './SectionItem.module.scss'
+import episodeApi from '@/apis/episodeApi'
 
 const cx = classNames.bind(styles)
 
@@ -29,47 +30,52 @@ const SectionItem: React.FC<SectionItemI> = ({
   dateAdd,
   type,
 }) => {
-  const { setCurrentTrack, setCurrentTrackIndex, setQueue, calNextTrackIndex } =
-    useContext(PlayerContext)
+  const {
+    setCurrentTrack,
+    setCurrentTrackIndex,
+    setQueue,
+    calNextTrackIndex,
+    setPlayingType,
+  } = useContext(PlayerContext)
 
   const navigate = useNavigate()
   const handleClickPlayBtn = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.stopPropagation()
-    if (dataType === 'album' || dataType === 'playlist') {
+    if (dataType === 'album') {
       const fetchData = async () => {
         const data = await categoryApi({
-          type: `${dataType}s`,
+          type: 'albums',
           id,
         })
-        setQueue(
-          dataType === 'playlist'
-            ? data?.tracks?.items?.map((item: any) => item?.track)
-            : data?.tracks?.items?.map((item: SpotifyTrack) => {
-                return {
-                  ...item,
-                  album: {
-                    album_type: data?.album_type,
-                    id: data?.name,
-                    name: data?.name,
-                    images: data?.images,
-                  },
-                }
-              })
-        )
-        setCurrentTrack(
-          dataType === 'playlist'
-            ? data?.tracks?.items?.[0]?.track
-            : {
-                ...data?.tracks?.items?.[0],
-                album: {
-                  album_type: data?.album_type,
-                  id: data?.name,
-                  name: data?.name,
-                  images: data?.images,
-                },
-              }
-        )
+        const queueList = data?.tracks?.items?.map((item: any) => {
+          return {
+            ...item,
+            album: {
+              album_type: data?.album_type,
+              id: data?.name,
+              name: data?.name,
+              images: data?.images,
+            },
+          }
+        })
+        setQueue(queueList)
+        setCurrentTrack(queueList?.[0])
         setCurrentTrackIndex(0)
+        setPlayingType('track')
+        calNextTrackIndex()
+      }
+      fetchData()
+    } else if (dataType === 'playlist') {
+      const fetchData = async () => {
+        const data = await categoryApi({
+          type: `playlists`,
+          id,
+        })
+        const queueList = data?.tracks?.items?.map((item: any) => item?.track) || []
+        setQueue(queueList)
+        setCurrentTrack(queueList?.[0])
+        setCurrentTrackIndex(0)
+        setPlayingType('track')
         calNextTrackIndex()
       }
       fetchData()
@@ -79,6 +85,34 @@ const SectionItem: React.FC<SectionItemI> = ({
         setQueue(data?.tracks)
         setCurrentTrack(data?.tracks?.[0])
         setCurrentTrackIndex(0)
+        calNextTrackIndex()
+        setPlayingType('track')
+      }
+      fetchData()
+    } else if (dataType === 'show') {
+      const fetchData = async () => {
+        const data = await showApi({ id })
+        const queueList =
+          data?.episodes?.items?.map((item: any) => {
+            return {
+              ...item,
+              show: { name: data?.name, id: data?.id, publisher: data?.publisher },
+            }
+          }) || []
+        setQueue(queueList)
+        setCurrentTrack(queueList?.[0])
+        setCurrentTrackIndex(0)
+        calNextTrackIndex()
+        setPlayingType('show')
+      }
+      fetchData()
+    } else if(dataType === 'episode') {
+      const fetchData = async () => {
+        const data = await episodeApi({id})
+        setQueue([data])
+        setCurrentTrack(data)
+        setCurrentTrackIndex(0)
+        setPlayingType('show')
         calNextTrackIndex()
       }
       fetchData()

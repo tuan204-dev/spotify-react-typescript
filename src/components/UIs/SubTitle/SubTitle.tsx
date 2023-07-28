@@ -9,7 +9,7 @@ const cx = classNames.bind(styles)
 interface ArtistsProps {
   data: any
   isWhiteColor?: boolean
-  type?: 'artist' | 'album'
+  type?: 'artist' | 'album' | 'show'
   apiType?: 'spotify' | 'rapid'
   fontSize?: number
 }
@@ -43,16 +43,20 @@ const Artists: FC<ArtistsProps> = ({
         <Link
           key={0}
           to={
-            type === 'album'
-              ? `/album/${dataNormalized[0]?.id}`
-              : `/artist/${dataNormalized[0]?.id}`
+            // type === 'album'
+            //   ? `/album/${dataNormalized[0]?.id}`
+            //   : `/artist/${dataNormalized[0]?.id}`
+            (type === 'album' && `/album/${dataNormalized?.[0]?.id}`) ||
+            (type === 'artist' && `/artist/${dataNormalized?.[0]?.id}`) ||
+            (type === 'show' && `/show/${dataNormalized?.[0]?.id}`) ||
+            ''
           }
         >
           <span
             style={{ fontSize: fontSize ? fontSize : undefined }}
             className={cx({ 'artist-item': true, 'white-color': isWhiteColor })}
           >
-            {dataNormalized[0].name}
+            {dataNormalized?.[0]?.name}
           </span>
         </Link>
       )

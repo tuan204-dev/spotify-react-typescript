@@ -9,7 +9,9 @@ interface RangeProps {
   step?: number
   process?: number
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  handleMouseUp: (e?: React.MouseEvent<HTMLInputElement>) => void
+  handleMouseUp: (
+    e?: React.MouseEvent<HTMLInputElement> | React.TouchEvent<HTMLInputElement>
+  ) => void
 }
 
 const Range: FC<RangeProps> = ({
@@ -40,7 +42,7 @@ const Range: FC<RangeProps> = ({
         value={process}
         onChange={handleChange}
         onMouseUp={handleMouseUp}
-        
+        onTouchEnd={handleMouseUp}
       />
     </div>
   )

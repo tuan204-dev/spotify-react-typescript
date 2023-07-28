@@ -114,7 +114,7 @@ const Home: React.FC = () => {
           data={featurePlaylist?.data}
           dataType={featurePlaylist?.dataType}
         />
-        <Section
+        {/* <Section
           apiType="spotify"
           title={newReleases?.title}
           href={newReleases?.href}
@@ -135,7 +135,7 @@ const Home: React.FC = () => {
           href={topMixes?.href}
           data={topMixes?.data}
           dataType={topMixes?.dataType}
-        />
+        /> */}
 
         {/* ------------------------ */}
         <Footer />

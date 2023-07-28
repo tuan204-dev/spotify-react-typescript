@@ -22,6 +22,7 @@ const Playlist: React.FC = () => {
     setCurrentTrack,
     setCurrentTrackIndex,
     calNextTrackIndex,
+    setPlayingType,
     isPlaying,
     prevDocumentTitle,
   } = useContext(PlayerContext)
@@ -89,6 +90,7 @@ const Playlist: React.FC = () => {
     setCurrentTrack(data?.tracks?.items?.[0]?.track)
     setCurrentTrackIndex(0)
     calNextTrackIndex()
+    setPlayingType('track')
   }
 
   return (

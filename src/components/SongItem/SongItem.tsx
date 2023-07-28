@@ -27,8 +27,14 @@ const SongItem: React.FC<SongItemProps> = ({
   originalData,
 }) => {
   const { width } = useContext(MainLayoutContext)
-  const { setCurrentTrack, setQueue, setCurrentTrackIndex, calNextTrackIndex, queue } =
-    useContext(PlayerContext)
+  const {
+    setCurrentTrack,
+    setQueue,
+    setCurrentTrackIndex,
+    calNextTrackIndex,
+    setPlayingType,
+    queue,
+  } = useContext(PlayerContext)
   const { currentTrack, isPlaying } = useContext(PlayerContext)
 
   const handleClick = () => {
@@ -43,7 +49,11 @@ const SongItem: React.FC<SongItemProps> = ({
       setCurrentTrackIndex(indexOfTrackInQueue)
       calNextTrackIndex()
     }
-    // handlePlay()
+    if (originalData?.album) {
+      setPlayingType('track')
+    } else {
+      setPlayingType('show')
+    }
   }
 
   return (

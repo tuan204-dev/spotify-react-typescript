@@ -12,7 +12,7 @@ import styles from './Left.module.scss'
 const cx = classNames.bind(styles)
 
 const Left: FC = () => {
-  const { playBarData } = useContext(PlayerContext)
+  const { playBarData, playingType } = useContext(PlayerContext)
   const isLoading = useMemo(
     () => Boolean(!playBarData?.trackName),
     [playBarData?.trackName]
@@ -26,18 +26,30 @@ const Left: FC = () => {
         <Image src={playBarData?.thumb} alt={playBarData?.trackName} />
       </div>
       <div className={cx('body')}>
-        <div >
+        <div>
           <div ref={trackNameRef} className={cx('name')}>
             <span className={cx('pivot')}>{playBarData?.trackName}</span>
             {!isLoading ? (
               isEllipsisActive(trackNameRef.current) ? (
                 <Marquee speed={15} pauseOnHover={true}>
-                  <Link to={`/album/${playBarData?.albumId}`}>
+                  <Link
+                    to={
+                      playingType === 'track'
+                        ? `/album/${playBarData?.albumId}`
+                        : `/episode/${playBarData?.episode}`
+                    }
+                  >
                     <span>{playBarData?.trackName}</span>
                   </Link>
                 </Marquee>
               ) : (
-                <Link to={`/album/${playBarData?.albumId}`}>
+                <Link
+                  to={
+                    playingType === 'track'
+                      ? `/album/${playBarData?.albumId}`
+                      : `/episode/${playBarData?.episode}`
+                  }
+                >
                   <span>{playBarData?.trackName}</span>
                 </Link>
               )
@@ -50,8 +62,8 @@ const Left: FC = () => {
               <SubTitle
                 fontSize={11}
                 apiType="spotify"
-                type="artist"
-                data={playBarData?.artists}
+                type={playingType === 'track' ? 'artist' : 'show'}
+                data={playingType === 'track' ? playBarData?.artists : playBarData?.show}
               />
             ) : (
               <Skeleton width={50} borderRadius={50} />

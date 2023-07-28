@@ -93,7 +93,7 @@ const Show: FC = () => {
               <AboutShow isLoading={isLoading} htmlDesc={data?.html_description} />
             </div>
             <div className={cx('episodes-list')}>
-              <ShowsList isLoading={isLoading} data={data?.episodes?.items} />
+              <ShowsList isLoading={isLoading} data={data?.episodes?.items} originalData={data} />
             </div>
           </div>
         </div>

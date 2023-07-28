@@ -2,7 +2,7 @@ import episodeApi from '@/apis/episodeApi'
 import { Footer, Header, Navbar } from '@/components'
 import { useDominantColor } from '@/hooks'
 import classNames from 'classnames/bind'
-import { FC, useEffect, useRef, useState } from 'react'
+import { FC, useEffect, useRef, useState, useContext } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { Link, useParams } from 'react-router-dom'
 import { Episode as EpisodeData } from '@/types/show'
@@ -11,10 +11,18 @@ import { PlayButton } from '@/components/UIs'
 import { dateFormatConvertor } from '@/utils'
 import durationConvertor from '@/utils/durationConvertor'
 import { PlusCircle } from '@/assets/icons'
+import { CurrentTrack, PlayerContext } from '@/contexts/PlayerContext'
 
 const cx = classNames.bind(styles)
 
 const Episode: FC = () => {
+  const {
+    setQueue,
+    setCurrentTrack,
+    setCurrentTrackIndex,
+    setPlayingType,
+    calNextTrackIndex,
+  } = useContext(PlayerContext)
   const [navOpacity, setNavOpacity] = useState<number>(0)
   const [data, setData] = useState<EpisodeData>()
   const [isLoading, setLoading] = useState<boolean>(true)
@@ -44,6 +52,15 @@ const Episode: FC = () => {
     if (yAxis > 64) {
       setNavOpacity(1)
     } else setNavOpacity(yAxis / 64)
+  }
+
+  const handleClickPlayBtn = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.stopPropagation()
+    setQueue([data as CurrentTrack])
+    setCurrentTrack(data)
+    setCurrentTrackIndex(0)
+    setPlayingType('show')
+    calNextTrackIndex()
   }
 
   return (
@@ -78,7 +95,7 @@ const Episode: FC = () => {
               </span>
             </div>
             <div className={cx('bottom')}>
-              <div className={cx('play-btn')}>
+              <div onClick={handleClickPlayBtn} className={cx('play-btn')}>
                 <PlayButton size={56} scaleHovering={1.04} transitionDuration={33} />
               </div>
               <div className={cx('plus-btn')}>

@@ -13,14 +13,20 @@ interface NextSongProps {
   nextSong: SpotifyTrack
 }
 const NextSong: FC<NextSongProps> = ({ nextSong }) => {
-  const { setQueue, setCurrentTrack, setCurrentTrackIndex, calNextTrackIndex } =
-    useContext(PlayerContext)
+  const {
+    setQueue,
+    setCurrentTrack,
+    setCurrentTrackIndex,
+    calNextTrackIndex,
+    setPlayingType,
+  } = useContext(PlayerContext)
 
   const handleClick = () => {
     setCurrentTrack(nextSong)
     setQueue([nextSong])
     setCurrentTrackIndex(0)
     calNextTrackIndex()
+    setPlayingType('track')
   }
   return (
     <div className={cx('next-song-wrapper')}>
