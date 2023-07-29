@@ -1,57 +1,31 @@
 import axios from 'axios'
+import { youtubeApiClient } from './axiosClient'
 
 interface GetAudioLinkParams {
-  type?: 'track' | 'show'
   query: string
 }
 
-const ytSearch = async (paramsSearch: GetAudioLinkParams) => {
-  const { type, query } = paramsSearch
-  const url =
-    type === 'track'
-      ? 'https://fastytapi.p.rapidapi.com/ytapi/search'
-      : 'https://yt-api.p.rapidapi.com/search'
-  const params =
-    type === 'track'
-      ? {
-          query: `${query}`,
-          resultsType: 'video',
-          sortBy: 'relevance',
-          geo: 'GB',
-        }
-      : {
-          query: query,
-          sort_by: 'relevance',
-        }
+export const getYoutubeVideoId = async (params: GetAudioLinkParams) => {
+  const { query } = params
 
-  const apiKey =
-    type === 'track'
-      ? import.meta.env.VITE_RAPID_YOUTUBE_SEARCH
-      : import.meta.env.VITE_RAPID_YOUTUBE_SEARCH_PODCAST
-  const rapidHost =
-    type === 'track' ? 'fastytapi.p.rapidapi.com' : 'yt-api.p.rapidapi.com'
+  const ytApiKey = import.meta.env.VITE_YOUTUBE_API_KEY
 
-  const option = {
-    method: 'GET',
-    url,
-    params,
-    headers: {
-      'X-RapidAPI-Key': apiKey,
-      'X-RapidAPI-Host': rapidHost,
+  const { data } = await youtubeApiClient.get('search', {
+    params: {
+      part: 'snippet',
+      q: query,
+      type: 'video',
+      key: ytApiKey,
     },
-  }
+  })
 
-  const { data } = await axios.request(option)
-  console.log(query)
-  if (type === 'track') {
-    return data?.data?.find((item: any) => item.lengthSeconds < 600)?.videoId
-  }
-  return data?.data[0]?.videoId
+  return data?.items?.[0]?.id?.videoId
 }
 
 export const getAudioLink = async (params: GetAudioLinkParams) => {
-  const { query, type } = params
-  const id = await ytSearch({ query, type })
+  const { query } = params
+  console.log(query)
+  const id = await getYoutubeVideoId({ query })
   console.log(id)
   const options = {
     method: 'GET',

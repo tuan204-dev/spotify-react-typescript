@@ -24,6 +24,7 @@ spotifyApiClient.interceptors.request.use(async (config) => {
   return config
 })
 
+//to get artists data
 export const rapidApiClient = axios.create({
   baseURL: 'https://spotify23.p.rapidapi.com',
   paramsSerializer: (params) => queryString.stringify(params, { encode: false }),
@@ -36,4 +37,10 @@ rapidApiClient.interceptors.request.use((config) => {
   config.headers['X-RapidAPI-Host'] = 'spotify23.p.rapidapi.com'
 
   return config
+})
+
+// youtube search
+export const youtubeApiClient = axios.create({
+  baseURL: 'https://youtube.googleapis.com/youtube/v3',
+  paramsSerializer: (params) => queryString.stringify(params, { encode: false }),
 })

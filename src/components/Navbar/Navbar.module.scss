@@ -75,7 +75,6 @@
 
           &:focus {
             box-shadow: 0 0 0 1px $white;
-
           }
         }
       }
@@ -170,6 +169,7 @@
     transition: all 33ms ease;
     cursor: pointer;
     color: $black;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, .15);
 
     &:hover {
       transform: scale(1.04);

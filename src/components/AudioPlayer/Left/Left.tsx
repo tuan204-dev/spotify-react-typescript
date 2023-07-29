@@ -1,7 +1,7 @@
 import { HeartIcon } from '@/assets/icons'
 import { Image, SubTitle } from '@/components/UIs'
 import { PlayerContext } from '@/contexts/PlayerContext'
-import { isEllipsisActive } from '@/utils'
+import { useEllipsisHorizontal } from '@/hooks'
 import classNames from 'classnames/bind'
 import { FC, useContext, useMemo, useRef } from 'react'
 import Marquee from 'react-fast-marquee'
@@ -19,6 +19,10 @@ const Left: FC = () => {
   )
 
   const trackNameRef = useRef<any>()
+  const isEllipsisActive = useEllipsisHorizontal(
+    trackNameRef.current,
+    playBarData?.trackName
+  )
 
   return (
     <div className={cx('wrapper')}>
@@ -30,7 +34,7 @@ const Left: FC = () => {
           <div ref={trackNameRef} className={cx('name')}>
             <span className={cx('pivot')}>{playBarData?.trackName}</span>
             {!isLoading ? (
-              isEllipsisActive(trackNameRef.current) ? (
+              isEllipsisActive ? (
                 <Marquee speed={15} pauseOnHover={true}>
                   <Link
                     to={

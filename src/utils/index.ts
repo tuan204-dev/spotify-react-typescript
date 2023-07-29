@@ -8,7 +8,6 @@ import fetchHomePageData from './fetchHomePageData'
 import normalizeAlbum from './normalizeAlbum'
 import normalizeTrack from './normalizeTrack'
 import transformDomain from './transformDomain'
-import isEllipsisActive from './isEllipsisActive'
 import documentTitle from './documentTitle'
 
 export {
@@ -22,6 +21,5 @@ export {
   normalizeAlbum,
   normalizeTrack,
   transformDomain,
-  isEllipsisActive,
   documentTitle,
 }

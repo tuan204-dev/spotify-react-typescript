@@ -124,7 +124,7 @@ const Playlist: React.FC = () => {
           <div style={{ backgroundColor: `${bgColor}` }} className={cx('bg-blur')}></div>
           <div className={cx('main')}>
             <div className={cx('action-bar')}>
-              <div onClick={() => handleClickPlayBtn()}>
+              <div onClick={handleClickPlayBtn}>
                 <PlayButton
                   size={56}
                   fontSize={24}

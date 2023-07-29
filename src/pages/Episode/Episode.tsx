@@ -1,6 +1,6 @@
 import episodeApi from '@/apis/episodeApi'
 import { Footer, Header, Navbar } from '@/components'
-import { useDominantColor } from '@/hooks'
+import { useDominantColor, useEllipsisVertical } from '@/hooks'
 import classNames from 'classnames/bind'
 import { FC, useEffect, useRef, useState, useContext } from 'react'
 import { useInView } from 'react-intersection-observer'
@@ -34,6 +34,9 @@ const Episode: FC = () => {
   const { id } = useParams()
 
   const headerRef = useRef<any>()
+  const descRef = useRef<any>()
+
+  const isEllipsisActive = useEllipsisVertical(descRef.current)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -90,7 +93,7 @@ const Episode: FC = () => {
             <div className={cx('top')}>
               <span>{dateFormatConvertor(data?.release_date)}</span>
               <div className={cx('dot')}></div>
-              <span>
+              <span ref={descRef}>
                 {durationConvertor({ milliseconds: data?.duration_ms, type: 'long' })}
               </span>
             </div>
@@ -110,11 +113,13 @@ const Episode: FC = () => {
                 dangerouslySetInnerHTML={{ __html: data?.html_description as string }}
               ></span>
             </div>
-            <div className={cx('expand-btn')}>
-              <button onClick={() => setExpanded((prev) => !prev)}>
-                {isExpanded ? 'Show less' : '... Show more'}
-              </button>
-            </div>
+            {isEllipsisActive && (
+              <div className={cx('expand-btn')}>
+                <button onClick={() => setExpanded((prev) => !prev)}>
+                  {isExpanded ? 'Show less' : '... Show more'}
+                </button>
+              </div>
+            )}
           </div>
           <Link to={`/show/${data?.show?.id}`}>
             <div className={cx('see-all-btn')}>
