@@ -1,16 +1,14 @@
-import { getYoutubeVideoId } from '@/apis/getAudioLink'
-import { useEffect } from 'react'
+// import { getYoutubeTrackId, getYoutubeVideoId } from '@/apis/getAudioLink'
+// import { useEffect } from 'react'
 
 const Test = () => {
-  useEffect(() => {
-    const fetchData = async () => {
-      await getYoutubeVideoId({
-        query: '00 RPT MCK album 99% ',
-      })
-    }
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     await getYoutubeTrackId('Suit & Tie - RPT MCK Hoang Ton album: 99%')
+  //   }
 
-    fetchData()
-  }, [])
+  //   fetchData()
+  // }, [])
 
   return <div>test</div>
 }

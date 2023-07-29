@@ -151,7 +151,11 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
                 : ''
             }`
           : `${currentTrack?.show?.publisher} ${currentTrack?.name} ${currentTrack?.type} original`
-      const data = await getAudioLink({ query })
+      const data = await getAudioLink({
+        query,
+        duration_ms: currentTrack?.duration_ms as number,
+        type: playingType,
+      })
       setAudioData(data)
     }
     handlePause()

@@ -84,7 +84,7 @@ const SongList: FC<SongListProps> = ({
                 key={index}
                 order={order++ + adjustOrder}
                 thumb={
-                  item?.album?.images[item?.album?.images?.length - 1]?.url ||
+                  item?.album?.images?.[item?.album?.images?.length - 1]?.url ||
                   item?.track?.album?.images[item?.track?.album?.images?.length - 1]
                     ?.url ||
                   item?.images?.[item?.images?.length - 1]?.url
@@ -93,7 +93,7 @@ const SongList: FC<SongListProps> = ({
                 artists={item?.artists ?? item?.track?.artists}
                 albumData={{
                   name: item?.album?.name ?? item?.track?.album?.name,
-                  id: item?.track?.album?.id,
+                  id: item?.track?.album?.id ?? item?.album?.id,
                 }}
                 dateAdd={item?.added_at}
                 duration={item?.duration_ms ?? item?.track?.duration_ms}

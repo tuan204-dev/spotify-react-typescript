@@ -40,7 +40,22 @@ rapidApiClient.interceptors.request.use((config) => {
 })
 
 // youtube search
-export const youtubeApiClient = axios.create({
-  baseURL: 'https://youtube.googleapis.com/youtube/v3',
-  paramsSerializer: (params) => queryString.stringify(params, { encode: true }),
-})
+// export const youtubeApiClient = axios.create({
+//   baseURL: 'https://youtube.googleapis.com/youtube/v3',
+//   paramsSerializer: (params) => queryString.stringify(params, { encode: true }),
+// })
+
+//rapidApi - Youtube search https://rapidapi.com/fama-official-fastytapi/api/fastytapi/
+// export const rapidYtSearchClient = axios.create({
+//   baseURL: 'https://fastytapi.p.rapidapi.com/ytapi',
+//   paramsSerializer: (params) => queryString.stringify(params, { encode: true }),
+// })
+
+// rapidYtSearchClient.interceptors.request.use((config) => {
+//   const apiKey = import.meta.env.VITE_RAPID_YOUTUBE_SEARCH
+
+//   config.headers['X-RapidAPI-Key'] = apiKey
+//   config.headers['X-RapidAPI-Host'] = 'fastytapi.p.rapidapi.com'
+
+//   return config
+// })
