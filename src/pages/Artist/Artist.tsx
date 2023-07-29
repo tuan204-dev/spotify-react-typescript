@@ -16,6 +16,7 @@ import classNames from 'classnames/bind'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import styles from './Artist.module.scss'
+import { SpotifyTrack } from '@/types/track'
 
 const cx = classNames.bind(styles)
 
@@ -90,8 +91,8 @@ const Artist: React.FC = () => {
   }
 
   const handleClickPlayBtn = () => {
-    setQueue(topTracks || [])
-    setCurrentTrack(topTracks?.[0])
+    setQueue([...(topTracks as SpotifyTrack[])] || [])
+    setCurrentTrack({ ...topTracks?.[0] })
     setCurrentTrackIndex(0)
     calNextTrackIndex()
     setPlayingType('track')

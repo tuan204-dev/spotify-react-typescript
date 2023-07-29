@@ -32,9 +32,10 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
     } else setLoading(true)
   }, [topResult, songs])
 
-  const handleClickPlayBtn = () => {
-    setCurrentTrack(topResult)
-    setQueue([topResult])
+  const handleClickPlayBtn = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.stopPropagation()
+    setCurrentTrack({ ...topResult })
+    setQueue([{ ...topResult }])
     setCurrentTrackIndex(0)
     calNextTrackIndex()
     setPlayingType('track')
@@ -74,7 +75,7 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
           </div>
           <div className={cx('btn-pivot')}>
             {!isLoading && (
-              <div onClick={handleClickPlayBtn} className={cx('play-btn')}>
+              <div onClick={(e) => handleClickPlayBtn(e)} className={cx('play-btn')}>
                 <PlayButton
                   size={50}
                   scaleHovering={1.05}

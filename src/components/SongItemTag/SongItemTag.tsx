@@ -53,8 +53,8 @@ const SongItemTag: React.FC<SongItemTagProps> = (props) => {
             },
           }
         }) || []
-      setQueue(queueList)
-      setCurrentTrack(queueList[0])
+      setQueue([...queueList])
+      setCurrentTrack({ ...queueList[0] })
       setCurrentTrackIndex(0)
       calNextTrackIndex()
       setPlayingType('track')

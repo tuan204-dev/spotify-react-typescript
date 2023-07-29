@@ -21,9 +21,10 @@ const NextSong: FC<NextSongProps> = ({ nextSong }) => {
     setPlayingType,
   } = useContext(PlayerContext)
 
-  const handleClick = () => {
-    setCurrentTrack(nextSong)
-    setQueue([nextSong])
+  const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.stopPropagation()
+    setCurrentTrack({ ...nextSong })
+    setQueue([{ ...nextSong }])
     setCurrentTrackIndex(0)
     calNextTrackIndex()
     setPlayingType('track')
@@ -39,7 +40,7 @@ const NextSong: FC<NextSongProps> = ({ nextSong }) => {
         </Link>
       </div>
       <div className={cx('body')}>
-        <div onClick={handleClick} className={cx('next-song')}>
+        <div onClick={(e) => handleClick(e)} className={cx('next-song')}>
           <div className={cx('icon')}>
             <MusicNote size={16} />
           </div>

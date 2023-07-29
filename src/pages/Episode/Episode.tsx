@@ -59,8 +59,8 @@ const Episode: FC = () => {
 
   const handleClickPlayBtn = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.stopPropagation()
-    setQueue([data as CurrentTrack])
-    setCurrentTrack(data)
+    setQueue([{ ...(data as CurrentTrack) }])
+    setCurrentTrack({ ...data })
     setCurrentTrackIndex(0)
     setPlayingType('show')
     calNextTrackIndex()

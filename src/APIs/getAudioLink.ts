@@ -15,6 +15,7 @@ export const getYoutubeVideoId = async (params: GetAudioLinkParams) => {
       part: 'snippet',
       q: query,
       type: 'video',
+      regionCode: 'VN',
       key: ytApiKey,
     },
   })

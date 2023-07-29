@@ -42,5 +42,5 @@ rapidApiClient.interceptors.request.use((config) => {
 // youtube search
 export const youtubeApiClient = axios.create({
   baseURL: 'https://youtube.googleapis.com/youtube/v3',
-  paramsSerializer: (params) => queryString.stringify(params, { encode: false }),
+  paramsSerializer: (params) => queryString.stringify(params, { encode: true }),
 })

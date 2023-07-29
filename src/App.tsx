@@ -26,7 +26,7 @@ const App = () => {
   const [isPlayingViewShowed, setPlayingViewShowed] = useState<boolean>(false)
   useEffect(() => {
     if (window.innerWidth < 900) {
-      alert('Please use a desktop or laptop for best experience :v')
+      alert('Please use a desktop or laptop for the best experience :v')
     }
     deleteAllCookies()
   }, [])

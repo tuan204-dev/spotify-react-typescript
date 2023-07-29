@@ -37,15 +37,16 @@ const SongItem: React.FC<SongItemProps> = ({
   } = useContext(PlayerContext)
   const { currentTrack, isPlaying } = useContext(PlayerContext)
 
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.stopPropagation()
     const indexOfTrackInQueue = queue.findIndex((item) => item?.id === originalData?.id)
     if (indexOfTrackInQueue === -1) {
-      setQueue(originalData ? [originalData] : [])
-      setCurrentTrack(originalData)
+      setQueue(originalData ? [{ ...originalData }] : [])
+      setCurrentTrack({ ...originalData })
       setCurrentTrackIndex(0)
       calNextTrackIndex()
     } else {
-      setCurrentTrack(originalData)
+      setCurrentTrack({ ...originalData })
       setCurrentTrackIndex(indexOfTrackInQueue)
       calNextTrackIndex()
     }
@@ -58,7 +59,7 @@ const SongItem: React.FC<SongItemProps> = ({
 
   return (
     <div
-      onClick={handleClick}
+      onClick={(e) => handleClick(e)}
       className={cx({
         wrapper: true,
         'grid-md': width <= 780 && type !== 'album',

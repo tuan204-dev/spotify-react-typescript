@@ -35,8 +35,8 @@ const ShowItem: FC<ShowItemComponentProps> = ({ item, show, isLoading }) => {
   const handleClickPlayBtn = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.stopPropagation()
     const dataNormalized = { ...item, show }
-    setQueue([dataNormalized as CurrentTrack])
-    setCurrentTrack(dataNormalized)
+    setQueue([{ ...(dataNormalized as CurrentTrack) }])
+    setCurrentTrack({ ...dataNormalized })
     setCurrentTrackIndex(0)
     setPlayingType('show')
     calNextTrackIndex()

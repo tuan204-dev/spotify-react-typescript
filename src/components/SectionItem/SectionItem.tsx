@@ -58,8 +58,8 @@ const SectionItem: React.FC<SectionItemI> = ({
             },
           }
         })
-        setQueue(queueList)
-        setCurrentTrack(queueList?.[0])
+        setQueue([...queueList])
+        setCurrentTrack({ ...queueList?.[0] })
         setCurrentTrackIndex(0)
         setPlayingType('track')
         calNextTrackIndex()
@@ -72,8 +72,8 @@ const SectionItem: React.FC<SectionItemI> = ({
           id,
         })
         const queueList = data?.tracks?.items?.map((item: any) => item?.track) || []
-        setQueue(queueList)
-        setCurrentTrack(queueList?.[0])
+        setQueue([...queueList])
+        setCurrentTrack({ ...queueList?.[0] })
         setCurrentTrackIndex(0)
         setPlayingType('track')
         calNextTrackIndex()
@@ -82,8 +82,8 @@ const SectionItem: React.FC<SectionItemI> = ({
     } else if (dataType === 'artist') {
       const fetchData = async () => {
         const data = await getArtistTopTrack(id)
-        setQueue(data?.tracks)
-        setCurrentTrack(data?.tracks?.[0])
+        setQueue([...data.tracks])
+        setCurrentTrack({ ...data?.tracks?.[0] })
         setCurrentTrackIndex(0)
         calNextTrackIndex()
         setPlayingType('track')
@@ -99,18 +99,18 @@ const SectionItem: React.FC<SectionItemI> = ({
               show: { name: data?.name, id: data?.id, publisher: data?.publisher },
             }
           }) || []
-        setQueue(queueList)
-        setCurrentTrack(queueList?.[0])
+        setQueue([...queueList])
+        setCurrentTrack({ ...queueList?.[0] })
         setCurrentTrackIndex(0)
         calNextTrackIndex()
         setPlayingType('show')
       }
       fetchData()
-    } else if(dataType === 'episode') {
+    } else if (dataType === 'episode') {
       const fetchData = async () => {
-        const data = await episodeApi({id})
-        setQueue([data])
-        setCurrentTrack(data)
+        const data = await episodeApi({ id })
+        setQueue([{ ...data }])
+        setCurrentTrack({ ...data })
         setCurrentTrackIndex(0)
         setPlayingType('show')
         calNextTrackIndex()

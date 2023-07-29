@@ -118,7 +118,7 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
         getRecommendation()
       } else if (queue?.length >= 2) {
         setCurrentTrackIndex(0)
-        setCurrentTrack(queue[0])
+        setCurrentTrack({ ...queue[0] })
         calNextTrackIndex()
       }
     }
@@ -143,11 +143,11 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
     const fetchData = async () => {
       const query =
         playingType === 'track'
-          ? `${currentTrack?.name} ${currentTrack?.artists
+          ? `${currentTrack?.name} - ${currentTrack?.artists
               ?.map((artist) => artist?.name)
               .join(' ')} ${
               currentTrack?.album?.album_type?.toLocaleLowerCase() === 'album'
-                ? `album ${currentTrack?.album?.name} `
+                ? `album: ${currentTrack?.album?.name}`
                 : ''
             }`
           : `${currentTrack?.show?.publisher} ${currentTrack?.name} ${currentTrack?.type} original`
