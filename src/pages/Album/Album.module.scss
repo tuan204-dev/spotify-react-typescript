@@ -30,10 +30,9 @@
     top: 0;
     left: 0;
     right: 0;
-    background-image: linear-gradient(rgba(0, 0, 0, .6) 0, $bg-base 100%), $bg-noise;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6) 0, $bg-base 100%), $bg-noise;
     z-index: 0;
   }
-
 
   .main {
     position: relative;
@@ -56,8 +55,6 @@
         }
       }
     }
-
-
   }
 }
 
@@ -67,6 +64,7 @@
   padding-inline: 24px;
   margin-top: 32px;
   line-height: 1.7;
+  gap: 4px;
 
   p {
     color: $text-neutral;
@@ -78,6 +76,10 @@
     font-size: 14px;
     margin-bottom: 2px;
   }
+}
+
+.artist-albums {
+  margin-top: 32px;
 }
 
 .pivot-tracking {

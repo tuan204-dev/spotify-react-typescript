@@ -1,6 +1,7 @@
+import { getArtistAlbums } from '@/apis/artistApi'
 import categoryApi from '@/apis/categoryApi'
 import { HeartIcon } from '@/assets/icons'
-import { Footer, Header, Navbar, SongList } from '@/components'
+import { Footer, Header, Navbar, Section, SongList } from '@/components'
 import { PlayButton } from '@/components/UIs'
 import { PlayerContext } from '@/contexts/PlayerContext'
 import { useComponentSize, useRaiseColorTone } from '@/hooks'
@@ -12,6 +13,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useNavigate, useParams } from 'react-router-dom'
 import styles from './Album.module.scss'
+import { ResponseSectionItem } from '@/types/section'
 
 const cx = classNames.bind(styles)
 
@@ -29,6 +31,7 @@ const Album: React.FC = () => {
   const [navOpacity, setNavOpacity] = useState<number>(0)
   const [isLoading, setLoading] = useState<boolean>(true)
   const [navPlayBtnVisible, setNavPlayBtnVisible] = useState<boolean>(false)
+  const [artistAlbums, setArtistAlbums] = useState<SpotifyAlbum[]>()
 
   useEffect(() => {
     if (isPlaying) {
@@ -66,6 +69,16 @@ const Album: React.FC = () => {
   }, [id])
 
   useEffect(() => {
+    const fetchArtistAlbum = async () => {
+      const artistAlbums = await getArtistAlbums(data?.artists?.[0]?.id)
+      if (artistAlbums?.items?.length && artistAlbums?.items?.length !== 0) {
+        setArtistAlbums([...artistAlbums.items])
+      }
+    }
+    fetchArtistAlbum()
+  }, [data?.artists?.[0]?.id])
+
+  useEffect(() => {
     setLoading(Boolean(!data))
   }, [data])
 
@@ -98,7 +111,8 @@ const Album: React.FC = () => {
     setPlayingType('track')
     calNextTrackIndex()
   }
-  // console.log(data)
+  console.log(data)
+  console.log(artistAlbums)
 
   return (
     <main className={cx('wrapper')}>
@@ -170,8 +184,21 @@ const Album: React.FC = () => {
             </p>
           ))}
         </div>
-
-        <Footer />
+        <div className={cx('artist-albums')}>
+          <Section
+            apiType="spotify"
+            data={
+              artistAlbums?.filter((album: SpotifyAlbum) => album?.id !== data?.id) as
+                | ResponseSectionItem[]
+                | undefined
+            }
+            dataType="album"
+            isClickable={false}
+            title={`More by ${data?.artists?.[0]?.name}`}
+            type="album"
+          />
+          <Footer />
+        </div>
       </div>
     </main>
   )

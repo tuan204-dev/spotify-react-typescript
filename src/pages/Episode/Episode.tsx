@@ -22,6 +22,7 @@ const Episode: FC = () => {
     setCurrentTrackIndex,
     setPlayingType,
     calNextTrackIndex,
+    currentTrack
   } = useContext(PlayerContext)
   const [navOpacity, setNavOpacity] = useState<number>(0)
   const [data, setData] = useState<EpisodeData>()
@@ -59,6 +60,7 @@ const Episode: FC = () => {
 
   const handleClickPlayBtn = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.stopPropagation()
+    if (currentTrack?.id === data?.id) return
     setQueue([{ ...(data as CurrentTrack) }])
     setCurrentTrack({ ...data })
     setCurrentTrackIndex(0)

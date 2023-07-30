@@ -28,7 +28,7 @@ export const getYoutubeAudioId = async (paramsSearch: GetAudioLinkParams) => {
   const apiKey =
     type === 'track'
       ? import.meta.env.VITE_RAPID_YOUTUBE_SEARCH
-      : import.meta.env.VITE_RAPID_YOUTUBE_SEARCH_PODCAST
+      : import.meta.env.VITE_RAPID_YOUTUBE_SEARCH_PODCAST_AND_AUDIO
   const rapidHost =
     type === 'track' ? 'fastytapi.p.rapidapi.com' : 'yt-api.p.rapidapi.com'
 
@@ -46,18 +46,14 @@ export const getYoutubeAudioId = async (paramsSearch: GetAudioLinkParams) => {
 
   if (type === 'show') return data.data[0].videoId
 
-  let durationDiff = Number.MAX_VALUE
-  let videoId = ''
-
-  data.data.forEach((item: any) => {
+  for (const item of data.data) {
     const diff = Math.abs(item.lengthSeconds - duration_ms / 1000)
-    if (diff < durationDiff) {
-      durationDiff = diff
-      videoId = item.videoId
+    if (diff < 80) {
+      return item.videoId
     }
-  })
+  }
 
-  return videoId
+  return data.data[0].videoId
 }
 
 export const getAudioLink = async (params: GetAudioLinkParams) => {
@@ -67,10 +63,10 @@ export const getAudioLink = async (params: GetAudioLinkParams) => {
   console.log(id)
   const options = {
     method: 'GET',
-    url: 'https://ytstream-download-youtube-videos.p.rapidapi.com/dl',
+    url: 'https://yt-api.p.rapidapi.com/dl',
     params: { id },
     headers: {
-      'X-RapidAPI-Key': import.meta.env.VITE_RAPID_YOUTUBE_AUDIO,
+      'X-RapidAPI-Key': import.meta.env.VITE_RAPID_YOUTUBE_SEARCH_PODCAST_AND_AUDIO,
       'X-RapidAPI-Host': 'ytstream-download-youtube-videos.p.rapidapi.com',
     },
   }

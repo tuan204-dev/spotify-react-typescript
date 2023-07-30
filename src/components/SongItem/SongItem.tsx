@@ -34,11 +34,13 @@ const SongItem: React.FC<SongItemProps> = ({
     calNextTrackIndex,
     setPlayingType,
     queue,
+    isPlaying,
+    currentTrack,
   } = useContext(PlayerContext)
-  const { currentTrack, isPlaying } = useContext(PlayerContext)
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.stopPropagation()
+    if (currentTrack?.id === originalData?.id) return
     const indexOfTrackInQueue = queue.findIndex((item) => item?.id === originalData?.id)
     if (indexOfTrackInQueue === -1) {
       setQueue(originalData ? [{ ...originalData }] : [])

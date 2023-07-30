@@ -75,12 +75,7 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
   const [audioData, setAudioData] = useState<any>()
   const [currentTrackIndex, setCurrentTrackIndex] = useState<number>(0)
   const [nextTrackIndex, setNextTrackIndex] = useState<number>(1)
-  const [playingType, setPlayingType] = useState<'track' | 'show'>(() => {
-    return (
-      JSON.parse(localStorage.getItem('spotify_playing_type') as 'track' | 'show') ??
-      'track'
-    )
-  })
+  const [playingType, setPlayingType] = useState<'track' | 'show'>('track')
 
   // ----------Control-----------------
   const [currentTime, setCurrentTime] = useState<number>(0) //s
@@ -89,17 +84,11 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
   const [userClicked, setUserClicked] = useState<boolean>(false) //detect the user clicked or yet
   const [isRepeat, setRepeat] = useState<boolean>(false)
   const [isShuffle, setShuffle] = useState<boolean>(false)
-  const [isBtnClickable, setBtnClickable] = useState<boolean>(
-    localStorage.getItem('spotify_current_track') !== null
-  )
+  const [isBtnClickable, setBtnClickable] = useState<boolean>(false)
 
   // ---------------Queue list----------------
-  const [queue, setQueue] = useState<CurrentTrack[]>([
-    JSON.parse(localStorage.getItem('spotify_current_track') as string),
-  ])
-  const [currentTrack, setCurrentTrack] = useState<CurrentTrack | undefined>(
-    JSON.parse(localStorage.getItem('spotify_current_track') as string)
-  )
+  const [queue, setQueue] = useState<CurrentTrack[]>([])
+  const [currentTrack, setCurrentTrack] = useState<CurrentTrack | undefined>()
 
   useEffect(() => {
     if (currentTrack) {
@@ -131,6 +120,23 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
   const audioRef = useRef<HTMLAudioElement>(new Audio())
 
   const prevDocumentTitle = useRef<string>('')
+
+  // set default  state from localStorage
+  useEffect(() => {
+    audioRef.current.volume = localStorage.getItem('spotify_volume')
+      ? JSON.parse(localStorage.getItem('spotify_volume') as string)
+      : 1
+    const initTrack =
+      JSON.parse(localStorage.getItem('spotify_current_track') as string) || undefined
+    const initPlayingType =
+      JSON.parse(localStorage.getItem('spotify_playing_type') as 'track' | 'show') ??
+      'track'
+
+    setPlayingType(initPlayingType)
+    setCurrentTrack(initTrack && { ...initTrack })
+    setQueue(initTrack ? [{ ...initTrack }] : [])
+    setBtnClickable(Boolean(initTrack))
+  }, [])
 
   useMemo(() => {
     if (audioData) {
@@ -170,12 +176,6 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
       audioRef.current.currentTime = currentTime
     }
   }, [currentTime])
-
-  useEffect(() => {
-    audioRef.current.volume = localStorage.getItem('spotify_volume')
-      ? JSON.parse(localStorage.getItem('spotify_volume') as string)
-      : 1
-  }, [])
 
   useEffect(() => {
     calNextTrackIndex()

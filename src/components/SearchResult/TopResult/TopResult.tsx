@@ -24,6 +24,7 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
     setCurrentTrackIndex,
     calNextTrackIndex,
     setPlayingType,
+    currentTrack
   } = useContext(PlayerContext)
 
   useLayoutEffect(() => {
@@ -34,11 +35,12 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
 
   const handleClickPlayBtn = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.stopPropagation()
+    if (currentTrack?.id === topResult?.id) return
     setCurrentTrack({ ...topResult })
     setQueue([{ ...topResult }])
     setCurrentTrackIndex(0)
-    calNextTrackIndex()
     setPlayingType('track')
+    calNextTrackIndex()
   }
 
   return (
