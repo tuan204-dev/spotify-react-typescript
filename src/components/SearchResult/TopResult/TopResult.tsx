@@ -24,7 +24,7 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
     setCurrentTrackIndex,
     calNextTrackIndex,
     setPlayingType,
-    currentTrack
+    currentTrack,
   } = useContext(PlayerContext)
 
   useLayoutEffect(() => {
@@ -83,6 +83,7 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
                   scaleHovering={1.05}
                   transitionDuration={33}
                   fontSize={24}
+                  isPlay={currentTrack?.id === topResult?.id}
                 />
               </div>
             )}

@@ -7,13 +7,13 @@ import { PlayerContext } from '@/contexts/PlayerContext'
 import { useComponentSize, useRaiseColorTone } from '@/hooks'
 import useDominantColor from '@/hooks/useDominantColor'
 import { SpotifyAlbum } from '@/types/album'
+import { ResponseSectionItem } from '@/types/section'
 import { dateFormatConvertor, documentTitle } from '@/utils'
 import classNames from 'classnames/bind'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useNavigate, useParams } from 'react-router-dom'
 import styles from './Album.module.scss'
-import { ResponseSectionItem } from '@/types/section'
 
 const cx = classNames.bind(styles)
 
@@ -111,8 +111,6 @@ const Album: React.FC = () => {
     setPlayingType('track')
     calNextTrackIndex()
   }
-  console.log(data)
-  console.log(artistAlbums)
 
   return (
     <main className={cx('wrapper')}>

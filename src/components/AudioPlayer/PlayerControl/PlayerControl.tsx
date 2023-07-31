@@ -20,6 +20,7 @@ const PlayerControl: FC = () => {
     userClicked,
     isShuffle,
     isRepeat,
+    isBtnClickable,
     handlePlay,
     handlePause,
     setCurrentTime,
@@ -28,14 +29,30 @@ const PlayerControl: FC = () => {
     setUserClicked,
     setShuffle,
     setRepeat,
-    isBtnClickable,
   } = useContext(PlayerContext)
   const [trackProcess, setTrackProcess] = useState<number>(audioRef?.current?.currentTime)
+
+  const startTimer = () => {
+    clearInterval(intervalIdRef?.current)
+    intervalIdRef.current = setInterval(() => {
+      if (!audioRef?.current?.paused) {
+        setTrackProcess((prev) => +prev + 1)
+      }
+    }, 1000)
+  }
 
   useEffect(() => {
     setTrackProcess(0)
     clearInterval(intervalIdRef?.current)
   }, [currentTrack])
+
+  useEffect(() => {
+    // console.log(isPlaying)
+    if (isPlaying) {
+      startTimer()
+      handlePlay()
+    }
+  }, [isPlaying])
 
   const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     clearInterval(intervalIdRef?.current)
@@ -47,19 +64,10 @@ const PlayerControl: FC = () => {
     startTimer()
   }
 
-  const startTimer = () => {
-    clearInterval(intervalIdRef?.current)
-    intervalIdRef.current = setInterval(() => {
-      if (!audioRef?.current?.paused) {
-        setTrackProcess((prev) => +prev + 1)
-      }
-    }, 1000)
-  }
-
   if (audioRef?.current) {
     audioRef.current.onended = () => {
       if (isRepeat) {
-        console.log('repeated')
+        // console.log('repeated')
         setCurrentTime(0)
         setTrackProcess(0)
         startTimer()
@@ -69,14 +77,6 @@ const PlayerControl: FC = () => {
       }
     }
   }
-
-  useEffect(() => {
-    // console.log(isPlaying)
-    if (isPlaying) {
-      startTimer()
-      handlePlay()
-    }
-  }, [isPlaying])
 
   const handlePlayBtn = () => {
     // console.log(duration, isPlaying)

@@ -115,13 +115,13 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
 
   // -----------------------------------------------
 
-  const intervalIdRef = useRef<any>()
+  const intervalIdRef = useRef<number>()
 
   const audioRef = useRef<HTMLAudioElement>(new Audio())
 
   const prevDocumentTitle = useRef<string>('')
 
-  // set default  state from localStorage
+  // set default state from localStorage
   useEffect(() => {
     audioRef.current.volume = localStorage.getItem('spotify_volume')
       ? JSON.parse(localStorage.getItem('spotify_volume') as string)
@@ -131,17 +131,24 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
     const initPlayingType =
       JSON.parse(localStorage.getItem('spotify_playing_type') as 'track' | 'show') ??
       'track'
+    const isShuffle =
+      JSON.parse(localStorage.getItem('spotify_is_shuffle') as string) ?? false
+    const isRepeat =
+      JSON.parse(localStorage.getItem('spotify_is_repeat') as string) ?? false
 
     setPlayingType(initPlayingType)
     setCurrentTrack(initTrack && { ...initTrack })
     setQueue(initTrack ? [{ ...initTrack }] : [])
     setBtnClickable(Boolean(initTrack))
+    setShuffle(isShuffle)
+    setRepeat(isRepeat)
   }, [])
 
   useMemo(() => {
     if (audioData) {
       audioRef.current.src = audioData.audioLink
       audioRef.current.load()
+      setBtnClickable(false)
     }
   }, [audioData])
 
@@ -200,6 +207,14 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
       }
     }
   }, [currentTrack, isPlaying])
+
+  useEffect(() => {
+    localStorage.setItem('spotify_is_shuffle', JSON.stringify(isShuffle))
+  }, [isShuffle])
+
+  useEffect(() => {
+    localStorage.setItem('spotify_is_repeat', JSON.stringify(isRepeat))
+  }, [isRepeat])
 
   // -----------------------------------------
 
@@ -267,6 +282,7 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
   }, [currentTrack, audioData])
 
   audioRef.current.onloadeddata = () => {
+    setBtnClickable(true)
     if (userClicked) {
       setReady(true)
       setPlaying(true)
@@ -300,13 +316,13 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
         currentTrackIndex,
         isReady,
         userClicked,
-        ...returnData,
         nextTrackIndex,
         isRepeat,
         isShuffle,
         isBtnClickable,
         prevDocumentTitle,
         playingType,
+        ...returnData,
       }}
     >
       {children}

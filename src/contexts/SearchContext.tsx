@@ -9,6 +9,7 @@ interface SearchContext {
   data: any
   query: string | undefined
   categoryRef: React.MutableRefObject<string>
+  isLoading: boolean
 }
 
 export const SearchContext = createContext({} as SearchContext)
@@ -16,6 +17,7 @@ export const SearchContext = createContext({} as SearchContext)
 export const SearchProvider: FC<SearchProviderProps> = ({ children }) => {
   const [query, setQuery] = useState<string | undefined>('')
   const [data, setData] = useState<any>(null)
+  const [isLoading, setLoading] = useState<boolean>(true)
 
   const categoryRef = useRef<string>('all')
 
@@ -24,12 +26,15 @@ export const SearchProvider: FC<SearchProviderProps> = ({ children }) => {
       const data = await searchApi({
         query: query,
         market: 'VN',
+        limit: 19,
       })
 
       setData({ ...data })
+      setLoading(false)
     }
     if (query) {
       setData(null)
+      setLoading(true)
       fetchData()
     } else {
       setData(null)
@@ -37,7 +42,7 @@ export const SearchProvider: FC<SearchProviderProps> = ({ children }) => {
   }, [query])
 
   return (
-    <SearchContext.Provider value={{ query, setQuery, data, categoryRef }}>
+    <SearchContext.Provider value={{ query, setQuery, data, categoryRef, isLoading }}>
       {children}
     </SearchContext.Provider>
   )

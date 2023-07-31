@@ -11,7 +11,7 @@ import TopResult from './TopResult/TopResult'
 const cx = classNames.bind(styles)
 
 const SearchResult: FC = () => {
-  const { data, query, categoryRef } = useContext(SearchContext)
+  const { data, query, categoryRef, isLoading } = useContext(SearchContext)
   const [category, setCategory] = useState<string>(categoryRef.current)
   const [searchSelections, setSearchSelections] = useState<any>([])
 
@@ -120,6 +120,7 @@ const SearchResult: FC = () => {
                     songList={data?.tracks?.items
                       ?.filter((item: any) => item)
                       ?.sort((a: any, b: any) => -a?.popularity + b?.popularity)}
+                    isLoading={isLoading}
                   />
                 )
               }
