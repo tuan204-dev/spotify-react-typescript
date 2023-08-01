@@ -37,6 +37,11 @@
     aspect-ratio: 1 / 1;
     overflow: hidden;
 
+    .default-thumb {
+      @include default-thumb;
+      color: $text-neutral;
+    }
+
     span {
       display: block;
       width: 100%;
@@ -56,7 +61,6 @@
     height: 100%;
     gap: 5px;
     flex: 1;
-    // padding: 8px 0;
     overflow: hidden;
 
     .name {

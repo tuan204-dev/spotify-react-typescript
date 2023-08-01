@@ -6,7 +6,7 @@ import { AboutArtist } from '..'
 import { ArtistContext } from '@/contexts/ArtistContext'
 import { Image, SubTitle } from '../UIs'
 import Marquee from 'react-fast-marquee'
-import { CloseIcon, HeartIcon } from '@/assets/icons'
+import { CloseIcon, HeartIcon, MusicNote } from '@/assets/icons'
 import { Link } from 'react-router-dom'
 import { AppContext } from '@/App'
 import NextSong from './NextSong/NextSong'
@@ -35,7 +35,16 @@ const PlayingView: FC = () => {
         </div>
         <div className={cx('track-banner')}>
           <div>
-            <Image src={currentTrack?.album?.images?.[0]?.url} alt={currentTrack?.name} />
+            {currentTrack?.album?.images?.[0]?.url ? (
+              <Image
+                src={currentTrack?.album?.images?.[0]?.url}
+                alt={currentTrack?.name}
+              />
+            ) : (
+              <div className={cx('default-banner')}>
+                <MusicNote size={114} />
+              </div>
+            )}
           </div>
         </div>
         <div className={cx('content')}>

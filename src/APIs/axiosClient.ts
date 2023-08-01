@@ -24,6 +24,20 @@ spotifyApiClient.interceptors.request.use(async (config) => {
   return config
 })
 
+export const spotifyApiDev = axios.create({
+  baseURL: 'https://api.spotify.com/v1',
+  paramsSerializer: (params) => queryString.stringify(params, { encode: false }),
+})
+
+spotifyApiDev.interceptors.request.use(async (config) => {
+  config.headers['Content-Type'] = 'application/json'
+
+  const tokenDev = await getAccessTokenDev()
+  config.headers.Authorization = `Bearer ${tokenDev}`
+
+  return config
+})
+
 //to get artists data
 export const rapidApiClient = axios.create({
   baseURL: 'https://spotify23.p.rapidapi.com',

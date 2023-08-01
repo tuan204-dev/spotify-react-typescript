@@ -1,4 +1,4 @@
-import { PlayIcon } from '@/assets/icons'
+import { PlayIcon, SingleMusicNote } from '@/assets/icons'
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
 import { PlayerContext } from '@/contexts/PlayerContext'
 import { SongItemProps } from '@/types/track'
@@ -91,7 +91,13 @@ const SongItem: React.FC<SongItemProps> = ({
         {type !== 'album' && (
           <div className={cx('thumb')}>
             {!isLoading ? (
-              <Image src={thumb} alt={songName} />
+              thumb ? (
+                <Image src={thumb} alt={songName} />
+              ) : (
+                <div className={cx('default-thumb')}>
+                  <SingleMusicNote />
+                </div>
+              )
             ) : (
               <Skeleton height={'100%'} />
             )}

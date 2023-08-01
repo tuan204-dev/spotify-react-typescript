@@ -1,4 +1,4 @@
-import { HeartIcon } from '@/assets/icons'
+import { HeartIcon, MusicNote } from '@/assets/icons'
 import { Image, SubTitle } from '@/components/UIs'
 import { PlayerContext } from '@/contexts/PlayerContext'
 import { useEllipsisHorizontal } from '@/hooks'
@@ -27,7 +27,13 @@ const Left: FC = () => {
   return (
     <div className={cx('wrapper')}>
       <div className={cx('thumb')}>
-        <Image src={playBarData?.thumb} alt={playBarData?.trackName} />
+        {playBarData?.thumb ? (
+          <Image src={playBarData?.thumb} alt={playBarData?.trackName} />
+        ) : (
+          <div className={cx('default-thumb')}>
+            <MusicNote size={16} />
+          </div>
+        )}
       </div>
       <div className={cx('body')}>
         <div>

@@ -18,6 +18,10 @@
   border-radius: 4px;
   overflow: hidden;
 
+  .default-thumb {
+    @include default-thumb;
+  }
+
   img {
     height: 100%;
     width: 100%;

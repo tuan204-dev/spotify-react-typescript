@@ -1,4 +1,4 @@
-import { spotifyApiClient } from './axiosClient'
+import { spotifyApiClient, spotifyApiDev } from './axiosClient'
 
 export const getUserData = async () => {
   const { data } = await spotifyApiClient.get(`me`)
@@ -7,7 +7,7 @@ export const getUserData = async () => {
 }
 
 export const getUserPlaylist = async (id: string) => {
-  const { data } = await spotifyApiClient.get(`users/${id}/playlists`, {
+  const { data } = await spotifyApiDev.get(`users/${id}/playlists`, {
     params: {
       limit: 50,
     },

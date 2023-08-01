@@ -1,11 +1,11 @@
-import { MusicNote } from '@/assets/icons'
+import { SingleMusicNote } from '@/assets/icons'
 import { Image, SubTitle } from '@/components/UIs'
+import { PlayerContext } from '@/contexts/PlayerContext'
 import { SpotifyTrack } from '@/types/track'
 import classNames from 'classnames/bind'
 import { FC, useContext } from 'react'
-import styles from './NextSong.module.scss'
 import { Link } from 'react-router-dom'
-import { PlayerContext } from '@/contexts/PlayerContext'
+import styles from './NextSong.module.scss'
 
 const cx = classNames.bind(styles)
 
@@ -42,7 +42,7 @@ const NextSong: FC<NextSongProps> = ({ nextSong }) => {
       <div className={cx('body')}>
         <div onClick={(e) => handleClick(e)} className={cx('next-song')}>
           <div className={cx('icon')}>
-            <MusicNote size={16} />
+            <SingleMusicNote size={16} />
           </div>
           <div className={cx('thumb')}>
             <Image src={nextSong?.album?.images?.[0]?.url} alt={nextSong?.name} />

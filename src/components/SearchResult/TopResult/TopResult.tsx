@@ -7,6 +7,7 @@ import Skeleton from 'react-loading-skeleton'
 import styles from './TopResult.module.scss'
 import { PlayerContext } from '@/contexts/PlayerContext'
 import { SpotifyTrack } from '@/types/track'
+import { MusicNote } from '@/assets/icons'
 
 const cx = classNames.bind(styles)
 
@@ -28,7 +29,7 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
   } = useContext(PlayerContext)
 
   useLayoutEffect(() => {
-    if (topResult && songs && topResult?.album?.images?.[0]?.url) {
+    if (topResult && songs) {
       setLoading(false)
     } else setLoading(true)
   }, [topResult, songs])
@@ -52,7 +53,13 @@ const TopResult: FC<TopResultProps> = ({ topResult, songs }) => {
         <div className={cx('body')}>
           <div className={cx('thumb')}>
             {!isLoading ? (
-              <Image src={topResult?.album?.images?.[0]?.url} alt={topResult?.name} />
+              topResult?.album?.images?.[0]?.url ? (
+                <Image src={topResult?.album?.images?.[0]?.url} alt={topResult?.name} />
+              ) : (
+                <div className={cx('default-thumb')}>
+                  <MusicNote size={64} />
+                </div>
+              )
             ) : (
               <Skeleton height="100%" width="100%" />
             )}
