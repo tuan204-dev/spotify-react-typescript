@@ -117,7 +117,8 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
 
   const intervalIdRef = useRef<number>()
 
-  const audioRef = useRef<HTMLAudioElement>(new Audio())
+  // const audioRef = useRef<HTMLAudioElement>(new Audio())
+  const audioRef = useRef<any>()
 
   const prevDocumentTitle = useRef<string>('')
 
@@ -143,6 +144,17 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
     setShuffle(isShuffle)
     setRepeat(isRepeat)
   }, [])
+
+  if (audioRef.current) {
+    audioRef.current.onloadeddata = () => {
+      audioRef.current.muted = false
+      setBtnClickable(true)
+      if (userClicked) {
+        setReady(true)
+        setPlaying(true)
+      }
+    }
+  }
 
   useMemo(() => {
     if (audioData) {
@@ -281,14 +293,6 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
     }
   }, [currentTrack, audioData])
 
-  audioRef.current.onloadeddata = () => {
-    setBtnClickable(true)
-    if (userClicked) {
-      setReady(true)
-      setPlaying(true)
-    }
-  }
-
   return (
     <PlayerContext.Provider
       value={{
@@ -326,6 +330,7 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
       }}
     >
       {children}
+      <audio ref={audioRef} src="" muted></audio>
     </PlayerContext.Provider>
   )
 }
