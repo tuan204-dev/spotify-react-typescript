@@ -13,6 +13,7 @@ const Show = lazy(() => import('@/pages/Show/Show'))
 const Episode = lazy(() => import('@/pages/Episode/Episode'))
 const NotFound = lazy(() => import('@/components/NotFound/NotFound'))
 const Queue = lazy(() => import('@/pages/Queue/Queue'))
+const Test = lazy(() => import('@/pages/test'))
 
 interface AppContext {
   isPlayingViewShowed: boolean
@@ -36,7 +37,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<RootLayout />}>
             <Route index element={<Home />} />
-            {/* <Route path="/test" element={<Test />} /> */}
+            <Route path="/test" element={<Test />} />
             <Route path="/search" element={<Search />} />
             <Route path="/section/:id" element={<Section />} />
             <Route path="/artist/:id">

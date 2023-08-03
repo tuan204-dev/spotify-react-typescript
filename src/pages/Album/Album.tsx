@@ -52,7 +52,7 @@ const Album: React.FC = () => {
     quality: 100,
   })
 
-  const bgColor = dataColor?.[3] ?? '#121212'
+  const bgColor = dataColor?.[2] ?? '#121212'
 
   const headerRef = useRef<any>()
   const { height: headerHeight } = useComponentSize(headerRef)

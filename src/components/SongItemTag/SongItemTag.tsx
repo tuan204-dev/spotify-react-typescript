@@ -29,7 +29,7 @@ const SongItemTag: React.FC<SongItemTagProps> = (props) => {
     quality: 100,
   })
 
-  const color = dataColor?.[3] ?? '#121212'
+  const color = dataColor?.[2] ?? '#121212'
 
   const imgRef = useRef<HTMLDivElement>(null)
   const handleHover = (): void => {
