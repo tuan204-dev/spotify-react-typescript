@@ -4,12 +4,12 @@ import { HeartIcon } from '@/assets/icons'
 import { Footer, Header, Navbar, Section, SongList } from '@/components'
 import { PlayButton } from '@/components/UIs'
 import { PlayerContext } from '@/contexts/PlayerContext'
-import { useComponentSize, useRaiseColorTone } from '@/hooks'
-import useDominantColor from '@/hooks/useDominantColor'
+import { useComponentSize } from '@/hooks'
 import { SpotifyAlbum } from '@/types/album'
 import { ResponseSectionItem } from '@/types/section'
 import { dateFormatConvertor, documentTitle } from '@/utils'
 import classNames from 'classnames/bind'
+import { usePalette } from 'color-thief-react'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -45,7 +45,14 @@ const Album: React.FC = () => {
     threshold: 0,
   })
 
-  const bgColor = useRaiseColorTone(useDominantColor(data?.images?.[0].url))
+  // const bgColor = useRaiseColorTone(useDominantColor(data?.images?.[0].url))
+
+  const { data: dataColor } = usePalette(data?.images?.[0]?.url as string, 10, 'hex', {
+    crossOrigin: 'Anonymous',
+    quality: 100,
+  })
+
+  const bgColor = dataColor?.[3] ?? '#121212'
 
   const headerRef = useRef<any>()
   const { height: headerHeight } = useComponentSize(headerRef)

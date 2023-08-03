@@ -39,7 +39,7 @@ const fetchHomePageData = (params: Partial<PropsType>) => {
           type: 'featured-playlists',
         })
         setData!({
-          title: 'Feature Playlist',
+          title: 'Featured Playlists',
           href: '/section/featurePlaylist',
           dataType: 'playlist',
           data: response,

@@ -1,15 +1,15 @@
 import categoryApi from '@/apis/categoryApi'
 import { PlayerContext } from '@/contexts/PlayerContext'
 import useComponentSize from '@/hooks/useComponentSize'
-import useDominantColor from '@/hooks/useDominantColor'
+import { SpotifyAlbum } from '@/types/album'
 import { SongItemTagProps, SpotifyTrack } from '@/types/track'
 import classNames from 'classnames/bind'
+import { usePalette } from 'color-thief-react'
 import React, { useContext, useRef } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import { useNavigate } from 'react-router-dom'
 import { Image, PlayButton } from '../UIs'
 import styles from './SongItemTag.module.scss'
-import { SpotifyAlbum } from '@/types/album'
 
 const cx = classNames.bind(styles)
 
@@ -22,10 +22,18 @@ const SongItemTag: React.FC<SongItemTagProps> = (props) => {
     calNextTrackIndex,
     setPlayingType,
   } = useContext(PlayerContext)
-  const color = useDominantColor(thumbnailUrl)
+  // const color = useDominantColor(thumbnailUrl)
+
+  const { data: dataColor } = usePalette(thumbnailUrl as string, 10, 'hex', {
+    crossOrigin: 'Anonymous',
+    quality: 100,
+  })
+
+  const color = dataColor?.[3] ?? '#121212'
+
   const imgRef = useRef<HTMLDivElement>(null)
   const handleHover = (): void => {
-    setBgColor(color)
+    setBgColor(color as string)
   }
 
   const navigate = useNavigate()

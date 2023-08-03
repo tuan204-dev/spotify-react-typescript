@@ -2,10 +2,10 @@ import showApi from '@/apis/showApi'
 import { AboutShow, Footer, Header, Navbar, ShowsList } from '@/components'
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
 import { PlayerContext } from '@/contexts/PlayerContext'
-import { useDominantColor, useRaiseColorTone } from '@/hooks'
 import { ShowData } from '@/types/show'
 import { documentTitle } from '@/utils'
 import classNames from 'classnames/bind'
+import { usePalette } from 'color-thief-react'
 import { FC, useContext, useEffect, useRef, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -14,12 +14,20 @@ import styles from './Show.module.scss'
 const cx = classNames.bind(styles)
 
 const Show: FC = () => {
-  const {isPlaying, prevDocumentTitle} = useContext(PlayerContext)
+  const { isPlaying, prevDocumentTitle } = useContext(PlayerContext)
   const [navOpacity, setNavOpacity] = useState<number>(0)
   const [data, setData] = useState<ShowData>()
   const [isLoading, setLoading] = useState<boolean>(true)
   const navigate = useNavigate()
-  const bgColor = useRaiseColorTone(useDominantColor(data?.images?.[0].url) || '#121212')
+  // const bgColor = useRaiseColorTone(useDominantColor(data?.images?.[0].url) || '#121212')
+
+  const { data: dataColor } = usePalette(data?.images?.[0]?.url as string, 10, 'hex', {
+    crossOrigin: 'Anonymous',
+    quality: 100,
+  })
+
+  const bgColor = dataColor?.[3] ?? '#121212'
+
   const { id } = useParams()
   const { width } = useContext(MainLayoutContext)
   const { ref: pivotTrackingRef, inView: isTracking } = useInView() //put above all
@@ -93,7 +101,11 @@ const Show: FC = () => {
               <AboutShow isLoading={isLoading} htmlDesc={data?.html_description} />
             </div>
             <div className={cx('episodes-list')}>
-              <ShowsList isLoading={isLoading} data={data?.episodes?.items} originalData={data} />
+              <ShowsList
+                isLoading={isLoading}
+                data={data?.episodes?.items}
+                originalData={data}
+              />
             </div>
           </div>
         </div>

@@ -1,17 +1,18 @@
 import episodeApi from '@/apis/episodeApi'
+import { PlusCircle } from '@/assets/icons'
 import { Footer, Header, Navbar } from '@/components'
-import { useDominantColor, useEllipsisVertical } from '@/hooks'
-import classNames from 'classnames/bind'
-import { FC, useEffect, useRef, useState, useContext } from 'react'
-import { useInView } from 'react-intersection-observer'
-import { Link, useParams } from 'react-router-dom'
-import { Episode as EpisodeData } from '@/types/show'
-import styles from './Episode.module.scss'
 import { PlayButton } from '@/components/UIs'
+import { CurrentTrack, PlayerContext } from '@/contexts/PlayerContext'
+import { useEllipsisVertical } from '@/hooks'
+import { Episode as EpisodeData } from '@/types/show'
 import { dateFormatConvertor } from '@/utils'
 import durationConvertor from '@/utils/durationConvertor'
-import { PlusCircle } from '@/assets/icons'
-import { CurrentTrack, PlayerContext } from '@/contexts/PlayerContext'
+import classNames from 'classnames/bind'
+import { usePalette } from 'color-thief-react'
+import { FC, useContext, useEffect, useRef, useState } from 'react'
+import { useInView } from 'react-intersection-observer'
+import { Link, useParams } from 'react-router-dom'
+import styles from './Episode.module.scss'
 
 const cx = classNames.bind(styles)
 
@@ -22,7 +23,7 @@ const Episode: FC = () => {
     setCurrentTrackIndex,
     setPlayingType,
     calNextTrackIndex,
-    currentTrack
+    currentTrack,
   } = useContext(PlayerContext)
   const [navOpacity, setNavOpacity] = useState<number>(0)
   const [data, setData] = useState<EpisodeData>()
@@ -30,7 +31,14 @@ const Episode: FC = () => {
   const [isExpanded, setExpanded] = useState<boolean>(false)
   const { ref: pivotTrackingRef, inView: isTracking } = useInView() //put above all
 
-  const bgColor = useDominantColor(data?.images?.[0].url) || '#121212'
+  // const bgColor = useDominantColor(data?.images?.[0].url) || '#121212'
+
+  const { data: dataColor } = usePalette(data?.images?.[0]?.url as string, 10, 'hex', {
+    crossOrigin: 'Anonymous',
+    quality: 100,
+  })
+
+  const bgColor = dataColor?.[3] ?? '#121212'
 
   const { id } = useParams()
 

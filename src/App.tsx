@@ -1,7 +1,6 @@
-import { Suspense, createContext, lazy, useState, useEffect } from 'react'
+import { Suspense, createContext, lazy, useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import LoadingLayout from './layouts/LoadingLayout/LoadingLayout'
-import Test from './pages/test'
 import deleteAllCookies from './utils/deleteAllCookies'
 const RootLayout = lazy(() => import('./layouts/RootLayout/RootLayout'))
 const Home = lazy(() => import('@/pages/Home/Home'))
@@ -37,7 +36,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<RootLayout />}>
             <Route index element={<Home />} />
-            <Route path="/test" element={<Test />} />
+            {/* <Route path="/test" element={<Test />} /> */}
             <Route path="/search" element={<Search />} />
             <Route path="/section/:id" element={<Section />} />
             <Route path="/artist/:id">

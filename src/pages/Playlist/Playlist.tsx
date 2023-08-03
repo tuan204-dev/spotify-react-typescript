@@ -4,11 +4,11 @@ import { HeartIcon } from '@/assets/icons'
 import { Footer, Header, Navbar, SongList } from '@/components'
 import { PlayButton } from '@/components/UIs'
 import { PlayerContext } from '@/contexts/PlayerContext'
-import { useComponentSize, useRaiseColorTone } from '@/hooks'
-import useDominantColor from '@/hooks/useDominantColor'
+import { useComponentSize } from '@/hooks'
 import { PlaylistData } from '@/types/playlist'
 import { documentTitle } from '@/utils'
 import classNames from 'classnames/bind'
+import { usePalette } from 'color-thief-react'
 import React, { memo, useContext, useEffect, useRef, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -31,7 +31,14 @@ const Playlist: React.FC = () => {
   const [isLoading, setLoading] = useState<boolean>(true)
   const [navPlayBtnVisible, setNavPlayBtnVisible] = useState<boolean>(false)
 
-  const bgColor = useRaiseColorTone(useDominantColor(data?.images?.[0]?.url) || '#121212')
+  // const bgColor = useRaiseColorTone(useDominantColor(data?.images?.[0]?.url) || '#121212')
+
+  const { data: dataColor } = usePalette(data?.images?.[0]?.url as string, 10, 'hex', {
+    crossOrigin: 'Anonymous',
+    quality: 100,
+  })
+
+  const bgColor = dataColor?.[3] ?? '#121212'
 
   const { ref: pivotTrackingRef, inView: isTracking } = useInView({
     threshold: 0,
