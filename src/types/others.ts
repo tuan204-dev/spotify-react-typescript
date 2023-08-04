@@ -43,7 +43,7 @@ export interface HeaderProps {
   artists?: ArtistData[]
   releaseDate?: string
   isWhiteColor?: boolean
-  headerType?: 'playlist' | 'album' | 'show'
+  headerType?: 'playlist' | 'album' | 'show' | 'genre'
   publisher?: string
   showName?: string
   showId?: string

@@ -1,24 +1,15 @@
 import { MainLayoutContext } from '@/contexts/MainLayoutContext'
+import { SearchContext } from '@/contexts/SearchContext'
 import classNames from 'classnames/bind'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import BannerItem from './BannerItem/BannerItem'
 import styles from './SearchBanner.module.scss'
-import { SearchBannerItem } from '@/types/search'
 
 const cx = classNames.bind(styles)
 
 const SearchBanner: React.FC = () => {
-  const [data, setData] = useState<SearchBannerItem[]>([])
   const { quantityCol } = useContext(MainLayoutContext)
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch('/data/bannerSearch.json')
-      const data = await response.json()
-      setData(data)
-    }
-    fetchData()
-  }, [])
+  const { categoriesData } = useContext(SearchContext)
 
   return (
     <div className={cx('wrapper')}>
@@ -27,11 +18,11 @@ const SearchBanner: React.FC = () => {
         style={{ gridTemplateColumns: `repeat(${quantityCol}, 1fr)` }}
         className={cx('body')}
       >
-        {data.map((item, index) => (
+        {categoriesData?.map((item, index) => (
           <BannerItem
-            title={item.title}
-            imageUrl={item.imageUrl}
-            bgColor={item.bgColor}
+            title={item?.name}
+            imageUrl={item?.icons?.[0]?.url}
+            id={item?.id}
             key={index}
           />
         ))}

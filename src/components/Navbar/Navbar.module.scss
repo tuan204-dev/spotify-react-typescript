@@ -180,3 +180,16 @@
 .darken {
   filter: brightness(65%) !important;
 }
+
+.genre-title {
+  margin-left: 10px;
+  font-size: 24px;
+  color: $white;
+  font-weight: 700;
+  opacity: 0;
+  transition: all .5s ease;
+}
+
+.show {
+  opacity: 1;
+}

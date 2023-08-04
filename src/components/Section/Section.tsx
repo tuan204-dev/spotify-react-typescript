@@ -62,7 +62,9 @@ const Section: React.FC<SectionProps> = ({
   }, [data])
 
   useEffect(() => {
-    setLoading(Boolean(!data))
+    if (data && data?.length !== 0) {
+      setLoading(false)
+    } else setLoading(true)
   }, [data])
 
   return (
@@ -113,7 +115,7 @@ const Section: React.FC<SectionProps> = ({
                   type={type}
                   dataType={dataType}
                   isLoading={isLoading}
-                  key={item.id || index}
+                  key={index}
                   id={item.id}
                   title={item.title}
                   artists={item.artists}

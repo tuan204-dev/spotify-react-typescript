@@ -159,3 +159,22 @@
     text-decoration-thickness: 2px;
   }
 }
+
+
+//-------------------------------
+
+.category-header {
+  width: 100%;
+  overflow: hidden;
+}
+
+
+.category-title {
+  font-size: 96px;
+  margin: 0;
+  color: $white;
+  margin-bottom: 6px;
+  letter-spacing: -3px;
+
+  @include text-in-one-line;
+}

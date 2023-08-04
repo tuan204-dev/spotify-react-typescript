@@ -13,7 +13,7 @@ interface NotFoundProps {
 const NotFound: React.FC<NotFoundProps> = (props) => {
   const { type = 'notfound' } = props
 
-  useDocumentTitle('Page not found')
+  useDocumentTitle(type === 'notfound' ? 'Page not found' : 'Oops!')
   return (
     <div className={cx('wrapper')}>
       <div style={{ backgroundImage: `url(${logoImage})` }} className={cx('logo')}></div>

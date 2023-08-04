@@ -13,7 +13,7 @@ import UserDropdown from './UserDropdown/UserDropdown'
 const cx = classNames.bind(styles)
 
 interface NavbarProps {
-  type?: 'default' | 'home' | 'section' | 'search' | 'artist'
+  type?: 'default' | 'home' | 'section' | 'search' | 'artist' | 'genre'
   bgColor?: string | null
   navOpacity?: number
   query?: string
@@ -22,6 +22,7 @@ interface NavbarProps {
   inclPlayBtn?: boolean
   setQuery?: React.Dispatch<React.SetStateAction<string | undefined>>
   handleClickPlayBtn?: any
+  showTitle?: boolean
 }
 
 const Navbar: FC<NavbarProps> = (props) => {
@@ -31,10 +32,11 @@ const Navbar: FC<NavbarProps> = (props) => {
     query,
     setQuery,
     type = 'default',
-    title,
+    title = '',
     playBtnVisible = false,
     inclPlayBtn = false,
     handleClickPlayBtn,
+    showTitle = false,
   } = props
 
   const { isLogged, userData, handleLogin } = useContext(AuthContext)
@@ -101,6 +103,13 @@ const Navbar: FC<NavbarProps> = (props) => {
             )}
           </div>
         )}
+
+        {type === 'genre' && (
+          <div>
+            <span className={cx({ 'genre-title': true, show: showTitle })}>{title}</span>
+          </div>
+        )}
+
         {inclPlayBtn && (
           <div
             className={cx('nav-control-play-btn')}
