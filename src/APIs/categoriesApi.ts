@@ -13,15 +13,16 @@ export const getCategories = async () => {
 
 interface getCategoryPlaylistProps {
   id?: string
+  limit?: number
 }
 
 export const getCategoryPlaylist = async (params: getCategoryPlaylistProps) => {
-  const { id } = params
+  const { id, limit = 50 } = params
   if (!id) return
 
   const { data } = await spotifyApiDev.get(`browse/categories/${id}/playlists`, {
     params: {
-      limit: 50,
+      limit,
       country: 'VN',
     },
   })
@@ -34,6 +35,6 @@ export const getCategoryInfo = async (params: getCategoryPlaylistProps) => {
   if (!id) return
 
   const { data } = await spotifyApiDev.get(`browse/categories/${id}`)
-  
+
   return data
 }

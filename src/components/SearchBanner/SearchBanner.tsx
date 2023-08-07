@@ -20,9 +20,10 @@ const SearchBanner: React.FC = () => {
       >
         {categoriesData?.map((item, index) => (
           <BannerItem
-            title={item?.name}
-            imageUrl={item?.icons?.[0]?.url}
+            title={item?.title}
+            imgUrl={item?.imgUrl}
             id={item?.id}
+            bgColor={item?.bgColor}
             key={index}
           />
         ))}

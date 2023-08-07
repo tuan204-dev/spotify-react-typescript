@@ -14,8 +14,17 @@ const Home: React.FC = () => {
   const [navOpacity, setNavOpacity] = useState<number>(0)
 
   const { isPlaying, prevDocumentTitle } = useContext(PlayerContext)
-  const { featurePlaylist, newReleases, suggestArtists, topMixes } =
-    useContext(HomePageContext)
+  const {
+    featurePlaylist,
+    newReleases,
+    suggestArtists,
+    topMixes,
+    trending,
+    chill,
+    focus,
+    jazz,
+    mood,
+  } = useContext(HomePageContext)
 
   useEffect(() => {
     if (isPlaying) {
@@ -48,10 +57,31 @@ const Home: React.FC = () => {
         <Greeting bgColor={bgColor} setBgColor={setBgColor} />
         <Section
           apiType="spotify"
+          title={trending?.title}
+          href={trending?.href}
+          data={trending?.data}
+          dataType={trending?.dataType}
+        />
+        <Section
+          apiType="spotify"
           title={featurePlaylist?.title}
           href={featurePlaylist?.href}
           data={featurePlaylist?.data}
           dataType={featurePlaylist?.dataType}
+        />
+        <Section
+          apiType="spotify"
+          title={suggestArtists?.title}
+          href={suggestArtists?.href}
+          data={suggestArtists?.data}
+          dataType={suggestArtists?.dataType}
+        />
+        <Section
+          apiType="spotify"
+          title={focus?.title}
+          href={focus?.href}
+          data={focus?.data}
+          dataType={focus?.dataType}
         />
         <Section
           apiType="spotify"
@@ -62,82 +92,33 @@ const Home: React.FC = () => {
         />
         <Section
           apiType="spotify"
-          title={suggestArtists?.title}
-          href={suggestArtists?.href}
-          data={suggestArtists?.data}
-          dataType={suggestArtists?.dataType}
-        />
-
-        <Section
-          apiType="spotify"
           title={topMixes?.title}
           href={topMixes?.href}
           data={topMixes?.data}
           dataType={topMixes?.dataType}
         />
-
-        {/* ------------------------------ */}
         <Section
           apiType="spotify"
-          title={featurePlaylist?.title}
-          href={featurePlaylist?.href}
-          data={featurePlaylist?.data}
-          dataType={featurePlaylist?.dataType}
+          title={chill?.title}
+          href={chill?.href}
+          data={chill?.data}
+          dataType={chill?.dataType}
         />
         <Section
           apiType="spotify"
-          title={newReleases?.title}
-          href={newReleases?.href}
-          data={newReleases?.data}
-          dataType={newReleases?.dataType}
+          title={jazz?.title}
+          href={jazz?.href}
+          data={jazz?.data}
+          dataType={jazz?.dataType}
         />
         <Section
           apiType="spotify"
-          title={suggestArtists?.title}
-          href={suggestArtists?.href}
-          data={suggestArtists?.data}
-          dataType={suggestArtists?.dataType}
+          title={mood?.title}
+          href={mood?.href}
+          data={mood?.data}
+          dataType={mood?.dataType}
         />
 
-        <Section
-          apiType="spotify"
-          title={topMixes?.title}
-          href={topMixes?.href}
-          data={topMixes?.data}
-          dataType={topMixes?.dataType}
-        />
-
-        <Section
-          apiType="spotify"
-          title={featurePlaylist?.title}
-          href={featurePlaylist?.href}
-          data={featurePlaylist?.data}
-          dataType={featurePlaylist?.dataType}
-        />
-        {/* <Section
-          apiType="spotify"
-          title={newReleases?.title}
-          href={newReleases?.href}
-          data={newReleases?.data}
-          dataType={newReleases?.dataType}
-        />
-        <Section
-          apiType="spotify"
-          title={suggestArtists?.title}
-          href={suggestArtists?.href}
-          data={suggestArtists?.data}
-          dataType={suggestArtists?.dataType}
-        />
-
-        <Section
-          apiType="spotify"
-          title={topMixes?.title}
-          href={topMixes?.href}
-          data={topMixes?.data}
-          dataType={topMixes?.dataType}
-        /> */}
-
-        {/* ------------------------ */}
         <Footer />
       </div>
     </div>

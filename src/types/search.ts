@@ -1,7 +1,8 @@
 export interface SearchBannerItem {
   title?: string
-  imageUrl?: string
+  imgUrl?: string
   id?: string
+  bgColor?: string
 }
 
 export interface CategoryItem {

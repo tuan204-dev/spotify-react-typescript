@@ -1,5 +1,5 @@
-import { countries } from '@/types/contries'
-import { spotifyApiClient } from './axiosClient'
+import { countries } from '@/types/countries'
+import { spotifyApiDev } from './axiosClient'
 
 interface browserApiProps {
   limit: number
@@ -10,7 +10,7 @@ interface browserApiProps {
 const browserApi = async (params: Partial<browserApiProps>) => {
   const { country, limit, type } = params
 
-  const { data } = await spotifyApiClient.get(`browse/${type}`, {
+  const { data } = await spotifyApiDev.get(`browse/${type}`, {
     params: {
       country: country,
       limit: limit,

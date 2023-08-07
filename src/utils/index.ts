@@ -9,6 +9,7 @@ import normalizeAlbum from './normalizeAlbum'
 import normalizeTrack from './normalizeTrack'
 import transformDomain from './transformDomain'
 import documentTitle from './documentTitle'
+import deleteAllCookies from './deleteAllCookies'
 
 export {
   dateFormatConvertor,
@@ -22,4 +23,5 @@ export {
   normalizeTrack,
   transformDomain,
   documentTitle,
+  deleteAllCookies,
 }

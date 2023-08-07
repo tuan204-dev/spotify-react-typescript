@@ -1,4 +1,4 @@
-import { spotifyApiClient } from './axiosClient'
+import { spotifyApiDev } from './axiosClient'
 
 interface categoryApiProps {
   type: string
@@ -8,7 +8,7 @@ interface categoryApiProps {
 const categoryApi = async (params: Partial<categoryApiProps>) => {
   const { type, id } = params
 
-  const { data } = await spotifyApiClient.get(`${type}/${id}`)
+  const { data } = await spotifyApiDev.get(`${type}/${id}`)
 
   return data
 }

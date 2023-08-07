@@ -1,15 +1,34 @@
 import browserApi from '@/apis/browserApi'
+import { getCategoryPlaylist } from '@/apis/categoriesApi'
 import searchApi from '@/apis/searchApi'
 import { SectionProps } from '@/types/section'
 
 interface PropsType {
-  type: 'newRelease' | 'featuredPlaylists' | 'topMixes' | 'suggestedArtists'
+  type: 'newRelease' | 'featuredPlaylists' | 'topMixes' | 'suggestedArtists' | 'category'
   setData: React.Dispatch<React.SetStateAction<SectionProps | undefined>>
   limit?: number
+  categoryId?: string
+  categoryName?: string
 }
 
 const fetchHomePageData = (params: Partial<PropsType>) => {
-  const { type, setData, limit = 50 } = params
+  const { type, setData, limit = 50, categoryId, categoryName } = params
+
+  if (type === 'category') {
+    const fetchData = async () => {
+      const data = await getCategoryPlaylist({ id: categoryId, limit: 20 })
+      const dataNormalized = data?.playlists?.items?.filter((item: any) => item)
+      setData!({
+        title: categoryName,
+        href: `/genre/${categoryId}`,
+        apiType: 'spotify',
+        data: dataNormalized,
+        dataType: 'playlist',
+      })
+    }
+    fetchData()
+    return
+  }
 
   switch (type) {
     case 'newRelease': {

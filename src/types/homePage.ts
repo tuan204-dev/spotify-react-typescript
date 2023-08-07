@@ -1,4 +1,4 @@
-import { countries } from "./contries"
+import { countries } from "./countries"
 
 export interface NewReleasesArgs {
   accessToken: string

@@ -1,4 +1,4 @@
-import { spotifyApiClient } from './axiosClient'
+import { spotifyApiDev } from './axiosClient'
 
 interface ShowApiProps {
   id?: string
@@ -7,7 +7,7 @@ interface ShowApiProps {
 const showApi = async (params: ShowApiProps) => {
   const { id } = params
 
-  const { data } = await spotifyApiClient.get(`shows/${id}`)
+  const { data } = await spotifyApiDev.get(`shows/${id}`)
 
   return data
 }

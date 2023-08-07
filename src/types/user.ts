@@ -1,4 +1,4 @@
-import { countries } from './contries'
+import { countries } from './countries'
 import { ImageSource } from './others'
 
 export interface UserData {

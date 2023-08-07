@@ -1,5 +1,5 @@
-import { countries } from '@/types/contries'
-import { spotifyApiClient } from './axiosClient'
+import { countries } from '@/types/countries'
+import { spotifyApiDev } from './axiosClient'
 
 interface GetTrackParams {
   id: string
@@ -8,7 +8,7 @@ interface GetTrackParams {
 export const getTrack = async (params: GetTrackParams) => {
   const { id } = params
 
-  const { data } = await spotifyApiClient.get(`tracks/${id}`)
+  const { data } = await spotifyApiDev.get(`tracks/${id}`)
 
   return data
 }
@@ -22,7 +22,7 @@ interface getTrackRecommendationParams {
 
 export const getTrackRecommendation = async (params: getTrackRecommendationParams) => {
   const { limit = 19, market = 'VN', seed_artists, seed_tracks } = params
-  const { data } = await spotifyApiClient.get('recommendations', {
+  const { data } = await spotifyApiDev.get('recommendations', {
     params: {
       limit,
       market,

@@ -15,9 +15,9 @@ const deleteAllCookies = () => {
     keys.forEach((key) => caches.delete(key))
   })
 
-  indexedDB.databases().then((dbs) => {
-    dbs.forEach((db) => indexedDB.deleteDatabase(db.name as string))
-  })
+  // indexedDB.databases().then((dbs) => {
+  //   dbs.forEach((db) => indexedDB.deleteDatabase(db.name as string))
+  // })
 
   sessionStorage.clear()
 }

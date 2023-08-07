@@ -1,7 +1,7 @@
 import { Suspense, createContext, lazy, useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import LoadingLayout from './layouts/LoadingLayout/LoadingLayout'
-import deleteAllCookies from './utils/deleteAllCookies'
+import { deleteAllCookies } from './utils'
 const RootLayout = lazy(() => import('./layouts/RootLayout/RootLayout'))
 const Home = lazy(() => import('@/pages/Home/Home'))
 const Playlist = lazy(() => import('@/pages/Playlist/Playlist'))
@@ -41,6 +41,12 @@ const App = () => {
             <Route path="/test" element={<Test />} />
             <Route path="/search" element={<Search />} />
             <Route path="/section/:id" element={<Section />} />
+            <Route path="/playlist/:id" element={<Playlist />} />
+            <Route path="/album/:id" element={<Album />} />
+            <Route path="/show/:id" element={<Show />} />
+            <Route path="/episode/:id" element={<Episode />} />
+            <Route path="/genre/:id" element={<Genre />} />
+            <Route path="/queue" element={<Queue />} />
             <Route path="/artist/:id">
               <Route index element={<Artist />} />
               <Route path="/artist/:id/featuring" element={<Section />} />
@@ -49,12 +55,6 @@ const App = () => {
               <Route path="/artist/:id/appears-on" element={<Section />} />
               <Route path="/artist/:id/playlists" element={<Section />} />
             </Route>
-            <Route path="/playlist/:id" element={<Playlist />} />
-            <Route path="/album/:id" element={<Album />} />
-            <Route path="/show/:id" element={<Show />} />
-            <Route path="/episode/:id" element={<Episode />} />
-            <Route path="/queue" element={<Queue />} />
-            <Route path="/genre/:id" element={<Genre />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
