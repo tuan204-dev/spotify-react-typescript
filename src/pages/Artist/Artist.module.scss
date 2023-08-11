@@ -1,6 +1,5 @@
 @import '../../scss/variable';
 
-
 .wrapper {
   height: 100%;
   position: relative;
@@ -18,11 +17,11 @@
   transition: all 1ms ease;
   transform-origin: center;
 
-
-  img {
+  & > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    animation: brighten-up 0.2s;
   }
 
   .overlay {
@@ -31,8 +30,8 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-image: linear-gradient(rgba(0, 0, 0, .6) 0, $bg-base 100%), $bg-noise;
-    opacity: .25;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6) 0, $bg-base 100%), $bg-noise;
+    opacity: 0.25;
   }
 }
 
@@ -55,7 +54,7 @@
   height: 232px;
   left: 0;
   right: 0;
-  background-image: linear-gradient(rgba(0, 0, 0, .6) 0, $bg-base 100%), $bg-noise;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6) 0, $bg-base 100%), $bg-noise;
   z-index: 0;
 }
 
@@ -70,11 +69,11 @@
   .follow-btn {
     color: $white;
     background-color: transparent;
-    border: 1px solid hsla(0, 0%, 100%, .3);
+    border: 1px solid hsla(0, 0%, 100%, 0.3);
     border-radius: 4px;
     font-size: 12px;
     font-weight: 700;
-    letter-spacing: .1em;
+    letter-spacing: 0.1em;
     padding: 7px 15px;
     text-transform: uppercase;
     cursor: pointer;
@@ -85,8 +84,17 @@
   }
 }
 
-
 .pivot-tracking {
   position: absolute;
   z-index: -999;
+}
+
+@keyframes brighten-up {
+  0% {
+    filter: brightness(0.3);
+  }
+
+  100% {
+    filter: brightness(1);
+  }
 }

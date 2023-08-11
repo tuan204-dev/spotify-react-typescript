@@ -92,6 +92,28 @@ const PlayerControl: FC = () => {
     }
   }
 
+  //detect the click event on the keyboard: pause, play, back, forward,...
+
+  navigator.mediaSession.setActionHandler('play', () => {
+    handlePlayBtn()
+  })
+
+  navigator.mediaSession.setActionHandler('pause', () => {
+    handlePlayBtn()
+  })
+
+  navigator.mediaSession.setActionHandler('stop', () => {
+    handlePlayBtn()
+  })
+
+  navigator.mediaSession.setActionHandler('previoustrack', () => {
+    handleBack()
+  })
+
+  navigator.mediaSession.setActionHandler('nexttrack', () => {
+    handleForward()
+  })
+
   return (
     <div className={cx('wrapper')}>
       <div className={cx('buttons')}>

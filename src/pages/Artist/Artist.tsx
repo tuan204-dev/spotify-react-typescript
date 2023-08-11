@@ -7,7 +7,7 @@ import {
   TopTracks,
 } from '@/components'
 import ArtistBanner from '@/components/ArtistBanner/ArtistBanner'
-import { PlayButton } from '@/components/UIs'
+import { Image, PlayButton } from '@/components/UIs'
 import { ArtistContext } from '@/contexts/ArtistContext'
 import { PlayerContext } from '@/contexts/PlayerContext'
 import { useComponentSize } from '@/hooks'
@@ -117,7 +117,7 @@ const Artist: React.FC = () => {
           backgroundColor: !headerImg ? colorRaw : undefined,
         }}
       >
-        {!isLoading && <img loading="lazy" src={headerImg} alt="banner-image" />}
+        {!isLoading && <Image inclSkeleton={false} src={headerImg} alt="banner-image" />}
         <div className={cx('overlay')}></div>
       </div>
       <div onScroll={(e) => isTracking && handleScroll(e)} className={cx('body')}>

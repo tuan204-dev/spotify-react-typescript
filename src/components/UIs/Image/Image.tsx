@@ -6,12 +6,13 @@ import styles from './Image.module.scss'
 interface ImageLazyProps {
   src?: string
   alt?: string
+  inclSkeleton?: boolean
 }
 
 const ImageLazy: FC<ImageLazyProps> = (props) => {
+  const { src = '', alt = '', inclSkeleton = true } = props
   const [isLoading, setLoading] = useState<boolean>(true)
   const [mounted, setMounted] = useState<boolean>(false)
-  const { src = '', alt = '' } = props
 
   const { ref, inView } = useInView({ threshold: 0, triggerOnce: true })
 
@@ -34,7 +35,11 @@ const ImageLazy: FC<ImageLazyProps> = (props) => {
   return (
     <div ref={ref} className={styles.wrapper}>
       <div style={{ display: !isLoading ? 'none' : '' }}>
-        <Skeleton height={500} width="100%" />
+        {inclSkeleton ? (
+          <Skeleton height={500} width="100%" />
+        ) : (
+          <div className={styles.overlay}></div>
+        )}
       </div>
       <img
         src={mounted ? src : ''}
