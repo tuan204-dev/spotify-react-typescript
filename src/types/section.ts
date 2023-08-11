@@ -24,7 +24,8 @@ export interface SectionProps {
   isClickable?: boolean
   hideHeader?: boolean
   type?: 'default' | 'playlist' | 'album' | 'artistList' | 'artist' | 'show'
-  apiType: 'spotify' | 'rapid' | undefined
+  apiType?: 'spotify' | 'rapid'
+  pageType?: 'section' | 'genre'
 }
 
 export interface ResponseSectionItem {

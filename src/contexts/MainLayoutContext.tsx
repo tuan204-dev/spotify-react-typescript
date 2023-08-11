@@ -31,7 +31,7 @@ export const MainLayoutProvider: FC<MainLayoutProps> = ({ children }) => {
   }, [size.width])
 
   return (
-    <div ref={mainRef}>
+    <div style={{ flexGrow: 1 }} ref={mainRef}>
       <MainLayoutContext.Provider value={{ ...size, quantityCol }}>
         {children}
       </MainLayoutContext.Provider>

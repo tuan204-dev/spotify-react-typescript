@@ -12,6 +12,7 @@ interface PlayBarData {
   thumb?: string
   artists?: ArtistData[]
   albumId?: string
+  albumName?: string
   episode?: string
   show?: (
     | {
@@ -286,6 +287,7 @@ export const PlayerProvider: FC<PlayerProviderProps> = ({ children }) => {
             ? currentTrack?.album?.images?.[currentTrack?.album?.images?.length - 1]?.url
             : currentTrack?.images?.[currentTrack?.images?.length - 1]?.url,
         albumId: currentTrack?.album?.id,
+        albumName: currentTrack?.album?.name,
         artists: currentTrack?.artists,
         episode: currentTrack?.id,
         show: [currentTrack?.show],

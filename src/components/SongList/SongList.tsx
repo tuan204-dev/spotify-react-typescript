@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { FC, memo, useContext } from 'react'
+import { FC, memo, useContext, useEffect, useState } from 'react'
 import styles from './SongList.module.scss'
 import classNames from 'classnames/bind'
 import SongItem from '../SongItem/SongItem'
@@ -26,10 +26,29 @@ const SongList: FC<SongListProps> = ({
 }) => {
   const { width } = useContext(MainLayoutContext)
   const { playingType } = useContext(PlayerContext)
+  const [renderNumb, setRenderNumb] = useState<number>(() => {
+    if ((songList?.length ?? 0 < 19) && songList?.length) return songList.length
+    return 9
+  })
 
   const { ref, inView } = useInView({
     threshold: 0,
   })
+
+  const { ref: lazyRenderRef, inView: lazyRenderInView } = useInView({
+    threshold: 0,
+  })
+
+  useEffect(() => {
+    if (renderNumb === songList?.length) {
+      return
+    }
+    if (lazyRenderInView && songList?.length && renderNumb + 10 > songList?.length) {
+      setRenderNumb(songList.length)
+    } else {
+      setRenderNumb((prev) => prev + 10)
+    }
+  }, [lazyRenderInView])
 
   return (
     <div className={cx('wrapper')}>
@@ -78,44 +97,49 @@ const SongList: FC<SongListProps> = ({
         {(() => {
           let order = 1
           if (!isLoading) {
-            return songList?.map((item: any, index: number) => (
-              <SongItem
-                type={type}
-                key={index}
-                order={order++ + adjustOrder}
-                thumb={
-                  item?.album?.images?.[item?.album?.images?.length - 1]?.url ||
-                  item?.track?.album?.images[item?.track?.album?.images?.length - 1]
-                    ?.url ||
-                  item?.images?.[item?.images?.length - 1]?.url
-                }
-                songName={item?.name ?? item?.track?.name}
-                artists={item?.artists ?? item?.track?.artists}
-                albumData={{
-                  name: item?.album?.name ?? item?.track?.album?.name,
-                  id: item?.track?.album?.id ?? item?.album?.id,
-                }}
-                dateAdd={item?.added_at}
-                duration={item?.duration_ms ?? item?.track?.duration_ms}
-                isExplicit={item?.explicit ?? item?.track?.explicit}
-                isLoading={isLoading}
-                id={item?.track?.id ?? item?.id}
-                originalData={
-                  (type === 'playlist' && item?.track) ||
-                  (type === 'album' && {
-                    ...item,
-                    album: {
-                      images: albumImages,
-                      id: albumId,
-                      album_type: albumType,
-                      name: albumName,
-                    },
-                  }) ||
-                  (playingType === 'show' && item) ||
-                  item
-                }
-              />
-            ))
+            return (
+              <>
+                {songList?.slice(0, renderNumb)?.map((item: any, index: number) => (
+                  <SongItem
+                    type={type}
+                    key={item?.id ?? index}
+                    order={order++ + adjustOrder}
+                    thumb={
+                      item?.album?.images?.[item?.album?.images?.length - 1]?.url ||
+                      item?.track?.album?.images[item?.track?.album?.images?.length - 1]
+                        ?.url ||
+                      item?.images?.[item?.images?.length - 1]?.url
+                    }
+                    songName={item?.name ?? item?.track?.name}
+                    artists={item?.artists ?? item?.track?.artists}
+                    albumData={{
+                      name: item?.album?.name ?? item?.track?.album?.name,
+                      id: item?.track?.album?.id ?? item?.album?.id,
+                    }}
+                    dateAdd={item?.added_at}
+                    duration={item?.duration_ms ?? item?.track?.duration_ms}
+                    isExplicit={item?.explicit ?? item?.track?.explicit}
+                    isLoading={isLoading}
+                    id={item?.track?.id ?? item?.id}
+                    originalData={
+                      (type === 'playlist' && item?.track) ||
+                      (type === 'album' && {
+                        ...item,
+                        album: {
+                          images: albumImages,
+                          id: albumId,
+                          album_type: albumType,
+                          name: albumName,
+                        },
+                      }) ||
+                      (playingType === 'show' && item) ||
+                      item
+                    }
+                  />
+                ))}
+                <div ref={lazyRenderRef}></div>
+              </>
+            )
           } else {
             return Array(9)
               ?.fill(0)

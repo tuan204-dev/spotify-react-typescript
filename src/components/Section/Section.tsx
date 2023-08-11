@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import SectionItem from '../SectionItem/SectionItem'
 import styles from './Section.module.scss'
 import { SectionProps } from '@/types/section'
+import { useInView } from 'react-intersection-observer'
 
 const cx = classNames.bind(styles)
 
@@ -20,11 +21,31 @@ const Section: React.FC<SectionProps> = ({
   hideHeader = false,
   type = 'default',
   apiType,
+  pageType = 'section',
 }) => {
   const [isLoading, setLoading] = useState<boolean>(true)
   const { quantityCol, width } = useContext(MainLayoutContext)
+  const [renderNumb, setRenderNumb] = useState<number>(() => {
+    if ((data?.length ?? 0 < 19) && data?.length) return data.length
+    return 9
+  })
+
+  const { ref: lazyRenderRef, inView: lazyRenderInView } = useInView({
+    threshold: 0,
+  })
 
   const columnWidth = (width - 2 * 24 - (quantityCol - 1) * 24) / quantityCol
+
+  useEffect(() => {
+    if (renderNumb === data?.length) {
+      return
+    }
+    if (lazyRenderInView && data?.length && renderNumb + 9 > data?.length) {
+      setRenderNumb(data.length)
+    } else {
+      setRenderNumb((prev) => prev + 9)
+    }
+  }, [lazyRenderInView])
 
   const sectionProps = useMemo(() => {
     if (data) {
@@ -104,11 +125,16 @@ const Section: React.FC<SectionProps> = ({
         }}
         className={cx('body')}
       >
-        {!isLoading
-          ? sectionProps
+        {!isLoading ? (
+          <>
+            {sectionProps
               ?.slice(
                 0,
-                isFull ? sectionProps.length : Math.min(quantityCol, sectionProps.length)
+                isFull
+                  ? pageType === 'genre'
+                    ? sectionProps?.length
+                    : renderNumb
+                  : Math.min(quantityCol, sectionProps.length)
               )
               .map((item, index) => (
                 <SectionItem
@@ -125,17 +151,21 @@ const Section: React.FC<SectionProps> = ({
                   dateAdd={item.dateAdd}
                   author={item.author}
                 />
-              ))
-          : Array(quantityCol)
-              .fill(0)
-              .map((item, index) => (
-                <SectionItem
-                  dataType={dataType}
-                  isLoading={isLoading}
-                  key={index}
-                  {...item}
-                />
               ))}
+            {isFull && pageType !== 'genre' && <div ref={lazyRenderRef}></div>}
+          </>
+        ) : (
+          Array(quantityCol)
+            .fill(0)
+            .map((item, index) => (
+              <SectionItem
+                dataType={dataType}
+                isLoading={isLoading}
+                key={index}
+                {...item}
+              />
+            ))
+        )}
       </div>
     </section>
   )
