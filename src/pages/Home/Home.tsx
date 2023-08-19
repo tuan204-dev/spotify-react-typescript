@@ -52,7 +52,7 @@ const Home: React.FC = () => {
         <div
           ref={pivotTrackingRef}
           className={cx('pivot-tracking')}
-          style={{ top: '64px' }}
+          style={{ top: '100px' }}
         ></div>
         <Greeting bgColor={bgColor} setBgColor={setBgColor} />
         <Section

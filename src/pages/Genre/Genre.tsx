@@ -61,13 +61,13 @@ const Genre: FC = () => {
 
     if (totalPlaylist > renderNumb) {
       const fetchData = async () => {
-        const data = await getCategoryPlaylist({ id, limit: 9, offset: renderNumb })
+        const data = await getCategoryPlaylist({ id, limit: 18, offset: renderNumb })
         const dataNormalized = data?.playlists?.items?.filter((item: any) => item)
         setData((prev) => [...prev, ...dataNormalized])
-        if (renderNumb + 9 > totalPlaylist) {
+        if (renderNumb + 18 > totalPlaylist) {
           setRenderNumb(totalPlaylist)
         } else {
-          setRenderNumb(renderNumb + 9)
+          setRenderNumb(renderNumb + 18)
         }
       }
       fetchData()

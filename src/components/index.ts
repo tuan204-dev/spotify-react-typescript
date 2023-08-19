@@ -3,7 +3,7 @@ import Footer from './Footer/Footer'
 import Greeting from './Greeting/Greeting'
 import Header from './Header/Header'
 import Navbar from './Navbar/Navbar'
-import NotFound from './NotFound/NotFound'
+import Alert from './Alert/Alert'
 import SearchBanner from './SearchBanner/SearchBanner'
 import SectionItem from './SectionItem/SectionItem'
 import Sidebar from './Sidebar/Sidebar'
@@ -29,7 +29,7 @@ export {
   Greeting,
   Header,
   Navbar,
-  NotFound,
+  Alert,
   SearchBanner,
   SectionItem,
   Sidebar,

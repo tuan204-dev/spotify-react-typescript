@@ -117,7 +117,14 @@ const Artist: React.FC = () => {
           backgroundColor: !headerImg ? colorRaw : undefined,
         }}
       >
-        {!isLoading && <Image inclSkeleton={false} src={headerImg} alt="banner-image" />}
+        {!isLoading && (
+          <Image
+            inclSkeleton={false}
+            src={headerImg}
+            alt="banner-image"
+            colorRaw={colorRaw}
+          />
+        )}
         <div className={cx('overlay')}></div>
       </div>
       <div onScroll={(e) => isTracking && handleScroll(e)} className={cx('body')}>

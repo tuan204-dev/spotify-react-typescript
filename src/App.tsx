@@ -11,7 +11,7 @@ const Search = lazy(() => import('@/pages/Search/Search'))
 const Section = lazy(() => import('@/pages/Section/Section'))
 const Show = lazy(() => import('@/pages/Show/Show'))
 const Episode = lazy(() => import('@/pages/Episode/Episode'))
-const NotFound = lazy(() => import('@/components/NotFound/NotFound'))
+const Alert = lazy(() => import('@/components/Alert/Alert'))
 const Queue = lazy(() => import('@/pages/Queue/Queue'))
 const Test = lazy(() => import('@/pages/test'))
 const Genre = lazy(() => import('@/pages/Genre/Genre'))
@@ -26,11 +26,12 @@ export const AppContext = createContext({} as AppContext)
 const App = () => {
   const [isPlayingViewShowed, setPlayingViewShowed] = useState<boolean>(false)
   useEffect(() => {
-    if (window.innerWidth < 900) {
-      alert('Please use a desktop or laptop for the best experience :v')
-    }
     deleteAllCookies()
   }, [])
+
+  if (window.innerWidth < 900) {
+    return <Alert type="noSupportDevice" />
+  }
 
   return (
     <AppContext.Provider value={{ isPlayingViewShowed, setPlayingViewShowed }}>
@@ -56,7 +57,7 @@ const App = () => {
               <Route path="/artist/:id/playlists" element={<Section />} />
             </Route>
           </Route>
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<Alert />} />
         </Routes>
       </Suspense>
     </AppContext.Provider>

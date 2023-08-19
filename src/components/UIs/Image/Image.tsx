@@ -7,10 +7,11 @@ interface ImageLazyProps {
   src?: string
   alt?: string
   inclSkeleton?: boolean
+  colorRaw?: string
 }
 
 const ImageLazy: FC<ImageLazyProps> = (props) => {
-  const { src = '', alt = '', inclSkeleton = true } = props
+  const { src = '', alt = '', inclSkeleton = true, colorRaw = '' } = props
   const [isLoading, setLoading] = useState<boolean>(true)
   const [mounted, setMounted] = useState<boolean>(false)
 
@@ -38,13 +39,18 @@ const ImageLazy: FC<ImageLazyProps> = (props) => {
         {inclSkeleton ? (
           <Skeleton height={500} width="100%" />
         ) : (
-          <div className={styles.overlay}></div>
+          <div
+            style={{ backgroundColor: colorRaw ? colorRaw : undefined }}
+            className={styles.overlay}
+          ></div>
         )}
       </div>
       <img
         src={mounted ? src : ''}
         alt={alt}
-        style={{ display: isLoading ? 'none' : '' }}
+        style={{
+          display: isLoading ? 'none' : '',
+        }}
       />
     </div>
   )

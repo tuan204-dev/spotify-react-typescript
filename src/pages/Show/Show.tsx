@@ -78,7 +78,7 @@ const Show: FC = () => {
         <div
           ref={pivotTrackingRef}
           className={cx('pivot-tracking')}
-          style={{ top: `${64}px` }}
+          style={{ top: `${100}px` }}
         ></div>
         <div ref={headerRef}>
           <Header

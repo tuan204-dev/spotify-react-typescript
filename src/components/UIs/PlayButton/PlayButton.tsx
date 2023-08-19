@@ -49,9 +49,15 @@ const PlayButton: FC<PlayButtonProps> = (props) => {
         }}
       >
         {!isPlay ? (
-          <TbPlayerPlayFilled className={cx('play-btn-child')} />
+          <TbPlayerPlayFilled
+            style={{ fontSize: fontSize ? fontSize : undefined }}
+            className={cx('play-btn-child')}
+          />
         ) : (
-          <GiPauseButton className={cx('play-btn-child')} />
+          <GiPauseButton
+            style={{ fontSize: fontSize ? fontSize : undefined }}
+            className={cx('play-btn-child')}
+          />
         )}
       </button>
     </div>

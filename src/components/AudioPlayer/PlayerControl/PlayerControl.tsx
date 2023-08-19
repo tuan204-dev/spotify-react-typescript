@@ -140,6 +140,7 @@ const PlayerControl: FC = () => {
           <div onClick={() => isBtnClickable && handlePlayBtn()} className={cx('btn')}>
             <PlayButton
               size={32}
+              fontSize={20}
               bgColor="#fff"
               transitionDuration={0}
               isPlay={isPlaying}

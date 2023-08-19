@@ -27,13 +27,11 @@ const SongList: FC<SongListProps> = ({
   const { width } = useContext(MainLayoutContext)
   const { playingType } = useContext(PlayerContext)
   const [renderNumb, setRenderNumb] = useState<number>(() => {
-    if ((songList?.length ?? 0 < 19) && songList?.length) return songList.length
+    if ((songList?.length ?? 0 < 9) && songList?.length) return songList.length
     return 9
   })
 
-  const { ref, inView } = useInView({
-    threshold: 0,
-  })
+  const { ref, inView } = useInView({ threshold: 0 })
 
   const { ref: lazyRenderRef, inView: lazyRenderInView } = useInView({
     threshold: 0,
