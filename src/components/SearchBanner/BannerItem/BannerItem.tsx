@@ -1,7 +1,7 @@
+import { Image } from '@/components/UIs'
 import { SearchBannerItem } from '@/types/search'
 import classNames from 'classnames/bind'
 import React from 'react'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { Link } from 'react-router-dom'
 import styles from './BannerItem.module.scss'
 
@@ -18,7 +18,7 @@ const BannerItem: React.FC<SearchBannerItem> = ({ title, imgUrl, id, bgColor }) 
           ></h4>
         </div>
         <div className={cx('img')}>
-          <LazyLoadImage effect="blur" src={imgUrl} alt={title} />
+          <Image alt={title} colorRaw={bgColor} inclSkeleton={false} src={imgUrl} />
         </div>
       </div>
     </Link>

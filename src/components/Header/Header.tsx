@@ -55,7 +55,9 @@ const Header: React.FC<HeaderProps> = ({
                     (type === 'episode' && 'Podcast Episode') ||
                     type}
                 </p>
-                <h2 className={cx('title')}>{title}</h2>
+                <h2 title={title} className={cx('title')}>
+                  {title}
+                </h2>
                 <div
                   dangerouslySetInnerHTML={{ __html: desc ? transformDomain(desc) : '' }}
                   className={cx('desc')}

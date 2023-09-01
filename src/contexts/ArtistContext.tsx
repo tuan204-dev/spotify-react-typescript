@@ -68,7 +68,6 @@ export const ArtistProvider: FC<ArtistProviderProps> = ({ children }) => {
     if (id !== '') fetchData()
   }, [id])
 
-  // console.log(responseData)
   // console.log(artistData)
 
   useEffect(() => {
@@ -80,6 +79,7 @@ export const ArtistProvider: FC<ArtistProviderProps> = ({ children }) => {
           name: responseData?.profile?.name,
           bio: responseData?.profile?.biography?.text,
           isVerified: responseData?.profile?.verified,
+          externalLinks: responseData?.profile?.externalLinks?.items
         },
         headerImg: responseData?.visuals?.headerImage?.sources[0]?.url,
         avatarImg: responseData?.visuals?.avatarImage?.sources[0]?.url,

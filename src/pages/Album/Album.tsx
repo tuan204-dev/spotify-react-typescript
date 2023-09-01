@@ -10,7 +10,7 @@ import { ResponseSectionItem } from '@/types/section'
 import { dateFormatConvertor, documentTitle } from '@/utils'
 import classNames from 'classnames/bind'
 import { usePalette } from 'color-thief-react'
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useNavigate, useParams } from 'react-router-dom'
 import styles from './Album.module.scss'
@@ -26,6 +26,7 @@ const Album: React.FC = () => {
     setPlayingType,
     isPlaying,
     prevDocumentTitle,
+    currentTrack,
   } = useContext(PlayerContext)
   const [data, setData] = useState<SpotifyAlbum>()
   const [navOpacity, setNavOpacity] = useState<number>(0)
@@ -59,6 +60,12 @@ const Album: React.FC = () => {
 
   const { id } = useParams()
   const navigate = useNavigate()
+
+  const artistAlbumsNormalized = useMemo(() => {
+    return artistAlbums?.filter((album: SpotifyAlbum) => album?.id !== data?.id) as
+      | ResponseSectionItem[]
+      | undefined
+  }, [artistAlbums])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -159,6 +166,7 @@ const Album: React.FC = () => {
                   fontSize={24}
                   transitionDuration={33}
                   scaleHovering={1.05}
+                  isPlay={data?.id === currentTrack?.album?.id}
                 />
               </div>
               <button className={cx('heart')}>
@@ -189,21 +197,19 @@ const Album: React.FC = () => {
             </p>
           ))}
         </div>
-        <div className={cx('artist-albums')}>
-          <Section
-            apiType="spotify"
-            data={
-              artistAlbums?.filter((album: SpotifyAlbum) => album?.id !== data?.id) as
-                | ResponseSectionItem[]
-                | undefined
-            }
-            dataType="album"
-            isClickable={false}
-            title={`More by ${data?.artists?.[0]?.name}`}
-            type="album"
-          />
-          <Footer />
-        </div>
+        {artistAlbumsNormalized?.length !== 0 && (
+          <div className={cx('artist-albums')}>
+            <Section
+              apiType="spotify"
+              data={artistAlbumsNormalized}
+              dataType="album"
+              isClickable={false}
+              title={`More by ${data?.artists?.[0]?.name}`}
+              type="album"
+            />
+            <Footer />
+          </div>
+        )}
       </div>
     </main>
   )

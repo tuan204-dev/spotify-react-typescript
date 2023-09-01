@@ -45,6 +45,8 @@ const ArtistModal: FC<ArtistModalProps> = ({
     }, 400)
   }
 
+  console.log(profile)
+
   return (
     <div className={cx({ wrapper: true, close: isClose })} onClick={handleClose}>
       <div className={cx({ modal: true })} onClick={(e) => e.stopPropagation()}>

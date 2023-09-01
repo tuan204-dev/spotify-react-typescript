@@ -33,11 +33,13 @@
 }
 
 .body {
+  overflow: hidden;
   display: grid;
   // grid-template-columns: repeat(4, 1fr);
   grid-column: 1;
   grid-gap: 24px;
   // max-height: 305px;
+  align-content: stretch;
 }
 
 .un-clickable {

@@ -43,3 +43,8 @@ export interface Visuals {
   gallery: Gallery
   headerImage: HeaderImage
 }
+
+export interface ExternalLink {
+  name: string
+  url: string
+}
